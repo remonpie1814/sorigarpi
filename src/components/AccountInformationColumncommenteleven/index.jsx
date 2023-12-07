@@ -10,7 +10,7 @@ const AccountInformationColumncommenteleven = (props) => {
           <Img
             className="h-[35px] md:h-auto object-cover w-[35px]"
             src="images/img_comment11.png"
-            alt="commentEleven"
+            alt="commenteleven"
           />
           <Text
             className="text-base text-black-900 tracking-[-0.30px] w-20"

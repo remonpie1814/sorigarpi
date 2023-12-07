@@ -4,7 +4,7 @@ import { default as ModalProvider } from "react-modal";
 import { Button, Text } from "components";
 import Modal from "components/Modal";
 
-const Page13Modal = (props) => {
+const Page12Modal = (props) => {
   return (
     <ModalProvider
       appElement={document.getElementById("root")}
@@ -19,4 +19,4 @@ const Page13Modal = (props) => {
   );
 };
 
-export default Page13Modal;
+export default Page12Modal;

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Img, List, Text } from "components";
 
-const Listtwohundredfiftyone = (props) => {
+const Listtwohundredtwent = (props) => {
   return (
     <>
       <List className={props.className} orientation="horizontal">
@@ -18,14 +18,14 @@ const Listtwohundredfiftyone = (props) => {
             <Img
               className="h-[194px] md:h-auto object-cover rounded-[20px] w-full"
               src="images/img_image917.png"
-              alt="image917_One"
+              alt="image917one"
             />
           </div>
           <div className="border border-black-900 border-solid flex sm:flex-1 flex-col items-center justify-start pb-1.5 rounded-[20px] w-[27%] sm:w-full">
             <Img
               className="h-[194px] md:h-auto object-cover rounded-[20px] w-full"
               src="images/img_image917.png"
-              alt="image917_Two"
+              alt="image917two"
             />
           </div>
         </div>
@@ -41,20 +41,20 @@ const Listtwohundredfiftyone = (props) => {
             <Img
               className="h-[194px] md:h-auto object-cover rounded-[20px] w-full"
               src="images/img_image917.png"
-              alt="image917_One"
+              alt="image917one"
             />
           </div>
           <div className="border border-black-900 border-solid pb-1.5 relative rounded-[20px] w-[27%] sm:w-full">
             <Img
               className="h-[194px] m-auto object-cover rounded-[20px] w-full"
               src="images/img_image917.png"
-              alt="image917_Two"
+              alt="image917two"
             />
             <Text
               className="absolute h-max inset-y-[0] my-auto right-[0] text-2xl md:text-[22px] text-white-A700 sm:text-xl tracking-[-0.46px] w-auto"
               size="txtInterMedium24WhiteA700"
             >
-              {props?.twohundredfiftyone}
+              {props?.twohundredtwent}
             </Text>
           </div>
         </div>
@@ -63,6 +63,6 @@ const Listtwohundredfiftyone = (props) => {
   );
 };
 
-Listtwohundredfiftyone.defaultProps = { twohundredfiftyone: <>&gt;</> };
+Listtwohundredtwent.defaultProps = { twohundredtwent: <>&gt;</> };
 
-export default Listtwohundredfiftyone;
+export default Listtwohundredtwent;

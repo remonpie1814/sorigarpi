@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Img, List, Text } from "components";
+import AccountInformationColumn from "components/AccountInformationColumn";
 import AccountInformationColumncommenteleven from "components/AccountInformationColumncommenteleven";
 import AccountInformationColumnconfusedone from "components/AccountInformationColumnconfusedone";
-import AccountInformationColumnonehundredsixtyfive from "components/AccountInformationColumnonehundredsixtyfive";
 import AccountInformationColumnreloadone from "components/AccountInformationColumnreloadone";
 import Header from "components/Header";
 import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
@@ -104,7 +104,7 @@ const AccountInformationPage = () => {
               <Img
                 className="h-[50px] w-[49px]"
                 src="images/img_.svg"
-                alt="OneHundredSixtyTwo"
+                alt="onehundredthirt_Two"
               />
             </div>
             <List
@@ -114,7 +114,7 @@ const AccountInformationPage = () => {
               <AccountInformationColumncommenteleven className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
               <AccountInformationColumnreloadone className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
               <AccountInformationColumnconfusedone className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
-              <AccountInformationColumnonehundredsixtyfive className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
+              <AccountInformationColumn className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
             </List>
           </div>
         </div>

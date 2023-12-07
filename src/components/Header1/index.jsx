@@ -11,7 +11,7 @@ const Header1 = (props) => {
             <Img
               className="h-[51px] md:h-auto object-cover w-[170px]"
               src="images/img__51x170.png"
-              alt="TwoHundredFortyOne"
+              alt="twohundredthirt"
             />
           </div>
           <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-start py-2.5 w-auto sm:w-full">
@@ -30,7 +30,7 @@ const Header1 = (props) => {
             <Img
               className="h-12 md:h-auto object-cover w-12"
               src="images/img_menu11.png"
-              alt="menuEleven"
+              alt="menueleven"
             />
           </div>
         </div>

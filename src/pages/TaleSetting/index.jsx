@@ -14,7 +14,7 @@ const TaleSettingPage = () => {
               <Img
                 className="h-[51px] md:h-auto object-cover w-[170px]"
                 src="images/img__51x170.png"
-                alt="FourHundredTwentySeven"
+                alt="threehundrednin"
               />
             </div>
             <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
@@ -31,7 +31,7 @@ const TaleSettingPage = () => {
               <Img
                 className="h-12 md:h-auto object-cover w-12"
                 src="images/img_menu11.png"
-                alt="menuEleven"
+                alt="menueleven"
               />
             </div>
           </div>
@@ -57,7 +57,7 @@ const TaleSettingPage = () => {
                 <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-center w-full">
                   <Text
                     className="text-[22px] text-black-900 text-center sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                    size="txtInterMedium22Black900"
+                    size="txtInterMedium22Black900_1"
                   >
                     제목
                   </Text>
@@ -66,7 +66,7 @@ const TaleSettingPage = () => {
                 <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-center px-4 py-[19px] w-full">
                   <Text
                     className="text-[22px] text-black-900 text-center sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                    size="txtInterMedium22Black900"
+                    size="txtInterMedium22Black900_1"
                   >
                     설명
                   </Text>

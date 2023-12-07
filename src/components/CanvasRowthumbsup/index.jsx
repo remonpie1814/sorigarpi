@@ -41,7 +41,7 @@ const CanvasRowthumbsup = (props) => {
                   <Img
                     className="h-9 md:h-auto object-cover w-9"
                     src="images/img_image656.png"
-                    alt="image691_One"
+                    alt="image691one"
                   />
                 </div>
               </div>

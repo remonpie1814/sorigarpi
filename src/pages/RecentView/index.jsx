@@ -117,7 +117,7 @@ const RecentViewPage = () => {
                 <div className="flex flex-col items-start justify-end pr-0.5 py-0.5">
                   <Text
                     className="text-[22px] text-black-900 sm:text-lg md:text-xl tracking-[-0.42px]"
-                    size="txtInterMedium22Black900_1"
+                    size="txtInterMedium22Black900"
                   >
                     고객센터
                   </Text>
@@ -125,7 +125,7 @@ const RecentViewPage = () => {
                 <div className="flex flex-col items-start justify-end pr-0.5 py-0.5">
                   <Text
                     className="text-[22px] text-black-900 text-center sm:text-lg md:text-xl tracking-[-0.42px]"
-                    size="txtInterMedium22Black900_1"
+                    size="txtInterMedium22Black900"
                   >
                     공지사항
                   </Text>
@@ -156,7 +156,7 @@ const RecentViewPage = () => {
               <Img
                 className="h-[92px] w-full"
                 src="images/img__blue_gray_100.svg"
-                alt="ThreeHundredFortyOne"
+                alt="threehundredthi"
               />
             </div>
           </div>

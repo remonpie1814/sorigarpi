@@ -10,7 +10,7 @@ const Rowrectangleten1 = (props) => {
           <Img
             className="absolute h-[180px] inset-[0] justify-center m-auto object-cover rounded-[30px] w-full"
             src="images/img_rectangle10_180x140.png"
-            alt="rectangleTen"
+            alt="rectangleten"
           />
           <Img
             className="absolute h-[26px] object-cover right-[8%] top-[6%] w-[26px]"
@@ -50,7 +50,7 @@ const Rowrectangleten1 = (props) => {
               className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
               size="txtInterMedium14Gray900_1"
             >
-              {props?.userlevel}
+              {props?.userlevelnumber}
             </Text>
             <Img
               className="h-6 md:h-auto object-cover w-6"
@@ -61,7 +61,7 @@ const Rowrectangleten1 = (props) => {
               className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
               size="txtInterMedium14Gray900_1"
             >
-              {props?.userlevel2}
+              {props?.userlevelnumber2}
             </Text>
           </div>
           <div className="flex flex-row items-start justify-between pl-0.5 w-full">
@@ -109,8 +109,8 @@ const Rowrectangleten1 = (props) => {
 Rowrectangleten1.defaultProps = {
   username: "신데렐라는 어려서 부모님을 잃고요",
   userpoints: "10p",
-  userlevel: "5",
-  userlevel2: "5",
+  userlevelnumber: "5",
+  userlevelnumber2: "5",
   usernickname: "유미네",
   userdate: "2023. 10. 08",
   prop: "복사",

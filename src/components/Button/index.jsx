@@ -5,22 +5,24 @@ const shapes = { round: "rounded-[5px]", square: "rounded-none" };
 const variants = {
   outline: {
     amber_A100: "border-amber-A100 border-b-[5px] border-solid text-gray-900",
+    blue_gray_100_01:
+      "border-b-2 border-blue_gray-100_01 border-solid text-black-900",
   },
   fill: {
     black_900_60: "bg-black-900_60",
     blue_gray_50: "bg-blue_gray-50 text-black-900",
-    yellow_200: "bg-yellow-200",
     blue_gray_100_02: "bg-blue_gray-100_02",
     blue_gray_100_01: "bg-blue_gray-100_01 text-black-900",
+    yellow_200: "bg-yellow-200 text-black-900",
     gray_100: "bg-gray-100 text-black-900",
     gray_600: "bg-gray-600",
-    gray_300: "bg-gray-300",
     amber_A100: "bg-amber-A100 text-black-900",
+    gray_300: "bg-gray-300",
     blue_gray_100: "bg-blue_gray-100 text-black-900",
   },
 };
 const sizes = {
-  xs: "p-1.5",
+  xs: "p-1",
   sm: "p-[9px]",
   md: "p-3",
   lg: "p-4",
@@ -62,11 +64,11 @@ Button.propTypes = {
   variant: PropTypes.oneOf(["outline", "fill"]),
   color: PropTypes.oneOf([
     "amber_A100",
+    "blue_gray_100_01",
     "black_900_60",
     "blue_gray_50",
-    "yellow_200",
     "blue_gray_100_02",
-    "blue_gray_100_01",
+    "yellow_200",
     "gray_100",
     "gray_600",
     "gray_300",

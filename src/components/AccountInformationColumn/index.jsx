@@ -2,7 +2,7 @@ import React from "react";
 
 import { Img, Text } from "components";
 
-const AccountInformationColumnonehundredsixtyfive = (props) => {
+const AccountInformationColumn = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -16,7 +16,7 @@ const AccountInformationColumnonehundredsixtyfive = (props) => {
             className="text-base text-black-900 tracking-[-0.30px] w-[89px]"
             size="txtInterMedium16Black900_1"
           >
-            {props?.text}
+            {props?.onehundredthirt}
           </Text>
         </div>
       </div>
@@ -24,8 +24,6 @@ const AccountInformationColumnonehundredsixtyfive = (props) => {
   );
 };
 
-AccountInformationColumnonehundredsixtyfive.defaultProps = {
-  text: "계정 탈퇴하기",
-};
+AccountInformationColumn.defaultProps = { onehundredthirt: "계정 탈퇴하기" };
 
-export default AccountInformationColumnonehundredsixtyfive;
+export default AccountInformationColumn;

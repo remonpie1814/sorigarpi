@@ -2,7 +2,7 @@ import React from "react";
 
 import { Img, Text } from "components";
 
-const ColumnOne = (props) => {
+const CustomerServiceColumnone = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -13,7 +13,7 @@ const ColumnOne = (props) => {
                 className="text-base text-gray-400_01 tracking-[-0.30px]"
                 size="txtInterMedium16Gray40001"
               >
-                {props?.searchtext}
+                {props?.userinputtext}
               </Text>
             </div>
             <div className="bg-amber-A100 flex flex-col h-[46px] items-center justify-start p-1 w-[46px]">
@@ -30,6 +30,8 @@ const ColumnOne = (props) => {
   );
 };
 
-ColumnOne.defaultProps = { searchtext: "작품명 검색" };
+CustomerServiceColumnone.defaultProps = {
+  userinputtext: "무엇을 도와드릴까요?",
+};
 
-export default ColumnOne;
+export default CustomerServiceColumnone;

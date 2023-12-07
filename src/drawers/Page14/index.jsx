@@ -5,7 +5,7 @@ import "rc-drawer/assets/index.css";
 import { Button, Img, Text } from "components";
 import Sidebar1 from "components/Sidebar1";
 
-const Page15Drawer = (props) => {
+const Page14Drawer = (props) => {
   return (
     <Drawer placement="left" className="!w-[30%]" {...props}>
       <div>
@@ -17,4 +17,4 @@ const Page15Drawer = (props) => {
   );
 };
 
-export default Page15Drawer;
+export default Page14Drawer;

@@ -1,116 +1,156 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
-
-import { Button, Img, Text } from "components";
+import { Button, Img, List, Text } from "components";
+import CustomerServiceColumnone from "components/CustomerServiceColumnone";
 import Header from "components/Header";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
+import Inforow from "components/Inforow";
+import Navbar from "components/Navbar";
+import Paging from "components/Paging";
+import Rowrectangleten1 from "components/Rowrectangleten1";
 
 const Page8 = () => {
-  const navigate = useNavigate();
+  const rowrectangleten1PropList = [
+    {},
+    { usernickname: "유미엄마" },
+    { usernickname: "유미엄마" },
+    { usernickname: "유미엄마" },
+    {
+      usernickname: "유미엄마",
+      username: "호랑이와 토끼가 살았는데 결국 나중에 멸종함",
+    },
+    { usernickname: "유미엄마" },
+  ];
 
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
         <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <div className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full">
-          <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
-          <div className="flex flex-col gap-[30px] h-[875px] md:h-auto items-center justify-start max-w-[1180px] pb-5 pt-[30px] w-full">
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <div className="flex flex-col gap-10 h-[1482px] md:h-auto items-center justify-start max-w-[1180px] mx-auto md:px-5 py-[31px] w-full">
+          <div className="bg-white-A700 flex flex-row md:gap-10 items-start justify-between py-[3px] w-full">
             <Text
-              className="bg-white-A700 h-[42px] justify-center sm:pr-5 pr-[35px] py-[3px] sm:text-2xl md:text-[26px] text-[28px] text-black-900 tracking-[-0.53px] w-full"
+              className="sm:text-2xl md:text-[26px] text-[28px] text-black-900 tracking-[-0.53px]"
               size="txtInterMedium28"
             >
-              내 프로필 수정
+              내 책장
             </Text>
-            <div className="flex flex-col gap-3 h-[668px] md:h-auto items-center justify-start w-full">
-              <div className="flex flex-col h-[150px] md:h-auto items-center justify-center w-full">
-                <div
-                  className="common-pointer h-[150px] md:px-10 sm:px-5 px-[515px] relative w-full"
-                  onClick={() => navigate("/page7")}
-                >
+            <Button
+              className="cursor-pointer font-medium min-w-[120px] my-0.5 text-base text-center tracking-[-0.30px]"
+              shape="round"
+              color="blue_gray_50"
+              size="sm"
+              variant="fill"
+            >
+              임시저장
+            </Button>
+          </div>
+          <CustomerServiceColumnone
+            className="flex flex-col gap-8 items-start justify-center w-full"
+            userinputtext="호랑이"
+          />
+          <List
+            className="flex flex-col items-center w-full"
+            orientation="vertical"
+          >
+            <div className="bg-white-A700 border-blue_gray-100_01 border-solid border-y flex flex-1 flex-row md:gap-10 gap-[70px] items-start justify-start my-0 py-[15px] w-full">
+              <Text
+                className="text-base text-black-900 tracking-[-0.30px] w-[60px]"
+                size="txtInterMedium16Black900_1"
+              >
+                공개 범위
+              </Text>
+              <Text
+                className="text-base text-black-900 tracking-[-0.30px] w-[29px]"
+                size="txtInterBold16Black900"
+              >
+                모두
+              </Text>
+              <Text
+                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[61px]"
+                size="txtInterMedium16Bluegray10001"
+              >
+                전체 공개
+              </Text>
+              <Text
+                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[42px]"
+                size="txtInterMedium16Bluegray10001"
+              >
+                비공개
+              </Text>
+            </div>
+            <div className="border-b border-blue_gray-100_cc border-solid flex flex-1 flex-row md:gap-10 gap-[70px] items-start justify-start my-0 py-[15px] w-full">
+              <Text
+                className="text-base text-black-900 tracking-[-0.30px] w-[29px]"
+                size="txtInterMedium16Black900_1"
+              >
+                분류
+              </Text>
+              <Text
+                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[29px]"
+                size="txtInterMedium16Bluegray10001"
+              >
+                모두
+              </Text>
+              <Text
+                className="text-base text-black-900 tracking-[-0.30px] w-11"
+                size="txtInterBold16Black900"
+              >
+                그림만
+              </Text>
+              <Text
+                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-11"
+                size="txtInterMedium16Bluegray10001"
+              >
+                녹음만
+              </Text>
+            </div>
+          </List>
+          <Inforow className="flex flex-col gap-[15px] items-start justify-center w-full" />
+          <div className="flex flex-col gap-[15px] items-center justify-start w-full">
+            <div className="flex flex-col items-center justify-end max-w-[1180px] w-full">
+              <div className="flex flex-col items-center justify-start w-auto">
+                <div className="flex flex-row items-center justify-center w-auto">
+                  <Text
+                    className="text-base text-gray-900 tracking-[-0.30px] w-auto"
+                    size="txtInterMedium16Gray900"
+                  >
+                    최신순
+                  </Text>
                   <Img
-                    className="h-[150px] m-auto object-cover w-[150px]"
-                    src="images/img_profile1.png"
-                    alt="OneHundredFortyThree"
+                    className="h-8 md:h-auto object-cover w-8"
+                    src="images/img_down11_32x32.png"
+                    alt="downeleven"
                   />
-                  <div className="absolute bg-black-900_4c flex flex-col h-full inset-[0] items-center justify-center m-auto p-10 sm:px-5 w-[150px]">
-                    <Button
-                      className="flex h-[69px] items-center justify-center rounded-[34px] w-[69px]"
-                      color="black_900_60"
-                      size="lg"
-                      variant="fill"
-                    >
-                      <Img
-                        className="h-9"
-                        src="images/img_group1.png"
-                        alt="groupOne"
-                      />
-                    </Button>
-                  </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-2.5 items-center justify-center p-3 w-full">
-                <div className="border border-gray-700 border-solid flex flex-col gap-[5px] h-[65px] md:h-auto items-start justify-start px-2.5 py-[5px] rounded-[5px] w-[480px] sm:w-full">
-                  <Text
-                    className="text-gray-700 text-sm tracking-[-0.15px] w-full"
-                    size="txtInterMedium14"
-                  >
-                    닉네임{" "}
-                  </Text>
-                  <Text
-                    className="text-base text-black-900 tracking-[-0.18px] w-full"
-                    size="txtInterMedium16Black900_1"
-                  >
-                    둥치탁치
-                  </Text>
-                </div>
-                <div className="flex flex-col h-[21px] md:h-auto items-center justify-start w-[480px] sm:w-full">
-                  <Text
-                    className="text-green-A700 text-sm tracking-[-0.15px] w-auto"
-                    size="txtInterMedium14GreenA700"
-                  >
-                    사용 가능한 닉네임입니다.
-                  </Text>
-                </div>
-              </div>
+            </div>
+            <div className="flex flex-col items-start justify-between w-full">
               <div className="flex flex-col items-center justify-start w-full">
-                <div className="border border-gray-700 border-solid flex flex-col gap-[5px] h-[120px] md:h-auto items-start justify-start px-2.5 py-[5px] rounded-[5px] w-[480px] sm:w-full">
-                  <Text
-                    className="text-gray-700 text-sm tracking-[-0.15px] w-full"
-                    size="txtInterMedium14"
-                  >
-                    자기소개
-                  </Text>
-                  <Text
-                    className="text-base text-black-900 tracking-[-0.18px]"
-                    size="txtInterMedium16Black900_1"
-                  >
-                    둥치탁치 구독과 좋아요 알림설정까지~
-                  </Text>
+                <div className="gap-20 md:gap-5 grid md:grid-cols-1 grid-cols-2 justify-center min-h-[auto] w-full">
+                  {rowrectangleten1PropList.map((props, index) => (
+                    <React.Fragment key={`Rowrectangleten1${index}`}>
+                      <Rowrectangleten1
+                        className="flex flex-1 sm:flex-col flex-row gap-5 items-center justify-start px-5 py-[15px] w-full"
+                        {...props}
+                      />
+                    </React.Fragment>
+                  ))}
                 </div>
-              </div>
-              <div className="flex sm:flex-col flex-row gap-2.5 h-[90px] md:h-auto items-center justify-center p-2.5 w-full">
-                <Button
-                  className="cursor-pointer font-medium min-w-[184px] text-base text-center tracking-[-0.18px]"
-                  shape="round"
-                  color="blue_gray_100_01"
-                  size="lg"
-                  variant="fill"
-                >
-                  취소
-                </Button>
-                <Button
-                  className="cursor-pointer font-medium min-w-[184px] text-base text-center tracking-[-0.18px]"
-                  shape="round"
-                  color="amber_A100"
-                  size="md"
-                  variant="fill"
-                >
-                  적용
-                </Button>
               </div>
             </div>
           </div>
+          <div className="flex flex-col h-[69px] md:h-auto items-center justify-end w-full">
+            <div className="md:h-16 h-[69px] pb-[5px] relative w-[70px]">
+              <div className="bg-amber-A100 h-16 mx-auto rounded-[35px] w-full"></div>
+              <Text
+                className="absolute h-max inset-[0] justify-center m-auto text-2xl md:text-[22px] text-black-900 text-center sm:text-xl w-max"
+                size="txtInterMedium24"
+              >
+                +
+              </Text>
+            </div>
+          </div>
+          <Paging className="flex flex-col gap-8 items-center justify-center w-full" />
         </div>
       </div>
     </>

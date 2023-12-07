@@ -17,19 +17,19 @@ const Navbar = (props) => {
             className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
             size="txtInterMedium16"
           >
-            {props?.sixtyeight}
+            {props?.fiftythree}
           </Text>
           <Text
             className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
             size="txtInterMedium16"
           >
-            {props?.sixtynine}
+            {props?.fiftyfour}
           </Text>
           <Text
             className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
             size="txtInterMedium16"
           >
-            {props?.seventy}
+            {props?.fiftyfive}
           </Text>
         </div>
       </div>
@@ -39,9 +39,9 @@ const Navbar = (props) => {
 
 Navbar.defaultProps = {
   language: "전체 ",
-  sixtyeight: "인기",
-  sixtynine: "신작",
-  seventy: "팔로우",
+  fiftythree: "인기",
+  fiftyfour: "신작",
+  fiftyfive: "팔로우",
 };
 
 export default Navbar;

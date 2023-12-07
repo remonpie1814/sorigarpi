@@ -40,7 +40,7 @@ const Inforow = (props) => {
               className="text-base text-red-A700 tracking-[-0.18px]"
               size="txtInterMedium16RedA700_1"
             >
-              {props?.xOne}
+              {props?.xone}
             </Text>
           </div>
         </div>
@@ -54,7 +54,7 @@ Inforow.defaultProps = {
   categorytext: "분류 : 그림만",
   publictext: "X",
   scopetext: "공개범위 : 모두",
-  xOne: "X",
+  xone: "X",
 };
 
 export default Inforow;

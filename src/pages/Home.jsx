@@ -35,9 +35,6 @@ const Home = () => {
           <Link to="/page7">Page7</Link>
         </li>
         <li>
-          <Link to="/page8">Page8</Link>
-        </li>
-        <li>
           <Link to="/sanctionhistory">SanctionHistory</Link>
         </li>
         <li>
@@ -53,10 +50,10 @@ const Home = () => {
           <Link to="/customerservice">CustomerService</Link>
         </li>
         <li>
-          <Link to="/page9">Page9</Link>
+          <Link to="/page8">Page8</Link>
         </li>
         <li>
-          <Link to="/page10">Page10</Link>
+          <Link to="/page9">Page9</Link>
         </li>
         <li>
           <Link to="/pwdmodifyform">PwdModifyForm</Link>
@@ -65,7 +62,7 @@ const Home = () => {
           <Link to="/myreplylist">MyReplyList</Link>
         </li>
         <li>
-          <Link to="/page11">Page11</Link>
+          <Link to="/page10">Page10</Link>
         </li>
         <li>
           <Link to="/noticelist">NoticeList</Link>
@@ -86,7 +83,7 @@ const Home = () => {
           <Link to="/loginform">LoginForm</Link>
         </li>
         <li>
-          <Link to="/page12">Page12</Link>
+          <Link to="/page11">Page11</Link>
         </li>
         <li>
           <Link to="/registerform">RegisterForm</Link>
@@ -104,13 +101,10 @@ const Home = () => {
           <Link to="/canvas">Canvas</Link>
         </li>
         <li>
-          <Link to="/page14">Page14</Link>
+          <Link to="/page13">Page13</Link>
         </li>
         <li>
-          <Link to="/page18">Page18</Link>
-        </li>
-        <li>
-          <Link to="/page19">Page19</Link>
+          <Link to="/page17">Page17</Link>
         </li>
         <li>
           <Link to="/frameone">FrameOne</Link>

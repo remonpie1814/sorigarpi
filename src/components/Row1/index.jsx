@@ -10,14 +10,14 @@ const Row1 = (props) => {
           <Img
             className="h-[30px] w-[260px]"
             src="images/img__black_900_30x260.svg"
-            alt="FourHundredSeventy"
+            alt="fourhundredfort"
           />
           <div className="flex flex-1 flex-col items-center justify-center w-full">
             <Text
               className="text-[22px] text-black-900 text-center sm:text-lg md:text-xl tracking-[-0.24px] w-auto"
-              size="txtInterMedium22Black900"
+              size="txtInterMedium22Black900_1"
             >
-              {props?.username}
+              {props?.fourhundredfortOne}
             </Text>
           </div>
           <div className="flex flex-col items-center justify-end px-2.5 w-[260px]">
@@ -28,7 +28,7 @@ const Row1 = (props) => {
               size="xs"
               variant="fill"
             >
-              {props?.savebutton}
+              {props?.savebuttontext}
             </Button>
           </div>
         </div>
@@ -37,6 +37,9 @@ const Row1 = (props) => {
   );
 };
 
-Row1.defaultProps = { username: "신데렐라는 어려서", savebutton: "저장하기" };
+Row1.defaultProps = {
+  fourhundredfortOne: "신데렐라는 어려서",
+  savebuttontext: "저장하기",
+};
 
 export default Row1;

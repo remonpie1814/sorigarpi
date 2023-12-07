@@ -3,15 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 const FrameOne = React.lazy(() => import("pages/FrameOne"));
-const Page19 = React.lazy(() => import("pages/Page19"));
-const Page18 = React.lazy(() => import("pages/Page18"));
-const Page14 = React.lazy(() => import("pages/Page14"));
+const Page17 = React.lazy(() => import("pages/Page17"));
+const Page13 = React.lazy(() => import("pages/Page13"));
 const Canvas = React.lazy(() => import("pages/Canvas"));
 const TaleSetting = React.lazy(() => import("pages/TaleSetting"));
 const RegisterCompleted = React.lazy(() => import("pages/RegisterCompleted"));
 const PwdResetForm = React.lazy(() => import("pages/PwdResetForm"));
 const RegisterForm = React.lazy(() => import("pages/RegisterForm"));
-const Page12 = React.lazy(() => import("pages/Page12"));
+const Page11 = React.lazy(() => import("pages/Page11"));
 const LoginForm = React.lazy(() => import("pages/LoginForm"));
 const PwdSendEmailForm = React.lazy(() => import("pages/PwdSendEmailForm"));
 const TemporaryStorageDelete = React.lazy(
@@ -20,17 +19,16 @@ const TemporaryStorageDelete = React.lazy(
 const TempTaleList = React.lazy(() => import("pages/TempTaleList"));
 const RecentView = React.lazy(() => import("pages/RecentView"));
 const NoticeList = React.lazy(() => import("pages/NoticeList"));
-const Page11 = React.lazy(() => import("pages/Page11"));
+const Page10 = React.lazy(() => import("pages/Page10"));
 const MyReplyList = React.lazy(() => import("pages/MyReplyList"));
 const PwdModifyForm = React.lazy(() => import("pages/PwdModifyForm"));
-const Page10 = React.lazy(() => import("pages/Page10"));
 const Page9 = React.lazy(() => import("pages/Page9"));
+const Page8 = React.lazy(() => import("pages/Page8"));
 const CustomerService = React.lazy(() => import("pages/CustomerService"));
 const InquiryForm = React.lazy(() => import("pages/InquiryForm"));
 const InquiryHistory = React.lazy(() => import("pages/InquiryHistory"));
 const AccountInformation = React.lazy(() => import("pages/AccountInformation"));
 const SanctionHistory = React.lazy(() => import("pages/SanctionHistory"));
-const Page8 = React.lazy(() => import("pages/Page8"));
 const Page7 = React.lazy(() => import("pages/Page7"));
 const Page6 = React.lazy(() => import("pages/Page6"));
 const Page5 = React.lazy(() => import("pages/Page5"));
@@ -54,17 +52,16 @@ const ProjectRoutes = () => {
           <Route path="/page5" element={<Page5 />} />
           <Route path="/page6" element={<Page6 />} />
           <Route path="/page7" element={<Page7 />} />
-          <Route path="/page8" element={<Page8 />} />
           <Route path="/sanctionhistory" element={<SanctionHistory />} />
           <Route path="/accountinformation" element={<AccountInformation />} />
           <Route path="/inquiryhistory" element={<InquiryHistory />} />
           <Route path="/inquiryform" element={<InquiryForm />} />
           <Route path="/customerservice" element={<CustomerService />} />
+          <Route path="/page8" element={<Page8 />} />
           <Route path="/page9" element={<Page9 />} />
-          <Route path="/page10" element={<Page10 />} />
           <Route path="/pwdmodifyform" element={<PwdModifyForm />} />
           <Route path="/myreplylist" element={<MyReplyList />} />
-          <Route path="/page11" element={<Page11 />} />
+          <Route path="/page10" element={<Page10 />} />
           <Route path="/noticelist" element={<NoticeList />} />
           <Route path="/recentview" element={<RecentView />} />
           <Route path="/temptalelist" element={<TempTaleList />} />
@@ -74,15 +71,14 @@ const ProjectRoutes = () => {
           />
           <Route path="/pwdsendemailform" element={<PwdSendEmailForm />} />
           <Route path="/loginform" element={<LoginForm />} />
-          <Route path="/page12" element={<Page12 />} />
+          <Route path="/page11" element={<Page11 />} />
           <Route path="/registerform" element={<RegisterForm />} />
           <Route path="/pwdresetform" element={<PwdResetForm />} />
           <Route path="/registercompleted" element={<RegisterCompleted />} />
           <Route path="/talesetting" element={<TaleSetting />} />
           <Route path="/canvas" element={<Canvas />} />
-          <Route path="/page14" element={<Page14 />} />
-          <Route path="/page18" element={<Page18 />} />
-          <Route path="/page19" element={<Page19 />} />
+          <Route path="/page13" element={<Page13 />} />
+          <Route path="/page17" element={<Page17 />} />
           <Route path="/frameone" element={<FrameOne />} />
         </Routes>
       </Router>

@@ -10,7 +10,7 @@ const Followuserrow = (props) => {
           <Img
             className="h-[100px] md:h-auto rounded-[50%] w-[100px]"
             src="images/img_ellipse4.png"
-            alt="ellipseFour"
+            alt="ellipsefour"
           />
         </div>
         <div className="flex flex-col items-start justify-start pr-0.5 py-0.5">
@@ -25,7 +25,7 @@ const Followuserrow = (props) => {
           <Img
             className="h-[30px] md:h-auto object-cover w-[30px]"
             src="images/img__30x30.png"
-            alt="SeventyThree"
+            alt="fiftyeight"
           />
         </div>
         <div className="h-[103px] md:h-[35px] py-[34px] relative w-[17%] sm:w-full">

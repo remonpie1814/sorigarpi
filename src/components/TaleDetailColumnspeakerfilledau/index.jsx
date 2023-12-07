@@ -54,7 +54,7 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                 className="text-base text-gray-600 underline w-auto"
                 size="txtInterMedium16Gray600"
               >
-                {props?.koreantext}
+                {props?.textcontent}
               </Text>
             </div>
             <div className="flex flex-row gap-5 items-center justify-start py-2.5 w-full">
@@ -62,7 +62,7 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                 <Img
                   className="h-[25px] md:h-auto object-cover w-[25px]"
                   src="images/img_image804_25x25.png"
-                  alt="image804_One"
+                  alt="image804one"
                 />
                 <Text
                   className="text-base text-center text-gray-900 tracking-[-0.18px]"
@@ -81,20 +81,20 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                   className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                   size="txtInterMedium16"
                 >
-                  {props?.onetext}
+                  {props?.onetwotext}
                 </Text>
               </div>
               <div className="flex flex-row gap-2.5 h-[30px] md:h-auto items-center justify-center w-[75px]">
                 <Img
                   className="h-[25px] md:h-auto object-cover w-[25px]"
                   src="images/img__25x25.png"
-                  alt="Eight"
+                  alt="eight"
                 />
                 <Text
                   className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                   size="txtInterMedium16"
                 >
-                  {props?.fivetext}
+                  {props?.fivetwotext}
                 </Text>
               </div>
             </div>
@@ -102,7 +102,7 @@ const TaleDetailColumnspeakerfilledau = (props) => {
               className="leading-[150.00%] max-w-[850px] md:max-w-full text-base text-gray-600 tracking-[-0.18px]"
               size="txtInterMedium16Gray600"
             >
-              {props?.descriptiontext}
+              {props?.bookdescriptiontext}
             </Text>
           </div>
         </div>
@@ -115,11 +115,11 @@ TaleDetailColumnspeakerfilledau.defaultProps = {
   rabbittigertext: "토끼와 호랑이",
   ellipsistext: "···",
   datetext: "작성일 2023.10.06",
-  koreantext: <>가나다라마바사아자차카 &gt;</>,
+  textcontent: <>가나다라마바사아자차카 &gt;</>,
   twentythreetext: "23",
-  onetext: "1",
-  fivetext: "5",
-  descriptiontext:
+  onetwotext: "1",
+  fivetwotext: "5",
+  bookdescriptiontext:
     "책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명",
 };
 
