@@ -24,7 +24,7 @@ const Pagebuttons = (props) => {
             className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px]"
             size="txtInterBold22"
           >
-            {props?.pagenumbertext}
+            {props?.pagenumber}
           </Text>
         </div>
         <div className="flex flex-col items-center justify-center w-auto">
@@ -47,7 +47,7 @@ const Pagebuttons = (props) => {
 
 Pagebuttons.defaultProps = {
   previoustext: "이전",
-  pagenumbertext: "25 / 30",
+  pagenumber: "25 / 30",
   nexttext: "다음",
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Img, Text } from "components";
-import Header from "components/Header";
 import MyReplyListMyreplyrow from "components/MyReplyListMyreplyrow";
 import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
 
@@ -10,7 +9,34 @@ const MyReplyListPage = () => {
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-start justify-start mx-auto pb-[166px] w-full">
         <div className="flex flex-col items-center w-full">
-          <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+          <div className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full">
+            <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between max-w-[1180px] mx-auto md:px-5 w-full">
+              <div className="flex flex-col items-center justify-center w-auto">
+                <Img
+                  className="h-[51px] md:h-auto object-cover w-[170px]"
+                  src="images/img__51x170.png"
+                  alt="twohundredforty"
+                />
+              </div>
+              <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
+                <Img
+                  className="h-12 md:h-auto object-cover w-12"
+                  src="images/img_bell111.png"
+                  alt="bell111"
+                />
+                <Img
+                  className="h-12 md:h-auto object-cover w-12"
+                  src="images/img_search111.png"
+                  alt="search111"
+                />
+                <Img
+                  className="h-12 md:h-auto object-cover w-12"
+                  src="images/img_menu11.png"
+                  alt="menueleven"
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <TaleDetailColumnlanguage className="flex flex-col items-center justify-start md:px-5 w-[62%] md:w-full" />
         <div className="flex flex-col items-center mt-1.5 md:px-10 sm:px-5 px-[370px] w-full">
@@ -26,13 +52,13 @@ const MyReplyListPage = () => {
             <div className="bg-orange-50 flex flex-col gap-2.5 h-[100px] md:h-auto items-center justify-center px-10 sm:px-5 py-[15px] rounded-[10px] w-[200px]">
               <Text
                 className="text-[22px] text-black-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                size="txtInterMedium22Black900"
+                size="txtInterMedium22Black900_1"
               >
                 총 댓글 수
               </Text>
               <Text
                 className="text-[22px] text-black-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                size="txtInterMedium22Black900"
+                size="txtInterMedium22Black900_1"
               >
                 5
               </Text>

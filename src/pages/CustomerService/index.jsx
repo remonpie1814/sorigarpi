@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button, Img, List, Text } from "components";
-import ColumnOne from "components/ColumnOne";
+import CustomerServiceColumnone from "components/CustomerServiceColumnone";
 import CustomerServiceFaqrow from "components/CustomerServiceFaqrow";
 import Header from "components/Header";
 import Navbar from "components/Navbar";
@@ -19,32 +19,32 @@ const CustomerServicePage = () => {
           >
             FAQ
           </Text>
-          <ColumnOne
-            className="flex flex-col gap-8 items-start justify-center max-w-[1180px] w-full"
-            searchtext="무엇을 도와드릴까요?"
-          />
-          <div className="flex flex-row md:gap-10 gap-[60px] items-center justify-center max-w-[1155px] w-full">
+          <CustomerServiceColumnone className="flex flex-col gap-8 items-start justify-center max-w-[1180px] w-full" />
+          <div className="flex flex-row gap-10 items-center justify-center max-w-[1155px] w-full">
             <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-[29px]"
-              size="txtInterBold16Black900"
+              className="text-base text-black-900 text-center tracking-[-0.30px] w-7"
+              size="txtInterMedium16Black900"
             >
               전체
             </Text>
-            <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-[58px]"
-              size="txtInterBold16Black900"
+            <Button
+              className="cursor-pointer font-bold min-w-[100px] text-base text-center tracking-[-0.30px]"
+              shape="square"
+              color="blue_gray_100_01"
+              size="xs"
+              variant="outline"
             >
               회원정보
-            </Text>
+            </Button>
             <Text
               className="text-base text-black-900 text-center tracking-[-0.30px] w-[62px]"
-              size="txtInterBold16Black900"
+              size="txtInterMedium16Black900"
             >
               동화 제작
             </Text>
             <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-[57px]"
-              size="txtInterBold16Black900"
+              className="text-base text-black-900 text-center tracking-[-0.30px] w-14"
+              size="txtInterMedium16Black900"
             >
               기타문의
             </Text>

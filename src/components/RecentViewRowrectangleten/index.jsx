@@ -10,7 +10,7 @@ const RecentViewRowrectangleten = (props) => {
           <Img
             className="absolute h-[180px] inset-[0] justify-center m-auto object-cover rounded-[30px] w-full"
             src="images/img_rectangle10.png"
-            alt="rectangleTen"
+            alt="rectangleten"
           />
           <Img
             className="absolute h-[26px] object-cover right-[8%] top-[6%] w-[26px]"
@@ -50,7 +50,7 @@ const RecentViewRowrectangleten = (props) => {
               className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
               size="txtInterMedium14Gray900_1"
             >
-              {props?.five}
+              {props?.points1}
             </Text>
             <Img
               className="h-6 md:h-auto object-cover w-6"
@@ -61,7 +61,7 @@ const RecentViewRowrectangleten = (props) => {
               className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
               size="txtInterMedium14Gray900_1"
             >
-              {props?.fiveone}
+              {props?.points2}
             </Text>
           </div>
           <div className="flex flex-row items-start justify-between pl-0.5 w-full">
@@ -70,7 +70,7 @@ const RecentViewRowrectangleten = (props) => {
                 className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
                 size="txtInterMedium14Gray900_1"
               >
-                {props?.usermom}
+                {props?.username1}
               </Text>
               <Text
                 className="text-gray-900 text-xs tracking-[-0.13px] w-auto"
@@ -103,9 +103,9 @@ RecentViewRowrectangleten.defaultProps = {
     </>
   ),
   points: "10p",
-  five: "5",
-  fiveone: "5",
-  usermom: "유미엄마",
+  points1: "5",
+  points2: "5",
+  username1: "유미엄마",
   date: "2023. 10. 08",
   deletebutton: "삭제",
 };

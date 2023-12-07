@@ -9,9 +9,9 @@ const Modal1 = (props) => {
         <div className="flex flex-col items-center justify-end p-[105px] md:px-10 sm:px-5 w-full">
           <Text
             className="mt-0.5 text-[22px] text-black-900 text-center sm:text-lg md:text-xl"
-            size="txtInterMedium22Black900"
+            size="txtInterMedium22Black900_1"
           >
-            {props?.fourhundredfiftyeight}
+            {props?.usertext}
           </Text>
         </div>
         <div className="flex flex-col h-[59px] md:h-auto items-start justify-between w-full">
@@ -22,7 +22,7 @@ const Modal1 = (props) => {
             size="lg"
             variant="fill"
           >
-            {props?.closebuttontext}
+            {props?.closebutton}
           </Button>
         </div>
       </div>
@@ -30,9 +30,6 @@ const Modal1 = (props) => {
   );
 };
 
-Modal1.defaultProps = {
-  fourhundredfiftyeight: "삭제되었습니다",
-  closebuttontext: "닫기",
-};
+Modal1.defaultProps = { usertext: "삭제되었습니다", closebutton: "닫기" };
 
 export default Modal1;

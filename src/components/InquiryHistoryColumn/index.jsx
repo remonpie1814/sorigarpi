@@ -12,19 +12,19 @@ const InquiryHistoryColumn = (props) => {
               className="text-base text-black-900 text-center tracking-[-0.30px] w-[57px]"
               size="txtInterRegular16Black900"
             >
-              {props?.onehundredseventy}
+              {props?.username}
             </Text>
             <Line className="bg-black-900 h-[31px] w-0.5" />
             <Text
               className="text-base text-black-900 text-center tracking-[-0.30px] w-[57px]"
               size="txtInterRegular16Black900"
             >
-              {props?.onehundredseventyone}
+              {props?.onehundredfortyFour}
             </Text>
             <Img
               className="h-8 md:h-auto object-cover w-8"
               src="images/img_down11_32x32.png"
-              alt="downEleven"
+              alt="downeleven"
             />
           </div>
           <Line className="bg-black-900 h-px w-full" />
@@ -35,8 +35,8 @@ const InquiryHistoryColumn = (props) => {
 };
 
 InquiryHistoryColumn.defaultProps = {
-  onehundredseventy: "전체보기",
-  onehundredseventyone: "전체시기",
+  username: "전체보기",
+  onehundredfortyFour: "전체시기",
 };
 
 export default InquiryHistoryColumn;

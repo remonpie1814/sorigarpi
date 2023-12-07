@@ -3,7 +3,7 @@ import React from "react";
 import { Sidebar } from "react-pro-sidebar";
 
 import { Button, Img, Text } from "components";
-import CanvasColumnfourhundredfortyfive from "components/CanvasColumnfourhundredfortyfive";
+import CanvasColumnfourhundredseve from "components/CanvasColumnfourhundredseve";
 import CanvasRowthumbsup from "components/CanvasRowthumbsup";
 
 const CanvasPage = () => {
@@ -15,7 +15,7 @@ const CanvasPage = () => {
             <Img
               className="h-[30px] w-[260px]"
               src="images/img__black_900_30x260.svg"
-              alt="FourHundredFortyFour"
+              alt="fourhundredsixt"
             />
             <div className="flex sm:flex-1 sm:flex-col flex-row gap-5 items-start justify-start w-auto sm:w-full">
               <Img
@@ -51,7 +51,7 @@ const CanvasPage = () => {
         </div>
         <div className="bg-blue_gray-100 flex md:flex-col flex-row md:gap-5 items-start justify-start w-full">
           <Sidebar className="!sticky !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
-            <CanvasColumnfourhundredfortyfive className="flex flex-col gap-2.5 items-center justify-start mb-[940px] mt-2.5 mx-auto w-[380px] sm:w-full" />
+            <CanvasColumnfourhundredseve className="flex flex-col gap-2.5 items-center justify-start mb-[940px] mt-2.5 mx-auto w-[380px] sm:w-full" />
             <div className="flex flex-col h-full items-start justify-center mb-2.5 mt-[99px] mx-auto px-5 py-2.5 w-full">
               <div className="flex flex-col gap-5 items-center justify-start w-[92%]">
                 <div className="flex flex-row items-center justify-between w-full">
@@ -59,7 +59,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyNine"
+                      alt="fourhundredtwen_One"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[50px]"
@@ -72,7 +72,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFifty"
+                      alt="fourhundredtwen_Two"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
@@ -87,7 +87,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFiftyOne"
+                      alt="fourhundredtwen_Three"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
@@ -100,7 +100,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFiftyTwo"
+                      alt="fourhundredtwen_Four"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[53px]"
@@ -115,7 +115,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFiftyThree"
+                      alt="fourhundredtwen_Five"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
@@ -128,7 +128,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFiftyFour"
+                      alt="fourhundredtwen_Six"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
@@ -143,7 +143,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFiftyFive"
+                      alt="fourhundredtwen_Seven"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
@@ -156,7 +156,7 @@ const CanvasPage = () => {
                     <Img
                       className="h-[175px] w-[130px]"
                       src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFiftySix"
+                      alt="fourhundredtwen_Eight"
                     />
                     <Text
                       className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
@@ -172,7 +172,7 @@ const CanvasPage = () => {
           <Img
             className="h-[846px] max-h-[846px] md:ml-[0] ml-[299px] sm:w-[] md:w-[]"
             src="images/img_1_white_a700.svg"
-            alt="One_Nine"
+            alt="onenine"
           />
           <CanvasRowthumbsup className="flex flex-1 sm:flex-col flex-row sm:gap-10 items-start justify-between ml-3.5 md:ml-[0] md:px-5 py-[50px] w-full" />
         </div>

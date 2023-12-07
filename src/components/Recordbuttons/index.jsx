@@ -33,7 +33,7 @@ const Recordbuttons = (props) => {
           <div className="flex flex-col items-center justify-start w-[90px]">
             <Img
               className="h-[90px] md:h-auto object-cover w-[90px]"
-              src="images/img_image589_90x90.png"
+              src="defaultNoData.png"
               alt="image589"
             />
           </div>

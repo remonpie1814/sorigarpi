@@ -14,37 +14,37 @@ const Paging = (props) => {
             size="sm"
             variant="fill"
           >
-            {props?.onclick}
+            {props?.eightbutton}
           </Button>
           <Text
             className="text-[22px] text-gray-600 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
             size="txtInterMedium22Gray600"
           >
-            {props?.numberone}
+            {props?.twotext}
           </Text>
           <Text
             className="text-[22px] text-gray-600 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
             size="txtInterMedium22Gray600"
           >
-            {props?.numbertwo}
+            {props?.threetext}
           </Text>
           <Text
             className="text-[22px] sm:text-lg text-orange-400 md:text-xl tracking-[-0.42px] w-auto"
             size="txtInterMedium22Orange400"
           >
-            {props?.numberthree}
+            {props?.fourtext}
           </Text>
           <Text
             className="text-[22px] text-gray-600 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
             size="txtInterMedium22Gray600"
           >
-            {props?.numberfour}
+            {props?.fivetext}
           </Text>
           <Text
             className="text-[22px] text-gray-600 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
             size="txtInterMedium22Gray600"
           >
-            {props?.numberfive}
+            {props?.sixtext}
           </Text>
           <Button
             className="!text-black-900 cursor-pointer font-inter font-medium h-[49px] text-[22px] text-center sm:text-lg md:text-xl tracking-[-0.42px] w-[49px]"
@@ -53,7 +53,7 @@ const Paging = (props) => {
             size="sm"
             variant="fill"
           >
-            {props?.onclicktwo}
+            {props?.ninebutton}
           </Button>
         </div>
       </div>
@@ -62,13 +62,13 @@ const Paging = (props) => {
 };
 
 Paging.defaultProps = {
-  onclick: <>&lt;</>,
-  numberone: "2",
-  numbertwo: "3",
-  numberthree: "4",
-  numberfour: "5",
-  numberfive: "6",
-  onclicktwo: <>&gt;</>,
+  eightbutton: <>&lt;</>,
+  twotext: "2",
+  threetext: "3",
+  fourtext: "4",
+  fivetext: "5",
+  sixtext: "6",
+  ninebutton: <>&gt;</>,
 };
 
 export default Paging;

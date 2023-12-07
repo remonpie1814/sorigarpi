@@ -9,7 +9,7 @@ const Modal = (props) => {
         <div className="flex flex-col items-center justify-end p-[105px] md:px-10 sm:px-5 w-full">
           <Text
             className="mt-0.5 text-[22px] text-black-900 text-center sm:text-lg md:text-xl"
-            size="txtInterMedium22Black900"
+            size="txtInterMedium22Black900_1"
           >
             {props?.confirmationtext}
           </Text>

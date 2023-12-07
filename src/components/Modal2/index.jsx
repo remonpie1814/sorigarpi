@@ -10,11 +10,11 @@ const Modal2 = (props) => {
           <Img
             className="h-[87px] md:h-auto object-cover w-[165px] sm:w-full"
             alt="image936"
-            src={props?.image936}
+            src={props?.userimage}
           />
           <Text
             className="text-[22px] text-black-900 text-center sm:text-lg md:text-xl w-auto"
-            size="txtInterMedium22Black900"
+            size="txtInterMedium22Black900_1"
           >
             {props?.confirmationtext}
           </Text>
@@ -45,7 +45,7 @@ const Modal2 = (props) => {
 };
 
 Modal2.defaultProps = {
-  image936: "images/img_image936.png",
+  userimage: "images/img_image936.png",
   confirmationtext: "효과음을 삭제하시겠습니까?",
   cancelbuttontext: "취소",
   confirmbuttontext: "확인",

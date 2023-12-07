@@ -24,7 +24,7 @@ const CustomerServiceFaqrow = (props) => {
           <Img
             className="h-8 md:h-auto object-cover w-8"
             src="images/img_down11_32x32.png"
-            alt="downEleven"
+            alt="downeleven"
           />
         </div>
       </div>

@@ -3,7 +3,7 @@ import React from "react";
 import { Img, Text } from "components";
 import Header from "components/Header";
 import Navbar from "components/Navbar";
-import NoticeListRowonehundredtwentythree from "components/NoticeListRowonehundredtwentythree";
+import NoticeListRowonehundredtwent from "components/NoticeListRowonehundredtwent";
 
 const NoticeListPage = () => {
   return (
@@ -44,28 +44,28 @@ const NoticeListPage = () => {
           </div>
         </div>
         <div className="flex flex-col gap-[29px] items-center justify-center md:px-5 py-[37px] w-auto md:w-full">
-          <NoticeListRowonehundredtwentythree className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full" />
-          <NoticeListRowonehundredtwentythree
+          <NoticeListRowonehundredtwent className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full" />
+          <NoticeListRowonehundredtwent
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
             userdate="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwentythree
+          <NoticeListRowonehundredtwent
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
             userdate="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwentythree
+          <NoticeListRowonehundredtwent
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
             userdate="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwentythree
+          <NoticeListRowonehundredtwent
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
             userdate="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwentythree
+          <NoticeListRowonehundredtwent
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
             userdate="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwentythree
+          <NoticeListRowonehundredtwent
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
             userdate="2023. 08. 11"
           />

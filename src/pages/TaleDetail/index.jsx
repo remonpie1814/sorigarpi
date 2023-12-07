@@ -8,8 +8,8 @@ import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 const TaleDetailPage = () => {
   const taleDetailReplyerowPropList = [
     {},
-    { language: "댓글댓글" },
-    { language: "댓글댓글" },
+    { languagetext: "댓글댓글" },
+    { languagetext: "댓글댓글" },
   ];
 
   return (
@@ -21,7 +21,7 @@ const TaleDetailPage = () => {
               <Img
                 className="h-[51px] md:h-auto object-cover w-[170px]"
                 src="images/img__51x170.png"
-                alt="One"
+                alt="one"
               />
             </div>
             <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
@@ -38,7 +38,7 @@ const TaleDetailPage = () => {
               <Img
                 className="h-12 md:h-auto object-cover w-12"
                 src="images/img_menu11.png"
-                alt="menuEleven"
+                alt="menueleven"
               />
             </div>
           </div>
@@ -52,7 +52,7 @@ const TaleDetailPage = () => {
                 <Img
                   className="h-8 md:h-auto object-cover w-8"
                   src="images/img_videoplay31.png"
-                  alt="videoplayThirtyOne"
+                  alt="videoplaythirty"
                 />
                 <Text
                   className="text-base text-center text-gray-900_01 tracking-[-0.18px] w-auto"
@@ -137,7 +137,7 @@ const TaleDetailPage = () => {
                     <Img
                       className="h-[114px] m-auto object-cover w-[113px]"
                       src="images/img_6.png"
-                      alt="Six_Two"
+                      alt="sixtwo"
                     />
                     <div className="absolute h-[113px] inset-[0] justify-center m-auto w-28">
                       <div className="h-[113px] m-auto rounded-md w-28"></div>
@@ -230,7 +230,7 @@ const TaleDetailPage = () => {
                     <Img
                       className="h-[49px] md:h-auto object-cover w-10 sm:w-full"
                       src="images/img__49x40.png"
-                      alt="Nineteen"
+                      alt="nineteen"
                     />
                     <Text
                       className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
@@ -252,7 +252,7 @@ const TaleDetailPage = () => {
                   <Img
                     className="h-[49px] md:h-auto object-cover w-10 sm:w-full"
                     src="images/img__1.png"
-                    alt="Twenty"
+                    alt="twenty"
                   />
                   <Text
                     className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
@@ -277,7 +277,7 @@ const TaleDetailPage = () => {
                     <Img
                       className="h-[49px] md:h-auto object-cover w-10 sm:w-full"
                       src="images/img__2.png"
-                      alt="TwentyOne"
+                      alt="twentyone"
                     />
                     <Text
                       className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
@@ -298,7 +298,7 @@ const TaleDetailPage = () => {
                     <Img
                       className="h-[49px] md:h-auto object-cover w-10 sm:w-full"
                       src="images/img__3.png"
-                      alt="TwentyTwo"
+                      alt="twentytwo"
                     />
                     <Text
                       className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
@@ -362,7 +362,7 @@ const TaleDetailPage = () => {
                 <Img
                   className="h-6 md:h-auto object-cover w-6"
                   src="images/img_arrow1.png"
-                  alt="arrowOne"
+                  alt="arrowone"
                 />
                 <Text
                   className="text-base text-black-900 text-center tracking-[-0.18px] w-auto"
