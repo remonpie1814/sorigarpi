@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Button, Img, Input, Text } from "components";
+import EditorConvertToHTML from "./EditorConvertToHTML";
 
 const FrameOnePage = () => {
   const [data, setData] = useState(null);
@@ -87,8 +88,8 @@ const FrameOnePage = () => {
     const AWS = require("aws-sdk");
     AWS.config.update({ region: "us-east-1" });
     AWS.config.update({
-      accessKeyId: "AKIAWVWUYMYLFHPLRJLV",
-      secretAccessKey: "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",
+      accessKeyId: "key",
+      secretAccessKey: "accesskey",
       region: "us-east-1",
     });
 
@@ -113,6 +114,7 @@ const FrameOnePage = () => {
   };
   return (
     <>
+      <EditorConvertToHTML />
       <div className="bg-white-A700 flex flex-col font-inter items-start justify-start mx-auto w-auto sm:w-full md:w-full">
         <div className="bg-amber-A100 flex flex-row md:gap-10 items-center justify-between px-3 w-full">
           <div className="flex flex-col items-center justify-start ml-[7px] md:px-5">
