@@ -4,7 +4,7 @@ import { Button, Img, Text } from "components";
 import Header from "components/Header";
 import Navbar from "components/Navbar";
 
-const Page10 = () => {
+const Page10 = () => {   
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto pb-[163px] w-full">
