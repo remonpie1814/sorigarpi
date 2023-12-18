@@ -5,8 +5,8 @@ import { Sidebar } from "react-pro-sidebar";
 import { Button, Img, Text } from "components";
 import CanvasColumnfourhundredseve from "components/CanvasColumnfourhundredseve";
 import CanvasRowthumbsup from "components/CanvasRowthumbsup";
-
-const CanvasPage = () => {
+ 
+const CanvasPage = () => {   
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
