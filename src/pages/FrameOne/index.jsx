@@ -56,6 +56,7 @@ const FrameOnePage = () => {
       alert("Failed to delete user");
     }
   };
+
   const postData = async () => {
     const response = await fetch(
       "https://rwzhy0bna5.execute-api.us-east-1.amazonaws.com/test/users",
@@ -75,10 +76,9 @@ const FrameOnePage = () => {
       alert("Failed to post data");
     }
   };
+
   const fetchData = async () => {
-    const response = await fetch(
-      "https://rwzhy0bna5.execute-api.us-east-1.amazonaws.com/test/users"
-    );
+    const response = await fetch("/users");
     console.log(response);
     const data = await response.json();
     setData(data);
