@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Button, CheckBox, Img, Input, Text } from "components";
-import Navbar from "components/Navbar";
+import FollowListNavbar from "components/FollowListNavbar";
+import Footer from "components/Footer";
 
 const RegisterFormPage = () => {
   return (
@@ -13,7 +14,7 @@ const RegisterFormPage = () => {
               <Img
                 className="h-[51px] md:h-auto object-cover w-[170px]"
                 src="images/img__51x170.png"
-                alt="threehundredsix"
+                alt="ThreeHundredEighty"
               />
             </div>
             <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
@@ -30,12 +31,12 @@ const RegisterFormPage = () => {
               <Img
                 className="h-12 md:h-auto object-cover w-12"
                 src="images/img_menu11.png"
-                alt="menueleven"
+                alt="menuEleven"
               />
             </div>
           </div>
         </div>
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-[50px] h-[899px] md:h-auto items-center justify-between max-w-[1180px] mx-auto md:px-5 py-[120px] w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-center text-gray-900 tracking-[-0.53px] w-auto"
@@ -59,7 +60,7 @@ const RegisterFormPage = () => {
               </Text>
             </div>
             <Input
-              name="inputone"
+              name="input_One"
               placeholder="비밀번호"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
@@ -73,7 +74,7 @@ const RegisterFormPage = () => {
               </Text>
             </div>
             <Input
-              name="inputtwo"
+              name="input_Two"
               placeholder="비밀번호 확인"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
@@ -87,7 +88,7 @@ const RegisterFormPage = () => {
               </Text>
             </div>
             <Input
-              name="inputthree"
+              name="input_Three"
               placeholder="닉네임(12자)"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
@@ -106,8 +107,8 @@ const RegisterFormPage = () => {
               <CheckBox
                 className="font-medium text-base text-left tracking-[-0.30px]"
                 inputClassName="h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5"
-                name="threehundredsix_Nine"
-                id="threehundredsix_Nine"
+                name="ThreeHundredEightyNine"
+                id="ThreeHundredEightyNine"
                 label="개인정보 이용동의"
                 color="white_A700"
                 size="sm"
@@ -118,63 +119,13 @@ const RegisterFormPage = () => {
           <Button
             className="cursor-pointer font-medium min-w-[400px] sm:min-w-full rounded-[10px] text-[22px] text-center sm:text-lg md:text-xl tracking-[-0.42px]"
             color="amber_A100"
-            size="lg"
+            size="xl"
             variant="fill"
           >
             회원가입
           </Button>
         </div>
-        <footer className="bg-blue_gray-50_02 flex items-center justify-center md:px-5 w-full">
-          <div className="bg-gray-100_01 flex flex-col items-center justify-center pb-[30px] sm:px-5 px-[30px] w-full">
-            <div className="flex flex-col gap-[25px] items-center justify-start max-w-[1180px] w-full">
-              <div className="flex md:flex-col flex-row md:gap-10 gap-[60px] items-start justify-center max-w-[1180px] md:px-10 sm:px-5 px-[60px] py-[25px] w-full">
-                <div className="flex flex-col items-start justify-start pr-1.5 py-1.5">
-                  <Text
-                    className="text-base text-black-900 tracking-[-0.30px]"
-                    size="txtInterMedium16Black900_1"
-                  >
-                    고객센터
-                  </Text>
-                </div>
-                <div className="flex flex-col items-start justify-start p-[5px]">
-                  <Text
-                    className="md:ml-[0] ml-[5px] text-base text-black-900 text-center tracking-[-0.30px]"
-                    size="txtInterMedium16Black900_1"
-                  >
-                    공지사항
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2.5 items-start justify-center md:px-10 sm:px-5 px-[60px] py-2.5 w-full">
-                <Text
-                  className="text-base text-blue_gray-900 tracking-[-0.30px] w-auto"
-                  size="txtInterMedium16Bluegray900"
-                >
-                  사업자 정보
-                </Text>
-                <div className="flex flex-row gap-2.5 items-center justify-start w-auto">
-                  <Text
-                    className="text-base text-blue_gray-900 tracking-[-0.30px] w-auto"
-                    size="txtInterMedium16Bluegray900"
-                  >
-                    이용약관
-                  </Text>
-                  <Text
-                    className="text-base text-blue_gray-400_01 tracking-[-0.30px] w-auto"
-                    size="txtInterMedium16Bluegray40001"
-                  >
-                    개인정보 처리방침
-                  </Text>
-                </div>
-              </div>
-              <Img
-                className="h-[92px] w-full"
-                src="images/img__blue_gray_100.svg"
-                alt="threehundredsev_Five"
-              />
-            </div>
-          </div>
-        </footer>
+        <Footer className="bg-blue_gray-50_02 flex gap-2.5 items-center justify-center md:px-5 w-full" />
       </div>
     </>
   );

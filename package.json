@@ -1,27 +1,23 @@
 {
-  "name": "yejihans-application-6",
+  "name": "yejihans-application-9",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@tailwindcss/forms": "0.4.0",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "aws-sdk": "^2.1512.0",
-    "draftjs-to-html": "^0.9.1",
-    "prop-types": "^15.8.1",
-    "rc-drawer": "^5.1.0",
     "react": "17.0.2",
     "react-datepicker": "^4.5.0",
     "react-dom": "17.0.2",
-    "react-draft-wysiwyg": "^1.15.0",
-    "react-froala-wysiwyg": "^4.1.4",
-    "react-modal": "^3.14.4",
-    "react-pro-sidebar": "^1.0.0",
     "react-router-dom": "6.0.2",
     "react-router-hash-link": "^2.4.3",
+    "prop-types": "^15.8.1",
+    "react-pro-sidebar": "^1.0.0",
+    "rc-drawer": "^5.1.0",
+    "react-modal": "^3.14.4",
     "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "@tailwindcss/forms": "0.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -51,6 +47,5 @@
     "autoprefixer": "10.4.2",
     "postcss": "8.4.8",
     "tailwindcss": "3.0.18"
-  },
-  "proxy":"http://localhost:9000"
+  }
 }

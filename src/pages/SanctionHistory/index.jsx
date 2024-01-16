@@ -1,16 +1,16 @@
 import React from "react";
 
 import { Button, Img, List, Text } from "components";
-import Header from "components/Header";
-import Navbar from "components/Navbar";
+import FollowListNavbar from "components/FollowListNavbar";
 import SanctionHistoryColumn from "components/SanctionHistoryColumn";
+import SearchResultHeader from "components/SearchResultHeader";
 
 const SanctionHistoryPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-[27px] items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full">
           <div className="flex flex-col items-center justify-center max-w-[1180px] pb-2.5 pt-[30px] px-2.5 w-full">
             <div className="flex flex-col gap-[19px] items-center justify-start max-w-[1180px] w-full">
@@ -39,7 +39,7 @@ const SanctionHistoryPage = () => {
             className="cursor-pointer font-medium h-[74px] text-[22px] text-center sm:text-lg md:text-xl tracking-[-0.24px] w-[308px]"
             shape="round"
             color="blue_gray_100_01"
-            size="2xl"
+            size="3xl"
             variant="fill"
           >
             이메일 문의하기

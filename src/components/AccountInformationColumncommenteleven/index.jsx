@@ -10,13 +10,13 @@ const AccountInformationColumncommenteleven = (props) => {
           <Img
             className="h-[35px] md:h-auto object-cover w-[35px]"
             src="images/img_comment11.png"
-            alt="commenteleven"
+            alt="commentEleven"
           />
           <Text
             className="text-base text-black-900 tracking-[-0.30px] w-20"
             size="txtInterMedium16Black900_1"
           >
-            {props?.type}
+            {props?.commenttext}
           </Text>
         </div>
       </div>
@@ -24,6 +24,8 @@ const AccountInformationColumncommenteleven = (props) => {
   );
 };
 
-AccountInformationColumncommenteleven.defaultProps = { type: "내가 쓴 댓글" };
+AccountInformationColumncommenteleven.defaultProps = {
+  commenttext: "내가 쓴 댓글",
+};
 
 export default AccountInformationColumncommenteleven;

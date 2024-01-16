@@ -2,7 +2,7 @@ import React from "react";
 
 import { Img, Text } from "components";
 
-const CustomerServiceColumnone = (props) => {
+const CustomerServiceColumnOne = (props) => {
   return (
     <>
       <div className={props.className}>
@@ -13,7 +13,7 @@ const CustomerServiceColumnone = (props) => {
                 className="text-base text-gray-400_01 tracking-[-0.30px]"
                 size="txtInterMedium16Gray40001"
               >
-                {props?.userinputtext}
+                {props?.dynamictext}
               </Text>
             </div>
             <div className="bg-amber-A100 flex flex-col h-[46px] items-center justify-start p-1 w-[46px]">
@@ -30,8 +30,6 @@ const CustomerServiceColumnone = (props) => {
   );
 };
 
-CustomerServiceColumnone.defaultProps = {
-  userinputtext: "무엇을 도와드릴까요?",
-};
+CustomerServiceColumnOne.defaultProps = { dynamictext: "무엇을 도와드릴까요?" };
 
-export default CustomerServiceColumnone;
+export default CustomerServiceColumnOne;

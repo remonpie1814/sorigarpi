@@ -10,13 +10,13 @@ const AccountInformationColumnconfusedone = (props) => {
           <Img
             className="h-[35px] md:h-auto object-cover w-[35px]"
             src="images/img_confused1.png"
-            alt="confusedone"
+            alt="confusedOne"
           />
           <Text
             className="text-base text-black-900 tracking-[-0.30px] w-[93px]"
             size="txtInterMedium16Black900_1"
           >
-            {props?.onehundredthirt}
+            {props?.onehundredfiftyfivetext}
           </Text>
         </div>
       </div>
@@ -25,7 +25,7 @@ const AccountInformationColumnconfusedone = (props) => {
 };
 
 AccountInformationColumnconfusedone.defaultProps = {
-  onehundredthirt: "제재 내역 보기",
+  onehundredfiftyfivetext: "제재 내역 보기",
 };
 
 export default AccountInformationColumnconfusedone;

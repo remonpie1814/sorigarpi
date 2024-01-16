@@ -10,13 +10,13 @@ const AccountInformationColumnreloadone = (props) => {
           <Img
             className="h-[35px] md:h-auto object-cover w-[35px]"
             src="images/img_reload1.png"
-            alt="reloadone"
+            alt="reloadOne"
           />
           <Text
             className="text-base text-black-900 tracking-[-0.30px] w-[118px]"
             size="txtInterMedium16Black900_1"
           >
-            {props?.onehundredthirt}
+            {props?.changepasswordtext}
           </Text>
         </div>
       </div>
@@ -25,7 +25,7 @@ const AccountInformationColumnreloadone = (props) => {
 };
 
 AccountInformationColumnreloadone.defaultProps = {
-  onehundredthirt: "비밀번호 변경하기",
+  changepasswordtext: "비밀번호 변경하기",
 };
 
 export default AccountInformationColumnreloadone;

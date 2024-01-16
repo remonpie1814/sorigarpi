@@ -51,7 +51,7 @@ const Footer = (props) => {
             <Img
               className="h-[92px] w-full"
               src="images/img__blue_gray_100.svg"
-              alt="TwoHundredSeventyThree"
+              alt="TwoHundredSixtySix"
             />
           </div>
         </div>

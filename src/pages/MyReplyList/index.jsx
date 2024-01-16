@@ -2,6 +2,7 @@ import React from "react";
 
 import { Img, Text } from "components";
 import MyReplyListMyreplyrow from "components/MyReplyListMyreplyrow";
+import SearchResultHeader from "components/SearchResultHeader";
 import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
 
 const MyReplyListPage = () => {
@@ -9,34 +10,7 @@ const MyReplyListPage = () => {
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-start justify-start mx-auto pb-[166px] w-full">
         <div className="flex flex-col items-center w-full">
-          <div className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full">
-            <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between max-w-[1180px] mx-auto md:px-5 w-full">
-              <div className="flex flex-col items-center justify-center w-auto">
-                <Img
-                  className="h-[51px] md:h-auto object-cover w-[170px]"
-                  src="images/img__51x170.png"
-                  alt="twohundredforty"
-                />
-              </div>
-              <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
-                <Img
-                  className="h-12 md:h-auto object-cover w-12"
-                  src="images/img_bell111.png"
-                  alt="bell111"
-                />
-                <Img
-                  className="h-12 md:h-auto object-cover w-12"
-                  src="images/img_search111.png"
-                  alt="search111"
-                />
-                <Img
-                  className="h-12 md:h-auto object-cover w-12"
-                  src="images/img_menu11.png"
-                  alt="menueleven"
-                />
-              </div>
-            </div>
-          </div>
+          <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         </div>
         <TaleDetailColumnlanguage className="flex flex-col items-center justify-start md:px-5 w-[62%] md:w-full" />
         <div className="flex flex-col items-center mt-1.5 md:px-10 sm:px-5 px-[370px] w-full">
@@ -67,21 +41,21 @@ const MyReplyListPage = () => {
               <MyReplyListMyreplyrow className="flex flex-col gap-[3px] items-start justify-start outline outline-gray-400 w-full" />
               <MyReplyListMyreplyrow
                 className="flex flex-col gap-[3px] items-start justify-start outline outline-gray-400 w-full"
-                textone="작가 초심 잃었네ㅡㅡ"
-                texttwo="2023.11.02 11:03"
-                textthree="호랑이와 토끼"
+                commenttext="작가 초심 잃었네ㅡㅡ"
+                commenttimestamp="2023.11.02 11:03"
+                commenttitle="호랑이와 토끼"
               />
               <MyReplyListMyreplyrow
                 className="flex flex-col gap-[3px] items-start justify-start outline outline-gray-400 w-full"
-                textone="뇌절 ㄴ"
-                texttwo="2023.11.22 11:04"
-                textthree="토끼와 호랑이2"
+                commenttext="뇌절 ㄴ"
+                commenttimestamp="2023.11.22 11:04"
+                commenttitle="토끼와 호랑이2"
               />
               <MyReplyListMyreplyrow
                 className="flex flex-col gap-[3px] items-start justify-start outline outline-gray-400 w-full"
-                textone="이제 안 봄 ㅅㄱ"
-                texttwo="2023.12.02 13:22"
-                textthree="토끼와 호랑이 파이널"
+                commenttext="이제 안 봄 ㅅㄱ"
+                commenttimestamp="2023.12.02 13:22"
+                commenttitle="토끼와 호랑이 파이널"
               />
             </div>
           </div>

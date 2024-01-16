@@ -17,18 +17,18 @@ const variants = {
     gray_100: "bg-gray-100 text-black-900",
     gray_600: "bg-gray-600",
     amber_A100: "bg-amber-A100 text-black-900",
-    gray_300: "bg-gray-300",
     blue_gray_100: "bg-blue_gray-100 text-black-900",
+    gray_300: "bg-gray-300",
   },
 };
 const sizes = {
   xs: "p-1",
-  sm: "p-[9px]",
-  md: "p-3",
-  lg: "p-4",
-  xl: "p-5",
-  "2xl": "p-[23px] sm:px-5",
-  "3xl": "p-[26px] sm:px-5",
+  sm: "p-2",
+  md: "p-[11px]",
+  lg: "p-3.5",
+  xl: "p-[17px]",
+  "2xl": "p-5",
+  "3xl": "p-[23px] sm:px-5",
 };
 
 const Button = ({
@@ -44,9 +44,7 @@ const Button = ({
 }) => {
   return (
     <button
-      className={`${className} ${(shape && shapes[shape]) || ""} ${
-        (size && sizes[size]) || ""
-      } ${(variant && variants[variant]?.[color]) || ""}`}
+      className={`${className} ${(shape && shapes[shape]) || ""} ${(size && sizes[size]) || ""} ${(variant && variants[variant]?.[color]) || ""}`}
       {...restProps}
     >
       {!!leftIcon && leftIcon}
@@ -71,8 +69,8 @@ Button.propTypes = {
     "yellow_200",
     "gray_100",
     "gray_600",
-    "gray_300",
     "blue_gray_100",
+    "gray_300",
   ]),
 };
 

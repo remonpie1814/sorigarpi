@@ -1,18 +1,18 @@
 import React from "react";
 
 import { Img, List, Text } from "components";
-import AccountInformationColumn from "components/AccountInformationColumn";
 import AccountInformationColumncommenteleven from "components/AccountInformationColumncommenteleven";
 import AccountInformationColumnconfusedone from "components/AccountInformationColumnconfusedone";
+import AccountInformationColumnonehundredfiftysix from "components/AccountInformationColumnonehundredfiftysix";
 import AccountInformationColumnreloadone from "components/AccountInformationColumnreloadone";
-import Header from "components/Header";
+import SearchResultHeader from "components/SearchResultHeader";
 import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
 
 const AccountInformationPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
           <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col gap-10 items-center justify-start max-w-[1182px] pt-[30px] w-full">
@@ -104,7 +104,7 @@ const AccountInformationPage = () => {
               <Img
                 className="h-[50px] w-[49px]"
                 src="images/img_.svg"
-                alt="onehundredthirt_Two"
+                alt="OneHundredFiftyTwo"
               />
             </div>
             <List
@@ -114,7 +114,7 @@ const AccountInformationPage = () => {
               <AccountInformationColumncommenteleven className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
               <AccountInformationColumnreloadone className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
               <AccountInformationColumnconfusedone className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
-              <AccountInformationColumn className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
+              <AccountInformationColumnonehundredfiftysix className="border-2 border-blue_gray-900 border-solid flex flex-col items-center justify-start my-0 p-2 rounded-[16px] w-full" />
             </List>
           </div>
         </div>

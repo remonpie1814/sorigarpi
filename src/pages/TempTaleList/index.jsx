@@ -1,17 +1,17 @@
 import React from "react";
 
 import { Button, Img, Text } from "components";
-import Header from "components/Header";
-import Navbar from "components/Navbar";
-import Paging from "components/Paging";
+import FollowListNavbar from "components/FollowListNavbar";
+import MyLibraryPaging from "components/MyLibraryPaging";
+import SearchResultHeader from "components/SearchResultHeader";
 import TempTaleListTemptalerow from "components/TempTaleListTemptalerow";
 
 const TempTaleListPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-5 items-center justify-start max-w-[1180px] mx-auto pb-5 pt-[30px] md:px-5 w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 w-full"
@@ -41,7 +41,7 @@ const TempTaleListPage = () => {
                 className="cursor-pointer font-medium min-w-[100px] mr-[3px] text-base text-center tracking-[-0.18px]"
                 shape="square"
                 color="blue_gray_100"
-                size="xs"
+                size="sm"
                 variant="fill"
               >
                 삭제
@@ -62,7 +62,7 @@ const TempTaleListPage = () => {
               </div>
             </div>
           </div>
-          <Paging className="flex flex-col gap-8 items-center justify-center w-full" />
+          <MyLibraryPaging className="flex flex-col gap-8 items-center justify-center w-full" />
         </div>
       </div>
     </>

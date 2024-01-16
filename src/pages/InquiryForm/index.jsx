@@ -1,15 +1,15 @@
 import React from "react";
 
 import { Button, Img, Text } from "components";
-import Header from "components/Header";
-import Navbar from "components/Navbar";
+import FollowListNavbar from "components/FollowListNavbar";
+import SearchResultHeader from "components/SearchResultHeader";
 
 const InquiryFormPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto pb-[507px] w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-10 items-start justify-start max-w-[1180px] mx-auto md:px-5 py-[30px] w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-[139px]"
@@ -35,7 +35,7 @@ const InquiryFormPage = () => {
                 <Img
                   className="h-8 md:h-auto object-cover w-8"
                   src="images/img_down11_32x32.png"
-                  alt="downeleven"
+                  alt="downEleven"
                 />
               </div>
             </div>
@@ -62,7 +62,7 @@ const InquiryFormPage = () => {
             <Button
               className="cursor-pointer flex-1 rounded-[10px] text-base text-center w-full"
               color="blue_gray_100"
-              size="2xl"
+              size="3xl"
               variant="fill"
             >
               취소
@@ -70,7 +70,7 @@ const InquiryFormPage = () => {
             <Button
               className="cursor-pointer flex-1 rounded-[10px] text-base text-center w-full"
               color="amber_A100"
-              size="2xl"
+              size="3xl"
               variant="fill"
             >
               작성하기

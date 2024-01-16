@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button, CheckBox, Img, Text } from "components";
-import Navbar from "components/Navbar";
+import FollowListNavbar from "components/FollowListNavbar";
 import TaleSettingTemporarysave1 from "components/TaleSettingTemporarysave1";
 
 const TaleSettingPage = () => {
@@ -14,7 +14,7 @@ const TaleSettingPage = () => {
               <Img
                 className="h-[51px] md:h-auto object-cover w-[170px]"
                 src="images/img__51x170.png"
-                alt="threehundrednin"
+                alt="FourHundredNineteen"
               />
             </div>
             <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
@@ -31,12 +31,12 @@ const TaleSettingPage = () => {
               <Img
                 className="h-12 md:h-auto object-cover w-12"
                 src="images/img_menu11.png"
-                alt="menueleven"
+                alt="menuEleven"
               />
             </div>
           </div>
         </div>
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col md:gap-10 gap-[65px] h-[1214px] md:h-auto items-center justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
           <div className="border-b border-gray-600 border-solid flex flex-col gap-5 items-center justify-start px-5 w-full">
             <div className="flex flex-col items-center justify-start w-full">

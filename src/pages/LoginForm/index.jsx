@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Button, CheckBox, Img, Input, Text } from "components";
-import Header from "components/Header";
-import LoginFormFooter from "components/LoginFormFooter";
-import Navbar from "components/Navbar";
+import FollowListNavbar from "components/FollowListNavbar";
+import Footer from "components/Footer";
+import SearchResultHeader from "components/SearchResultHeader";
 
 const LoginFormPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-5 h-[720px] md:h-auto items-center justify-start md:px-5 py-[120px] w-[720px] md:w-full">
           <div className="flex flex-row gap-2.5 items-center justify-center w-auto">
             <Img
               className="h-[51px] md:h-auto object-cover w-[170px]"
               src="images/img__51x170.png"
-              alt="Eighteen"
+              alt="ThreeHundredSixtyFive"
             />
             <Img
               className="h-[60px] w-[58px]"
               src="images/img__black_900.svg"
-              alt="Nineteen"
+              alt="ThreeHundredSixtySix"
             />
           </div>
           <div className="flex flex-col gap-5 items-center justify-start w-[67%] md:w-full">
@@ -34,7 +34,7 @@ const LoginFormPage = () => {
               </Text>
               <div className="flex flex-col gap-5 items-center justify-start w-full">
                 <Input
-                  name="email"
+                  name="input"
                   placeholder="이메일"
                   className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
                   wrapClassName="border border-gray-300 border-solid w-full"
@@ -42,7 +42,7 @@ const LoginFormPage = () => {
                   variant="fill"
                 ></Input>
                 <Input
-                  name="pwd"
+                  name="input_One"
                   placeholder="비밀번호"
                   className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
                   wrapClassName="border border-gray-300 border-solid w-full"
@@ -54,8 +54,18 @@ const LoginFormPage = () => {
                     <CheckBox
                       className="font-medium my-auto text-[15px] text-left tracking-[-0.17px]"
                       inputClassName="absolute h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5"
-                      name="TwentyOne"
-                      id="TwentyOne"
+                      name="ThreeHundredSixtyEight"
+                      id="ThreeHundredSixtyEight"
+                      label="아이디 저장"
+                      color="white_A700"
+                      size="xs"
+                      variant="fill"
+                    ></CheckBox>
+                    <CheckBox
+                      className="font-medium my-auto text-[15px] text-left tracking-[-0.17px]"
+                      inputClassName="absolute h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5"
+                      name="ThreeHundredSixtyNine"
+                      id="ThreeHundredSixtyNine"
                       label="아이디 저장"
                       color="white_A700"
                       size="xs"
@@ -65,8 +75,8 @@ const LoginFormPage = () => {
                   <CheckBox
                     className="font-medium ml-[-20px] my-auto text-[15px] text-left tracking-[-0.17px] z-[1]"
                     inputClassName="h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5 z-[1]"
-                    name="TwentyThree"
-                    id="TwentyThree"
+                    name="ThreeHundredSeventy"
+                    id="ThreeHundredSeventy"
                     label="자동로그인"
                     color="white_A700"
                     size="xs"
@@ -79,7 +89,7 @@ const LoginFormPage = () => {
               className="cursor-pointer min-w-[480px] sm:min-w-full text-[15px] text-center tracking-[-0.17px]"
               shape="round"
               color="yellow_200"
-              size="lg"
+              size="xl"
               variant="fill"
             >
               로그인
@@ -108,7 +118,7 @@ const LoginFormPage = () => {
             </div>
           </div>
         </div>
-        <LoginFormFooter className="bg-blue_gray-50_02 flex flex-col gap-2.5 items-center justify-start w-full" />
+        <Footer className="bg-blue_gray-50_02 flex gap-2.5 items-center justify-center md:px-5 w-full" />
       </div>
     </>
   );

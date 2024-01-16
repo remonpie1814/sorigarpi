@@ -36,9 +36,7 @@ const CheckBox = React.forwardRef(
       <>
         <div className={className}>
           <input
-            className={`${inputClassName} ${(shape && shapes[shape]) || ""} ${
-              (size && sizes[size]) || ""
-            } ${(variant && variants[variant]?.[color]) || ""}`}
+            className={`${inputClassName} ${(shape && shapes[shape]) || ""} ${(size && sizes[size]) || ""} ${(variant && variants[variant]?.[color]) || ""}`}
             ref={ref}
             type="checkbox"
             name={name}
