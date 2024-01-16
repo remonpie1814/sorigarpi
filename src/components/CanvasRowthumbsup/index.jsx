@@ -35,13 +35,13 @@ const CanvasRowthumbsup = (props) => {
                 <div className="flex flex-row gap-[66px] items-start justify-start w-auto">
                   <Img
                     className="h-9 md:h-auto object-cover w-9"
-                    src="images/img_image655.png"
+                    src="images/img_image689_30x30.png"
                     alt="image691"
                   />
                   <Img
                     className="h-9 md:h-auto object-cover w-9"
-                    src="images/img_image656.png"
-                    alt="image691one"
+                    src="images/img_image690_30x30.png"
+                    alt="image691_One"
                   />
                 </div>
               </div>

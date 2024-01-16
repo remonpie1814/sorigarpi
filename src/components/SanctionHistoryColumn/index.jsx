@@ -11,10 +11,10 @@ const SanctionHistoryColumn = (props) => {
             className="!text-white-A700 border-gray-400_03 border-l border-solid border-t cursor-pointer flex-1 font-bold font-inter h-[67px] text-[22px] text-center sm:text-lg md:text-xl w-full"
             shape="square"
             color="gray_600"
-            size="xl"
+            size="2xl"
             variant="fill"
           >
-            {props?.itemname}
+            {props?.buttontext1}
           </Button>
           <div className="border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[67px] md:h-auto items-start justify-start max-w-[773px] w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
@@ -22,7 +22,7 @@ const SanctionHistoryColumn = (props) => {
                 className="text-base text-black-900 w-auto"
                 size="txtInterRegular16Black900"
               >
-                {props?.itemtext}
+                {props?.text1}
               </Text>
             </div>
           </div>
@@ -32,10 +32,10 @@ const SanctionHistoryColumn = (props) => {
             className="!text-white-A700 border-gray-400_03 border-l border-solid border-t cursor-pointer flex-1 font-bold font-inter h-[67px] text-[22px] text-center sm:text-lg md:text-xl w-full"
             shape="square"
             color="gray_600"
-            size="xl"
+            size="2xl"
             variant="fill"
           >
-            {props?.contentname}
+            {props?.buttontext2}
           </Button>
           <div className="bg-white-A700_0f border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[67px] md:h-auto items-start justify-start max-w-[773px] w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
@@ -43,7 +43,7 @@ const SanctionHistoryColumn = (props) => {
                 className="text-base text-black-900 w-auto"
                 size="txtInterRegular16Black900"
               >
-                {props?.contenttext}
+                {props?.text2}
               </Text>
             </div>
           </div>
@@ -56,7 +56,7 @@ const SanctionHistoryColumn = (props) => {
             size="xl"
             variant="fill"
           >
-            {props?.datename}
+            {props?.buttontext3}
           </Button>
           <div className="border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[66px] md:h-auto items-start justify-start max-w-[773px] w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
@@ -64,7 +64,7 @@ const SanctionHistoryColumn = (props) => {
                 className="text-base text-black-900 w-auto"
                 size="txtInterRegular16Black900"
               >
-                {props?.datetext}
+                {props?.text3}
               </Text>
             </div>
           </div>
@@ -74,10 +74,10 @@ const SanctionHistoryColumn = (props) => {
             className="!text-white-A700 border-gray-400_03 border-l border-solid border-t cursor-pointer flex-1 font-bold font-inter h-[67px] text-[22px] text-center sm:text-lg md:text-xl w-full"
             shape="square"
             color="gray_600"
-            size="xl"
+            size="2xl"
             variant="fill"
           >
-            {props?.reasonname}
+            {props?.buttontext4}
           </Button>
           <div className="border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[67px] md:h-auto items-start justify-start max-w-[773px] w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
@@ -85,7 +85,7 @@ const SanctionHistoryColumn = (props) => {
                 className="text-base text-black-900 w-auto"
                 size="txtInterRegular16Black900"
               >
-                {props?.reasontext}
+                {props?.text4}
               </Text>
             </div>
           </div>
@@ -96,14 +96,14 @@ const SanctionHistoryColumn = (props) => {
 };
 
 SanctionHistoryColumn.defaultProps = {
-  itemname: "항목",
-  itemtext: "욕설/비방이 적힌 댓글",
-  contentname: "내용",
-  contenttext: "미칀룐이세욘 ㅋㅋ",
-  datename: "일시",
-  datetext: "2023-11-24 12:23",
-  reasonname: "상세 사유",
-  reasontext: "왜인지 잘 아시죠",
+  buttontext1: "항목",
+  text1: "욕설/비방이 적힌 댓글",
+  buttontext2: "내용",
+  text2: "미칀룐이세욘 ㅋㅋ",
+  buttontext3: "일시",
+  text3: "2023-11-24 12:23",
+  buttontext4: "상세 사유",
+  text4: "왜인지 잘 아시죠",
 };
 
 export default SanctionHistoryColumn;

@@ -12,25 +12,25 @@ const TaleDetailColumnlanguage = (props) => {
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.language}
+              {props?.languagetext}
             </Text>
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.two}
+              {props?.populartext}
             </Text>
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.three}
+              {props?.newtext}
             </Text>
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.four}
+              {props?.followtext}
             </Text>
           </div>
         </div>
@@ -40,10 +40,10 @@ const TaleDetailColumnlanguage = (props) => {
 };
 
 TaleDetailColumnlanguage.defaultProps = {
-  language: "전체 ",
-  two: "인기",
-  three: "신작",
-  four: "팔로우",
+  languagetext: "전체 ",
+  populartext: "인기",
+  newtext: "신작",
+  followtext: "팔로우",
 };
 
 export default TaleDetailColumnlanguage;

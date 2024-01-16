@@ -27,7 +27,7 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                 className="text-4xl sm:text-[32px] md:text-[34px] text-gray-900 tracking-[-0.79px] w-auto"
                 size="txtInterMedium36"
               >
-                {props?.rabbittigertext}
+                {props?.titletext}
               </Text>
               <div className="flex flex-1 flex-col h-[54px] md:h-auto items-center justify-start max-w-[644px] md:pl-10 sm:pl-5 pl-[620px] pt-3 w-full">
                 <Text
@@ -54,7 +54,7 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                 className="text-base text-gray-600 underline w-auto"
                 size="txtInterMedium16Gray600"
               >
-                {props?.textcontent}
+                {props?.textseven}
               </Text>
             </div>
             <div className="flex flex-row gap-5 items-center justify-start py-2.5 w-full">
@@ -62,13 +62,13 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                 <Img
                   className="h-[25px] md:h-auto object-cover w-[25px]"
                   src="images/img_image804_25x25.png"
-                  alt="image804one"
+                  alt="image804_One"
                 />
                 <Text
                   className="text-base text-center text-gray-900 tracking-[-0.18px]"
                   size="txtInterMedium16Gray900"
                 >
-                  {props?.twentythreetext}
+                  {props?.texttwentythree}
                 </Text>
               </div>
               <div className="flex flex-row gap-2.5 h-8 md:h-auto items-center justify-center w-[75px]">
@@ -81,20 +81,20 @@ const TaleDetailColumnspeakerfilledau = (props) => {
                   className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                   size="txtInterMedium16"
                 >
-                  {props?.onetwotext}
+                  {props?.textoneTwo}
                 </Text>
               </div>
               <div className="flex flex-row gap-2.5 h-[30px] md:h-auto items-center justify-center w-[75px]">
                 <Img
                   className="h-[25px] md:h-auto object-cover w-[25px]"
                   src="images/img__25x25.png"
-                  alt="eight"
+                  alt="Eight"
                 />
                 <Text
                   className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                   size="txtInterMedium16"
                 >
-                  {props?.fivetwotext}
+                  {props?.textfiveTwo}
                 </Text>
               </div>
             </div>
@@ -102,7 +102,7 @@ const TaleDetailColumnspeakerfilledau = (props) => {
               className="leading-[150.00%] max-w-[850px] md:max-w-full text-base text-gray-600 tracking-[-0.18px]"
               size="txtInterMedium16Gray600"
             >
-              {props?.bookdescriptiontext}
+              {props?.descriptiontext}
             </Text>
           </div>
         </div>
@@ -112,14 +112,14 @@ const TaleDetailColumnspeakerfilledau = (props) => {
 };
 
 TaleDetailColumnspeakerfilledau.defaultProps = {
-  rabbittigertext: "토끼와 호랑이",
+  titletext: "토끼와 호랑이",
   ellipsistext: "···",
   datetext: "작성일 2023.10.06",
-  textcontent: <>가나다라마바사아자차카 &gt;</>,
-  twentythreetext: "23",
-  onetwotext: "1",
-  fivetwotext: "5",
-  bookdescriptiontext:
+  textseven: <>가나다라마바사아자차카 &gt;</>,
+  texttwentythree: "23",
+  textoneTwo: "1",
+  textfiveTwo: "5",
+  descriptiontext:
     "책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명",
 };
 

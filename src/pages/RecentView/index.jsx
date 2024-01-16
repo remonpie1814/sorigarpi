@@ -1,22 +1,31 @@
 import React from "react";
 
 import { Button, Img, Line, List, Text } from "components";
-import Header from "components/Header";
 import RecentViewRowrectangleten from "components/RecentViewRowrectangleten";
+import SearchResultHeader from "components/SearchResultHeader";
 import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
 
 const RecentViewPage = () => {
   const recentViewRowrectangletenPropList = [
     {},
-    { username: "신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커" },
-    { username: "신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커" },
-    { username: "신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커" },
+    {
+      threehundredeleven:
+        "신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커",
+    },
+    {
+      threehundredeleven:
+        "신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커",
+    },
+    {
+      threehundredeleven:
+        "신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커",
+    },
   ];
 
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
         <div className="flex flex-col gap-2.5 items-start justify-start max-w-[1180px] mx-auto pb-[100px] pt-[30px] md:px-5 w-full">
           <div className="flex flex-col gap-2.5 items-start justify-start p-2.5 w-full">
@@ -62,22 +71,22 @@ const RecentViewPage = () => {
                     <RecentViewRowrectangleten className="flex sm:flex-1 sm:flex-col flex-row gap-5 items-center justify-start px-5 py-[15px] w-[550px] sm:w-full" />
                     <RecentViewRowrectangleten
                       className="flex sm:flex-1 sm:flex-col flex-row gap-5 items-center justify-start px-5 py-[15px] w-[550px] sm:w-full"
-                      username="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
+                      threehundredeleven="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
                     />
                   </div>
                   <div className="flex md:flex-col flex-row md:gap-10 items-center justify-between w-full">
                     <RecentViewRowrectangleten
                       className="flex sm:flex-1 sm:flex-col flex-row gap-5 items-center justify-start px-5 py-[15px] w-[550px] sm:w-full"
-                      username="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
+                      threehundredeleven="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
                     />
                     <RecentViewRowrectangleten
                       className="flex sm:flex-1 sm:flex-col flex-row gap-5 items-center justify-start px-5 py-[15px] w-[550px] sm:w-full"
-                      username="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
+                      threehundredeleven="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
                     />
                   </div>
                   <RecentViewRowrectangleten
                     className="flex sm:flex-col flex-row gap-5 items-center justify-start px-5 py-[15px] w-[550px] sm:w-full"
-                    username="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
+                    threehundredeleven="신데렐라는 어려서 부모님을 발로 차 싸커 발로 차 싸커"
                   />
                 </div>
               </div>
@@ -156,7 +165,7 @@ const RecentViewPage = () => {
               <Img
                 className="h-[92px] w-full"
                 src="images/img__blue_gray_100.svg"
-                alt="threehundredthi"
+                alt="ThreeHundredThirtyFour"
               />
             </div>
           </div>

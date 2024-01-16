@@ -10,7 +10,7 @@ const RecentViewRowrectangleten = (props) => {
           <Img
             className="absolute h-[180px] inset-[0] justify-center m-auto object-cover rounded-[30px] w-full"
             src="images/img_rectangle10.png"
-            alt="rectangleten"
+            alt="rectangleTen"
           />
           <Img
             className="absolute h-[26px] object-cover right-[8%] top-[6%] w-[26px]"
@@ -24,7 +24,7 @@ const RecentViewRowrectangleten = (props) => {
               className="leading-[150.00%] md:max-w-full max-w-xs text-[22px] text-gray-900 sm:text-lg md:text-xl tracking-[-0.24px]"
               size="txtInterMedium22Gray900_1"
             >
-              {props?.username}
+              {props?.threehundredeleven}
             </Text>
             <Img
               className="h-[18px] md:h-auto object-cover w-[18px]"
@@ -37,7 +37,7 @@ const RecentViewRowrectangleten = (props) => {
               className="text-gray-900 text-sm w-auto"
               size="txtInterMedium14Gray900"
             >
-              {props?.points}
+              {props?.p10p}
             </Text>
           </div>
           <div className="flex flex-row gap-0.5 items-center justify-start w-auto">
@@ -50,7 +50,7 @@ const RecentViewRowrectangleten = (props) => {
               className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
               size="txtInterMedium14Gray900_1"
             >
-              {props?.points1}
+              {props?.five}
             </Text>
             <Img
               className="h-6 md:h-auto object-cover w-6"
@@ -61,7 +61,7 @@ const RecentViewRowrectangleten = (props) => {
               className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
               size="txtInterMedium14Gray900_1"
             >
-              {props?.points2}
+              {props?.fiveOne}
             </Text>
           </div>
           <div className="flex flex-row items-start justify-between pl-0.5 w-full">
@@ -70,23 +70,23 @@ const RecentViewRowrectangleten = (props) => {
                 className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
                 size="txtInterMedium14Gray900_1"
               >
-                {props?.username1}
+                {props?.threehundredtwelve}
               </Text>
               <Text
                 className="text-gray-900 text-xs tracking-[-0.13px] w-auto"
                 size="txtInterMedium12"
               >
-                {props?.date}
+                {props?.p20231008one}
               </Text>
             </div>
             <Button
               className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] mt-[15px] text-center text-sm tracking-[-0.15px]"
               shape="square"
               color="gray_300"
-              size="sm"
+              size="md"
               variant="fill"
             >
-              {props?.deletebutton}
+              {props?.prop}
             </Button>
           </div>
         </div>
@@ -96,18 +96,18 @@ const RecentViewRowrectangleten = (props) => {
 };
 
 RecentViewRowrectangleten.defaultProps = {
-  username: (
+  threehundredeleven: (
     <>
       신데렐라는 어려서 부모님을 발로 차<br />
       싸커 발로 차 싸커
     </>
   ),
-  points: "10p",
-  points1: "5",
-  points2: "5",
-  username1: "유미엄마",
-  date: "2023. 10. 08",
-  deletebutton: "삭제",
+  p10p: "10p",
+  five: "5",
+  fiveOne: "5",
+  threehundredtwelve: "유미엄마",
+  p20231008one: "2023. 10. 08",
+  prop: "삭제",
 };
 
 export default RecentViewRowrectangleten;

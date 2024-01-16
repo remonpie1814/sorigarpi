@@ -14,25 +14,25 @@ const Home = () => {
           <Link to="/taledetail">TaleDetail</Link>
         </li>
         <li>
-          <Link to="/page1">Page1</Link>
+          <Link to="/searchresult">SearchResult</Link>
         </li>
         <li>
-          <Link to="/page2">Page2</Link>
+          <Link to="/followlist">FollowList</Link>
         </li>
         <li>
-          <Link to="/page3">Page3</Link>
+          <Link to="/profile">Profile</Link>
         </li>
         <li>
-          <Link to="/page4">Page4</Link>
+          <Link to="/likedtale">LikedTale</Link>
         </li>
         <li>
-          <Link to="/page5">Page5</Link>
+          <Link to="/followingtale">FollowingTale</Link>
         </li>
         <li>
-          <Link to="/page6">Page6</Link>
+          <Link to="/profilepicturemodifyform">ProfilePictureModifyForm</Link>
         </li>
         <li>
-          <Link to="/page7">Page7</Link>
+          <Link to="/profilemodifyform">ProfileModifyForm</Link>
         </li>
         <li>
           <Link to="/sanctionhistory">SanctionHistory</Link>
@@ -50,10 +50,10 @@ const Home = () => {
           <Link to="/customerservice">CustomerService</Link>
         </li>
         <li>
-          <Link to="/page8">Page8</Link>
+          <Link to="/mylibrary">MyLibrary</Link>
         </li>
         <li>
-          <Link to="/page9">Page9</Link>
+          <Link to="/main">Main</Link>
         </li>
         <li>
           <Link to="/pwdmodifyform">PwdModifyForm</Link>
@@ -62,7 +62,7 @@ const Home = () => {
           <Link to="/myreplylist">MyReplyList</Link>
         </li>
         <li>
-          <Link to="/page10">Page10</Link>
+          <Link to="/noticedetail">NoticeDetail</Link>
         </li>
         <li>
           <Link to="/noticelist">NoticeList</Link>
@@ -83,9 +83,6 @@ const Home = () => {
           <Link to="/loginform">LoginForm</Link>
         </li>
         <li>
-          <Link to="/page11">Page11</Link>
-        </li>
-        <li>
           <Link to="/registerform">RegisterForm</Link>
         </li>
         <li>
@@ -101,13 +98,10 @@ const Home = () => {
           <Link to="/canvas">Canvas</Link>
         </li>
         <li>
-          <Link to="/page13">Page13</Link>
+          <Link to="/editrecord">EditRecord</Link>
         </li>
         <li>
-          <Link to="/page17">Page17</Link>
-        </li>
-        <li>
-          <Link to="/frameone">FrameOne</Link>
+          <Link to="/editsoundeffect">EditSoundEffect</Link>
         </li>
       </ul>
     </div>

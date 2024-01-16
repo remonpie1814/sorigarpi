@@ -1,16 +1,16 @@
 import React from "react";
 
 import { Img, Text } from "components";
-import Header from "components/Header";
-import Navbar from "components/Navbar";
-import NoticeListRowonehundredtwent from "components/NoticeListRowonehundredtwent";
+import FollowListNavbar from "components/FollowListNavbar";
+import NoticeListRowonehundredtwentythree from "components/NoticeListRowonehundredtwentythree";
+import SearchResultHeader from "components/SearchResultHeader";
 
 const NoticeListPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <Header className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100_01 p-2 w-full" />
+        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100_01 p-2 w-full" />
         <Text
           className="bg-white-A700 h-[78px] justify-center sm:px-5 px-[35px] py-[21px] sm:text-2xl md:text-[26px] text-[28px] text-black-900 tracking-[-0.53px] w-full"
           size="txtInterMedium28"
@@ -44,30 +44,30 @@ const NoticeListPage = () => {
           </div>
         </div>
         <div className="flex flex-col gap-[29px] items-center justify-center md:px-5 py-[37px] w-auto md:w-full">
-          <NoticeListRowonehundredtwent className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full" />
-          <NoticeListRowonehundredtwent
+          <NoticeListRowonehundredtwentythree className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full" />
+          <NoticeListRowonehundredtwentythree
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
-            userdate="2023. 08. 11"
+            textthree="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwent
+          <NoticeListRowonehundredtwentythree
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
-            userdate="2023. 08. 11"
+            textthree="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwent
+          <NoticeListRowonehundredtwentythree
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
-            userdate="2023. 08. 11"
+            textthree="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwent
+          <NoticeListRowonehundredtwentythree
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
-            userdate="2023. 08. 11"
+            textthree="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwent
+          <NoticeListRowonehundredtwentythree
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
-            userdate="2023. 08. 11"
+            textthree="2023. 08. 11"
           />
-          <NoticeListRowonehundredtwent
+          <NoticeListRowonehundredtwentythree
             className="bg-white-A700 border-b border-black-900_a5 border-solid flex md:flex-col flex-row md:gap-10 gap-[90px] h-[46px] md:h-auto items-center justify-start py-[9px] w-auto md:w-full"
-            userdate="2023. 08. 11"
+            textthree="2023. 08. 11"
           />
         </div>
         <footer className="flex h-[89px] md:h-auto items-center justify-center md:px-5 w-full">
