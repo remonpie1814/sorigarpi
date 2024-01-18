@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Text } from "components";
 import SearchResultHeader from "components/SearchResultHeader";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
+import Navbar from "components/Navbar";
 
 const ProfileModifyFormPage = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const ProfileModifyFormPage = () => {
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
         <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         <div className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full">
-          <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
+          <Navbar className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col gap-[30px] h-[875px] md:h-auto items-center justify-start max-w-[1180px] pb-5 pt-[30px] w-full">
             <Text
               className="bg-white-A700 h-[42px] justify-center sm:pr-5 pr-[35px] py-[3px] sm:text-2xl md:text-[26px] text-[28px] text-black-900 tracking-[-0.53px] w-full"

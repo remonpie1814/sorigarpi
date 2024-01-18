@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Img, Line, List, Text } from "components";
 import RecentViewRowrectangleten from "components/RecentViewRowrectangleten";
 import SearchResultHeader from "components/SearchResultHeader";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
+import Navbar from "components/Navbar";
 
 const RecentViewPage = () => {
   const recentViewRowrectangletenPropList = [
@@ -26,7 +26,7 @@ const RecentViewPage = () => {
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
         <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
+        <Navbar className="flex flex-col items-center justify-start w-full" />
         <div className="flex flex-col gap-2.5 items-start justify-start max-w-[1180px] mx-auto pb-[100px] pt-[30px] md:px-5 w-full">
           <div className="flex flex-col gap-2.5 items-start justify-start p-2.5 w-full">
             <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-start w-auto sm:w-full">

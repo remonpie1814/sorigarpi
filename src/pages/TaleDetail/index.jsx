@@ -3,7 +3,7 @@ import React from "react";
 import PageDrawer from "drawers/Page";
 
 import { Button, Img, List, Text } from "components";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
+import Navbar from "components/Navbar";
 import TaleDetailColumnspeakerfilledau from "components/TaleDetailColumnspeakerfilledau";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 
@@ -51,7 +51,7 @@ const TaleDetailPage = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
-          <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
+          <Navbar className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col gap-[22px] h-[1779px] md:h-auto items-center justify-start max-w-[1182px] pb-5 pt-[30px] w-full">
             <TaleDetailColumnspeakerfilledau className="flex flex-col items-center justify-start w-full" />
             <div className="flex md:flex-col flex-row gap-[45px] items-center justify-start w-full">

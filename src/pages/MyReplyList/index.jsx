@@ -3,7 +3,7 @@ import React from "react";
 import { Img, Text } from "components";
 import MyReplyListMyreplyrow from "components/MyReplyListMyreplyrow";
 import SearchResultHeader from "components/SearchResultHeader";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
+import Navbar from "components/Navbar";
 
 const MyReplyListPage = () => {
   return (
@@ -12,7 +12,7 @@ const MyReplyListPage = () => {
         <div className="flex flex-col items-center w-full">
           <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         </div>
-        <TaleDetailColumnlanguage className="flex flex-col items-center justify-start md:px-5 w-[62%] md:w-full" />
+        <Navbar className="flex flex-col items-center justify-start md:px-5 w-[62%] md:w-full" />
         <div className="flex flex-col items-center mt-1.5 md:px-10 sm:px-5 px-[370px] w-full">
           <div className="flex flex-col gap-[30px] h-[748px] md:h-auto items-center justify-start max-w-[1180px] mx-auto py-[30px] w-full">
             <div className="flex flex-col items-center justify-start w-full">
