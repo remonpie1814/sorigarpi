@@ -1,6 +1,14 @@
 import React from "react";
 
-import { Button, CheckBox, Img, MainHeader, Navbar, Text } from "components";
+import {
+  Button,
+  CheckBox,
+  Footer,
+  Img,
+  MainHeader,
+  Navbar,
+  Text,
+} from "components";
 import TaleSettingTemporarysave1 from "components/TaleSettingTemporarysave1";
 
 const TaleSettingPage = () => {
@@ -49,6 +57,10 @@ const TaleSettingPage = () => {
           </div>
           <TaleSettingTemporarysave1 className="border border-blue_gray-100_01 border-solid flex flex-col gap-2 items-center justify-start max-w-[1180px] p-5 shadow-bs w-full" />
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

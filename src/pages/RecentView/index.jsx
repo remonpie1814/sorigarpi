@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Img, Line, List, MainHeader, Text } from "components";
+import { Button, Footer, Img, Line, List, MainHeader, Text } from "components";
 import RecentViewRowrectangleten from "components/RecentViewRowrectangleten";
 import { Navbar } from "components";
 
@@ -118,57 +118,10 @@ const RecentViewPage = () => {
             </div>
           </List>
         </div>
-        <footer className="bg-blue_gray-50_02 flex items-center justify-center md:px-5 w-full">
-          <div className="bg-gray-100_01 flex flex-col items-center justify-center pb-[30px] sm:px-5 px-[30px] w-full">
-            <div className="flex flex-col gap-[25px] items-center justify-start max-w-[1180px] w-full">
-              <div className="flex md:flex-col flex-row md:gap-10 gap-[60px] items-start justify-center md:px-10 sm:px-5 px-[60px] py-[25px] w-full">
-                <div className="flex flex-col items-start justify-end pr-0.5 py-0.5">
-                  <Text
-                    className="text-[22px] text-black-900 sm:text-lg md:text-xl tracking-[-0.42px]"
-                    size="txtInterMedium22Black900"
-                  >
-                    고객센터
-                  </Text>
-                </div>
-                <div className="flex flex-col items-start justify-end pr-0.5 py-0.5">
-                  <Text
-                    className="text-[22px] text-black-900 text-center sm:text-lg md:text-xl tracking-[-0.42px]"
-                    size="txtInterMedium22Black900"
-                  >
-                    공지사항
-                  </Text>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2.5 items-start justify-center md:px-10 sm:px-5 px-[60px] py-2.5 w-full">
-                <Text
-                  className="text-base text-blue_gray-900 tracking-[-0.30px] w-auto"
-                  size="txtInterMedium16Bluegray900"
-                >
-                  사업자 정보
-                </Text>
-                <div className="flex flex-row gap-2.5 items-center justify-start w-auto">
-                  <Text
-                    className="text-base text-blue_gray-900 tracking-[-0.30px] w-auto"
-                    size="txtInterMedium16Bluegray900"
-                  >
-                    이용약관
-                  </Text>
-                  <Text
-                    className="text-base text-blue_gray-400_01 tracking-[-0.30px] w-auto"
-                    size="txtInterMedium16Bluegray40001"
-                  >
-                    개인정보 처리방침
-                  </Text>
-                </div>
-              </div>
-              <Img
-                className="h-[92px] w-full"
-                src="images/img__blue_gray_100.svg"
-                alt="ThreeHundredThirtyFour"
-              />
-            </div>
-          </div>
-        </footer>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

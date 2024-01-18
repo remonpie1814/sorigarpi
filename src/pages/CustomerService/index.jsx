@@ -1,6 +1,14 @@
 import React from "react";
 
-import { Button, Img, List, MainHeader, Navbar, Text } from "components";
+import {
+  Button,
+  Footer,
+  Img,
+  List,
+  MainHeader,
+  Navbar,
+  Text,
+} from "components";
 import CustomerServiceColumnOne from "components/CustomerServiceColumnOne";
 import CustomerServiceFaqrow from "components/CustomerServiceFaqrow";
 
@@ -69,6 +77,10 @@ const CustomerServicePage = () => {
         >
           1:1 문의 하기
         </Button>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

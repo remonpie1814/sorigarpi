@@ -1,6 +1,14 @@
 import React from "react";
 
-import { Button, Img, List, MainHeader, Navbar, Text } from "components";
+import {
+  Button,
+  Footer,
+  Img,
+  List,
+  MainHeader,
+  Navbar,
+  Text,
+} from "components";
 import SanctionHistoryColumn from "components/SanctionHistoryColumn";
 
 const SanctionHistoryPage = () => {
@@ -43,6 +51,10 @@ const SanctionHistoryPage = () => {
             이메일 문의하기
           </Button>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

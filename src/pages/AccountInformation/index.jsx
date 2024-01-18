@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Img, List, Text, Navbar, MainHeader } from "components";
+import { Img, List, Text, Navbar, MainHeader, Footer } from "components";
 import AccountInformationColumncommenteleven from "components/AccountInformationColumncommenteleven";
 import AccountInformationColumnconfusedone from "components/AccountInformationColumnconfusedone";
 import AccountInformationColumnonehundredfiftysix from "components/AccountInformationColumnonehundredfiftysix";
@@ -116,6 +116,10 @@ const AccountInformationPage = () => {
             </List>
           </div>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

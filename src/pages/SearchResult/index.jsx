@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Img, MainHeader, Text } from "components";
+import { Button, Footer, Img, MainHeader, Text } from "components";
 import SearchResultSearchresult from "components/SearchResultSearchresult";
 import { Navbar } from "components";
 
@@ -30,6 +30,10 @@ const SearchResultPage = () => {
             />
           </div>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

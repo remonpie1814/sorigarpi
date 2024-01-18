@@ -2,7 +2,7 @@ import React from "react";
 
 import PageDrawer from "drawers/Page";
 
-import { Button, Img, List, MainHeader, Text } from "components";
+import { Button, Footer, Img, List, MainHeader, Text } from "components";
 import { Navbar } from "components";
 import TaleDetailColumnspeakerfilledau from "components/TaleDetailColumnspeakerfilledau";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
@@ -351,6 +351,10 @@ const TaleDetailPage = () => {
             </div>
           </div>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
       {isOpenPageDrawer ? (
         <PageDrawer

@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, MainHeader, Text } from "components";
+import { Button, Footer, Img, MainHeader, Text } from "components";
 import { Navbar } from "components";
 
 const ProfileModifyFormPage = () => {
@@ -111,6 +111,10 @@ const ProfileModifyFormPage = () => {
             </div>
           </div>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

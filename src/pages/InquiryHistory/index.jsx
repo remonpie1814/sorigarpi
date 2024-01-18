@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Img, Line, List, MainHeader, Navbar, Text } from "components";
+import { Footer, Img, Line, List, MainHeader, Navbar, Text } from "components";
 import InquiryHistoryColumn from "components/InquiryHistoryColumn";
 
 const InquiryHistoryPage = () => {
@@ -158,6 +158,10 @@ const InquiryHistoryPage = () => {
             </List>
           </div>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );
