@@ -1,17 +1,15 @@
 import React from "react";
 
-import { Button, Img, List, Text } from "components";
+import { Button, Img, List, MainHeader, Navbar, Text } from "components";
 import CustomerServiceColumnOne from "components/CustomerServiceColumnOne";
 import CustomerServiceFaqrow from "components/CustomerServiceFaqrow";
-import FollowListNavbar from "components/FollowListNavbar";
-import SearchResultHeader from "components/SearchResultHeader";
 
 const CustomerServicePage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto pb-[231px] w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-10 items-end justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-[53px]"

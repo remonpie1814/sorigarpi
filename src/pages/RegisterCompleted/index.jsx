@@ -2,10 +2,8 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, Text } from "components";
-import FollowListNavbar from "components/FollowListNavbar";
+import { Button, Img, MainHeader, Navbar, Text } from "components";
 import { Footer } from "components";
-import SearchResultHeader from "components/SearchResultHeader";
 
 const RegisterCompletedPage = () => {
   const navigate = useNavigate();
@@ -13,8 +11,8 @@ const RegisterCompletedPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-[50px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-[120px] w-full">
           <Text
             className="leading-[150.00%] text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px]"

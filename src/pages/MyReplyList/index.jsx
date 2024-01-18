@@ -1,8 +1,7 @@
 import React from "react";
 
-import { Img, Text } from "components";
+import { Img, MainHeader, Text } from "components";
 import MyReplyListMyreplyrow from "components/MyReplyListMyreplyrow";
-import SearchResultHeader from "components/SearchResultHeader";
 import { Navbar } from "components";
 
 const MyReplyListPage = () => {
@@ -10,7 +9,7 @@ const MyReplyListPage = () => {
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-start justify-start mx-auto pb-[166px] w-full">
         <div className="flex flex-col items-center w-full">
-          <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+          <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         </div>
         <Navbar className="flex flex-col items-center justify-start md:px-5 w-[62%] md:w-full" />
         <div className="flex flex-col items-center mt-1.5 md:px-10 sm:px-5 px-[370px] w-full">

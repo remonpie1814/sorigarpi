@@ -2,9 +2,8 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Img, Text } from "components";
+import { Button, Img, MainHeader, Text } from "components";
 import ProfilePictureModifyFormScrollbar from "components/ProfilePictureModifyFormScrollbar";
-import SearchResultHeader from "components/SearchResultHeader";
 import { Navbar } from "components";
 
 const ProfilePictureModifyFormPage = () => {
@@ -13,7 +12,7 @@ const ProfilePictureModifyFormPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         <div className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full">
           <Navbar className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col gap-[30px] h-[875px] md:h-auto items-center justify-start max-w-[1180px] pb-5 pt-[30px] w-full">
