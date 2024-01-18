@@ -1,22 +1,12 @@
 import React from "react";
 
-import {
-  Button,
-  Footer,
-  Img,
-  List,
-  MainHeader,
-  Navbar,
-  Text,
-} from "components";
+import { Button, Img, Layout, List, Text } from "components";
 import SanctionHistoryColumn from "components/SanctionHistoryColumn";
 
 const SanctionHistoryPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar />
+      <Layout>
         <div className="flex flex-col gap-[27px] items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full">
           <div className="flex flex-col items-center justify-center max-w-[1180px] pb-2.5 pt-[30px] px-2.5 w-full">
             <div className="flex flex-col gap-[19px] items-center justify-start max-w-[1180px] w-full">
@@ -51,11 +41,7 @@ const SanctionHistoryPage = () => {
             이메일 문의하기
           </Button>
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
     </>
   );
 };

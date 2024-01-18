@@ -1,22 +1,12 @@
 import React from "react";
 
-import {
-  Button,
-  CheckBox,
-  Footer,
-  Img,
-  MainHeader,
-  Navbar,
-  Text,
-} from "components";
+import { Img, Layout, Text } from "components";
 import TaleSettingTemporarysave1 from "components/TaleSettingTemporarysave1";
 
 const TaleSettingPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <MainHeader />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+      <Layout>
         <div className="flex flex-col md:gap-10 gap-[65px] h-[1214px] md:h-auto items-center justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
           <div className="border-b border-gray-600 border-solid flex flex-col gap-5 items-center justify-start px-5 w-full">
             <div className="flex flex-col items-center justify-start w-full">
@@ -57,11 +47,7 @@ const TaleSettingPage = () => {
           </div>
           <TaleSettingTemporarysave1 className="border border-blue_gray-100_01 border-solid flex flex-col gap-2 items-center justify-start max-w-[1180px] p-5 shadow-bs w-full" />
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
     </>
   );
 };
