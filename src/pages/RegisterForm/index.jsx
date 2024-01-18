@@ -1,42 +1,22 @@
 import React from "react";
 
-import { Button, CheckBox, Img, Input, Text } from "components";
-import FollowListNavbar from "components/FollowListNavbar";
+import {
+  Button,
+  CheckBox,
+  Img,
+  Input,
+  MainHeader,
+  Navbar,
+  Text,
+} from "components";
 import { Footer } from "components";
 
 const RegisterFormPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <div className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full">
-          <div className="flex sm:flex-col flex-row md:gap-10 items-center justify-between max-w-[1180px] mx-auto md:px-5 w-full">
-            <div className="flex flex-col items-center justify-center px-4 w-auto">
-              <Img
-                className="h-[51px] md:h-auto object-cover w-[170px]"
-                src="images/img__51x170.png"
-                alt="ThreeHundredEighty"
-              />
-            </div>
-            <div className="flex flex-row gap-2.5 items-start justify-start py-2.5 w-auto">
-              <Img
-                className="h-12 md:h-auto object-cover w-12"
-                src="images/img_bell111.png"
-                alt="bell111"
-              />
-              <Img
-                className="h-12 md:h-auto object-cover w-12"
-                src="images/img_search111.png"
-                alt="search111"
-              />
-              <Img
-                className="h-12 md:h-auto object-cover w-12"
-                src="images/img_menu11.png"
-                alt="menuEleven"
-              />
-            </div>
-          </div>
-        </div>
-        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <MainHeader />
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-[50px] h-[899px] md:h-auto items-center justify-between max-w-[1180px] mx-auto md:px-5 py-[120px] w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-center text-gray-900 tracking-[-0.53px] w-auto"
