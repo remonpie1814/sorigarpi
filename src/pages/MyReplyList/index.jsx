@@ -3,7 +3,7 @@ import React from "react";
 import { Img, Text } from "components";
 import MyReplyListMyreplyrow from "components/MyReplyListMyreplyrow";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const MyReplyListPage = () => {
   return (

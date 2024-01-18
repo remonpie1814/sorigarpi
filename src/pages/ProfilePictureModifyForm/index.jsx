@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Img, Text } from "components";
 import ProfilePictureModifyFormScrollbar from "components/ProfilePictureModifyFormScrollbar";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const ProfilePictureModifyFormPage = () => {
   const navigate = useNavigate();

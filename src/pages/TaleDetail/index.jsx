@@ -3,7 +3,7 @@ import React from "react";
 import PageDrawer from "drawers/Page";
 
 import { Button, Img, List, Text } from "components";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 import TaleDetailColumnspeakerfilledau from "components/TaleDetailColumnspeakerfilledau";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 

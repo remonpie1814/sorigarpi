@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Img, Text } from "components";
 import SearchResultHeader from "components/SearchResultHeader";
 import SearchResultSearchresult from "components/SearchResultSearchresult";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const SearchResultPage = () => {
   return (

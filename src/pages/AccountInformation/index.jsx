@@ -6,7 +6,7 @@ import AccountInformationColumnconfusedone from "components/AccountInformationCo
 import AccountInformationColumnonehundredfiftysix from "components/AccountInformationColumnonehundredfiftysix";
 import AccountInformationColumnreloadone from "components/AccountInformationColumnreloadone";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const AccountInformationPage = () => {
   return (

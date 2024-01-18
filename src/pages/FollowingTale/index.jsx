@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Img, Text } from "components";
 import FollowingTaleColumnonehundredthree from "components/FollowingTaleColumnonehundredthree";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const FollowingTalePage = () => {
   return (

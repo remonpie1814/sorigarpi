@@ -4,10 +4,7 @@
 import React from "react";
 
 import { Img, Text } from "components";
-import Footer from "components/Footer";
-import MainHeader from "components/MainHeader";
-import MainTaleColumn from "components/MainTaleColumn";
-import Navbar from "components/Navbar";
+import { Navbar, MainHeader, Footer, MainTaleColumn } from "components";
 
 const MainPage = () => {
   return (

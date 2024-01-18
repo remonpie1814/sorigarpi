@@ -93,4 +93,4 @@ const MainTaleColumn = ({ className, images }) => {
   );
 };
 
-export default MainTaleColumn;
+export { MainTaleColumn };

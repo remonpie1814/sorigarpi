@@ -64,4 +64,4 @@ const Footer = ({ className }) => {
   );
 };
 
-export default Footer;
+export { Footer };

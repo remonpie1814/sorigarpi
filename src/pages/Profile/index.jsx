@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button, Img, List, Text } from "components";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const ProfilePage = () => {
   return (

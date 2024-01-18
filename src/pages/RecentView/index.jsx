@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Img, Line, List, Text } from "components";
 import RecentViewRowrectangleten from "components/RecentViewRowrectangleten";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const RecentViewPage = () => {
   const recentViewRowrectangletenPropList = [

@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Img, Text } from "components";
 import LikedTaleColumnseventyeight from "components/LikedTaleColumnseventyeight";
 import SearchResultHeader from "components/SearchResultHeader";
-import Navbar from "components/Navbar";
+import { Navbar } from "components";
 
 const LikedTalePage = () => {
   return (

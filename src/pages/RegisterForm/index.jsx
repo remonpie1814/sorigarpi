@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button, CheckBox, Img, Input, Text } from "components";
 import FollowListNavbar from "components/FollowListNavbar";
-import Footer from "components/Footer";
+import { Footer } from "components";
 
 const RegisterFormPage = () => {
   return (
