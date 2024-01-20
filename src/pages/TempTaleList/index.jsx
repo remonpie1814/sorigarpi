@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Button, Img, MainHeader, Navbar, Text } from "components";
-import MyLibraryPaging from "components/MyLibraryPaging";
+import { Button, Img, MainHeader, Navbar, Paging, Text } from "components";
 import TempTaleListTemptalerow from "components/TempTaleListTemptalerow";
 
 const TempTaleListPage = () => {
@@ -60,7 +59,7 @@ const TempTaleListPage = () => {
               </div>
             </div>
           </div>
-          <MyLibraryPaging className="flex flex-col gap-8 items-center justify-center w-full" />
+          <Paging className="flex flex-col gap-8 items-center justify-center w-full" />
         </div>
       </div>
     </>

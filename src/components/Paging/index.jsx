@@ -2,12 +2,7 @@ import React from "react";
 
 import { Button, Text } from "components";
 
-const MyLibraryPaging = ({
-  className,
-  currentPage,
-  maxPage,
-  setCurrentPage,
-}) => {
+const Paging = ({ className, currentPage, maxPage, setCurrentPage }) => {
   let pageArray = [];
   if (maxPage < 5) {
     pageArray = Array.from({ length: maxPage }, (_, i) => 1 + i);
@@ -87,6 +82,4 @@ const MyLibraryPaging = ({
   );
 };
 
-MyLibraryPaging.defaultProps = {};
-
-export default MyLibraryPaging;
+export { Paging };

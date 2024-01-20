@@ -12,3 +12,4 @@ export { MainTaleColumn } from "./MainTaleColumn";
 export { Modal } from "./Modal";
 export { Layout } from "./Layout";
 export { TaleInfo } from "./TaleInfo";
+export { Paging } from "./Paging";

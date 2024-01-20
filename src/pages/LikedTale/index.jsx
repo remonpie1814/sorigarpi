@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import { Button, Img, Layout, Text } from "components";
-import MyLibraryPaging from "components/MyLibraryPaging";
+import { Button, Img, Layout, Paging, Text } from "components";
 import { TaleInfo } from "components/TaleInfo";
 
 const LikedTalePage = () => {
@@ -119,7 +118,7 @@ const LikedTalePage = () => {
               </div>
             </div>
             <div className="flex flex-col items-center justify-center w-full">
-              <MyLibraryPaging
+              <Paging
                 className="flex flex-col gap-8 items-center justify-center w-full"
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}

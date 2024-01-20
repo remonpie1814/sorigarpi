@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 
-import { Button, Img, List, MainHeader, Navbar, Text } from "components";
+import {
+  Button,
+  Img,
+  List,
+  MainHeader,
+  Navbar,
+  Paging,
+  Text,
+} from "components";
 import CustomerServiceColumnOne from "components/CustomerServiceColumnOne";
 import MyLibraryInforow from "components/MyLibraryInforow";
-import MyLibraryPaging from "components/MyLibraryPaging";
 import MyLibraryRowrectangleten from "components/MyLibraryRowrectangleten";
 
 const MyLibraryPage = () => {
@@ -149,7 +156,7 @@ const MyLibraryPage = () => {
               </Text>
             </div>
           </div>
-          <MyLibraryPaging
+          <Paging
             className="flex flex-col gap-8 items-center justify-center w-full"
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
