@@ -1,20 +1,18 @@
 import React from "react";
 
-import { Img, List, Text } from "components";
+import { Img, List, Text, Navbar, MainHeader, Footer } from "components";
 import AccountInformationColumncommenteleven from "components/AccountInformationColumncommenteleven";
 import AccountInformationColumnconfusedone from "components/AccountInformationColumnconfusedone";
 import AccountInformationColumnonehundredfiftysix from "components/AccountInformationColumnonehundredfiftysix";
 import AccountInformationColumnreloadone from "components/AccountInformationColumnreloadone";
-import SearchResultHeader from "components/SearchResultHeader";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
 
 const AccountInformationPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
-          <TaleDetailColumnlanguage className="flex flex-col items-center justify-start w-full" />
+          <Navbar className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col gap-10 items-center justify-start max-w-[1182px] pt-[30px] w-full">
             <div className="bg-white-A700 flex flex-col gap-2 items-center justify-center max-w-[1182px] sm:px-5 px-[30px] py-[15px] w-full">
               <Text
@@ -118,6 +116,10 @@ const AccountInformationPage = () => {
             </List>
           </div>
         </div>
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

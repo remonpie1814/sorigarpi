@@ -5,3 +5,8 @@ export { Input } from "./Input";
 export { Line } from "./Line";
 export { List } from "./List";
 export { Text } from "./Text";
+export { MainHeader } from "./MainHeader";
+export { Footer } from "./Footer";
+export { Navbar } from "./Navbar";
+export { MainTaleColumn } from "./MainTaleColumn";
+export { Modal } from "./Modal";

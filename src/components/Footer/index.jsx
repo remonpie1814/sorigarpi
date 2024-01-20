@@ -1,32 +1,25 @@
+//** 정렬함 */
+
 import React from "react";
 
 import { Img, Text } from "components";
 
-const Footer = (props) => {
+const Footer = ({ className }) => {
   return (
     <>
-      <footer className={props.className}>
-        <div className="bg-gray-100_01 flex flex-col items-center justify-center pb-[30px] sm:px-5 px-[30px] w-full">
-          <div className="flex flex-col gap-[25px] items-center justify-start max-w-[1180px] w-full">
-            <div className="flex md:flex-col flex-row md:gap-10 gap-[60px] items-start justify-center max-w-[1180px] md:px-10 sm:px-5 px-[60px] py-[25px] w-full">
-              <div className="flex flex-col items-start justify-start pr-1.5 py-1.5">
-                <Text
-                  className="text-base text-black-900 tracking-[-0.30px]"
-                  size="txtInterMedium16Black900_1"
-                >
-                  고객센터
-                </Text>
-              </div>
-              <div className="flex flex-col items-start justify-start p-[5px]">
-                <Text
-                  className="md:ml-[0] ml-[5px] text-base text-black-900 text-center tracking-[-0.30px]"
-                  size="txtInterMedium16Black900_1"
-                >
-                  공지사항
-                </Text>
-              </div>
-            </div>
-            <div className="flex flex-col gap-2.5 items-start justify-center md:px-10 sm:px-5 px-[60px] py-2.5 w-full">
+      <footer className={className}>
+        <div className="bg-gray-100_01 flex flex-col items-center justify-center my-10 sm:px-5 px-[30px] w-full">
+          <div className="flex flex-row gap-[25px] items-start justify-start max-w-[1180px] w-full">
+            <div
+              className="w-full flex flex-col gap-2.5 items-start justify-center 
+                        py-2.5 md:px-10 sm:px-5"
+            >
+              <Text
+                className="text-base text-black-900 tracking-[-0.30px]"
+                size="txtInterMedium16Black900_1"
+              >
+                고객센터
+              </Text>
               <Text
                 className="text-base text-blue_gray-900 tracking-[-0.30px] w-auto"
                 size="txtInterMedium16Bluegray900"
@@ -48,11 +41,22 @@ const Footer = (props) => {
                 </Text>
               </div>
             </div>
-            <Img
-              className="h-[92px] w-full"
-              src="images/img__blue_gray_100.svg"
-              alt="TwoHundredSixtySix"
-            />
+            <div
+              className="w-full flex flex-col gap-2.5 items-start justify-center 
+                        py-2.5 md:px-10 sm:px-5"
+            >
+              <Text
+                className="text-base text-black-900 text-center tracking-[-0.30px]"
+                size="txtInterMedium16Black900_1"
+              >
+                공지사항
+              </Text>
+            </div>
+          </div>
+          <div className="flex flex-row gap-[25px] items-start justify-start max-w-[1180px] w-full">
+            <div className="w-[50px] h-[50px] rounded-full bg-slate-400"></div>
+            <div className="w-[50px] h-[50px] rounded-full bg-slate-400"></div>
+            <div className="w-[50px] h-[50px] rounded-full bg-slate-400"></div>
           </div>
         </div>
       </footer>
@@ -60,6 +64,4 @@ const Footer = (props) => {
   );
 };
 
-Footer.defaultProps = {};
-
-export default Footer;
+export { Footer };

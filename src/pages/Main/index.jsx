@@ -1,32 +1,35 @@
+//** 메인페이지 */
+// 레이아웃과 포함된 컴포넌트 수정
+
 import React from "react";
 
 import { Img, Text } from "components";
-import Footer from "components/Footer";
-import MainHeader from "components/MainHeader";
-import MainListtwohundredfortyfour from "components/MainListtwohundredfortyfour";
-import TaleDetailColumnlanguage from "components/TaleDetailColumnlanguage";
+import { Navbar, MainHeader, Footer, MainTaleColumn } from "components";
 
 const MainPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
         <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[25px] sm:px-5 w-full" />
-        <TaleDetailColumnlanguage className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full" />
+        <Navbar className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full" />
         <div className="flex flex-col items-center justify-start max-w-[1920px] w-full">
-          <div className="bg-blue_gray-100 flex flex-col gap-[46px] items-center justify-end p-9 sm:px-5 w-full">
-            <div className="h-[108px] md:h-[165px] max-w-[1215px] mt-[57px] mx-auto md:px-5 relative w-full">
-              <Text
-                className="mt-[7px] mx-auto text-2xl md:text-[22px] text-black-900 text-center sm:text-xl tracking-[-0.46px]"
-                size="txtInterMedium24"
-              >
-                메인 배너
-              </Text>
-              <div className="absolute inset-[0] justify-center m-auto w-full">
+          <div className="bg-blue_gray-100 flex flex-col items-center justify-center p-9 sm:px-5 w-full">
+            <div className="relative w-full h-full max-w-[1215px] mx-auto md:px-5 md:h-[165px]">
+              <div className="w-full h-full flex flex-row justify-center items-center">
                 <Img
-                  className="h-[108px] ml-[388px] my-auto"
+                  className="h-[108px] my-auto"
                   src="images/img__black_900_108x90.svg"
                   alt="TwoHundredThirtyNine"
                 />
+                <Text
+                  className="text-2xl text-black-900 text-center md:text-[22px] sm:text-xl tracking-[-0.46px]"
+                  size="txtInterMedium24"
+                >
+                  메인 배너
+                </Text>
+              </div>
+
+              <div className="absolute inset-[0] justify-center m-auto w-full">
                 <div className="absolute bottom-[31%] flex flex-row md:gap-10 inset-x-[0] items-start justify-between mx-auto pl-[5px] pt-[5px] w-full">
                   <Text
                     className="ml-[30px] rotate-[180deg] text-2xl md:text-[22px] text-white-A700 sm:text-xl tracking-[-0.46px]"
@@ -42,11 +45,6 @@ const MainPage = () => {
                   </Text>
                 </div>
               </div>
-            </div>
-            <div className="flex flex-row gap-4 items-start justify-start md:px-5 w-auto">
-              <div className="h-4 w-4"></div>
-              <div className="h-4 w-4"></div>
-              <div className="h-4 w-4"></div>
             </div>
           </div>
         </div>
@@ -64,7 +62,7 @@ const MainPage = () => {
                     className="text-[22px] text-amber-500 text-center sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
                     size="txtInterExtraBold22"
                   >
-                    세 번 누르면 죽는 버튼
+                    나만의 동화 만들기
                   </Text>
                 </div>
               </div>
@@ -94,7 +92,17 @@ const MainPage = () => {
               />
             </div>
           </div>
-          <MainListtwohundredfortyfour className="sm:flex-col flex-row md:gap-10 gap-[60px] grid md:grid-cols-1 grid-cols-2 justify-start w-full" />
+          <MainTaleColumn
+            className="sm:flex-col flex-row md:gap-10 gap-[60px] grid md:grid-cols-1 grid-cols-2 justify-start w-full"
+            images={[
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+            ]}
+          />
           <div className="flex flex-row md:gap-10 items-center justify-between w-full">
             <div className="md:h-[30px] h-[33px] relative w-[13%]">
               <div className="bg-yellow-200 h-[30px] m-auto rounded-[15px] w-full"></div>
@@ -119,9 +127,22 @@ const MainPage = () => {
               />
             </div>
           </div>
-          <MainListtwohundredfortyfour className="sm:flex-col flex-row md:gap-10 gap-[60px] grid md:grid-cols-1 grid-cols-2 justify-start w-full" />
+          <MainTaleColumn
+            className="sm:flex-col flex-row md:gap-10 gap-[60px] grid md:grid-cols-1 grid-cols-2 justify-start w-full"
+            images={[
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+              "images/img_image917.png",
+            ]}
+          />
         </div>
-        <Footer className="bg-blue_gray-50_02 flex gap-2.5 items-center justify-center md:px-5 w-full" />
+        <Footer
+          className="w-full flex gap-2.5 items-center justify-center
+                  bg-blue_gray-50_02 md:px-5"
+        />
       </div>
     </>
   );

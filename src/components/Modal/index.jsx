@@ -50,4 +50,4 @@ Modal.defaultProps = {
   confirmbutton: "확인",
 };
 
-export default Modal;
+export { Modal };

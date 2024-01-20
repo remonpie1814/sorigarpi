@@ -1,16 +1,14 @@
 import React from "react";
 
-import { Img, Text } from "components";
-import FollowListNavbar from "components/FollowListNavbar";
+import { Img, MainHeader, Navbar, Text } from "components";
 import NoticeListRowonehundredtwentythree from "components/NoticeListRowonehundredtwentythree";
-import SearchResultHeader from "components/SearchResultHeader";
 
 const NoticeListPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100_01 p-2 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100_01 p-2 w-full" />
         <Text
           className="bg-white-A700 h-[78px] justify-center sm:px-5 px-[35px] py-[21px] sm:text-2xl md:text-[26px] text-[28px] text-black-900 tracking-[-0.53px] w-full"
           size="txtInterMedium28"

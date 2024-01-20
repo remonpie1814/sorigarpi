@@ -1,16 +1,14 @@
 import React from "react";
 
-import { Img, Input, Text } from "components";
-import FollowListNavbar from "components/FollowListNavbar";
-import Footer from "components/Footer";
-import SearchResultHeader from "components/SearchResultHeader";
+import { Img, Input, MainHeader, Navbar, Text } from "components";
+import { Footer } from "components";
 
 const PwdModifyFormPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-[50px] md:h-auto items-center justify-start md:px-5 py-[120px] w-[720px] md:w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-center text-gray-900 tracking-[-0.53px] w-auto"

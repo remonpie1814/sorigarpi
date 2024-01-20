@@ -1,12 +1,10 @@
 import React from "react";
 
-import { Button, Img, List, Text } from "components";
+import { Button, Img, List, MainHeader, Navbar, Text } from "components";
 import CustomerServiceColumnOne from "components/CustomerServiceColumnOne";
-import FollowListNavbar from "components/FollowListNavbar";
 import MyLibraryInforow from "components/MyLibraryInforow";
 import MyLibraryPaging from "components/MyLibraryPaging";
 import MyLibraryRowrectangleten from "components/MyLibraryRowrectangleten";
-import SearchResultHeader from "components/SearchResultHeader";
 
 const MyLibraryPage = () => {
   const myLibraryRowrectangletenPropList = [
@@ -24,8 +22,8 @@ const MyLibraryPage = () => {
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <SearchResultHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <FollowListNavbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
         <div className="flex flex-col gap-10 h-[1482px] md:h-auto items-center justify-start max-w-[1180px] mx-auto md:px-5 py-[31px] w-full">
           <div className="bg-white-A700 flex flex-row md:gap-10 items-start justify-between py-[3px] w-full">
             <Text

@@ -1,36 +1,40 @@
+//** 필요 없는 props 제거, 보더 제거, 이름을 Navbar로 변경 */
 import React from "react";
 
 import { Text } from "components";
 
-const TaleDetailColumnlanguage = (props) => {
+const Navbar = (props) => {
   return (
     <>
       <div className={props.className}>
-        <div className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full">
-          <div className="flex flex-row sm:gap-10 gap-[130px] items-start justify-start sm:px-5 px-[30px] w-auto sm:w-full">
+        <div className="flex flex-col items-center justify-start w-full border-b-[1px] border-b-blue_gray-100 p-2">
+          <div
+            className="flex flex-row w-auto gap-[130px] items-center justify-center px-[30px]
+                      sm:px-5 sm:gap-10 sm:w-full"
+          >
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.languagetext}
+              전체
             </Text>
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.populartext}
+              인기
             </Text>
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.newtext}
+              신작
             </Text>
             <Text
               className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterMedium16"
             >
-              {props?.followtext}
+              팔로우
             </Text>
           </div>
         </div>
@@ -39,11 +43,4 @@ const TaleDetailColumnlanguage = (props) => {
   );
 };
 
-TaleDetailColumnlanguage.defaultProps = {
-  languagetext: "전체 ",
-  populartext: "인기",
-  newtext: "신작",
-  followtext: "팔로우",
-};
-
-export default TaleDetailColumnlanguage;
+export { Navbar };
