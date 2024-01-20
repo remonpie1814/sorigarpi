@@ -1,13 +1,12 @@
 import React from "react";
 
-import { Button, Footer, Img, MainHeader, Navbar, Text } from "components";
+import { Button, Layout, Text } from "components";
 
 const NoticeDetailPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto pb-[163px] w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100_01 p-2 w-full" />
+      <Layout>
+        {" "}
         <div className="flex flex-col gap-[30px] items-end justify-start max-w-[1180px] mx-auto md:px-5 w-full">
           <div className="flex flex-col gap-10 items-start justify-start pt-[30px] w-auto md:w-full">
             <Text
@@ -48,11 +47,7 @@ const NoticeDetailPage = () => {
             목록으로
           </Button>
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
     </>
   );
 };

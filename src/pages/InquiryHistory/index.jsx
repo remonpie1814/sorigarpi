@@ -1,14 +1,12 @@
 import React from "react";
 
-import { Footer, Img, Line, List, MainHeader, Navbar, Text } from "components";
+import { Layout, Line, List, Text } from "components";
 import InquiryHistoryColumn from "components/InquiryHistoryColumn";
 
 const InquiryHistoryPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto pb-[482px] w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+      <Layout>
         <div className="flex flex-col gap-[30px] items-start justify-start max-w-[1180px] mx-auto md:px-5 py-[30px] w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-[139px]"
@@ -158,11 +156,7 @@ const InquiryHistoryPage = () => {
             </List>
           </div>
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
     </>
   );
 };

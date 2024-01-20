@@ -2,8 +2,7 @@ import React from "react";
 
 import PageDrawer from "drawers/Page";
 
-import { Button, Footer, Img, List, MainHeader, Text } from "components";
-import { Navbar } from "components";
+import { Button, Img, Layout, List, Text } from "components";
 import TaleDetailColumnspeakerfilledau from "components/TaleDetailColumnspeakerfilledau";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 
@@ -18,10 +17,8 @@ const TaleDetailPage = () => {
 
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <MainHeader />
+      <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
-          <Navbar className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col gap-[22px] h-[1779px] md:h-auto items-center justify-start max-w-[1182px] pb-5 pt-[30px] w-full">
             <TaleDetailColumnspeakerfilledau className="flex flex-col items-center justify-start w-full" />
             <div className="flex md:flex-col flex-row gap-[45px] items-center justify-start w-full">
@@ -351,11 +348,7 @@ const TaleDetailPage = () => {
             </div>
           </div>
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
       {isOpenPageDrawer ? (
         <PageDrawer
           open={isOpenPageDrawer}

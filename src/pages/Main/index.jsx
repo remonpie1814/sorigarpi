@@ -3,15 +3,13 @@
 
 import React from "react";
 
-import { Img, Text } from "components";
-import { Navbar, MainHeader, Footer, MainTaleColumn } from "components";
+import { Img, Layout, Text } from "components";
+import { MainTaleColumn } from "components";
 
 const MainPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[25px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full" />
+      <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1920px] w-full">
           <div className="bg-blue_gray-100 flex flex-col items-center justify-center p-9 sm:px-5 w-full">
             <div className="relative w-full h-full max-w-[1215px] mx-auto md:px-5 md:h-[165px]">
@@ -139,11 +137,7 @@ const MainPage = () => {
             ]}
           />
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
     </>
   );
 };

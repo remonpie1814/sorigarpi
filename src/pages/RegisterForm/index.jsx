@@ -1,22 +1,11 @@
 import React from "react";
 
-import {
-  Button,
-  CheckBox,
-  Img,
-  Input,
-  MainHeader,
-  Navbar,
-  Text,
-} from "components";
-import { Footer } from "components";
+import { Button, CheckBox, Img, Input, Layout, Text } from "components";
 
 const RegisterFormPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <MainHeader />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+      <Layout>
         <div className="flex flex-col gap-[50px] h-[899px] md:h-auto items-center justify-between max-w-[1180px] mx-auto md:px-5 py-[120px] w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-center text-gray-900 tracking-[-0.53px] w-auto"
@@ -105,8 +94,7 @@ const RegisterFormPage = () => {
             회원가입
           </Button>
         </div>
-        <Footer className="bg-blue_gray-50_02 flex gap-2.5 items-center justify-center md:px-5 w-full" />
-      </div>
+      </Layout>
     </>
   );
 };

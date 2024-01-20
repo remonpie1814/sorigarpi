@@ -1,16 +1,13 @@
 import React from "react";
 
-import { Button, Footer, Img, MainHeader, Text } from "components";
+import { Button, Img, Layout, Text } from "components";
 import SearchResultSearchresult from "components/SearchResultSearchresult";
-import { Navbar } from "components";
 
 const SearchResultPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
+      <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1180px] mx-auto md:px-5 w-full">
-          <Navbar className="flex flex-col items-center justify-start w-full" />
           <div className="flex flex-col h-[875px] md:h-auto items-center justify-start max-w-[1180px] pb-5 pt-[30px] w-full">
             <SearchResultSearchresult
               className="flex flex-col gap-[15px] items-center justify-start w-auto md:w-full"
@@ -30,11 +27,7 @@ const SearchResultPage = () => {
             />
           </div>
         </div>
-        <Footer
-          className="w-full flex gap-2.5 items-center justify-center
-                  bg-blue_gray-50_02 md:px-5"
-        />
-      </div>
+      </Layout>
     </>
   );
 };

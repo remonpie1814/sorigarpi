@@ -1,22 +1,12 @@
 import React from "react";
 
-import {
-  Button,
-  CheckBox,
-  Img,
-  Input,
-  Text,
-  Footer,
-  Navbar,
-  MainHeader,
-} from "components";
+import { Button, CheckBox, Img, Input, Text, Layout } from "components";
 
 const LoginFormPage = () => {
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto shadow-bs w-auto sm:w-full md:w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+      <Layout>
+        {" "}
         <div className="flex flex-col gap-5 h-[720px] md:h-auto items-center justify-start md:px-5 py-[120px] w-[720px] md:w-full">
           <div className="flex flex-row gap-2.5 items-center justify-center w-auto">
             <Img
@@ -124,8 +114,7 @@ const LoginFormPage = () => {
             </div>
           </div>
         </div>
-        <Footer className="bg-blue_gray-50_02 flex gap-2.5 items-center justify-center md:px-5 w-full" />
-      </div>
+      </Layout>
     </>
   );
 };
