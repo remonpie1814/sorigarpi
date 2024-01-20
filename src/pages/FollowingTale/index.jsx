@@ -89,35 +89,35 @@ const FollowingTalePage = () => {
                                 creDate={taleList[index * 2]?.creDate}
                               >
                                 {
-                                  <>
-                                    <Button
-                                      className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                      shape="square"
-                                      color="gray_300"
-                                      size="md"
-                                      variant="fill"
-                                    >
-                                      그림수정
-                                    </Button>
-                                    <Button
-                                      className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                      shape="square"
-                                      color="gray_300"
-                                      size="md"
-                                      variant="fill"
-                                    >
-                                      녹음수정
-                                    </Button>
-                                    <Button
-                                      className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                      shape="square"
-                                      color="gray_300"
-                                      size="md"
-                                      variant="fill"
-                                    >
-                                      삭제
-                                    </Button>
-                                  </>
+                                  // <>
+                                  //   <Button
+                                  //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                  //     shape="square"
+                                  //     color="gray_300"
+                                  //     size="md"
+                                  //     variant="fill"
+                                  //   >
+                                  //     그림수정
+                                  //   </Button>
+                                  //   <Button
+                                  //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                  //     shape="square"
+                                  //     color="gray_300"
+                                  //     size="md"
+                                  //     variant="fill"
+                                  //   >
+                                  //     녹음수정
+                                  //   </Button>
+                                  //   <Button
+                                  //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                  //     shape="square"
+                                  //     color="gray_300"
+                                  //     size="md"
+                                  //     variant="fill"
+                                  //   >
+                                  //     삭제
+                                  //   </Button>
+                                  // </>
                                 }
                               </TaleInfo>
                               {/* 표시할 동화 수가 홀수라면 마지막 빈공간 채워주기 처리 */}
@@ -136,35 +136,35 @@ const FollowingTalePage = () => {
                                   creDate={taleList[index * 2 + 1]?.creDate}
                                 >
                                   {
-                                    <>
-                                      <Button
-                                        className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                        shape="square"
-                                        color="gray_300"
-                                        size="md"
-                                        variant="fill"
-                                      >
-                                        그림수정
-                                      </Button>
-                                      <Button
-                                        className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                        shape="square"
-                                        color="gray_300"
-                                        size="md"
-                                        variant="fill"
-                                      >
-                                        녹음수정
-                                      </Button>
-                                      <Button
-                                        className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                        shape="square"
-                                        color="gray_300"
-                                        size="md"
-                                        variant="fill"
-                                      >
-                                        삭제
-                                      </Button>
-                                    </>
+                                    // <>
+                                    //   <Button
+                                    //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                    //     shape="square"
+                                    //     color="gray_300"
+                                    //     size="md"
+                                    //     variant="fill"
+                                    //   >
+                                    //     그림수정
+                                    //   </Button>
+                                    //   <Button
+                                    //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                    //     shape="square"
+                                    //     color="gray_300"
+                                    //     size="md"
+                                    //     variant="fill"
+                                    //   >
+                                    //     녹음수정
+                                    //   </Button>
+                                    //   <Button
+                                    //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                    //     shape="square"
+                                    //     color="gray_300"
+                                    //     size="md"
+                                    //     variant="fill"
+                                    //   >
+                                    //     삭제
+                                    //   </Button>
+                                    // </>
                                   }
                                 </TaleInfo>
                               )}
