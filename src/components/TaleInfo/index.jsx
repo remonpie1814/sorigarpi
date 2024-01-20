@@ -1,4 +1,4 @@
-import { Img, Text } from "components";
+import { Button, Img, Text } from "components";
 
 const TaleInfo = ({
   image,
@@ -8,6 +8,7 @@ const TaleInfo = ({
   commentCount,
   writer,
   creDate,
+  children,
 }) => {
   return (
     <>
@@ -70,8 +71,8 @@ const TaleInfo = ({
               {commentCount}
             </Text>
           </div>
-          <div className="flex flex-col flex-grow items-start justify-start px-0.5 w-full">
-            <div className="flex flex-col gap-0.5 items-start justify-start w-auto">
+          <div className="flex flex-row flex-grow px-0.5 w-full">
+            <div className="flex flex-col flex-grow gap-0.5 items-start justify-start w-auto">
               <Text
                 className="text-gray-900 text-sm tracking-[-0.15px] w-auto"
                 size="txtInterMedium14Gray900_1"
@@ -84,6 +85,11 @@ const TaleInfo = ({
               >
                 {creDate}
               </Text>
+              {
+                <div className="flex flex-col flex-grow w-full items-end justify-end">
+                  <div className="flex flex-row gap-1 mt-auto">{children}</div>
+                </div>
+              }
             </div>
           </div>
         </div>
