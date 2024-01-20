@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, Img, List, MainHeader, Navbar, Text } from "components";
 import CustomerServiceColumnOne from "components/CustomerServiceColumnOne";
@@ -7,6 +7,7 @@ import MyLibraryPaging from "components/MyLibraryPaging";
 import MyLibraryRowrectangleten from "components/MyLibraryRowrectangleten";
 
 const MyLibraryPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const myLibraryRowrectangletenPropList = [
     {},
     { textfive: "유미엄마" },
@@ -148,7 +149,12 @@ const MyLibraryPage = () => {
               </Text>
             </div>
           </div>
-          <MyLibraryPaging className="flex flex-col gap-8 items-center justify-center w-full" />
+          <MyLibraryPaging
+            className="flex flex-col gap-8 items-center justify-center w-full"
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            maxPage={9}
+          />
         </div>
       </div>
     </>
