@@ -1,14 +1,10 @@
 import React from "react";
 
-import PageDrawer from "drawers/Page";
-
 import { Button, Img, Layout, List, Text } from "components";
 import TaleDetailColumnspeakerfilledau from "components/TaleDetailColumnspeakerfilledau";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 
 const TaleDetailPage = () => {
-  const [isOpenPageDrawer, setPageDrawer] = React.useState(false);
-
   const taleDetailReplyerowPropList = [
     {},
     { language: "댓글댓글" },
@@ -349,12 +345,6 @@ const TaleDetailPage = () => {
           </div>
         </div>
       </Layout>
-      {isOpenPageDrawer ? (
-        <PageDrawer
-          open={isOpenPageDrawer}
-          onClose={() => setPageDrawer(false)}
-        />
-      ) : null}
     </>
   );
 };
