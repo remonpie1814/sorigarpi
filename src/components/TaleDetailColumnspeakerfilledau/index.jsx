@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Img, Text } from "components";
+import { Button, Img, Text } from "components";
 
 const TaleDetailInfo = ({ className }) => {
   return (
@@ -22,7 +22,7 @@ const TaleDetailInfo = ({ className }) => {
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-1 h-full items-start justify-start w-full">
-            <div className="flex md:flex-col flex-row gap-1 items-start justify-start w-full">
+            <div className="flex md:flex-col flex-row gap-1 items-center justify-center w-full">
               <Text
                 className="text-4xl sm:text-[32px] md:text-[34px] text-gray-900 tracking-[-0.79px]
                 w-aut flex flex-grow"
@@ -30,7 +30,9 @@ const TaleDetailInfo = ({ className }) => {
               >
                 토끼와 호랑이
               </Text>
-              <div className="flex flex-1 flex-col h-[54px] items-end justify-start"></div>
+              <Button className="cursor-pointer w-[50px] h-[50px] text-4xl text-center">
+                ⋮
+              </Button>
             </div>
             <Text
               className="text-base text-gray-400 tracking-[-0.18px] w-full"

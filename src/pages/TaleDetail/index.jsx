@@ -14,7 +14,7 @@ const TaleDetailPage = () => {
     },
   ]);
   // 댓글 state
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([{}, {}, {}]);
 
   return (
     <>
@@ -202,10 +202,11 @@ const TaleDetailPage = () => {
                 className="flex flex-col gap-5 items-center w-full"
                 orientation="vertical"
               >
-                {[1, 2, 3].map((props, index) => (
+                {comments.map((props, index) => (
                   <React.Fragment key={`TaleDetailReplyerow${index}`}>
                     <TaleDetailReplyerow
-                      className="border-b border-blue_gray-100_01 border-solid flex flex-1 flex-col gap-[7px] h-[142px] md:h-auto items-center justify-start w-full"
+                      className="border-b border-blue_gray-100_01 border-solid flex flex-1 flex-col gap-[7px] h-[142px] 
+                                md:h-auto items-center justify-start w-full"
                       {...props}
                     />
                   </React.Fragment>
@@ -230,13 +231,13 @@ const TaleDetailPage = () => {
                 </Text>
               </div>
             </div>
-            <div className="bg-amber-A100 flex flex-col items-center justify-start p-4 rounded-[5px] w-[30%] md:w-full">
-              <div
-                className="flex flex-row gap-[3px] items-start justify-start w-auto"
-                onClick={() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-              >
+            <div
+              className="bg-amber-A100 flex flex-col items-center justify-start p-4 rounded-[5px] w-[30%] md:w-full"
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              <div className="flex flex-row gap-[3px] items-start justify-start w-auto">
                 <Img
                   className="h-6 md:h-auto object-cover w-6"
                   src="images/img_arrow1.png"
