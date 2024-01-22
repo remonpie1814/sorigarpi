@@ -58,9 +58,13 @@ const TaleDetailReplyerow = ({
           답글
         </Button>
         {isOpen && (
-          <div className="w-full">
-            <AutoResizingTextarea />
-          </div>
+          <form className="w-full pb-2">
+            <AutoResizingTextarea className="gap-2" placeholder="답글 입력...">
+              <Button className="border-2 px-2 bg-gray-400 rounded-md">
+                작성
+              </Button>
+            </AutoResizingTextarea>
+          </form>
         )}
       </div>
     </>
