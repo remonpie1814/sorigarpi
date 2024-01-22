@@ -1,3 +1,10 @@
+// children : 이 컴포넌트의 자식 요소. textarea의 오른쪽에 표시됨.
+// 이것 또한 입력 시 height가 resizing 됨.
+// handleSubmit : textarea의 내용을 submit하는 함수.
+// ctrl+Enter를 눌렀을 때 handleSubmit이 실행됨.
+// setValue : textarea에 입력된 내용을 가지고 뭔가 하는 함수.
+// 주로 부모 컴포넌트에서 state로 set하는 함수가 될 듯 함.
+
 const AutoResizingTextarea = ({
   children,
   className,
