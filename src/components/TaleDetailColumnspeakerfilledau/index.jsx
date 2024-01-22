@@ -6,7 +6,7 @@ const TaleDetailInfo = ({ className }) => {
   return (
     <>
       <div className={className}>
-        <div className="flex md:flex-col flex-row gap-[30px] items-center justify-start w-full">
+        <div className="flex md:flex-col flex-row gap-[30px] items-start justify-start w-full">
           <div className="h-[393px] relative w-[26%] md:w-full">
             <Img
               className="absolute h-[393px] inset-[0] justify-center m-auto object-cover rounded-[5px] w-full"
