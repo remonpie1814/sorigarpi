@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button, CheckBox, Img, Input, Layout, Text } from "components";
 
 const RegisterFormPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [nickName, setNickName] = useState("");
+
+  //정규식
+  let emailRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let pwdRegex = /^(?=.*[a-zA-Z])(?=.*\d).*$/;
+
   return (
     <>
       <Layout>
@@ -22,29 +32,61 @@ const RegisterFormPage = () => {
               placeholder="이메일"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
+              onChange={setEmail}
             ></Input>
-            <ErrMSG color={"red"}>이메일 형식에 맞지 않습니다</ErrMSG>
+
+            <ErrMSG>
+              {email.length > 0 && !emailRegex.test(email) ? (
+                <span className="text-deep_orange-600">
+                  이메일 형식에 맞지 않습니다
+                </span>
+              ) : null}
+            </ErrMSG>
             <Input
-              name="input_One"
+              type="password"
               placeholder="비밀번호"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
+              onChange={setPassword}
             ></Input>
-            <ErrMSG color={"red"}>4자 이상으로 입력해주세요</ErrMSG>
+            <ErrMSG>
+              {password.length > 0 ? (
+                password.length < 4 ? (
+                  <span className="text-deep_orange-600">
+                    4자 이상으로 입력해주세요
+                  </span>
+                ) : !pwdRegex.test(password) ? (
+                  <span className="text-deep_orange-600">
+                    알파벳과 숫자를 하나 이상 포함해주세요
+                  </span>
+                ) : null
+              ) : null}
+            </ErrMSG>
             <Input
-              name="input_Two"
+              type="password"
               placeholder="비밀번호 확인"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
+              onChange={setPassword2}
             ></Input>
-            <ErrMSG color={"red"}>에러메시지</ErrMSG>
+            <ErrMSG>
+              {password2.length > 0 && password2 !== password ? (
+                <span className="text-deep_orange-600">
+                  비밀번호와 일치하지 않습니다
+                </span>
+              ) : null}
+            </ErrMSG>
             <Input
-              name="input_Three"
               placeholder="닉네임(12자)"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
+              onChange={setNickName}
             ></Input>
-            <ErrMSG color="green">사용가능한 닉네임입니다</ErrMSG>
+            <ErrMSG>
+              {nickName && (
+                <span className="text-green-700">사용가능한 닉네임입니다</span>
+              )}
+            </ErrMSG>
           </div>
           <div className="flex flex-col items-center justify-start w-full">
             <div className="bg-gray-100_01 flex flex-col items-center justify-center px-5 rounded-[10px] w-full h-[30px]">
@@ -74,15 +116,11 @@ const RegisterFormPage = () => {
   );
 };
 
-const ErrMSG = ({ children, color }) => {
-  let colorVariant = {
-    green: "text-green-A700",
-    red: "text-deep_orange-600",
-  };
+const ErrMSG = ({ children }) => {
   return (
     <div className="flex flex-col h-[21px] md:h-auto items-center justify-start px-5 w-full">
       <Text
-        className={`${colorVariant?.[color]} text-sm tracking-[-0.27px] w-full`}
+        className={`text-sm tracking-[-0.27px] w-full`}
         size="txtInterMedium14GreenA700"
       >
         {children}
