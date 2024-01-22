@@ -213,7 +213,7 @@ const TaleDetailPage = () => {
                   <React.Fragment key={`TaleDetailReplyerow${index}`}>
                     <TaleDetailReplyerow
                       className="border-b border-blue_gray-100_01 border-solid flex flex-1 flex-col gap-[7px] h-[142px] 
-                                md:h-auto items-center justify-start w-full"
+                                md:h-auto items-start justify-start w-full"
                       {...props}
                     />
                   </React.Fragment>
@@ -225,7 +225,7 @@ const TaleDetailPage = () => {
                 <Button
                   className="flex flex-col items-center justify-center
                           px-8 rounded-[5px] bg-amber-A100
-                          h-full md:w-full md:py-5 sm:px-5"
+                          h-full md:py-5 sm:px-5"
                 >
                   등록
                 </Button>

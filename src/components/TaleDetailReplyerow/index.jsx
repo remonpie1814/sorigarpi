@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Button, Img, Text } from "components";
+import { AutoResizingTextarea, Button, Img, Text } from "components";
 
 const TaleDetailReplyerow = ({
   className,
@@ -9,6 +9,8 @@ const TaleDetailReplyerow = ({
   content,
   creDate,
 }) => {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <>
       <div className={className}>
@@ -46,12 +48,20 @@ const TaleDetailReplyerow = ({
         >
           {creDate}
         </Text>
-        <Text
-          className="text-base text-gray-900 tracking-[-0.18px] w-full"
-          size="txtInterMedium16"
+        <Button
+          className="text-base text-gray-900 tracking-[-0.18px]
+                    text-left w-1/6 sm:w-full"
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
         >
           답글
-        </Text>
+        </Button>
+        {isOpen && (
+          <div className="w-full">
+            <AutoResizingTextarea />
+          </div>
+        )}
       </div>
     </>
   );
