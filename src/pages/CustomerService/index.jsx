@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Button, Img, Layout, List, Text } from "components";
+import { Button, Img, Layout, List, Paging, TabButton, Text } from "components";
 import CustomerServiceFaqrow from "components/CustomerServiceFaqrow";
 
 const CustomerServicePage = () => {
+  // 페이지에 표시할 faq의 목록 state
+  const [FAQList, setFAQ] = useState([
+    {
+      category: "회원정보",
+      title: "탈퇴를 하고 싶어요",
+      content: "탈퇴하려면 탈퇴버튼을 누르면 됩니다",
+    },
+  ]);
+  // 페이징을 위한 state
+  const [currentPage, setCurrentPage] = useState(1);
+  // 탭 메뉴 관리를 위한 state
+  const [tab, setTab] = useState(0);
   return (
     <>
       <Layout>
-        <div className="flex flex-col gap-10 items-end justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
+        <div className="flex flex-col gap-10 items-start justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-[53px]"
             size="txtInterMedium28Gray900"
@@ -23,7 +35,7 @@ const CustomerServicePage = () => {
                 <input
                   className="bg-blue_gray-50 h-full border-0"
                   type="text"
-                  placeholder="작품명 검색"
+                  placeholder="검색"
                   name=""
                   id=""
                 />
@@ -38,50 +50,43 @@ const CustomerServicePage = () => {
             </div>
           </div>
           <div className="flex flex-row gap-10 items-center justify-center max-w-[1155px] w-full">
-            <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-7"
-              size="txtInterMedium16Black900"
-            >
+            <TabButton index={0} tab={tab} setTab={setTab}>
               전체
-            </Text>
-            <Button
-              className="cursor-pointer font-bold min-w-[100px] text-base text-center tracking-[-0.30px]"
-              shape="square"
-              color="blue_gray_100_01"
-              size="xs"
-              variant="outline"
-            >
+            </TabButton>
+            <TabButton index={1} tab={tab} setTab={setTab}>
               회원정보
-            </Button>
-            <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-[62px]"
-              size="txtInterMedium16Black900"
-            >
-              동화 제작
-            </Text>
-            <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-14"
-              size="txtInterMedium16Black900"
-            >
+            </TabButton>
+            <TabButton index={2} tab={tab} setTab={setTab}>
+              동화제작
+            </TabButton>
+            <TabButton index={3} tab={tab} setTab={setTab}>
               기타문의
-            </Text>
+            </TabButton>
           </div>
           <List
-            className="flex flex-col gap-[15px] items-start w-auto"
+            className="flex flex-col gap-[15px] mx-auto items-start w-full max-w-[1180px]"
             orientation="vertical"
           >
-            {new Array(8).fill({}).map((props, index) => (
+            {FAQList.map((props, index) => (
               <React.Fragment key={`CustomerServiceFaqrow${index}`}>
                 <CustomerServiceFaqrow
-                  className="flex flex-col gap-2.5 items-center justify-start max-w-[1160px] my-0 outline outline-gray-400 py-5 w-full"
+                  className="flex flex-col items-center justify-start my-0 
+                              border-b-[1px] border-b-gray-500 py-5 w-full"
                   {...props}
                 />
               </React.Fragment>
             ))}
           </List>
         </div>
+        <Paging
+          className="my-2"
+          currentPage={currentPage}
+          maxPage={10}
+          setCurrentPage={setCurrentPage}
+        />
         <Button
-          className="cursor-pointer mt-[71px] rounded-[10px] text-[22px] text-center sm:text-lg md:text-xl tracking-[-0.42px] w-[564px]"
+          className="cursor-pointer my-4 rounded-[10px] text-[22px] text-center
+                    sm:text-lg md:text-xl md:w-full tracking-[-0.42px] w-[564px]"
           color="amber_A100"
           size="xl"
           variant="fill"

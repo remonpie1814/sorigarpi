@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Img, Text } from "components";
 
-const CustomerServiceFaqrow = (props) => {
+const CustomerServiceFaqrow = ({ className, category, title, content }) => {
+  const [isOpen, setOpen] = useState(false);
   return (
     <>
-      <div className={props.className}>
-        <div className="flex md:flex-col flex-row md:gap-10 gap-[455px] items-center justify-between w-auto">
-          <div className="flex flex-row gap-2.5 items-center justify-start w-auto md:w-full">
+      <div className={className}>
+        <div
+          className="flex flex-row
+                    items-center justify-between w-full"
+          onClick={() => {
+            setOpen(!isOpen);
+          }}
+        >
+          <div className="flex flex-row flex-grow gap-2.5 items-center justify-start w-auto">
             <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-[67px]"
+              className="text-base text-black-900 text-center tracking-[-0.30px] font-bold"
               size="txtInterMedium16Black900"
             >
-              {props?.userinfotext}
+              [{category}]
             </Text>
             <Text
-              className="text-base text-black-900 tracking-[-0.30px] w-[127px]"
+              className="text-base text-black-900 tracking-[-0.30px]"
               size="txtInterMedium16Black900"
             >
-              {props?.withdrawaltext}
+              {title}
             </Text>
           </div>
           <Img
@@ -27,14 +34,17 @@ const CustomerServiceFaqrow = (props) => {
             alt="downEleven"
           />
         </div>
+        <div
+          className={`bg-gray-200 w-full px-2 overflow-hidden duration-300
+                    ${
+                      isOpen ? "h-auto opacity-100 my-2 py-2" : "h-0 opacity-0"
+                    }`}
+        >
+          {content}
+        </div>
       </div>
     </>
   );
-};
-
-CustomerServiceFaqrow.defaultProps = {
-  userinfotext: "[회원정보]",
-  withdrawaltext: "탈퇴를 하고 싶어요.",
 };
 
 export default CustomerServiceFaqrow;
