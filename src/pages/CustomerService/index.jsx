@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Button, Layout, List, Text } from "components";
-import CustomerServiceColumnOne from "components/CustomerServiceColumnOne";
+import { Button, Img, Layout, List, Text } from "components";
 import CustomerServiceFaqrow from "components/CustomerServiceFaqrow";
 
 const CustomerServicePage = () => {
@@ -15,7 +14,29 @@ const CustomerServicePage = () => {
           >
             FAQ
           </Text>
-          <CustomerServiceColumnOne className="flex flex-col gap-8 items-start justify-center max-w-[1180px] w-full" />
+          <div className="flex flex-col items-start justify-center w-full">
+            <div className="flex flex-col items-start justify-start w-full">
+              <form
+                className="flex flex-row items-center justify-start
+                            w-[27%] h-[46px] md:w-full"
+              >
+                <input
+                  className="bg-blue_gray-50 h-full border-0"
+                  type="text"
+                  placeholder="작품명 검색"
+                  name=""
+                  id=""
+                />
+                <button className="bg-amber-A100 flex flex-col h-[46px] items-center justify-start p-1 w-[46px]">
+                  <Img
+                    className="h-[35px] md:h-auto object-cover"
+                    src="images/img_image926.png"
+                    alt="image926"
+                  />
+                </button>
+              </form>
+            </div>
+          </div>
           <div className="flex flex-row gap-10 items-center justify-center max-w-[1155px] w-full">
             <Text
               className="text-base text-black-900 text-center tracking-[-0.30px] w-7"

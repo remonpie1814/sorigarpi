@@ -1,10 +1,12 @@
 //** 외곽선 없앰 */
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Img } from "components";
+import PageDrawer from "drawers/Page";
 
 const MainHeader = (props) => {
+  const [isOpenPageDrawer, setPageDrawer] = useState(false);
   return (
     <>
       <div className={props.className}>
@@ -31,10 +33,20 @@ const MainHeader = (props) => {
               className="h-12 md:h-auto object-cover w-12"
               src="images/img_menu11.png"
               alt="menu button"
+              onClick={() => {
+                setPageDrawer(true);
+              }}
             />
+            {isOpenPageDrawer}
           </div>
         </div>
       </div>
+      {isOpenPageDrawer ? (
+        <PageDrawer
+          open={isOpenPageDrawer}
+          onClose={() => setPageDrawer(false)}
+        />
+      ) : null}
     </>
   );
 };

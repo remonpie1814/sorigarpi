@@ -2,8 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { Button, Layout, Text } from "components";
-import MyLibraryPaging from "components/MyLibraryPaging";
+import { Button, Layout, Paging, Text } from "components";
 import TempTaleListTemptalerow from "components/TempTaleListTemptalerow";
 
 const TemporaryStorageDeletePage = () => {
@@ -81,7 +80,7 @@ const TemporaryStorageDeletePage = () => {
               </div>
             </div>
           </div>
-          <MyLibraryPaging className="flex flex-col gap-8 items-center justify-center w-full" />
+          <Paging className="flex flex-col gap-8 items-center justify-center w-full" />
         </div>
       </Layout>
     </>
