@@ -6,21 +6,20 @@ const LoginFormPage = () => {
   return (
     <>
       <Layout>
-        {" "}
         <div className="flex flex-col gap-5 h-[720px] md:h-auto items-center justify-start md:px-5 py-[120px] w-[720px] md:w-full">
           <div className="flex flex-row gap-2.5 items-center justify-center w-auto">
             <Img
               className="h-[51px] md:h-auto object-cover w-[170px]"
               src="images/img__51x170.png"
-              alt="ThreeHundredSixtyFive"
+              alt="로고"
             />
             <Img
               className="h-[60px] w-[58px]"
               src="images/img__black_900.svg"
-              alt="ThreeHundredSixtySix"
+              alt="콩림이"
             />
           </div>
-          <div className="flex flex-col gap-5 items-center justify-start w-[67%] md:w-full">
+          <form className="flex flex-col gap-5 items-center justify-start w-[67%] md:w-full">
             <div className="bg-amber-100 flex flex-col gap-5 items-center justify-center px-10 sm:px-5 py-[30px] rounded-[20px] w-[480px] sm:w-full">
               <Text
                 className="sm:text-2xl md:text-[26px] text-[28px] text-black-900 text-center w-full"
@@ -30,7 +29,6 @@ const LoginFormPage = () => {
               </Text>
               <div className="flex flex-col gap-5 items-center justify-start w-full">
                 <Input
-                  name="input"
                   placeholder="이메일"
                   className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
                   wrapClassName="border border-gray-300 border-solid w-full"
@@ -38,7 +36,6 @@ const LoginFormPage = () => {
                   variant="fill"
                 ></Input>
                 <Input
-                  name="input_One"
                   placeholder="비밀번호"
                   className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
                   wrapClassName="border border-gray-300 border-solid w-full"
@@ -46,20 +43,11 @@ const LoginFormPage = () => {
                   variant="fill"
                 ></Input>
                 <div className="flex relative w-[230px]">
-                  <div className="h-5 my-auto w-[61%] sm:w-full">
+                  <div className="h-5 my-auto w-1/2 sm:w-full">
                     <CheckBox
-                      className="font-medium my-auto text-[15px] text-left tracking-[-0.17px]"
-                      inputClassName="absolute h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5"
-                      name="ThreeHundredSixtyEight"
-                      id="ThreeHundredSixtyEight"
-                      label="아이디 저장"
-                      color="white_A700"
-                      size="xs"
-                      variant="fill"
-                    ></CheckBox>
-                    <CheckBox
-                      className="font-medium my-auto text-[15px] text-left tracking-[-0.17px]"
-                      inputClassName="absolute h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5"
+                      className="flex justify-start items-center font-medium my-auto 
+                                text-[15px] text-left tracking-[-0.17px]"
+                      inputClassName="h-5 mr-2 outline outline-[2px] outline-gray-300 rounded-sm w-5"
                       name="ThreeHundredSixtyNine"
                       id="ThreeHundredSixtyNine"
                       label="아이디 저장"
@@ -68,16 +56,19 @@ const LoginFormPage = () => {
                       variant="fill"
                     ></CheckBox>
                   </div>
-                  <CheckBox
-                    className="font-medium ml-[-20px] my-auto text-[15px] text-left tracking-[-0.17px] z-[1]"
-                    inputClassName="h-5 mr-[5px] outline outline-[2px] outline-gray-300 rounded-sm w-5 z-[1]"
-                    name="ThreeHundredSeventy"
-                    id="ThreeHundredSeventy"
-                    label="자동로그인"
-                    color="white_A700"
-                    size="xs"
-                    variant="fill"
-                  ></CheckBox>
+                  <div className="h-5 my-auto w-1/2 sm:w-full">
+                    <CheckBox
+                      className="flex justify-start items-center font-medium my-auto
+                                text-[15px] text-left tracking-[-0.17px]"
+                      inputClassName="h-5 mr-2 outline outline-[2px] outline-gray-300 rounded-sm w-5"
+                      name="ThreeHundredSeventy"
+                      id="ThreeHundredSeventy"
+                      label="자동로그인"
+                      color="white_A700"
+                      size="xs"
+                      variant="fill"
+                    ></CheckBox>
+                  </div>
                 </div>
               </div>
             </div>
@@ -90,27 +81,19 @@ const LoginFormPage = () => {
             >
               로그인
             </Button>
-          </div>
+          </form>
           <div className="flex flex-col items-start justify-start md:px-10 sm:px-5 px-[262px] w-full">
-            <div className="flex flex-row gap-2.5 items-center justify-center w-auto">
-              <Text
-                className="text-[15px] text-center text-gray-900 tracking-[-0.17px] w-auto"
-                size="txtInterMedium15"
-              >
-                비밀번호 찾기
-              </Text>
-              <Text
-                className="text-[15px] text-center text-gray-900 tracking-[-0.17px] w-auto"
-                size="txtInterMedium15"
-              >
-                |
-              </Text>
-              <Text
-                className="text-[15px] text-center text-gray-900 tracking-[-0.17px] w-auto"
-                size="txtInterMedium15"
-              >
-                회원가입
-              </Text>
+            <div
+              className="flex flex-row gap-2.5 items-center justify-center w-full
+                        text-[15px] text-gray-900 tracking-[-0.17px]"
+            >
+              <Button className="min-w-[100px] text-right">
+                <a href="/pwdsendemailform">비밀번호 찾기</a>
+              </Button>
+              <Text>|</Text>
+              <Button className="min-w-[100px] text-left">
+                <a href="/RegisterForm">회원가입</a>
+              </Button>
             </div>
           </div>
         </div>

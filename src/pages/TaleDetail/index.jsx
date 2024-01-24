@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-import { Button, Img, Layout, List, Text } from "components";
+import {
+  AutoResizingTextarea,
+  Button,
+  Img,
+  Layout,
+  List,
+  Text,
+} from "components";
 import TaleDetailInfo from "components/TaleDetailColumnspeakerfilledau";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 
@@ -20,8 +27,8 @@ const TaleDetailPage = () => {
     <>
       <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
-          <div className="flex flex-col gap-[22px] h-[1779px] md:h-auto items-center justify-start max-w-[1182px] pb-5 pt-[30px] w-full">
-            <TaleDetailInfo className="flex flex-col items-center justify-start w-full" />
+          <div className="flex flex-col gap-[22px] min-h-[1000px] items-start justify-start max-w-[1182px] pb-5 pt-[30px] w-full">
+            <TaleDetailInfo className="flex flex-col items-start justify-start w-full" />
             <div className="flex md:flex-col flex-row gap-[45px] items-center justify-start w-full">
               <div className="bg-yellow-100 border border-amber-A100 border-solid flex flex-row gap-2.5 h-[60px] md:h-auto items-center justify-center py-2.5 rounded-[5px] w-[300px]">
                 <Img
@@ -191,7 +198,7 @@ const TaleDetailPage = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-gray-100_01 flex flex-col gap-5 h-[536px] md:h-auto items-center justify-start sm:px-5 px-[35px] py-5 w-full">
+            <div className="bg-gray-100_01 flex flex-col gap-5 items-center justify-start sm:px-5 px-[35px] py-5 w-full">
               <Text
                 className="text-base text-gray-900 tracking-[-0.30px] w-full"
                 size="txtInterBold16"
@@ -206,31 +213,24 @@ const TaleDetailPage = () => {
                   <React.Fragment key={`TaleDetailReplyerow${index}`}>
                     <TaleDetailReplyerow
                       className="border-b border-blue_gray-100_01 border-solid flex flex-1 flex-col gap-[7px] h-[142px] 
-                                md:h-auto items-center justify-start w-full"
+                                md:h-auto items-start justify-start w-full"
                       {...props}
                     />
                   </React.Fragment>
                 ))}
               </List>
             </div>
-            <div className="flex md:flex-col flex-row gap-5 items-start justify-between w-full">
-              <div className="border border-blue_gray-100_01 border-solid flex flex-1 flex-col h-[135px] md:h-auto items-start justify-start max-w-[1067px] p-2.5 rounded-[3px] w-full">
-                <Text
-                  className="text-base text-blue_gray-100_01 tracking-[-0.18px] w-auto"
-                  size="txtInterMedium16Bluegray10001"
-                >
-                  댓글 입력
-                </Text>
-              </div>
-              <div className="bg-amber-A100 flex flex-col items-center justify-center p-8 sm:px-5 rounded-[5px]">
-                <Text
-                  className="my-[25px] text-base text-black-900 tracking-[-0.18px]"
-                  size="txtInterMedium16Black900"
+            <form className="flex md:flex-col flex-row gap-5 items-center w-full h-auto">
+              <AutoResizingTextarea className={"gap-2 w-full"} rows={3}>
+                <Button
+                  className="flex flex-col items-center justify-center
+                          px-8 rounded-[5px] bg-amber-A100
+                          h-full md:py-5 sm:px-5"
                 >
                   등록
-                </Text>
-              </div>
-            </div>
+                </Button>
+              </AutoResizingTextarea>
+            </form>
             <div
               className="bg-amber-A100 flex flex-col items-center justify-start p-4 rounded-[5px] w-[30%] md:w-full"
               onClick={() => {
