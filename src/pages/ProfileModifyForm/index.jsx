@@ -51,14 +51,15 @@ const ProfileModifyFormPage = () => {
                     className="text-gray-700 text-sm tracking-[-0.15px] w-full"
                     size="txtInterMedium14"
                   >
-                    닉네임{" "}
+                    닉네임
                   </Text>
-                  <Text
-                    className="text-base text-black-900 tracking-[-0.18px] w-full"
-                    size="txtInterMedium16Black900_1"
-                  >
-                    둥치탁치
-                  </Text>
+                  <input
+                    placeholder="닉네임"
+                    className="text-base text-black-900 tracking-[-0.18px] w-full
+                    p-0 border-none"
+                    type="text"
+                    value="둥치탁치"
+                  />
                 </div>
                 <div className="flex flex-col h-[21px] md:h-auto items-center justify-start w-[480px] sm:w-full">
                   <Text
@@ -77,12 +78,12 @@ const ProfileModifyFormPage = () => {
                   >
                     자기소개
                   </Text>
-                  <Text
-                    className="text-base text-black-900 tracking-[-0.18px]"
-                    size="txtInterMedium16Black900_1"
+                  <textarea
+                    className="text-base text-black-900 tracking-[-0.18px] w-full
+                    flex-grow resize-none overflow-y-auto p-0 border-none"
                   >
                     둥치탁치 구독과 좋아요 알림설정까지~
-                  </Text>
+                  </textarea>
                 </div>
               </div>
               <div className="flex sm:flex-col flex-row gap-2.5 h-[90px] md:h-auto items-center justify-center p-2.5 w-full">
@@ -92,6 +93,7 @@ const ProfileModifyFormPage = () => {
                   color="blue_gray_100_01"
                   size="lg"
                   variant="fill"
+                  onClick={() => navigate("/profile")}
                 >
                   취소
                 </Button>
@@ -101,6 +103,7 @@ const ProfileModifyFormPage = () => {
                   color="amber_A100"
                   size="lg"
                   variant="fill"
+                  onClick={() => navigate("/profile")}
                 >
                   적용
                 </Button>
