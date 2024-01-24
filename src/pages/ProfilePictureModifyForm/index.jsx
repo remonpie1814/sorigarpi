@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Layout, Text } from "components";
-import ProfilePictureModifyFormScrollbar from "components/ProfilePictureModifyFormScrollbar";
 
 const ProfilePictureModifyFormPage = () => {
   const navigate = useNavigate();
-
+  const [checkedImage, setCheckedImage] = useState(-1);
   return (
     <>
       <Layout>
@@ -21,65 +20,70 @@ const ProfilePictureModifyFormPage = () => {
             </Text>
             <div className="flex flex-col gap-2.5 items-center justify-center w-full">
               <div className="flex sm:flex-col flex-row gap-2.5 h-[500px] md:h-auto items-center justify-center px-5 w-[500px] sm:w-full">
-                <div className="bg-white-A700 gap-2.5 grid sm:grid-cols-1 grid-cols-3 items-center min-h-[auto] w-[470px] sm:w-full">
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
-                  <Img
-                    className="h-[150px] md:h-auto object-cover w-full"
-                    src="images/img_profile1.png"
-                    alt="profile"
-                  />
+                <div
+                  className="bg-white-A700 gap-2.5 grid grid-cols-3 sm:grid-cols-1
+                            items-center w-[480px] sm:w-full h-[480px]
+                            p-5
+                            overflow-y-auto overflow-x-clip"
+                >
+                  {Array(14)
+                    .fill("images/img_profile1.png")
+                    .map((image, index) => {
+                      return (
+                        <div className="relative">
+                          <div
+                            className={`absolute w-full h-full bg-black-900 bg-opacity-50
+                            flex text-center items-center justify-center z-10 pointer-events-none
+                            ${
+                              checkedImage == index
+                                ? "opacity-100"
+                                : "opacity-0"
+                            }`}
+                          >
+                            <span className="text-xl">✅</span>
+                          </div>
+                          <Img
+                            className={`h-[150px] md:h-auto object-cover w-full
+                                    ${
+                                      checkedImage == index
+                                        ? "opacity-50"
+                                        : "transition duration-300 hover:scale-125 hover:shadow-lg"
+                                    }`}
+                            onClick={() => {
+                              checkedImage == index
+                                ? setCheckedImage(-1)
+                                : setCheckedImage(index);
+                            }}
+                            src={image}
+                            alt="profile"
+                          />
+                        </div>
+                      );
+                    })}
                 </div>
-                <ProfilePictureModifyFormScrollbar className="bg-blue_gray-50_01 flex flex-col items-center justify-start p-0.5 w-[4%] sm:w-full" />
               </div>
-              <Button
-                className="common-pointer cursor-pointer font-medium min-w-[184px] text-base text-center tracking-[-0.18px]"
-                onClick={() => navigate("/profilemodifyform")}
-                shape="round"
-                color="amber_A100"
-                size="lg"
-                variant="fill"
-              >
-                취소
-              </Button>
+              <div className="flex flex-row gap-2 items-center justify-center">
+                <Button
+                  className="common-pointer cursor-pointer font-medium min-w-[184px] text-base text-center tracking-[-0.18px]"
+                  onClick={() => navigate("/profilemodifyform")}
+                  shape="round"
+                  color="blue_gray_100_02"
+                  size="lg"
+                  variant="fill"
+                >
+                  취소
+                </Button>
+                <Button
+                  className="common-pointer cursor-pointer font-medium min-w-[184px] text-base text-center tracking-[-0.18px]"
+                  onClick={() => navigate("/profilemodifyform")}
+                  shape="round"
+                  color="amber_A100"
+                  size="lg"
+                  variant="fill"
+                >
+                  확인
+                </Button>
+              </div>
             </div>
           </div>
         </div>
