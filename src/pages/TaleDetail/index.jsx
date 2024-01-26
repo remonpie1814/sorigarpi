@@ -232,7 +232,7 @@ const TaleDetailPage = () => {
               </AutoResizingTextarea>
             </form>
             <div
-              className="bg-amber-A100 flex flex-col items-center justify-start p-4 rounded-[5px] w-[30%] md:w-full"
+              className="bg-amber-A100 flex flex-col items-center justify-center p-4 rounded-[5px] w-[30%] md:w-full"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}

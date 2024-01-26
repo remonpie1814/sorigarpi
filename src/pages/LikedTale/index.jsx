@@ -79,42 +79,14 @@ const LikedTalePage = () => {
               </div>
             </div>
             <div className="flex flex-col items-start justify-center w-full">
-              <div className="flex flex-col gap-2.5 items-center justify-start w-full">
-                {/* 한 줄에 두 개씩 표시하기 위해 filter로 2씩 건너뜀.*/}
-                {likedTales
-                  .filter((_, i) => i % 2 === 0)
-                  .map((tale, index) => {
-                    return (
-                      <div className="flex flex-row md:flex-col">
-                        <TaleInfo
-                          title={likedTales[index * 2]?.title}
-                          image={likedTales[index * 2]?.image}
-                          page={likedTales[index * 2]?.page}
-                          likeCount={likedTales[index * 2]?.likeCount}
-                          commentCount={likedTales[index * 2]?.commentCount}
-                          writer={likedTales[index * 2]?.writer}
-                          creDate={likedTales[index * 2]?.creDate}
-                        />
-
-                        {/* 표시할 동화 수가 홀수라면 마지막 빈공간 채워주기 처리 */}
-                        {(index + 1) * 2 > likedTales.length ? (
-                          <div className="w-[540px]"></div>
-                        ) : (
-                          <TaleInfo
-                            title={likedTales[index * 2 + 1]?.title}
-                            image={likedTales[index * 2 + 1]?.image}
-                            page={likedTales[index * 2 + 1]?.page}
-                            likeCount={likedTales[index * 2 + 1]?.likeCount}
-                            commentCount={
-                              likedTales[index * 2 + 1]?.commentCount
-                            }
-                            writer={likedTales[index * 2 + 1]?.writer}
-                            creDate={likedTales[index * 2 + 1]?.creDate}
-                          />
-                        )}
-                      </div>
-                    );
-                  })}
+              <div className="grid grid-flow-row grid-cols-2 md:grid-cols-1 gap-2.5 items-center justify-start w-full">
+                {likedTales.map((tale, index) => {
+                  return (
+                    <div className="flex flex-row md:flex-col">
+                      <TaleInfo {...tale} />
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="flex flex-col items-center justify-center w-full">
