@@ -1,10 +1,6 @@
 import React from "react";
 
 import { Img, List, Text } from "components";
-import AccountInformationColumncommenteleven from "components/AccountInformationColumncommenteleven";
-import AccountInformationColumnconfusedone from "components/AccountInformationColumnconfusedone";
-import AccountInformationColumnonehundredfiftysix from "components/AccountInformationColumnonehundredfiftysix";
-import AccountInformationColumnreloadone from "components/AccountInformationColumnreloadone";
 import { Layout } from "components";
 
 const AccountInformationPage = () => {
