@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Img, Layout, Text } from "components";
+import { Img, Layout, MapList, Text } from "components";
 import NoticeRow from "components/NoticeListRowonehundredtwentythree";
 
 const NoticeListPage = () => {
@@ -34,9 +34,7 @@ const NoticeListPage = () => {
             </select>
           </div>
           <div className="flex flex-col gap-[29px] items-center justify-center md:px-5 py-[37px] w-full">
-            {noticeList.map((notice, index) => {
-              return <NoticeRow {...notice} />;
-            })}
+            <MapList list={noticeList} ComponentName={NoticeRow} />
           </div>
         </div>
       </Layout>
