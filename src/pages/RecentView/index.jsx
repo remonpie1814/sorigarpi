@@ -72,7 +72,13 @@ const RecentViewPage = () => {
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-1">
                     {history.data.map((tale, index) => {
-                      return <TaleInfo {...tale} />;
+                      return (
+                        <TaleInfo {...tale}>
+                          <Button className="bg-gray-300 px-8 py-2">
+                            삭제
+                          </Button>
+                        </TaleInfo>
+                      );
                     })}
                   </div>
                 </>
