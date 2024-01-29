@@ -2,27 +2,29 @@ import React from "react";
 
 import { Text } from "components";
 
-const MyReplyListMyreplyrow = (props) => {
+const MyReplyListMyreplyrow = ({ className, content, creDate, taleTitle }) => {
   return (
     <>
-      <div className={props.className}>
+      <div
+        className={`flex flex-col gap-[3px] items-start justify-start w-full ${className}`}
+      >
         <Text
-          className="text-base text-black-900 tracking-[-0.30px] w-[174px]"
+          className="text-base text-black-900 tracking-[-0.30px]"
           size="txtInterMedium16Black900"
         >
-          {props?.commenttext}
+          {content}
         </Text>
         <Text
-          className="text-black-900 text-xs tracking-[-0.23px] w-[91px]"
+          className="text-black-900 text-xs tracking-[-0.23px]"
           size="txtInterMedium12Black900"
         >
-          {props?.commenttimestamp}
+          {creDate}
         </Text>
         <Text
-          className="text-gray-500 text-xs tracking-[-0.23px] w-[67px]"
+          className="text-gray-500 text-xs tracking-[-0.23px]"
           size="txtInterMedium12Gray500"
         >
-          {props?.commenttitle}
+          {taleTitle}
         </Text>
       </div>
     </>
@@ -30,9 +32,9 @@ const MyReplyListMyreplyrow = (props) => {
 };
 
 MyReplyListMyreplyrow.defaultProps = {
-  commenttext: "ㅋㅋㅋㅋㅋㅋㅋㅋ아 웃기네",
-  commenttimestamp: "2023.11.02 11:04",
-  commenttitle: "토끼와 호랑이",
+  content: "ㅋㅋㅋㅋㅋㅋㅋㅋ아 웃기네",
+  creDate: "2023.11.02 11:04",
+  taleTitle: "토끼와 호랑이",
 };
 
 export default MyReplyListMyreplyrow;

@@ -72,105 +72,46 @@ const FollowingTalePage = () => {
                 </div>
                 <div className="flex flex-col gap-[15px] items-center justify-start w-full">
                   <div className="flex flex-col items-start justify-between w-full">
-                    <div className="flex flex-col items-center justify-start w-full">
-                      {/* 한 줄에 두 개씩 표시하기 위해 filter로 2씩 건너뜀.*/}
-                      {taleList
-                        .filter((_, i) => i % 2 === 0)
-                        .map((tale, index) => {
-                          return (
-                            <div className="flex flex-row md:flex-col">
-                              <TaleInfo
-                                title={taleList[index * 2]?.title}
-                                image={taleList[index * 2]?.image}
-                                page={taleList[index * 2]?.page}
-                                likeCount={taleList[index * 2]?.likeCount}
-                                commentCount={taleList[index * 2]?.commentCount}
-                                writer={taleList[index * 2]?.writer}
-                                creDate={taleList[index * 2]?.creDate}
-                              >
-                                {
-                                  // <>
-                                  //   <Button
-                                  //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                  //     shape="square"
-                                  //     color="gray_300"
-                                  //     size="md"
-                                  //     variant="fill"
-                                  //   >
-                                  //     그림수정
-                                  //   </Button>
-                                  //   <Button
-                                  //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                  //     shape="square"
-                                  //     color="gray_300"
-                                  //     size="md"
-                                  //     variant="fill"
-                                  //   >
-                                  //     녹음수정
-                                  //   </Button>
-                                  //   <Button
-                                  //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                  //     shape="square"
-                                  //     color="gray_300"
-                                  //     size="md"
-                                  //     variant="fill"
-                                  //   >
-                                  //     삭제
-                                  //   </Button>
-                                  // </>
-                                }
-                              </TaleInfo>
-                              {/* 표시할 동화 수가 홀수라면 마지막 빈공간 채워주기 처리 */}
-                              {(index + 1) * 2 > taleList.length ? (
-                                <div className="w-[540px]"></div>
-                              ) : (
-                                <TaleInfo
-                                  title={taleList[index * 2 + 1]?.title}
-                                  image={taleList[index * 2 + 1]?.image}
-                                  page={taleList[index * 2 + 1]?.page}
-                                  likeCount={taleList[index * 2 + 1]?.likeCount}
-                                  commentCount={
-                                    taleList[index * 2 + 1]?.commentCount
-                                  }
-                                  writer={taleList[index * 2 + 1]?.writer}
-                                  creDate={taleList[index * 2 + 1]?.creDate}
-                                >
-                                  {
-                                    // <>
-                                    //   <Button
-                                    //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                    //     shape="square"
-                                    //     color="gray_300"
-                                    //     size="md"
-                                    //     variant="fill"
-                                    //   >
-                                    //     그림수정
-                                    //   </Button>
-                                    //   <Button
-                                    //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                    //     shape="square"
-                                    //     color="gray_300"
-                                    //     size="md"
-                                    //     variant="fill"
-                                    //   >
-                                    //     녹음수정
-                                    //   </Button>
-                                    //   <Button
-                                    //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
-                                    //     shape="square"
-                                    //     color="gray_300"
-                                    //     size="md"
-                                    //     variant="fill"
-                                    //   >
-                                    //     삭제
-                                    //   </Button>
-                                    // </>
-                                  }
-                                </TaleInfo>
-                              )}
-                            </div>
-                          );
-                        })}
+                    <div className="grid grid-flow-row grid-cols-2 md:grid-cols-1 items-center justify-center w-full">
+                      {taleList.map((tale, index) => {
+                        return (
+                          <div className="flex flex-row mx-auto md:flex-col">
+                            <TaleInfo {...tale}>
+                              {
+                                // <>
+                                //   <Button
+                                //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                //     shape="square"
+                                //     color="gray_300"
+                                //     size="md"
+                                //     variant="fill"
+                                //   >
+                                //     그림수정
+                                //   </Button>
+                                //   <Button
+                                //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                //     shape="square"
+                                //     color="gray_300"
+                                //     size="md"
+                                //     variant="fill"
+                                //   >
+                                //     녹음수정
+                                //   </Button>
+                                //   <Button
+                                //     className="!text-black-900 cursor-pointer font-inter font-medium min-w-[100px] text-center text-sm tracking-[-0.15px]"
+                                //     shape="square"
+                                //     color="gray_300"
+                                //     size="md"
+                                //     variant="fill"
+                                //   >
+                                //     삭제
+                                //   </Button>
+                                // </>
+                              }
+                            </TaleInfo>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

@@ -1,49 +1,54 @@
 import React from "react";
 
 import { Button, Img, Layout, Text } from "components";
+import { useNavigate } from "react-router-dom";
 
 const InquiryFormPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Layout>
-        <div className="flex flex-col gap-10 items-start justify-start max-w-[1180px] mx-auto md:px-5 py-[30px] w-full">
+        <form className="flex flex-col gap-10 items-start justify-start max-w-[1180px] mx-auto md:px-5 py-[30px] w-full">
           <Text
-            className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-[139px]"
+            className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px]"
             size="txtInterMedium28Gray900"
           >
             1:1 문의내역
           </Text>
-          <div className="flex flex-row gap-[11px] items-start justify-start w-auto sm:w-full">
+          <div className="flex flex-row gap-[11px] items-center justify-start w-auto sm:w-full">
             <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-[29px]"
+              className="text-base text-black-900 text-center tracking-[-0.30px]"
               size="txtInterMedium16Black900"
             >
               분류
             </Text>
-            <div className="bg-blue_gray-100 flex flex-col items-start justify-start rounded-[5px] w-auto">
-              <div className="flex flex-row gap-[98px] items-end justify-end w-[52%] md:w-full">
-                <Text
-                  className="mb-1 mt-[7px] text-base text-black-900 text-center tracking-[-0.30px]"
-                  size="txtInterMedium16Black900"
+            <div
+              className="flex flex-row items-center justify-start
+                        rounded-[5px] w-auto"
+            >
+              <div className="flex flex-row justify-start items-center md:w-full">
+                <select
+                  className="w-auto min-w-[120px] bg-blue_gray-100 p-2"
+                  name="category"
+                  id=""
                 >
-                  기타
-                </Text>
-                <Img
-                  className="h-8 md:h-auto object-cover w-8"
-                  src="images/img_down11_32x32.png"
-                  alt="downEleven"
-                />
+                  <option value="">회원가입</option>
+                  <option value="">그림</option>
+                  <option value="" selected>
+                    기타
+                  </option>
+                </select>
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-[13px] items-start justify-start w-auto md:w-full">
+          <div className="flex flex-col gap-[13px] items-start justify-start w-full">
             <Text
-              className="text-base text-black-900 text-center tracking-[-0.30px] w-7"
+              className="text-base text-black-900 text-center tracking-[-0.30px]"
               size="txtInterMedium16Black900"
             >
               내용
             </Text>
-            <div className="bg-gray-100_01 h-[352px] w-full"></div>
+            <textarea className="bg-gray-100_01 h-[352px] w-full resize-none"></textarea>
           </div>
           <Text
             className="text-base text-black-900 w-full"
@@ -60,6 +65,9 @@ const InquiryFormPage = () => {
               color="blue_gray_100"
               size="3xl"
               variant="fill"
+              onClick={() => {
+                navigate("InquiryHistory");
+              }}
             >
               취소
             </Button>
@@ -72,7 +80,7 @@ const InquiryFormPage = () => {
               작성하기
             </Button>
           </div>
-        </div>
+        </form>
       </Layout>
     </>
   );

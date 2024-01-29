@@ -11,7 +11,7 @@ const SanctionHistoryPage = () => {
           <div className="flex flex-col items-center justify-center max-w-[1180px] pb-2.5 pt-[30px] px-2.5 w-full">
             <div className="flex flex-col gap-[19px] items-center justify-start max-w-[1180px] w-full">
               <Text
-                className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-[163px]"
+                className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px]"
                 size="txtInterMedium28Gray900"
               >
                 제재 내역 보기
