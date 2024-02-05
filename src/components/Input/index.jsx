@@ -16,7 +16,7 @@ const Input = React.forwardRef(
       className = "",
       name = "",
       placeholder = "",
-      type = "text",
+      type = "",
       children,
       errors = [],
       label = "",
@@ -29,7 +29,7 @@ const Input = React.forwardRef(
       color = "gray_300",
       ...restProps
     },
-    ref,
+    ref
   ) => {
     const handleChange = (e) => {
       if (onChange) onChange(e?.target?.value);
@@ -48,7 +48,7 @@ const Input = React.forwardRef(
           <input
             ref={ref}
             className={`${className} bg-transparent border-0`}
-            type={type}
+            type={type || "text"}
             name={name}
             onChange={handleChange}
             placeholder={placeholder}
@@ -59,7 +59,7 @@ const Input = React.forwardRef(
         {!!errors && <ErrorMessage errors={errors} />}
       </>
     );
-  },
+  }
 );
 
 Input.propTypes = {
