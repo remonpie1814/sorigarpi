@@ -37,7 +37,7 @@ const TemporaryStorageDeletePage = () => {
               </div>
             </div>
           </div>
-          <div className="flex sm:flex-col flex-row sm:gap-10 items-start flex justify-between pr-[3px] w-full">
+          <div className="flex sm:flex-row flex-row sm:gap-10 items-start flex justify-between pr-[3px] w-full">
             <Button
               className="cursor-pointer font-medium min-w-[100px] sm:mt-0 mt-0.5 text-base text-center tracking-[-0.18px]"
               shape="square"
