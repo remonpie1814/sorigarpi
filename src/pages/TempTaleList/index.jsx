@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Button, Img, MainHeader, Navbar, Paging, Text } from "components";
+import { Button, Img, Layout, Paging, Text } from "components";
 import TempTaleListTemptalerow from "components/TempTaleListTemptalerow";
 
 const TempTaleListPage = () => {
+  // 페이징을 위한 변수. Paging 컴포넌트에 둘 다 props로 넣는다.
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start mx-auto w-auto sm:w-full md:w-full">
-        <MainHeader className="bg-white-A700 flex flex-col items-center justify-start p-[26px] sm:px-5 w-full" />
-        <Navbar className="flex flex-col items-center justify-start outline outline-blue_gray-100 p-2 w-full" />
+      <Layout>
         <div className="flex flex-col gap-5 items-center justify-start max-w-[1180px] mx-auto pb-5 pt-[30px] md:px-5 w-full">
           <Text
             className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 w-full"
@@ -16,9 +16,9 @@ const TempTaleListPage = () => {
           >
             임시 저장
           </Text>
-          <div className="flex flex-col items-center justify-start pb-1 w-full">
+          <div className="flex flex-col items-center justify-start w-full pb-1">
             <div className="flex flex-col items-end justify-start w-full">
-              <div className="flex flex-row md:gap-10 items-start justify-between w-full">
+              <div className="flex flex-row items-start justify-between w-full md:gap-10">
                 <Text
                   className="mt-[3px] text-[22px] text-gray-900 sm:text-lg md:text-xl"
                   size="txtInterMedium22Gray900"
@@ -59,9 +59,14 @@ const TempTaleListPage = () => {
               </div>
             </div>
           </div>
-          <Paging className="flex flex-col gap-8 items-center justify-center w-full" />
+          <Paging
+            className="flex flex-col items-center justify-center w-full gap-8"
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            maxPage={10}
+          />
         </div>
-      </div>
+      </Layout>
     </>
   );
 };

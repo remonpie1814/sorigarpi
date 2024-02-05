@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import TempTaleListTemptalerow from "components/TempTaleListTemptalerow";
 
 const TemporaryStorageDeletePage = () => {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(0);
 
   return (
     <>
@@ -19,9 +20,9 @@ const TemporaryStorageDeletePage = () => {
             임시 저장
           </Text>
           <div className="flex flex-col items-center justify-start w-full">
-            <div className="flex flex-row md:gap-10 gap-[640px] items-start justify-between w-auto md:w-full">
+            <div className="flex flex-row items-start justify-between w-full md:gap-10">
               <Text
-                className="text-[22px] text-gray-900 sm:text-lg md:text-xl w-[59px]"
+                className="mt-[3px] text-[22px] text-gray-900 sm:text-lg md:text-xl"
                 size="txtInterMedium22Gray900"
               >
                 총 3개
@@ -36,7 +37,7 @@ const TemporaryStorageDeletePage = () => {
               </div>
             </div>
           </div>
-          <div className="flex sm:flex-col flex-row sm:gap-5 items-start justify-start pr-[3px] w-full">
+          <div className="flex sm:flex-row flex-row sm:gap-10 items-start flex justify-between pr-[3px] w-full">
             <Button
               className="cursor-pointer font-medium min-w-[100px] sm:mt-0 mt-0.5 text-base text-center tracking-[-0.18px]"
               shape="square"
@@ -46,25 +47,27 @@ const TemporaryStorageDeletePage = () => {
             >
               전체 선택
             </Button>
-            <Button
-              className="common-pointer cursor-pointer font-medium mb-0.5 min-w-[100px] sm:ml-[0] ml-[846px] text-base text-center tracking-[-0.18px]"
-              onClick={() => navigate("/temptalelist")}
-              shape="square"
-              color="blue_gray_100"
-              size="sm"
-              variant="fill"
-            >
-              취소
-            </Button>
-            <Button
-              className="cursor-pointer font-medium mb-0.5 min-w-[100px] sm:ml-[0] ml-[31px] text-base text-center tracking-[-0.18px]"
-              shape="square"
-              color="blue_gray_100"
-              size="sm"
-              variant="fill"
-            >
-              삭제
-            </Button>
+            <div className="flex flex-row gap-2.5 items-end justify-end px-[5px] w-full">
+              <Button
+                className="common-pointer cursor-pointer font-medium mb-0.5 min-w-[100px] sm:ml-[0] ml-[0] text-base text-center tracking-[-0.18px]"
+                onClick={() => navigate("/temptalelist")}
+                shape="square"
+                color="blue_gray_100"
+                size="sm"
+                variant="fill"
+              >
+                취소
+              </Button>
+              <Button
+                className="cursor-pointer font-medium mb-0.5 min-w-[100px] sm:ml-[0] ml-[31px] text-base text-center tracking-[-0.18px]"
+                shape="square"
+                color="blue_gray_100"
+                size="sm"
+                variant="fill"
+              >
+                삭제
+              </Button>
+            </div>
           </div>
           <div className="flex flex-col items-start justify-between w-full">
             <div className="flex flex-col items-center justify-start w-full">
@@ -80,7 +83,12 @@ const TemporaryStorageDeletePage = () => {
               </div>
             </div>
           </div>
-          <Paging className="flex flex-col gap-8 items-center justify-center w-full" />
+          <Paging
+            className="flex flex-col items-center justify-center w-full gap-8"
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            maxPage={5}
+          />
         </div>
       </Layout>
     </>
