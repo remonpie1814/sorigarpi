@@ -27,7 +27,7 @@ const LoginFormPage = () => {
               >
                 로그인
               </Text>
-              <div className="flex flex-col gap-5 items-center justify-start w-full">
+              <div className="flex flex-col items-center justify-start w-full gap-5">
                 <Input
                   placeholder="이메일"
                   className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
@@ -36,6 +36,7 @@ const LoginFormPage = () => {
                   variant="fill"
                 ></Input>
                 <Input
+                  type="password"
                   placeholder="비밀번호"
                   className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
                   wrapClassName="border border-gray-300 border-solid w-full"
@@ -43,7 +44,7 @@ const LoginFormPage = () => {
                   variant="fill"
                 ></Input>
                 <div className="flex relative w-[230px]">
-                  <div className="h-5 my-auto w-1/2 sm:w-full">
+                  <div className="w-1/2 h-5 my-auto sm:w-full">
                     <CheckBox
                       className="flex justify-start items-center font-medium my-auto 
                                 text-[15px] text-left tracking-[-0.17px]"
@@ -56,7 +57,7 @@ const LoginFormPage = () => {
                       variant="fill"
                     ></CheckBox>
                   </div>
-                  <div className="h-5 my-auto w-1/2 sm:w-full">
+                  <div className="w-1/2 h-5 my-auto sm:w-full">
                     <CheckBox
                       className="flex justify-start items-center font-medium my-auto
                                 text-[15px] text-left tracking-[-0.17px]"

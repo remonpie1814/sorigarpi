@@ -16,7 +16,7 @@ const Input = React.forwardRef(
       className = "",
       name = "",
       placeholder = "",
-      type = "",
+      type = "text",
       children,
       errors = [],
       label = "",
@@ -48,7 +48,7 @@ const Input = React.forwardRef(
           <input
             ref={ref}
             className={`${className} bg-transparent border-0`}
-            type={type || "text"}
+            type={type}
             name={name}
             onChange={handleChange}
             placeholder={placeholder}
