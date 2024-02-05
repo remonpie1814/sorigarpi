@@ -8,7 +8,7 @@ const TaleSettingPage = () => {
     <>
       <Layout>
         <div className="flex flex-col md:gap-10 gap-[65px] h-[1214px] md:h-auto items-center justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
-          <div className="flex flex-col items-center justify-start w-full gap-5 px-5 border-b border-gray-600 border-solid">
+          <div className="flex flex-col items-center justify-start w-full gap-5 px-5 pb-5 border-b border-gray-600 border-solid">
             <div className="flex flex-col items-center justify-start w-full">
               <Text
                 className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-full"
@@ -19,7 +19,7 @@ const TaleSettingPage = () => {
             </div>
             <div className="flex flex-row items-start justify-start w-full md:flex-col md:gap-5">
               <Img
-                className="h-[426px] sm:h-auto max-h-[426px] object-cover sm:w-[] md:w-[]"
+                className="h-[426px] sm:h-auto max-h-[426px] object-cover sm:w-[] md:m-auto"
                 src="images/img_fairytaleimage.png"
                 alt="fairytaleimage"
               />
@@ -31,7 +31,7 @@ const TaleSettingPage = () => {
                   >
                     제목
                   </Text>
-                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] resize-none	"></textarea>
+                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[100%] resize-none	"></textarea>
                 </div>
                 <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-center w-full h-[60%]">
                   <Text
@@ -40,7 +40,7 @@ const TaleSettingPage = () => {
                   >
                     설명
                   </Text>
-                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] resize-none	"></textarea>
+                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[100%] resize-none	"></textarea>
                 </div>
               </div>
             </div>
