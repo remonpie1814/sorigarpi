@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Img, Input, Layout, Text } from "components";
+import { Button, Img, Input, Layout, Text } from "components";
 
 const PwdSendEmailFormPage = () => {
   return (
@@ -13,24 +13,23 @@ const PwdSendEmailFormPage = () => {
           >
             비밀번호찾기
           </Text>
-          <div className="flex flex-col gap-[50px] items-center justify-start w-[56%] md:w-full">
+          <form className="flex flex-col gap-[50px] items-center justify-start w-[56%] md:w-full">
             <Input
               name="input"
               placeholder="이메일"
               className="font-medium p-0 placeholder:text-black-900 text-base text-left tracking-[-0.30px] w-full"
               wrapClassName="w-full"
             ></Input>
-            <div className="bg-amber-A100 flex flex-col items-center justify-end p-2.5 rounded-[10px] w-full">
-              <div className="flex flex-col items-start justify-end p-[3px]">
-                <Text
-                  className="md:ml-[0] ml-[91px] text-[22px] text-black-900 sm:text-lg md:text-xl tracking-[-0.42px]"
-                  size="txtInterMedium22Black900"
-                >
-                  인증 이메일 발송
-                </Text>
-              </div>
-            </div>
-          </div>
+            <Button
+              className="items-center p-2.5 rounded-[10px] w-full md:ml-[0] text-[22px] text-black-900 sm:text-lg md:text-xl tracking-[-0.42px]"
+              size="txtInterMedium22Black900"
+              color="amber_A100"
+              variant="fill"
+              shape="round"
+            >
+              인증 이메일 발송
+            </Button>
+          </form>
         </div>
       </Layout>
     </>
