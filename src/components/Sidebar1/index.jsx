@@ -52,14 +52,14 @@ const Sidebar1 = ({ className, onClose }) => {
       <div className={className}>
         <div className="flex flex-row sm:gap-10 items-center justify-between w-full">
           <Text
-            className="text-2xl md:text-[22px] text-gray-900 sm:text-xl tracking-[-0.46px]"
+            className="text-2xl text-gray-900 tracking-[-0.46px]"
             size="txtInterMedium24Gray900_1"
           >
             사용자님 환영합니다
           </Text>
-          <div className="flex flex-col h-20 items-center justify-end p-6 sm:px-5 w-20">
+          <div className="flex flex-col h-20 items-center justify-end p-6 w-20">
             <Text
-              className="text-2xl md:text-[22px] text-black-900 text-center sm:text-xl tracking-[-0.46px]"
+              className="text-2xl text-black-900 text-center tracking-[-0.46px]"
               size="txtInterMedium24Black900"
               onClick={() => {
                 onClose();
@@ -84,7 +84,7 @@ const Sidebar1 = ({ className, onClose }) => {
             className="cursor-pointer 
             font-inter font-medium
             w-full py-2
-            text-[22px] text-center sm:text-lg md:text-xl tracking-[-0.42px]"
+            text-[22px] text-center tracking-[-0.42px]"
             shape="square"
             color="blue_gray_100"
             variant="fill"
@@ -101,19 +101,19 @@ const SidebarRow = ({ text, image, navigateTo }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex flex-row gap-[30px] h-20 md:h-auto items-center justify-start py-2.5 w-full"
+      className="flex flex-row gap-[30px] h-auto items-center justify-start py-2.5 w-full"
       onClick={() => {
         navigate(navigateTo);
       }}
     >
       <Text
-        className="text-xl md:text-[22px] text-gray-900 sm:text-xl tracking-[-0.46px] w-auto"
+        className="text-[22px] text-gray-900 tracking-[-0.46px] w-auto"
         size="txtInterMedium24Gray900_1"
       >
         {text}
       </Text>
       <Img
-        className="h-[50px] md:h-auto object-cover w-[50px]"
+        className="h-[50px] object-cover w-[50px]"
         src={image}
         alt="image505"
       />
