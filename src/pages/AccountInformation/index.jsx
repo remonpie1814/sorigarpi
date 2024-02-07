@@ -37,11 +37,12 @@ const AccountInformationPage = () => {
               </div>
             </div>
             <div
-              className="bg-orange-50 grid grid-flow-row grid-cols-3 sm:grid-cols-1 h-[100px] md:h-auto 
+              className="bg-orange-50 grid grid-flow-row grid-cols-4 sm:grid-cols-1 h-[100px] md:h-auto 
             items-center justify-center max-w-[1179px] px-5 w-full"
             >
               {[
                 { text: "가입일자", value: "2023. 01. 02" },
+                { text: "만든 동화 수", value: "4개" },
                 { text: "녹음한 동화 수", value: "3개" },
                 { text: "받은 좋아요 수", value: "55개" },
               ].map((a, i) => {
