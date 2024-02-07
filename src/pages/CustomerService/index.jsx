@@ -33,7 +33,7 @@ const CustomerServicePage = () => {
                             w-[27%] h-[46px] md:w-full"
               >
                 <input
-                  className="bg-blue_gray-50 h-full border-0"
+                  className="h-full border-0 bg-blue_gray-50"
                   type="text"
                   placeholder="검색"
                   name=""
@@ -50,16 +50,36 @@ const CustomerServicePage = () => {
             </div>
           </div>
           <div className="flex flex-row gap-10 items-center justify-center max-w-[1155px] w-full">
-            <TabButton index={0} tab={tab} setTab={setTab}>
+            <TabButton
+              index={0}
+              tab={tab}
+              setTab={setTab}
+              border={"border-b-2"}
+            >
               전체
             </TabButton>
-            <TabButton index={1} tab={tab} setTab={setTab}>
+            <TabButton
+              index={1}
+              tab={tab}
+              setTab={setTab}
+              border={"border-b-2"}
+            >
               회원정보
             </TabButton>
-            <TabButton index={2} tab={tab} setTab={setTab}>
+            <TabButton
+              index={2}
+              tab={tab}
+              setTab={setTab}
+              border={"border-b-2"}
+            >
               동화제작
             </TabButton>
-            <TabButton index={3} tab={tab} setTab={setTab}>
+            <TabButton
+              index={3}
+              tab={tab}
+              setTab={setTab}
+              border={"border-b-2"}
+            >
               기타문의
             </TabButton>
           </div>
