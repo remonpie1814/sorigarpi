@@ -13,6 +13,7 @@ const AutoResizingTextarea = ({
   setValue,
   rows,
   placeholder,
+  text,
   handleSubmit,
 }) => {
   const textareaRef = useRef();
@@ -49,7 +50,9 @@ const AutoResizingTextarea = ({
               }
             }
           }}
-        />
+        >
+          {text}
+        </textarea>
         {children}
       </div>
     </>

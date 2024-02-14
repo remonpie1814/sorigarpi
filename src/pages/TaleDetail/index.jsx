@@ -8,10 +8,20 @@ import {
   List,
   Text,
 } from "components";
-import TaleDetailInfo from "components/TaleDetailColumnspeakerfilledau";
+import TaleDetailInfo from "components/TaleDetailInfo";
 import TaleDetailReplyerow from "components/TaleDetailReplyerow";
 
 const TaleDetailPage = () => {
+  const [taleDetail, setTaleDetail] = useState({
+    taleName: "토끼와 호랑이",
+    taleInfo: "토끼랑 호랑이가 떡을 놓고 싸우는 이야기",
+    writer: "가나ㅏ다다다ㄹㄴㅣㅏ",
+    writerId: "abc",
+    likedCount: "100",
+    commentCount: "3",
+    recordCount: "10",
+  });
+
   // 녹음한 사람 state
   const [recorders, setRecorders] = useState([
     {
@@ -28,7 +38,10 @@ const TaleDetailPage = () => {
       <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
           <div className="flex flex-col gap-[22px] min-h-[1000px] items-start justify-start max-w-[1182px] pb-5 pt-[30px] w-full">
-            <TaleDetailInfo className="flex flex-col items-start justify-start w-full" />
+            <TaleDetailInfo
+              className="flex flex-col items-start justify-start w-full"
+              {...taleDetail}
+            />
             <div className="flex md:flex-col flex-row gap-[45px] items-center justify-start w-full">
               <div className="bg-yellow-100 border border-amber-A100 border-solid flex flex-row gap-2.5 h-[60px] md:h-auto items-center justify-center py-2.5 rounded-[5px] w-[300px]">
                 <Img
@@ -89,9 +102,12 @@ const TaleDetailPage = () => {
                 이 동화를 녹음한 사람
               </Text>
               <div className="flex md:flex-col flex-row gap-[35px] items-center justify-start px-[3px] py-5 w-full">
-                {recorders.map(() => {
+                {recorders.map((recorder, index) => {
                   return (
-                    <div className="flex flex-col gap-3 items-center justify-start w-auto">
+                    <div
+                      key={"recorder" + index}
+                      className="flex flex-col gap-3 items-center justify-start w-auto"
+                    >
                       <Img
                         className="h-[114px] md:h-auto object-cover w-[113px] sm:w-full"
                         src="images/img_image804.png"
@@ -232,7 +248,7 @@ const TaleDetailPage = () => {
               </AutoResizingTextarea>
             </form>
             <div
-              className="bg-amber-A100 flex flex-col items-center justify-center p-4 rounded-[5px] w-[30%] md:w-full"
+              className="bg-amber-A100 flex flex-col items-center justify-center p-4 rounded-[5px] w-[30%] md:w-full mx-auto"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}

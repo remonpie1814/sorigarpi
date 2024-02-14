@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Button, Img, Text } from "components";
+import { Button, Img, Modal, Text } from "components";
+import { useNavigate } from "react-router-dom";
 
-const TaleDetailInfo = ({ className }) => {
+const TaleDetailInfo = ({
+  className,
+  taleName,
+  taleInfo,
+  creDate,
+  writer,
+  writerId,
+  likedCount,
+  commentCount,
+  recordCount,
+}) => {
+  const navigate = useNavigate();
+  const [taleModal, setModal] = useState(false);
   return (
     <>
       <div className={className}>
@@ -28,9 +41,14 @@ const TaleDetailInfo = ({ className }) => {
                 w-aut flex flex-grow"
                 size="txtInterMedium36"
               >
-                토끼와 호랑이
+                {taleName}
               </Text>
-              <Button className="cursor-pointer w-[50px] h-[50px] text-4xl text-center">
+              <Button
+                className="cursor-pointer w-[50px] h-[50px] text-4xl text-center"
+                onClick={() => {
+                  setModal(true);
+                }}
+              >
                 ⋮
               </Button>
             </div>
@@ -38,7 +56,7 @@ const TaleDetailInfo = ({ className }) => {
               className="text-base text-gray-400 tracking-[-0.18px] w-full"
               size="txtInterMedium16Gray400_1"
             >
-              작성일 2023.10.06
+              {creDate}
             </Text>
             <div className="flex flex-row gap-2.5 items-center justify-start w-full">
               <Img
@@ -46,12 +64,17 @@ const TaleDetailInfo = ({ className }) => {
                 src="images/img_image804.png"
                 alt="image804"
               />
-              <a className="text-base text-gray-600 underline w-auto">
-                <>가나다라마바사아자차카 &gt;</>,
-              </a>
+              <Button
+                className="text-base text-gray-600 underline w-auto"
+                onClick={() => {
+                  navigate(`/profile/${writerId}`);
+                }}
+              >
+                <>{writer} &gt;</>
+              </Button>
             </div>
             <div className="flex flex-row gap-5 items-center justify-start py-2.5 w-full">
-              <div className="flex flex-row gap-2.5 h-[30px] md:h-auto items-center justify-center w-[75px]">
+              <div className="flex flex-row gap-2.5 h-[30px] md:h-auto items-center justify-center">
                 <Img
                   className="h-[25px] md:h-auto object-cover w-[25px]"
                   src="images/img_image804_25x25.png"
@@ -61,10 +84,10 @@ const TaleDetailInfo = ({ className }) => {
                   className="text-base text-center text-gray-900 tracking-[-0.18px]"
                   size="txtInterMedium16Gray900"
                 >
-                  23
+                  {likedCount}
                 </Text>
               </div>
-              <div className="flex flex-row gap-2.5 h-8 md:h-auto items-center justify-center w-[75px]">
+              <div className="flex flex-row gap-2.5 h-8 md:h-auto items-center justify-center">
                 <Img
                   className="h-8 md:h-auto object-cover w-8"
                   src="images/img_image805.png"
@@ -74,10 +97,10 @@ const TaleDetailInfo = ({ className }) => {
                   className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                   size="txtInterMedium16"
                 >
-                  1
+                  {commentCount}
                 </Text>
               </div>
-              <div className="flex flex-row gap-2.5 h-[30px] md:h-auto items-center justify-center w-[75px]">
+              <div className="flex flex-row gap-2.5 h-[30px] md:h-auto items-center justify-center">
                 <Img
                   className="h-[25px] md:h-auto object-cover w-[25px]"
                   src="images/img__25x25.png"
@@ -87,7 +110,7 @@ const TaleDetailInfo = ({ className }) => {
                   className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                   size="txtInterMedium16"
                 >
-                  5
+                  {recordCount}
                 </Text>
               </div>
             </div>
@@ -95,13 +118,67 @@ const TaleDetailInfo = ({ className }) => {
               className="leading-[150.00%] max-w-[850px] md:max-w-full text-base text-gray-600 tracking-[-0.18px]"
               size="txtInterMedium16Gray600"
             >
-              책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명책설명
+              {taleInfo}
             </Text>
           </div>
         </div>
       </div>
+      {taleModal && (
+        <>
+          <TaleModal setModal={setModal} />
+        </>
+      )}
     </>
   );
+};
+
+const TaleModal = ({ setModal }) => {
+  return (
+    <>
+      <div
+        className="fixed w-screen h-screen top-0 left-0 z-10
+           flex items-center justify-center"
+      >
+        <div
+          className="fixed bg-black-900 opacity-50 w-screen h-screen top-0 left-0 z-0"
+          onClick={() => {
+            setModal(false);
+          }}
+        ></div>
+        <div
+          className="flex flex-col gap-2 p-2
+                        w-[200px] h-auto rounded-xl bg-white-A700
+                        z-20"
+        >
+          <Button className="flex flex-row p-2">
+            <img
+              className="w-[20px]"
+              src="/images/free-icon-share-3989188.png"
+              alt=""
+            />
+            <span className="flex-grow">공유하기</span>
+          </Button>
+          <Button className="flex flex-row p-2">
+            <img
+              className="w-[20px]"
+              src="/images/free-icon-problem-report-7689567.png"
+              alt=""
+            />
+            <span className="flex-grow">신고하기</span>
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+};
+
+TaleDetailInfo.defaultProps = {
+  taleName: "동화제목",
+  taleInfo: "책 설멍",
+  writer: "작가 이름",
+  likedCount: "좋아요 수",
+  commentCount: "댓글 수",
+  recordCount: "녹음한 사람 수",
 };
 
 export default TaleDetailInfo;
