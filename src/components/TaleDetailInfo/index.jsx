@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-import { Button, Img, Modal, Text } from "components";
+import { Button, Img, Modal, ReportModal, Text } from "components";
 import { useNavigate } from "react-router-dom";
 
 const TaleDetailInfo = ({
   className,
+  taleId,
   taleName,
   taleInfo,
   creDate,
@@ -15,7 +16,8 @@ const TaleDetailInfo = ({
   recordCount,
 }) => {
   const navigate = useNavigate();
-  const [taleModal, setModal] = useState(false);
+  const [taleModal, setTaleModal] = useState(false);
+  const [reportModal, setReportModal] = useState(false);
   return (
     <>
       <div className={className}>
@@ -46,7 +48,7 @@ const TaleDetailInfo = ({
               <Button
                 className="cursor-pointer w-[50px] h-[50px] text-4xl text-center"
                 onClick={() => {
-                  setModal(true);
+                  setTaleModal(true);
                 }}
               >
                 ⋮
@@ -125,14 +127,30 @@ const TaleDetailInfo = ({
       </div>
       {taleModal && (
         <>
-          <TaleModal setModal={setModal} />
+          <TaleModal
+            setTaleModal={setTaleModal}
+            setReportModal={setReportModal}
+          />
+        </>
+      )}
+      {reportModal && (
+        <>
+          <ReportModal
+            type="tale"
+            id={taleId}
+            writer={writer}
+            content={taleName}
+            closeModal={() => {
+              setReportModal(false);
+            }}
+          />
         </>
       )}
     </>
   );
 };
 
-const TaleModal = ({ setModal }) => {
+const TaleModal = ({ setTaleModal, setReportModal }) => {
   return (
     <>
       <div
@@ -142,7 +160,7 @@ const TaleModal = ({ setModal }) => {
         <div
           className="fixed bg-black-900 opacity-50 w-screen h-screen top-0 left-0 z-0"
           onClick={() => {
-            setModal(false);
+            setTaleModal(false);
           }}
         ></div>
         <div
@@ -158,7 +176,13 @@ const TaleModal = ({ setModal }) => {
             />
             <span className="flex-grow">공유하기</span>
           </Button>
-          <Button className="flex flex-row p-2">
+          <Button
+            className="flex flex-row p-2"
+            onClick={() => {
+              setReportModal(true);
+              setTaleModal(false);
+            }}
+          >
             <img
               className="w-[20px]"
               src="/images/free-icon-problem-report-7689567.png"

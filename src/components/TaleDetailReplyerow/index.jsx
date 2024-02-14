@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-import { AutoResizingTextarea, Button, Img, Text } from "components";
+import {
+  AutoResizingTextarea,
+  Button,
+  Img,
+  ReportModal,
+  Text,
+} from "components";
 
 const TaleDetailReplyerow = ({
   className,
@@ -18,6 +24,8 @@ const TaleDetailReplyerow = ({
   const [isEdit, setEdit] = useState(false);
   // 수정 박스에 입력한 내용 저장 state
   const [newComment, setNewComment] = useState(content);
+  // 신고하기 모달창
+  const [reportModal, setReportModal] = useState(false);
   // 댓글의 id와 수정 박스의 내용을 보내 백엔드에 댓글 수정을 요청하는 함수.
   // todo: 댓글 수정 함수 내용 채우기
   function handleEditComment(commentId, newComment) {
@@ -121,14 +129,26 @@ const TaleDetailReplyerow = ({
         <ReplyModal
           commentId={commentId}
           setReplyModal={setReplyModal}
+          setReportModal={setReportModal}
           setEdit={setEdit}
+        />
+      )}
+      {reportModal && (
+        <ReportModal
+          type="comment"
+          id={commentId}
+          writer={commenter}
+          content={content}
+          closeModal={() => {
+            setReportModal(false);
+          }}
         />
       )}
     </>
   );
 };
 
-const ReplyModal = ({ commentId, setReplyModal, setEdit }) => {
+const ReplyModal = ({ commentId, setReplyModal, setReportModal, setEdit }) => {
   // 댓글을 삭제하는 함수.
   // todo: 댓글 삭제 함수 내용 채우기
   function handleDeleteComment(commentId) {
@@ -179,7 +199,13 @@ const ReplyModal = ({ commentId, setReplyModal, setEdit }) => {
             />
             <span className="flex-grow">삭제하기</span>
           </Button>
-          <Button className="flex flex-row p-2">
+          <Button
+            className="flex flex-row p-2"
+            onClick={() => {
+              setReportModal(true);
+              setReplyModal(false);
+            }}
+          >
             <img
               className="w-[20px]"
               src="/images/free-icon-problem-report-7689567.png"

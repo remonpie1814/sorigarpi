@@ -16,3 +16,4 @@ export { Paging } from "./Paging";
 export { TabButton } from "./TabButton";
 export { AutoResizingTextarea } from "./AutoResizingTextArea";
 export { MapList } from "./MapList";
+export { ReportModal } from "./ReportModal";
