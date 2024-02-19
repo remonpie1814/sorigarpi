@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 
 import { Button, Img, List, Text, Layout, TabButton } from "components";
-import FollowListFollowuserrow from "components/FollowListFollowuserrow";
+import FollowUserRow from "components/FollowUserRow";
+import FollowerUserRow from "components/FollowerUserRow";
 
 const FollowListPage = () => {
-  const followListFollowuserrowPropList = [
-    {},
-    { followtext: "팔로우2" },
-    { followtext: "콩림이" },
-    { followtext: "콩솔이" },
-  ];
+  const [followList, setFollowList] = useState([
+    { id: "1", name: "팔로우2", profileImg: "/images/img_ellipse4.png" },
+    { id: "2", name: "콩림이", profileImg: "/images/img_ellipse4_100x100.png" },
+    { id: "3", name: "콩솔이", profileImg: "/images/img_ellipse4.png" },
+  ]);
+  const [followerList, setFollowerList] = useState([]);
 
   const [tab, setTab] = useState(0);
+  // todo: 팔로우 삭제 버튼 함수
+  function handleDeleteFollow(id) {
+    console.log(id + "를 팔로우에서 삭제");
+    setFollowList(followList.filter((item) => item.id != id));
+  }
+
+  // todo: 팔로워 삭제 버튼 함수
+  function handleDeleteFollower(id) {}
 
   return (
     <>
@@ -39,14 +48,40 @@ const FollowListPage = () => {
             className="flex flex-col items-center w-full gap-5 pb-5 "
             orientation="vertical"
           >
-            {followListFollowuserrowPropList.map((props, index) => (
-              <React.Fragment key={`FollowListFollowuserrow${index}`}>
-                <FollowListFollowuserrow
-                  className="flex flex-row items-center justify-center flex-1 w-full gap-5 my-0 sm:flex-col"
-                  {...props}
-                />
-              </React.Fragment>
-            ))}
+            {tab == 0 &&
+              (followList.length > 0 ? (
+                followList.map((item, index) => (
+                  <React.Fragment key={`Followuserrow${index}`}>
+                    <FollowUserRow
+                      className="flex flex-row items-center justify-center flex-1 w-full gap-5 my-0 sm:flex-col"
+                      deleteFollow={() => {
+                        handleDeleteFollow(item.id);
+                      }}
+                      {...item}
+                    />
+                  </React.Fragment>
+                ))
+              ) : (
+                <>팔로우한 작가가 없어요!</>
+              ))}
+            {tab == 1 &&
+              (followerList.length > 0 ? (
+                followerList.map((item, index) => {
+                  return (
+                    <React.Fragment key={`FollowerUserRow${index}`}>
+                      <FollowerUserRow
+                        className="flex flex-row items-center justify-center flex-1 w-full gap-5 my-0 sm:flex-col"
+                        deleteFollow={() => {
+                          handleDeleteFollower(item.id);
+                        }}
+                        {...item}
+                      />
+                    </React.Fragment>
+                  );
+                })
+              ) : (
+                <>작가님을 팔로우한 사람이 없어요</>
+              ))}
           </List>
         </div>
       </Layout>
