@@ -7,7 +7,7 @@ const TaleSettingPage = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col md:gap-10 gap-[65px] h-[1214px] md:h-auto items-center justify-start max-w-[1180px] mx-auto pt-[30px] md:px-5 w-full">
+        <div className="flex flex-col md:gap-10 gap-[65px] object-contain md:h-auto items-center justify-start max-w-[1180px] mx-auto pt-[30px] pb-[200px] md:pb-[30px] md:px-5 w-full">
           <div className="flex flex-col items-center justify-start w-full gap-5 px-5 pb-5 border-b border-gray-600 border-solid">
             <div className="flex flex-col items-center justify-start w-full">
               <Text
