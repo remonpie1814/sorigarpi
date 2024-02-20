@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ErrorMessage } from "../../components/ErrorMessage";
+import checked from "../../assets/images/check.png";
 
 const variants = {
   fill: { white_A700: "bg-white-A700 text-gray-900" },
@@ -9,53 +10,56 @@ const variants = {
 const shapes = { round: "rounded-[5px]" };
 const sizes = { xs: "pb-px pt-0.5 px-px", sm: "pb-3.5 pr-3.5 pt-[15px]" };
 
-const CheckBox = React.forwardRef(
+const Radio = React.forwardRef(
   (
     {
       inputClassName = "",
       className = "",
       name = "",
       children,
-      label = "",
+      value = "",
       errors = [],
       shape = "",
       size = "",
       variant = "",
       color = "",
-      id = "checkbox_id",
-      onChange,
+      id = "",
+      onchange,
       ...restProps
     },
     ref
   ) => {
     const handleChange = (e) => {
-      if (onChange) onChange(e?.target?.checked);
+      if (onchange) onchange(e?.target?.checkd);
     };
 
     return (
       <>
         <div className={className}>
-          <input
-            className={`${inputClassName} ${(shape && shapes[shape]) || ""} ${
-              (size && sizes[size]) || ""
-            } ${(variant && variants[variant]?.[color]) || ""}`}
-            ref={ref}
-            type="checkbox"
-            name={name}
-            onChange={handleChange}
-            {...restProps}
-            id={id}
-          />
-          <label htmlFor={id}>{label}</label>
+          <label htmlFor={id} className="w-full label-checked">
+            <input
+              type="radio"
+              name="option"
+              id={id}
+              value="3"
+              className="hidden peer"
+            />
+            <span
+              className="inline-block h-[22px] mr-[5px] w-[22px] rounded-[5px] pb-px pt-0.5 px-px border-2 border-gray-600_01 border-solid peer-checked:border-yellow-200 peer-checked:bg-yellow-200 peer-checked:
+            "
+            >
+              <img src={checked} />
+            </span>
+            <span className="align-top ">{children}</span>
+          </label>
         </div>
         <ErrorMessage errors={errors} />
-        {children}
       </>
     );
   }
 );
 
-CheckBox.propTypes = {
+Radio.propTypes = {
   inputClassName: PropTypes.string,
   className: PropTypes.string,
   name: PropTypes.string,
@@ -66,4 +70,4 @@ CheckBox.propTypes = {
   color: PropTypes.oneOf(["white_A700", "gray_600_01"]),
 };
 
-export { CheckBox };
+export { Radio };

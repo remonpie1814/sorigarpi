@@ -31,7 +31,7 @@ const TaleSettingPage = () => {
                   >
                     제목
                   </Text>
-                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[100%] resize-none	"></textarea>
+                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[90%] sm:w-[100%] resize-none	"></textarea>
                 </div>
                 <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-center w-full h-[60%]">
                   <Text
@@ -40,7 +40,7 @@ const TaleSettingPage = () => {
                   >
                     설명
                   </Text>
-                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[100%] resize-none	"></textarea>
+                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[90%] sm:w-[100%] resize-none	"></textarea>
                 </div>
               </div>
             </div>
