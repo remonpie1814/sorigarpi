@@ -128,7 +128,7 @@ const TaleSettingTemporarysave1 = (props) => {
           <Radio
             className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-t
             ${
-              selectedOption === "출판하기"
+              selectedOption === "1"
                 ? "bg-[#fbffea] border-red-500"
                 : "border-b-white-A700"
             }`}
@@ -145,10 +145,12 @@ const TaleSettingTemporarysave1 = (props) => {
           <Radio
             className={`flex flex-row w-full p-4 cursor-pointer border-[1px]
             ${
-              selectedOption === "비공개로출판하기"
+              selectedOption === "2"
                 ? "bg-[#fbffea] border-red-500"
-                : "border-t-white-A700 border-b-white-A700"
-            }`}
+                : "border-b-white-A700"
+            }
+            ${selectedOption === "1" ? "border-t-white-A700" : null}
+            ${selectedOption === "3" ? "" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             comment="나만 볼 수 있습니다."
             commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
@@ -161,11 +163,8 @@ const TaleSettingTemporarysave1 = (props) => {
           </Radio>
           <Radio
             className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-b
-            ${
-              selectedOption === "임시저장하기"
-                ? "bg-[#fbffea] border-red-500"
-                : "border-t-white-A700"
-            }`}
+            ${selectedOption === "3" ? "bg-[#fbffea] border-red-500" : null}
+            ${selectedOption === "2" ? "border-t-white-A700" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             id="3"
             name="save"

@@ -22,7 +22,7 @@ const Radio = React.forwardRef(
   ) => {
     const handleChange = (e) => {
       if (onchange) {
-        onchange(e?.target?.value);
+        onchange(e?.target?.id);
       }
     };
 
