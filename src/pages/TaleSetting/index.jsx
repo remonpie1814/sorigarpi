@@ -8,7 +8,7 @@ const TaleSettingPage = () => {
     <>
       <Layout>
         <div className="flex flex-col md:gap-10 gap-[65px] object-contain md:h-auto items-center justify-start max-w-[1180px] mx-auto pt-[30px] pb-[200px] md:pb-[30px] md:px-5 w-full">
-          <div className="flex flex-col items-center justify-start w-full gap-5 px-5 pb-5 border-b border-gray-600 border-solid">
+          <div className="flex flex-col items-center justify-start w-full gap-5 px-5 pb-5">
             <div className="flex flex-col items-center justify-start w-full">
               <Text
                 className="sm:text-2xl md:text-[26px] text-[28px] text-gray-900 tracking-[-0.53px] w-full"
@@ -31,7 +31,10 @@ const TaleSettingPage = () => {
                   >
                     제목
                   </Text>
-                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[90%] sm:w-[100%] resize-none	"></textarea>
+                  <textarea
+                    className="bg-gray-100_01 h-[100%] w-[78%] md:w-[90%] sm:w-[100%] resize-none	"
+                    placeholder="동화 제목을 적어주세요"
+                  ></textarea>
                 </div>
                 <div className="flex sm:flex-col flex-row gap-2.5 items-start justify-center w-full h-[60%]">
                   <Text
@@ -40,12 +43,15 @@ const TaleSettingPage = () => {
                   >
                     설명
                   </Text>
-                  <textarea className="bg-gray-100_01 h-[100%] w-[78%] md:w-[90%] sm:w-[100%] resize-none	"></textarea>
+                  <textarea
+                    className="bg-gray-100_01 h-[100%] w-[78%] md:w-[90%] sm:w-[100%] resize-none"
+                    placeholder="동화에 대한 설명을 적어주세요"
+                  ></textarea>
                 </div>
               </div>
             </div>
           </div>
-          <TaleSettingTemporarysave1 className="border border-blue_gray-100_01 border-solid flex flex-col gap-2 items-center justify-start max-w-[1180px] p-5 shadow-bs w-full" />
+          <TaleSettingTemporarysave1 className="flex flex-col gap-2 items-center justify-start max-w-[1180px] w-full" />
         </div>
       </Layout>
     </>

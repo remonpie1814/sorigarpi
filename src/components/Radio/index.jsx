@@ -39,8 +39,9 @@ const Radio = React.forwardRef(
               onChange={handleChange}
             />
             <div className="align-top ">
-              <span>{children}</span>
+              <span>{value}</span>
               <div className={commentClassName}>{comment}</div>
+              {children}
             </div>
           </label>
         </div>
