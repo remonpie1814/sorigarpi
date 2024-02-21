@@ -47,7 +47,7 @@ const ProfilePictureModifyFormPage = () => {
                                     ${
                                       checkedImage == index
                                         ? "opacity-50"
-                                        : "transition duration-300 hover:scale-125 hover:shadow-lg"
+                                        : "transition duration-300 hover:scale-110 hover:shadow-lg"
                                     }`}
                             onClick={() => {
                               checkedImage == index

@@ -4,8 +4,8 @@ import { Button, Img, Layout, Line, List, Text } from "components";
 
 const InquiryHistoryPage = () => {
   const [inquiryList, setInquiryList] = useState([
-    { status: "답변대기", content: "문의" },
-    { status: "답변완료", content: "문의22222" },
+    { status: "답변대기", content: "문의", creDate: "2023.10.11" },
+    { status: "답변완료", content: "문의22222", creDate: "2012.03.10" },
   ]);
   const [searchCondition, setCondition] = useState({
     status: "",
@@ -34,7 +34,7 @@ const InquiryHistoryPage = () => {
   );
 };
 
-const InquiryRow = ({ status, content }) => {
+const InquiryRow = ({ status, content, creDate }) => {
   return (
     <div className="flex flex-col gap-[30px] items-start justify-start w-full">
       <div className="flex flex-col gap-4 items-center justify-start w-full">
@@ -73,6 +73,9 @@ const InquiryRow = ({ status, content }) => {
         >
           {content}
         </Text>
+        <div className="w-full max-w-[1115px] md:max-w-full text-left text-gray-600">
+          {creDate}
+        </div>
       </div>
       <Line className="bg-gray-200_01 h-px w-full" />
     </div>
@@ -80,7 +83,7 @@ const InquiryRow = ({ status, content }) => {
 };
 
 const InquirySearchDropdown = ({ setCondition }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [period, setPeriod] = useState("");
   const [startDate, setStartDate] = useState();

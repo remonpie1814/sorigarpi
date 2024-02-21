@@ -11,8 +11,8 @@ const PwdResetForm = React.lazy(() => import("pages/PwdResetForm"));
 const RegisterForm = React.lazy(() => import("pages/RegisterForm"));
 const LoginForm = React.lazy(() => import("pages/LoginForm"));
 const PwdSendEmailForm = React.lazy(() => import("pages/PwdSendEmailForm"));
-const TemporaryStorageDelete = React.lazy(
-  () => import("pages/TemporaryStorageDelete"),
+const TemporaryStorageDelete = React.lazy(() =>
+  import("pages/TemporaryStorageDelete")
 );
 const TempTaleList = React.lazy(() => import("pages/TempTaleList"));
 const RecentView = React.lazy(() => import("pages/RecentView"));
@@ -28,8 +28,8 @@ const InquiryHistory = React.lazy(() => import("pages/InquiryHistory"));
 const AccountInformation = React.lazy(() => import("pages/AccountInformation"));
 const SanctionHistory = React.lazy(() => import("pages/SanctionHistory"));
 const ProfileModifyForm = React.lazy(() => import("pages/ProfileModifyForm"));
-const ProfilePictureModifyForm = React.lazy(
-  () => import("pages/ProfilePictureModifyForm"),
+const ProfilePictureModifyForm = React.lazy(() =>
+  import("pages/ProfilePictureModifyForm")
 );
 const FollowingTale = React.lazy(() => import("pages/FollowingTale"));
 const LikedTale = React.lazy(() => import("pages/LikedTale"));
@@ -48,6 +48,7 @@ const ProjectRoutes = () => {
           <Route path="/searchresult" element={<SearchResult />} />
           <Route path="/followlist" element={<FollowList />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/likedtale" element={<LikedTale />} />
           <Route path="/followingtale" element={<FollowingTale />} />
           <Route

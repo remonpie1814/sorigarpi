@@ -66,7 +66,7 @@ const InquiryFormPage = () => {
               size="3xl"
               variant="fill"
               onClick={() => {
-                navigate("InquiryHistory");
+                navigate("/InquiryHistory");
               }}
             >
               취소

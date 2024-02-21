@@ -16,5 +16,7 @@ export { Paging } from "./Paging";
 export { TabButton } from "./TabButton";
 export { AutoResizingTextarea } from "./AutoResizingTextArea";
 export { MapList } from "./MapList";
+export { ReportModal } from "./ReportModal";
+export { Toast } from "./Toast";
 export { Radio } from "./Radio";
 export { RadioGroup } from "./RadioGroup";
