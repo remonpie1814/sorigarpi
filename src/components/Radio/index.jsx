@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ErrorMessage } from "../../components/ErrorMessage";
-import "../../styles/radio.module.css";
 
 const Radio = React.forwardRef(
   (
@@ -22,7 +21,9 @@ const Radio = React.forwardRef(
     ref
   ) => {
     const handleChange = (e) => {
-      if (onchange) onchange(e?.target?.checkd);
+      if (onchange) {
+        onchange(e?.target?.value);
+      }
     };
 
     return (
@@ -33,8 +34,9 @@ const Radio = React.forwardRef(
               type="radio"
               name="option"
               id={id}
-              value="3"
+              value={value}
               className={inputClassName}
+              onChange={handleChange}
             />
             <div className="align-top ">
               <span>{children}</span>
