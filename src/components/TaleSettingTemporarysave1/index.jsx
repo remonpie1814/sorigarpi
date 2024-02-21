@@ -123,6 +123,40 @@ const TaleSettingTemporarysave1 = (props) => {
             {props?.text6}
           </Button>
         </div>
+
+        <RadioGroup>
+          <Radio
+            className="flex flex-row w-full p-4"
+            inputClassName="text-yellow-200 mt-1 mr-2"
+            comment="모든 사람이 볼 수 있습니다."
+            commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
+            id="1"
+            name="save"
+            value="출판하기"
+          >
+            출판하기
+          </Radio>
+          <Radio
+            className="flex flex-row w-full p-4 cursor-pointer"
+            inputClassName="text-yellow-200 mt-1 mr-2"
+            comment="나만 볼 수 있습니다."
+            commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
+            id="2"
+            name="save"
+            value="비공개로출판하기"
+          >
+            비공개로 출판하기
+          </Radio>
+          <Radio
+            className="flex flex-row w-full p-4 cursor-pointer"
+            inputClassName="text-yellow-200 mt-1 mr-2"
+            id="3"
+            name="save"
+            value="임시저장하기"
+          >
+            임시저장하기
+          </Radio>
+        </RadioGroup>
       </div>
     </>
   );

@@ -1,0 +1,5 @@
+label:has(input:checked ){
+    background-color: rgb(251, 255, 234);
+    border-radius: 0.25rem;
+    border:1px solid red;
+}
