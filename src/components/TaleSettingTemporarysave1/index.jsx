@@ -126,12 +126,8 @@ const TaleSettingTemporarysave1 = (props) => {
 
         <RadioGroup>
           <Radio
-            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-t
-            ${
-              selectedOption === "1"
-                ? "bg-[#fbffea] border-red-500"
-                : "border-b-white-A700"
-            }`}
+            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-t border-b-0
+            ${selectedOption === "1" ? "bg-[#fbffea] border-red-500" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             comment="모든 사람이 볼 수 있습니다."
             commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
@@ -142,15 +138,16 @@ const TaleSettingTemporarysave1 = (props) => {
           >
             출판하기
           </Radio>
+          <hr
+            className={`${
+              selectedOption === "1" || selectedOption === "2"
+                ? "border-red-500"
+                : null
+            }`}
+          />
           <Radio
-            className={`flex flex-row w-full p-4 cursor-pointer border-[1px]
-            ${
-              selectedOption === "2"
-                ? "bg-[#fbffea] border-red-500"
-                : "border-b-white-A700"
-            }
-            ${selectedOption === "1" ? "border-t-white-A700" : null}
-            ${selectedOption === "3" ? "" : null}`}
+            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] border-y-0
+            ${selectedOption === "2" ? "bg-[#fbffea] border-red-500" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             comment="나만 볼 수 있습니다."
             commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
@@ -161,10 +158,16 @@ const TaleSettingTemporarysave1 = (props) => {
           >
             비공개로 출판하기
           </Radio>
+          <hr
+            className={`${
+              selectedOption === "2" || selectedOption === "3"
+                ? "border-red-500"
+                : null
+            }`}
+          />
           <Radio
-            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-b
-            ${selectedOption === "3" ? "bg-[#fbffea] border-red-500" : null}
-            ${selectedOption === "2" ? "border-t-white-A700" : null}`}
+            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-b border-t-0
+            ${selectedOption === "3" ? "bg-[#fbffea] border-red-500" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             id="3"
             name="save"
