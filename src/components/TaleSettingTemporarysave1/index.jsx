@@ -4,7 +4,7 @@ import { Button, CheckBox, Text, RadioGroup, Radio } from "components";
 
 const TaleSettingTemporarysave1 = (props) => {
   const [check, setCheck] = useState(false);
-
+  const [selectedOption, setSelectedOption] = useState(0);
   return (
     <>
       <div className={props.className}>
@@ -126,33 +126,53 @@ const TaleSettingTemporarysave1 = (props) => {
 
         <RadioGroup>
           <Radio
-            className="flex flex-row w-full p-4"
+            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-t border-b-0
+            ${selectedOption === "1" ? "bg-[#fbffea] border-red-500" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             comment="모든 사람이 볼 수 있습니다."
             commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
             id="1"
             name="save"
             value="출판하기"
+            onchange={setSelectedOption}
           >
             출판하기
           </Radio>
+          <hr
+            className={`${
+              selectedOption === "1" || selectedOption === "2"
+                ? "border-red-500"
+                : null
+            }`}
+          />
           <Radio
-            className="flex flex-row w-full p-4 cursor-pointer"
+            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] border-y-0
+            ${selectedOption === "2" ? "bg-[#fbffea] border-red-500" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             comment="나만 볼 수 있습니다."
             commentClassName="text-green-500_01 text-sm tracking-[-0.27px] w-auto"
             id="2"
             name="save"
             value="비공개로출판하기"
+            onchange={setSelectedOption}
           >
             비공개로 출판하기
           </Radio>
+          <hr
+            className={`${
+              selectedOption === "2" || selectedOption === "3"
+                ? "border-red-500"
+                : null
+            }`}
+          />
           <Radio
-            className="flex flex-row w-full p-4 cursor-pointer"
+            className={`flex flex-row w-full p-4 cursor-pointer border-[1px] rounded-b border-t-0
+            ${selectedOption === "3" ? "bg-[#fbffea] border-red-500" : null}`}
             inputClassName="text-yellow-200 mt-1 mr-2"
             id="3"
             name="save"
             value="임시저장하기"
+            onchange={setSelectedOption}
           >
             임시저장하기
           </Radio>
