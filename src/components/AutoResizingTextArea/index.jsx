@@ -15,6 +15,7 @@ const AutoResizingTextarea = ({
   placeholder,
   text,
   handleSubmit,
+  setCommentStatus,
 }) => {
   const textareaRef = useRef();
 
@@ -28,6 +29,11 @@ const AutoResizingTextarea = ({
     event.target.parentElement.style.height = `${event.target.scrollHeight}px`;
     if (setValue) {
       setValue(event.target.value);
+    }
+    if (setCommentStatus && event.target.value && event.target.value.trim()) {
+      setCommentStatus(true);
+    } else {
+      setCommentStatus(false);
     }
   };
 

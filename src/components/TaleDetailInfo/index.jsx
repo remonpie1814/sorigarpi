@@ -21,10 +21,10 @@ const TaleDetailInfo = ({
   return (
     <>
       <div className={className}>
-        <div className="flex md:flex-col flex-row gap-[30px] items-start justify-start w-full">
-          <div className="h-[393px] relative w-[26%] md:w-full">
+        <div className="flex sm:flex-col flex-row gap-[30px] items-start justify-start w-full">
+          <div className="h-[423px] w-[300px] relative sm:w-full">
             <Img
-              className="absolute h-[393px] inset-[0] justify-center m-auto object-cover rounded-[5px] w-full"
+              className="absolute w-[300px] inset-[0] justify-center object-cover rounded-[5px]"
               src="images/img_image932.png"
               alt="image932"
             />
@@ -36,8 +36,8 @@ const TaleDetailInfo = ({
               />
             </div>
           </div>
-          <div className="flex flex-1 flex-col gap-1 h-full items-start justify-start w-full">
-            <div className="flex md:flex-col flex-row gap-1 items-center justify-center w-full">
+          <div className="flex flex-col items-start justify-start flex-1 w-full h-full md:w-50% gap-1">
+            <div className="flex flex-row items-center justify-center w-full gap-1">
               <Text
                 className="text-4xl sm:text-[32px] md:text-[34px] text-gray-900 tracking-[-0.79px]
                 w-aut flex flex-grow"
@@ -67,7 +67,7 @@ const TaleDetailInfo = ({
                 alt="image804"
               />
               <Button
-                className="text-base text-gray-600 underline w-auto"
+                className="w-auto text-base text-gray-600 underline"
                 onClick={() => {
                   navigate(`/profile/${writerId}`);
                 }}
@@ -91,7 +91,7 @@ const TaleDetailInfo = ({
               </div>
               <div className="flex flex-row gap-2.5 h-8 md:h-auto items-center justify-center">
                 <Img
-                  className="h-8 md:h-auto object-cover w-8"
+                  className="object-cover w-8 h-8 md:h-auto"
                   src="images/img_image805.png"
                   alt="image805"
                 />
@@ -153,12 +153,9 @@ const TaleDetailInfo = ({
 const TaleModal = ({ setTaleModal, setReportModal }) => {
   return (
     <>
-      <div
-        className="fixed w-screen h-screen top-0 left-0 z-10
-           flex items-center justify-center"
-      >
+      <div className="fixed top-0 left-0 z-10 flex items-center justify-center w-screen h-screen">
         <div
-          className="fixed bg-black-900 opacity-50 w-screen h-screen top-0 left-0 z-0"
+          className="fixed top-0 left-0 z-0 w-screen h-screen opacity-50 bg-black-900"
           onClick={() => {
             setTaleModal(false);
           }}
