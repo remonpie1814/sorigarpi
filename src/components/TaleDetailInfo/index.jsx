@@ -22,13 +22,13 @@ const TaleDetailInfo = ({
     <>
       <div className={className}>
         <div className="flex sm:flex-col flex-row gap-[30px] items-start justify-start w-full">
-          <div className="h-[423px] w-[300px] relative sm:w-full">
+          <div className="h-[423px] w-[300px] relative sm:w-full sm:h-full">
             <Img
-              className="absolute w-[300px] inset-[0] justify-center object-cover rounded-[5px]"
+              className="w-[300px] object-cover m-auto rounded-[5px] sm:w-full"
               src="images/img_image932.png"
               alt="image932"
             />
-            <div className="absolute flex flex-col items-center justify-center p-5 right-[0] top-[0] w-20">
+            <div className="absolute flex flex-col items-center justify-center p-5 right-[0] top-[0] sm:right-[3] sm:top-[5] w-20">
               <Img
                 className="h-10 md:h-auto rounded-[50%] w-10"
                 src="images/img_speakerfilledaudiotool.png"

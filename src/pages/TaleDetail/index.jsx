@@ -39,7 +39,7 @@ const TaleDetailPage = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
+        <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto px-5 md:px-5 w-full">
           <div className="flex flex-col gap-[22px] min-h-[1000px] items-start justify-start max-w-[1182px] pb-5 pt-[30px] w-full">
             <TaleDetailInfo
               className="flex flex-col items-start justify-start w-full"
@@ -141,11 +141,11 @@ const TaleDetailPage = () => {
               </div>
             </div>
             <div className="flex flex-col items-center justify-start p-[11px] w-full">
-              <div className="bg-yellow-100 flex sm:flex-col flex-row gap-[30px] items-center justify-center sm:px-5 px-[30px] py-[13px] rounded-[10px] w-auto sm:w-full">
+              <div className="bg-yellow-100 flex flex-row gap-[30px] items-center justify-center sm:px-5 px-[30px] py-[13px] rounded-[10px] w-auto sm:w-full">
                 <div className="flex flex-col items-center justify-center h-auto">
                   <div className="flex flex-col gap-[7px] items-center justify-center w-auto">
                     <Img
-                      className="object-cover w-10 h-10 sm:w-full"
+                      className="object-cover w-10 h-10"
                       src="images/img__49x40.png"
                       alt="Twenty"
                     />
@@ -153,7 +153,7 @@ const TaleDetailPage = () => {
                       className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
                       size="txtInterMedium16Gray900"
                     >
-                      <span className="font-medium text-gray-900 font-inter">
+                      <span className="font-medium text-gray-900 font-inter sm:text-sm">
                         <>
                           유익해요
                           <br />
@@ -167,7 +167,7 @@ const TaleDetailPage = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center h-auto">
                   <Img
-                    className="object-cover w-10 h-10 sm:w-full"
+                    className="object-cover w-10 h-10"
                     src="images/img__1.png"
                     alt="TwentyOne"
                   />
@@ -175,7 +175,7 @@ const TaleDetailPage = () => {
                     className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
                     size="txtInterMedium16Gray900"
                   >
-                    <span className="font-medium text-gray-900 font-inter">
+                    <span className="font-medium text-gray-900 font-inter sm:text-sm">
                       <>
                         재미있어요
                         <br />
@@ -188,7 +188,7 @@ const TaleDetailPage = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center h-auto">
                   <Img
-                    className="object-cover w-10 h-10 sm:w-full"
+                    className="object-cover w-10 h-10"
                     src="images/img__2.png"
                     alt="TwentyTwo"
                   />
@@ -196,7 +196,7 @@ const TaleDetailPage = () => {
                     className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
                     size="txtInterMedium16Gray900"
                   >
-                    <span className="font-medium text-gray-900 font-inter">
+                    <span className="font-medium text-gray-900 font-inter sm:text-sm">
                       <>
                         슬퍼요
                         <br />
@@ -209,7 +209,7 @@ const TaleDetailPage = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center h-auto">
                   <Img
-                    className="object-cover w-10 h-10 sm:w-full"
+                    className="object-cover w-10 h-10"
                     src="images/img__3.png"
                     alt="TwentyThree"
                   />
@@ -217,7 +217,7 @@ const TaleDetailPage = () => {
                     className="leading-[150.00%] text-base text-center text-gray-900 tracking-[-0.18px]"
                     size="txtInterMedium16Gray900"
                   >
-                    <span className="font-medium text-gray-900 font-inter">
+                    <span className="font-medium text-gray-900 font-inter sm:text-sm">
                       <>
                         화나요
                         <br />
