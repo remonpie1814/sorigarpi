@@ -10,10 +10,10 @@ const MainPage = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center justify-start max-w-[1920px] w-full">
-          <div className="bg-blue_gray-100 flex flex-col items-center justify-center p-9 sm:px-5 w-full">
+        <div className="absolute top-[158px] flex flex-col items-center justify-start max-w-[1920px] w-full">
+          <div className="flex flex-col items-center justify-center w-full bg-blue_gray-100 p-9 sm:px-5">
             <div className="relative w-full h-full max-w-[1215px] mx-auto md:px-5 md:h-[165px]">
-              <div className="w-full h-full flex flex-row justify-center items-center">
+              <div className="flex flex-row items-center justify-center w-full h-full">
                 <Img
                   className="h-[108px] my-auto"
                   src="images/img__black_900_108x90.svg"
@@ -46,9 +46,9 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:gap-10 gap-[60px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-5 w-full">
+        <div className="flex flex-col md:gap-10 gap-[60px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-5 w-full mb-[100px]">
           <div className="flex flex-col items-center justify-start md:px-10 sm:px-5 px-[247px] w-full">
-            <div className="flex flex-col items-center justify-start p-5 w-full">
+            <div className="flex flex-col items-center justify-start w-full p-5">
               <div className="bg-white-A700 flex flex-col items-start justify-start outline outline-[3px] outline-amber-400 md:px-10 sm:px-5 px-[42px] py-6 rounded-[15px] w-[342px]">
                 <div className="flex flex-row gap-[15px] items-center justify-start w-auto">
                   <Img
@@ -66,7 +66,7 @@ const MainPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row md:gap-10 items-start justify-between w-full">
+          <div className="flex flex-row items-start justify-between w-full md:gap-10">
             <div className="md:h-[30px] h-[33px] relative w-[13%]">
               <div className="bg-yellow-200 h-[30px] m-auto rounded-[15px] w-full"></div>
               <Text
@@ -101,7 +101,7 @@ const MainPage = () => {
               "images/img_image917.png",
             ]}
           />
-          <div className="flex flex-row md:gap-10 items-center justify-between w-full">
+          <div className="flex flex-row items-center justify-between w-full md:gap-10">
             <div className="md:h-[30px] h-[33px] relative w-[13%]">
               <div className="bg-yellow-200 h-[30px] m-auto rounded-[15px] w-full"></div>
               <Text
