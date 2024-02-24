@@ -31,8 +31,32 @@ const TaleDetailPage = () => {
     },
   ]);
   // 댓글 state
-  const [comments, setComments] = useState([{}, {}, {}]);
-
+  const [comments, setComments] = useState([
+    {
+      commentId: 1,
+      parentId: 0,
+      commenter: "작가1",
+      content: "댓긋긋그ㅡㄱㄹ그그글",
+      profileImage: "/images/img_2_45x45.png",
+      creDate: "2099. 12. 31",
+    },
+    {
+      commentId: 2,
+      parentId: 0,
+      commenter: "작가2",
+      content: "댓글글글글글",
+      profileImage: "",
+      creDate: "2042. 11. 11",
+    },
+    {
+      commentId: 3,
+      parentId: 0,
+      commenter: "작가3",
+      content: "댓글글글글글",
+      profileImage: "",
+      creDate: "200002. 11. 11",
+    },
+  ]);
   // 댓글 유효성 평가 state
   const [comment, setComment] = useState("");
 
@@ -263,7 +287,19 @@ const TaleDetailPage = () => {
                   console.log(str + "라는 값을 칸에 입력했음.");
                   console.log("-----이 밑에 form 제출하는 코드-----");
                 }}
-              />
+              >
+                <Button
+                  className={`flex flex-col items-center justify-center
+                          px-8 rounded-[5px] ${
+                            comment.length > 0 && comment.trim().length > 0
+                              ? "bg-amber-A100"
+                              : "bg-gray-100 cursor-default"
+                          }
+                          h-full md:py-5 sm:px-5`}
+                >
+                  등록
+                </Button>
+              </AutoResizingTextarea>
             </form>
             <div
               className="bg-amber-A100 flex flex-col items-center justify-center p-4 rounded-[5px] w-[30%] md:w-full mx-auto"

@@ -15,12 +15,9 @@ const AutoResizingTextarea = ({
   setValue,
   rows,
   placeholder,
-  text,
-  submitButtonText,
   handleSubmit,
 }) => {
   const textareaRef = useRef();
-  const [modifiedValue, setModifiedValue] = useState(value);
   useEffect(() => {
     const parentElement = textareaRef.current.parentElement;
     parentElement.style.height = `${textareaRef.current.scrollHeight}px`;
@@ -32,7 +29,6 @@ const AutoResizingTextarea = ({
     if (setValue) {
       setValue(event.target.value);
     }
-    setModifiedValue(event.target.value);
   };
 
   return (
@@ -55,26 +51,9 @@ const AutoResizingTextarea = ({
             }
           }}
         >
-          {text}
+          {value}
         </textarea>
-        <Button
-          className={`flex flex-col items-center justify-center
-                          px-8 rounded-[5px] ${
-                            modifiedValue.length > 0 &&
-                            modifiedValue.trim().length > 0
-                              ? "bg-amber-A100"
-                              : "bg-gray-100 cursor-default"
-                          }
-                          h-full md:py-5 sm:px-5`}
-          onClick={(event) => {
-            if (handleSubmit) {
-              event.preventDefault();
-              handleSubmit(modifiedValue);
-            }
-          }}
-        >
-          {submitButtonText}
-        </Button>
+        {children}
       </div>
     </>
   );

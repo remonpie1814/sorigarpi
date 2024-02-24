@@ -26,6 +26,9 @@ const TaleDetailReplyerow = ({
   const [newComment, setNewComment] = useState(content);
   // 신고하기 모달창
   const [reportModal, setReportModal] = useState(false);
+  // 댓글의 답글 저장 state
+  const [rereply, setRereply] = useState("");
+
   // 댓글의 id와 수정 박스의 내용을 보내 백엔드에 댓글 수정을 요청하는 함수.
   // todo: 댓글 수정 함수 내용 채우기
   function handleEditComment(commentId, newComment) {
@@ -69,7 +72,7 @@ const TaleDetailReplyerow = ({
               className="gap-2 w-full"
               placeholder="수정 내용 입력..."
               setValue={setNewComment}
-              text={content}
+              value={content}
             >
               <Button
                 className="border-2 px-2 bg-gray-400 rounded-md"
@@ -117,8 +120,20 @@ const TaleDetailReplyerow = ({
         </Button>
         {isOpen && (
           <form className="w-full pb-2">
-            <AutoResizingTextarea className="gap-2" placeholder="답글 입력...">
-              <Button className="border-2 px-2 bg-gray-400 rounded-md">
+            <AutoResizingTextarea
+              className="gap-2"
+              placeholder="답글 입력..."
+              value={rereply}
+              setValue={setRereply}
+            >
+              <Button
+                className={`border-2 px-2 rounded-md 
+              ${
+                rereply.length > 0 && rereply.trim().length > 0
+                  ? "bg-amber-A100"
+                  : "bg-gray-100 cursor-default"
+              }`}
+              >
                 작성
               </Button>
             </AutoResizingTextarea>
