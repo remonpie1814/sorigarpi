@@ -46,7 +46,7 @@ const AutoResizingTextarea = ({
             if (event.key === "Enter" && event.ctrlKey) {
               if (handleSubmit) {
                 event.preventDefault();
-                handleSubmit();
+                handleSubmit(value);
               }
             }
           }}
