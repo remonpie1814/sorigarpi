@@ -5,20 +5,22 @@
 // setValue : textarea에 입력된 내용을 가지고 뭔가 하는 함수.
 // 주로 부모 컴포넌트에서 state로 set하는 함수가 될 듯 함.
 
-import { useEffect, useRef } from "react";
+import { Button } from "components/Button";
+import { useEffect, useRef, useState } from "react";
 
 const AutoResizingTextarea = ({
   children,
   className,
+  value,
   setValue,
   rows,
   placeholder,
   text,
+  submitButtonText,
   handleSubmit,
-  setCommentStatus,
 }) => {
   const textareaRef = useRef();
-
+  const [modifiedValue, setModifiedValue] = useState(value);
   useEffect(() => {
     const parentElement = textareaRef.current.parentElement;
     parentElement.style.height = `${textareaRef.current.scrollHeight}px`;
@@ -30,11 +32,7 @@ const AutoResizingTextarea = ({
     if (setValue) {
       setValue(event.target.value);
     }
-    if (setCommentStatus && event.target.value && event.target.value.trim()) {
-      setCommentStatus(true);
-    } else {
-      setCommentStatus(false);
-    }
+    setModifiedValue(event.target.value);
   };
 
   return (
@@ -59,7 +57,24 @@ const AutoResizingTextarea = ({
         >
           {text}
         </textarea>
-        {children}
+        <Button
+          className={`flex flex-col items-center justify-center
+                          px-8 rounded-[5px] ${
+                            modifiedValue.length > 0 &&
+                            modifiedValue.trim().length > 0
+                              ? "bg-amber-A100"
+                              : "bg-gray-100 cursor-default"
+                          }
+                          h-full md:py-5 sm:px-5`}
+          onClick={(event) => {
+            if (handleSubmit) {
+              event.preventDefault();
+              handleSubmit(modifiedValue);
+            }
+          }}
+        >
+          {submitButtonText}
+        </Button>
       </div>
     </>
   );

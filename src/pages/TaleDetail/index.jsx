@@ -34,7 +34,7 @@ const TaleDetailPage = () => {
   const [comments, setComments] = useState([{}, {}, {}]);
 
   // 댓글 유효성 평가 state
-  const [commentStatus, setCommentStatus] = useState(false);
+  const [comment, setComment] = useState("");
 
   return (
     <>
@@ -256,21 +256,14 @@ const TaleDetailPage = () => {
               <AutoResizingTextarea
                 className={"gap-2 w-full"}
                 rows={3}
-                setCommentStatus={setCommentStatus}
                 placeholder="동화와 관련된 댓글만 입력해 주세요."
-              >
-                <Button
-                  className={`flex flex-col items-center justify-center
-                          px-8 rounded-[5px] ${
-                            commentStatus
-                              ? "bg-amber-A100"
-                              : "bg-gray-100 cursor-default"
-                          }
-                          h-full md:py-5 sm:px-5`}
-                >
-                  등록
-                </Button>
-              </AutoResizingTextarea>
+                value={comment}
+                setValue={setComment}
+                handleSubmit={(str) => {
+                  console.log(str + "라는 값을 칸에 입력했음.");
+                  console.log("-----이 밑에 form 제출하는 코드-----");
+                }}
+              />
             </form>
             <div
               className="bg-amber-A100 flex flex-col items-center justify-center p-4 rounded-[5px] w-[30%] md:w-full mx-auto"
