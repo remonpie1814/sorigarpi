@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // 우주 수정 중
 
 import { Button, Img, Text } from "components";
+import { useNavigate } from "react-router-dom";
 
 const FollowUserRow = ({
   className,
@@ -12,6 +13,7 @@ const FollowUserRow = ({
   deleteFollow,
 }) => {
   const [currentAlert, setCurrentAlert] = useState(isAlert);
+  const navigate = useNavigate();
   function handleAlert(id, currentAlert) {
     const msg = currentAlert
       ? name + "의 알람을 해제하시겠습니까?"
@@ -30,20 +32,27 @@ const FollowUserRow = ({
   return (
     <>
       <div className={className}>
-        <div className="flex flex-col h-[100px] items-center justify-start w-[100px]">
-          <Img
-            className="h-[100px] md:h-auto rounded-[50%] w-[100px]"
-            src={profileImg}
-            alt="ellipseFour"
-          />
-        </div>
-        <div className="flex flex-col flex-grow max-w-[100px] items-start justify-start pr-0.5 py-0.5">
-          <Text
-            className="text-base text-gray-900 tracking-[-0.30px]"
-            size="txtInterMedium16"
-          >
-            {name}
-          </Text>
+        <div
+          className="flex flex-row items-center justify-center gap-5 my-0 sm:flex-col"
+          onClick={() => {
+            navigate("/profile");
+          }}
+        >
+          <div className="flex flex-col h-[100px] items-center justify-start w-[100px]">
+            <Img
+              className="h-[100px] md:h-auto rounded-[50%] w-[100px] cursor-pointer"
+              src={profileImg}
+              alt="ellipseFour"
+            />
+          </div>
+          <div className="flex flex-col flex-grow max-w-[100px] items-start justify-start pr-0.5 py-0.5">
+            <Text
+              className="text-base text-gray-900 tracking-[-0.30px] cursor-pointer"
+              size="txtInterMedium16"
+            >
+              {name}
+            </Text>
+          </div>
         </div>
         <div className="flex flex-col items-center justify-center px-[9px] w-[7%] sm:w-full">
           <Img
