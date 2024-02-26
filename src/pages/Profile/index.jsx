@@ -82,6 +82,9 @@ const ProfilePage = () => {
                 color="amber_A100"
                 size="md"
                 variant="fill"
+                onClick={() => {
+                  navigate("/profileModifyForm");
+                }}
               >
                 프로필 수정
               </Button>

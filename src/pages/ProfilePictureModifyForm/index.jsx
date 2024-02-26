@@ -43,7 +43,7 @@ const ProfilePictureModifyFormPage = () => {
                             <span className="text-xl">✅</span>
                           </div>
                           <Img
-                            className={`h-[150px] md:h-auto object-cover w-full
+                            className={`h-[132px] md:h-auto object-cover 
                                     ${
                                       checkedImage == index
                                         ? "opacity-50"
@@ -62,7 +62,7 @@ const ProfilePictureModifyFormPage = () => {
                     })}
                 </div>
               </div>
-              <div className="flex flex-row gap-2 items-center justify-center">
+              <div className="flex flex-row items-center justify-center gap-2">
                 <Button
                   className="common-pointer cursor-pointer font-medium min-w-[184px] text-base text-center tracking-[-0.18px]"
                   onClick={() => navigate("/profilemodifyform")}
