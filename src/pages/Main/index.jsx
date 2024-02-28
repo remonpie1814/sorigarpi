@@ -3,7 +3,7 @@
 
 import React from "react";
 
-import { Img, Layout, Text } from "components";
+import { Img, Layout, Text, SearchMobile } from "components";
 import { MainTaleColumn } from "components";
 
 const MainPage = () => {
