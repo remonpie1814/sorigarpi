@@ -5,7 +5,7 @@ import { Img } from "components";
 const SearchMobile = ({ setSearch }) => {
   return (
     <>
-      <div className="fixed top-0 left-0 z-40 hidden sm:block bg-white-A700 sm:h-full">
+      <div className="fixed top-0 left-0 z-40 hidden sm:block bg-white-A700 sm:h-full sm:w-full">
         <div className="flex flex-row items-start justify-start gap-4 p-5">
           <Img
             className="flex flex-row w-[21px] my-auto"
