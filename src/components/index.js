@@ -21,3 +21,4 @@ export { Toast } from "./Toast";
 export { Radio } from "./Radio";
 export { RadioGroup } from "./RadioGroup";
 export { SearchMobile } from "./SearchMobile";
+export { Carousel } from "./Carousel";
