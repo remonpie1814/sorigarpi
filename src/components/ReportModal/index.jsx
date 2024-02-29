@@ -9,60 +9,10 @@ const ReportModal = ({ type, id, writer, content, closeModal }) => {
     console.log(type + ":" + id + "를 신고");
   }
 
-  // 이 밑의 코드들을 Modal 컴포넌트 모두에 붙여넣기 해야 하지 않을까...
-  // 중복을 줄이려면 이 밑의 코드만 포함하는 컴포넌트를 만들어서 다른 Modal 컴포넌트에다 하나씩 넣는 식으로 구현하면 되지 않을까 싶긴 한데...
-  var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-
-  function preventDefault(e) {
-    e.preventDefault();
-  }
-
-  function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
-      preventDefault(e);
-      return false;
-    }
-  }
-
-  // modern Chrome requires { passive: false } when adding event
-  var supportsPassive = false;
-  try {
-    window.addEventListener(
-      "test",
-      null,
-      Object.defineProperty({}, "passive", {
-        get: function () {
-          supportsPassive = true;
-        },
-      })
-    );
-  } catch (e) {}
-
-  var wheelOpt = supportsPassive ? { passive: false } : false;
-  var wheelEvent =
-    "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
-
-  // call this to Disable
-  function disableScroll() {
-    window.addEventListener("DOMMouseScroll", preventDefault, false); // older FF
-    window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-    window.addEventListener("touchmove", preventDefault, wheelOpt); // mobile
-    window.addEventListener("keydown", preventDefaultForScrollKeys, false);
-  }
-
-  // call this to Enable
-  function enableScroll() {
-    window.removeEventListener("DOMMouseScroll", preventDefault, false);
-    window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-    window.removeEventListener("touchmove", preventDefault, wheelOpt);
-    window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
-  }
-
+  // 1번 방법. 이게 짧긴 함. 모든 페이지에서 쓸 수 있게 하려면 overflow:auto 부분을 props로 받아서 조정해줘야 하지 않을까.
   useEffect(() => {
-    // modal이 떠 있을 땐 스크롤 막음
-    disableScroll();
-    // modal 닫히면 다시 스크롤 가능하도록 함
-    return () => enableScroll();
+    document.body.style = `overflow: hidden`;
+    return () => (document.body.style = `overflow: auto`);
   }, []);
 
   return (
