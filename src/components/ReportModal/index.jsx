@@ -1,4 +1,4 @@
-import { Button, CheckBox, Text } from "components";
+import { Button, CheckBox, PreventScroll, Text } from "components";
 import { useEffect, useState } from "react";
 
 const ReportModal = ({ type, id, writer, content, closeModal }) => {
@@ -9,14 +9,9 @@ const ReportModal = ({ type, id, writer, content, closeModal }) => {
     console.log(type + ":" + id + "를 신고");
   }
 
-  // 1번 방법. 이게 짧긴 함. 모든 페이지에서 쓸 수 있게 하려면 overflow:auto 부분을 props로 받아서 조정해줘야 하지 않을까.
-  useEffect(() => {
-    document.body.style = `overflow: hidden`;
-    return () => (document.body.style = `overflow: auto`);
-  }, []);
-
   return (
     <>
+      <PreventScroll />
       <div
         className="fixed top-0 left-0 w-screen h-screen
                     flex items-center justify-center z-10"
