@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Sidebar } from "react-pro-sidebar";
 
 import { Button, Img, Text } from "components";
 
 const CanvasPage = () => {
-  document.body.style = `overflow: hidden`;
+  document.body.style = "overflow:hidden";
   return (
     <>
       <div className="bg-white-A700 flex flex-col font-inter items-center justify-start h-screen">
@@ -49,7 +49,7 @@ const CanvasPage = () => {
           </div>
         </div>
         <div className="bg-blue_gray-100 flex md:flex-col flex-row md:gap-5 items-start justify-start w-full">
-          <Sidebar className="!sticky !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
+          <Sidebar className="fixed left-0 !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
             <CanvasPageButtons className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px] sm:w-full" />
             <div className="flex flex-col h-full items-start justify-center mx-auto my-[9px] px-5 py-2.5 w-full">
               <div className="flex flex-col gap-5 items-center justify-start w-[92%]">
@@ -168,12 +168,8 @@ const CanvasPage = () => {
               </div>
             </div>
           </Sidebar>
-          <Img
-            className="h-[846px] max-h-[846px] md:ml-[0] ml-[299px] sm:w-[] md:w-[]"
-            src="images/img_1_white_a700.svg"
-            alt="One_Nine"
-          />
-          <CanvasRowthumbsup className="flex flex-1 sm:flex-col flex-row sm:gap-10 items-start justify-between ml-3.5 md:ml-[0] md:px-5 py-[50px] w-full" />
+          <Canvas />
+          <CanvasRowthumbsup className="fixed right-0 flex sm:gap-10 items-start" />
         </div>
       </div>
     </>
@@ -249,7 +245,7 @@ const CanvasRowthumbsup = (props) => {
   return (
     <>
       <div className={props.className}>
-        <div className="flex flex-col h-[900px] md:h-auto items-center justify-start px-5 w-[540px] sm:w-full">
+        <div className="flex flex-col items-center justify-start px-5">
           <div className="bg-black-900_99 flex flex-col items-center justify-start rounded-[12px] w-auto sm:w-full">
             <div className="flex flex-col items-center justify-start w-[87%] md:w-full">
               <div className="flex flex-col gap-[43px] items-center justify-start w-full">
@@ -291,7 +287,7 @@ const CanvasRowthumbsup = (props) => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-100_01 flex flex-col gap-2.5 items-center justify-start px-5 py-[5px] rotate-[-90deg] w-[55px]">
+        <div className="bg-gray-100_01 flex flex-col gap-2.5 items-center justify-start px-5 py-[5px] w-[55px]">
           <Img
             className="h-[38px] w-[41px]"
             src="images/img_thumbsup.svg"
@@ -335,6 +331,103 @@ const CanvasRowthumbsup = (props) => {
         </div>
       </div>
     </>
+  );
+};
+
+const Canvas = () => {
+  const canvasRef = useRef(null);
+  const [getCtx, setGetCtx] = useState(null);
+  const [painting, setPainting] = useState(false);
+  const [tracking, setTracking] = useState([]);
+
+  const drawFn = (e) => {
+    const mouseX = e.nativeEvent.offsetX;
+    const mouseY = e.nativeEvent.offsetY;
+    if (!painting) {
+      getCtx.beginPath();
+      getCtx.moveTo(mouseX, mouseY);
+    } else {
+      getCtx.lineTo(mouseX, mouseY);
+      getCtx.stroke();
+    }
+  };
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    canvas.width = 650;
+    canvas.height = 720;
+    const ctx = canvas.getContext("2d");
+    ctx.lineJoin = "round";
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = "#000000";
+    setGetCtx(ctx);
+
+    const onKeyDown = (e) => {
+      // Control+Z 조합이 눌렸을 때 함수 실행
+      if (e.ctrlKey && e.key === "z") {
+        if (tracking.length > 0) {
+          // 가장 최근 상태를 제거하고, 이전 상태로 canvas를 복원
+          tracking.pop();
+          if (tracking.length > 0) {
+            ctx.putImageData(tracking[tracking.length - 1], 0, 0);
+          } else {
+            // 모든 그림이 제거되었을 경우, canvas를 비우기
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, []);
+
+  return (
+    <div
+      id="canvas-view"
+      className="flex flex-col flex-grow justify-center items-center
+      w-full h-screen overflow-scroll"
+    >
+      <div id="canvas-wrap" className="">
+        {tracking.length}
+        <canvas
+          className="bg-white-A700"
+          ref={canvasRef}
+          onMouseDown={() => setPainting(true)}
+          onMouseUp={() => {
+            if (painting) {
+              tracking.push(
+                getCtx.getImageData(
+                  0,
+                  0,
+                  canvasRef.current.width,
+                  canvasRef.current.height
+                )
+              );
+            }
+            setPainting(false);
+          }}
+          onMouseMove={(e) => drawFn(e)}
+          onMouseLeave={() => {
+            if (painting) {
+              tracking.push(
+                getCtx.getImageData(
+                  0,
+                  0,
+                  canvasRef.current.width,
+                  canvasRef.current.height
+                )
+              );
+            }
+            setPainting(false);
+          }}
+        ></canvas>
+      </div>
+    </div>
   );
 };
 
