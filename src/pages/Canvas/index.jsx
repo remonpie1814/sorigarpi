@@ -18,7 +18,7 @@ const CanvasPage = () => {
   ]);
 
   function changePage(toId) {
-    saveCanvas(currentPage.pageId, currentHistory);
+    saveCanvas(currentPage, currentHistory);
     const target = pages.find((page) => page.pageId === toId);
     setCurrentHistory(target.savedHistory == null ? [] : target.savedHistory);
     setCurrentPage(target.pageId);
@@ -212,6 +212,7 @@ const CanvasPage = () => {
             </div>
           </Sidebar>
           <Canvas
+            currentTool={currentTool}
             pageId={currentPage}
             history={currentHistory}
             setCurrentHistory={setCurrentHistory}
