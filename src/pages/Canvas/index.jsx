@@ -4,9 +4,16 @@ import { Sidebar } from "react-pro-sidebar";
 
 import { Button, Img, Text } from "components";
 
+// JAVA의 enum처럼 쓰기 위한 전역 객체.
+// 현재 툴을 if문에서 비교할 때 if(currentTool=="pen")과 같이 문자열로 비교하고 싶지 않기 때문에(오타 낼 거 같음) 추가.
+const ToolName = {
+  PEN: "pen",
+  ERASER: "erase",
+};
+
 const CanvasPage = () => {
   // 도구 state
-  const [currentTool, setCurrentTool] = useState("pen");
+  const [currentTool, setCurrentTool] = useState(ToolName.PEN);
   // 현재 페이지 state
   const [currentPage, setCurrentPage] = useState("page-1-id");
   // 현재 히스토리
@@ -217,7 +224,10 @@ const CanvasPage = () => {
             history={currentHistory}
             setCurrentHistory={setCurrentHistory}
           />
-          <CanvasRowthumbsup className="flex sm:gap-10 items-start" />
+          <CanvasRowthumbsup
+            className="flex sm:gap-10 items-start"
+            setCurrentTool={setCurrentTool}
+          />
         </div>
       </div>
     </>
@@ -289,62 +299,26 @@ const CanvasPageButtons = (props) => {
   );
 };
 
-const CanvasRowthumbsup = (props) => {
+const CanvasRowthumbsup = ({ className, setCurrentTool }) => {
   return (
     <>
-      <div className={props.className}>
-        <div className="flex flex-col items-center justify-start px-5">
-          <div className="bg-black-900_99 flex flex-col items-center justify-start rounded-[12px] w-auto sm:w-full">
-            <div className="flex flex-col items-center justify-start w-[87%] md:w-full">
-              <div className="flex flex-col gap-[43px] items-center justify-start w-full">
-                <div className="flex flex-row items-center justify-between w-full">
-                  <Img
-                    className="h-[78px] md:h-auto object-cover w-[77px]"
-                    src="images/img_image683.png"
-                    alt="image683"
-                  />
-                  <Img
-                    className="h-[85px] md:h-auto object-cover"
-                    src="images/img_image682.png"
-                    alt="image682"
-                  />
-                  <Img
-                    className="h-[65px] md:h-auto object-cover"
-                    src="images/img_image686.png"
-                    alt="image686"
-                  />
-                  <Img
-                    className="h-[66px] md:h-auto object-cover"
-                    src="images/img_image685.png"
-                    alt="image685"
-                  />
-                </div>
-                <div className="flex flex-row gap-[66px] items-start justify-start w-auto">
-                  <Img
-                    className="h-9 md:h-auto object-cover w-9"
-                    src="images/img_image689_30x30.png"
-                    alt="image691"
-                  />
-                  <Img
-                    className="h-9 md:h-auto object-cover w-9"
-                    src="images/img_image690_30x30.png"
-                    alt="image691_One"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className={className}>
         <div className="bg-gray-100_01 flex flex-col gap-2.5 items-center justify-start px-5 py-[5px] w-[55px]">
           <Img
             className="h-[38px] w-[41px]"
             src="images/img_thumbsup.svg"
             alt="thumbsup"
+            onClick={() => {
+              setCurrentTool(ToolName.PEN);
+            }}
           />
           <Img
             className="h-[76px] w-[39px]"
             src="images/img_offer.svg"
             alt="offer"
+            onClick={() => {
+              setCurrentTool(ToolName.ERASER);
+            }}
           />
           <Img
             className="h-[43px] w-[29px]"
@@ -390,6 +364,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
   const drawFn = (e) => {
     const mouseX = e.nativeEvent.offsetX;
     const mouseY = e.nativeEvent.offsetY;
+
     if (!painting) {
       getCtx.beginPath();
       getCtx.moveTo(mouseX, mouseY);
@@ -399,25 +374,61 @@ const Canvas = ({ pageId, history, currentTool }) => {
     }
   };
 
-  const onMouseDownHandler = () => {
-    // todo: 이 아래에 각 도구별 마우스를 클릭했을 때의 동작 채워야 함
-    if (currentTool == "pen") {
-      setPainting(true);
+  const eraseFn = (e) => {
+    const mouseX = e.nativeEvent.offsetX;
+    const mouseY = e.nativeEvent.offsetY;
+    if (!painting) {
+      // 속성을 색상 제거로 변경
+      getCtx.globalCompositeOperation = "destination-out";
+      getCtx.beginPath();
+      getCtx.moveTo(mouseX, mouseY);
+    } else {
+      getCtx.lineTo(mouseX, mouseY);
+      getCtx.stroke();
     }
+
+    // clearRect로 지우개를 구현한 방법. 지워진 자국이 네모네모해서 쓰지 않기로 함.
+    // if (painting) {
+    //   getCtx.clearRect(
+    //     mouseX - getCtx.lineWidth / 2,
+    //     mouseY - getCtx.lineWidth / 2,
+    //     getCtx.lineWidth,
+    //     getCtx.lineWidth
+    //   );
+    // }
+  };
+
+  const onMouseDownHandler = () => {
+    setPainting(true);
   };
 
   const onMouseUpHandler = () => {
+    // 속성을 디폴트 값으로 돌림
+    getCtx.globalCompositeOperation = "source-over";
     // 각 도구별 마우스를 뗐을 때의 동작
-    if (currentTool == "pen") {
-      if (painting) {
-        history.push(
-          getCtx.getImageData(
+    if (painting) {
+      if (currentTool == ToolName.PEN) {
+        history.push({
+          tool: currentTool,
+          data: getCtx.getImageData(
             0,
             0,
             canvasRef.current.width,
             canvasRef.current.height
-          )
-        );
+          ),
+        });
+      } else if (currentTool == ToolName.ERASER) {
+        if (history.length > 0) {
+          history.push({
+            tool: currentTool,
+            data: getCtx.getImageData(
+              0,
+              0,
+              canvasRef.current.width,
+              canvasRef.current.height
+            ),
+          });
+        }
       }
       setPainting(false);
     }
@@ -425,8 +436,10 @@ const Canvas = ({ pageId, history, currentTool }) => {
 
   const onMouseMoveHandler = (e) => {
     // 각 도구별 마우스를 클릭한 채 움직일 때의 동작
-    if (currentTool == "pen") {
+    if (currentTool == ToolName.PEN) {
       drawFn(e);
+    } else if (currentTool == ToolName.ERASER) {
+      eraseFn(e);
     }
   };
 
@@ -436,12 +449,12 @@ const Canvas = ({ pageId, history, currentTool }) => {
     canvas.height = 720;
     const ctx = canvas.getContext("2d");
     ctx.lineJoin = "round";
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 10;
     ctx.strokeStyle = "#000000";
     setGetCtx(ctx);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (history.length > 0) {
-      ctx.putImageData(history[history.length - 1], 0, 0);
+      ctx.putImageData(history[history.length - 1].data, 0, 0);
     }
 
     const onKeyDown = (e) => {
@@ -452,7 +465,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
           // 가장 최근 상태를 제거하고, 이전 상태로 canvas를 복원
           history.pop();
           if (history.length > 0) {
-            ctx.putImageData(history[history.length - 1], 0, 0);
+            ctx.putImageData(history[history.length - 1].data, 0, 0);
           } else {
             // 모든 그림이 제거되었을 경우, canvas를 비우기
             ctx.clearRect(0, 0, canvas.width, canvas.height);
