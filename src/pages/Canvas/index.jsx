@@ -13,7 +13,10 @@ const ToolName = {
 
 const CanvasPage = () => {
   // 도구 state
-  const [currentTool, setCurrentTool] = useState(ToolName.PEN);
+  const [currentTool, setCurrentTool] = useState({
+    name: ToolName.PEN,
+    lineWidth: 10,
+  });
   // 현재 페이지 state
   const [currentPage, setCurrentPage] = useState("page-1-id");
   // 현재 히스토리
@@ -88,9 +91,9 @@ const CanvasPage = () => {
             </div>
           </div>
         </div>
-        <div className="bg-blue_gray-100 flex md:flex-col flex-row md:gap-5 items-start justify-start w-full">
+        <div className="bg-blue_gray-100 flex flex-row items-start justify-start w-full">
           <Sidebar className="fixed left-0 !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
-            <CanvasPageButtons className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px] sm:w-full" />
+            <CanvasPageButtons className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]" />
             <div className="flex flex-col h-full items-start justify-center mx-auto my-[9px] px-5 py-2.5 w-full">
               <div className="flex flex-col gap-5 items-center justify-start w-[92%]">
                 <div className="flex flex-row items-center justify-between w-full">
@@ -224,8 +227,9 @@ const CanvasPage = () => {
             history={currentHistory}
             setCurrentHistory={setCurrentHistory}
           />
-          <CanvasRowthumbsup
-            className="flex sm:gap-10 items-start"
+          <Toolbar
+            className="flex items-start"
+            currentTool={currentTool}
             setCurrentTool={setCurrentTool}
           />
         </div>
@@ -299,17 +303,126 @@ const CanvasPageButtons = (props) => {
   );
 };
 
-const CanvasRowthumbsup = ({ className, setCurrentTool }) => {
+const Toolbar = ({ className, currentTool, setCurrentTool }) => {
+  const [openToolDetail, setOpenToolDetail] = useState(true);
+  const [penDetail, setPenDetail] = useState({
+    name: ToolName.PEN,
+    lineWidth: 10,
+    color: "#000000",
+  });
+  const [colorHistory, setColorHistory] = useState([]);
+  const [eraserDetail, setEraserDetail] = useState({
+    name: ToolName.ERASER,
+    lineWidth: 10,
+  });
+
   return (
     <>
-      <div className={className}>
+      <div className="flex items-start">
+        {openToolDetail && (
+          <div className="bg-[rgba(0,0,0,0.5)] w-[100px] h-auto p-5">
+            {currentTool.name == ToolName.PEN ? (
+              <div className="flex flex-col items-center gap-2">
+                <div className="relative w-[100px] h-[200px]">
+                  <div className="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="flex flex-row gap-3">
+                      <input
+                        type="range"
+                        min="1"
+                        max="10"
+                        step="0.1"
+                        value={penDetail.lineWidth}
+                        onChange={(e) => {
+                          const newPen = {
+                            ...penDetail,
+                            lineWidth: e.target.value,
+                          };
+                          setPenDetail(newPen);
+                          setCurrentTool(newPen);
+                          console.log(newPen);
+                        }}
+                        className="slider"
+                      />
+                      <div className="w-[20px]">{penDetail.lineWidth}</div>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="color"
+                  value={penDetail.color}
+                  onChange={(e) => {
+                    const newPen = { ...penDetail, color: e.target.value };
+                    setPenDetail(newPen);
+                    setCurrentTool(newPen);
+                  }}
+                  onBlur={(e) => {
+                    if (!colorHistory.includes(e.target.value)) {
+                      colorHistory.push(e.target.value);
+                      if (colorHistory.length > 12) {
+                        colorHistory.shift();
+                      }
+                    }
+                  }}
+                  className="color-picker"
+                />
+                <div className="grid grid-cols-2 gap-2">
+                  {colorHistory.map((color) => {
+                    return (
+                      <>
+                        <div
+                          className="rounded-full w-[24px] h-[24px] border-2"
+                          style={{ backgroundColor: color }}
+                          onClick={() => {
+                            const newPen = {
+                              ...penDetail,
+                              color: color,
+                            };
+                            setPenDetail(newPen);
+                            setCurrentTool(newPen);
+                          }}
+                        ></div>
+                      </>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : currentTool.name == ToolName.ERASER ? (
+              <div className="flex flex-col items-center gap-2">
+                <div className="relative w-[100px] h-[200px]">
+                  <div className="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="flex flex-row gap-3">
+                      <input
+                        type="range"
+                        min="1"
+                        max="10"
+                        step="0.1"
+                        value={eraserDetail.lineWidth}
+                        onChange={(e) => {
+                          const newEraser = {
+                            ...eraserDetail,
+                            lineWidth: e.target.value,
+                          };
+                          setEraserDetail(newEraser);
+                          setCurrentTool(newEraser);
+                        }}
+                        className="slider"
+                      />
+                      <div className="w-[20px]">{eraserDetail.lineWidth}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        )}
+
         <div className="bg-gray-100_01 flex flex-col gap-2.5 items-center justify-start px-5 py-[5px] w-[55px]">
           <Img
             className="h-[38px] w-[41px]"
             src="images/img_thumbsup.svg"
             alt="thumbsup"
             onClick={() => {
-              setCurrentTool(ToolName.PEN);
+              setCurrentTool(penDetail);
             }}
           />
           <Img
@@ -317,7 +430,7 @@ const CanvasRowthumbsup = ({ className, setCurrentTool }) => {
             src="images/img_offer.svg"
             alt="offer"
             onClick={() => {
-              setCurrentTool(ToolName.ERASER);
+              setCurrentTool(eraserDetail);
             }}
           />
           <Img
@@ -331,22 +444,22 @@ const CanvasRowthumbsup = ({ className, setCurrentTool }) => {
             alt="user"
           />
           <Img
-            className="h-[54px] md:h-auto object-cover w-[29px]"
+            className="h-[54px] object-cover w-[29px]"
             src="images/img_image754.png"
             alt="image754"
           />
           <Img
-            className="h-[54px] md:h-auto object-cover w-[29px]"
+            className="h-[54px] object-cover w-[29px]"
             src="images/img_icons8241.png"
             alt="icons8241"
           />
           <Img
-            className="h-[54px] md:h-auto object-cover w-[29px]"
+            className="h-[54px]  object-cover w-[29px]"
             src="images/img_image764.png"
             alt="image764"
           />
           <Img
-            className="h-[55px] md:h-auto object-cover w-[30px]"
+            className="h-[55px] object-cover w-[30px]"
             src="images/img_image769.png"
             alt="image769"
           />
@@ -366,6 +479,8 @@ const Canvas = ({ pageId, history, currentTool }) => {
     const mouseY = e.nativeEvent.offsetY;
 
     if (!painting) {
+      getCtx.lineWidth = currentTool.lineWidth;
+      getCtx.strokeStyle = currentTool.color;
       getCtx.beginPath();
       getCtx.moveTo(mouseX, mouseY);
     } else {
@@ -378,6 +493,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
     const mouseX = e.nativeEvent.offsetX;
     const mouseY = e.nativeEvent.offsetY;
     if (!painting) {
+      getCtx.lineWidth = currentTool.lineWidth;
       // 속성을 색상 제거로 변경
       getCtx.globalCompositeOperation = "destination-out";
       getCtx.beginPath();
@@ -407,7 +523,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
     getCtx.globalCompositeOperation = "source-over";
     // 각 도구별 마우스를 뗐을 때의 동작
     if (painting) {
-      if (currentTool == ToolName.PEN) {
+      if (currentTool.name == ToolName.PEN) {
         history.push({
           tool: currentTool,
           data: getCtx.getImageData(
@@ -417,7 +533,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
             canvasRef.current.height
           ),
         });
-      } else if (currentTool == ToolName.ERASER) {
+      } else if (currentTool.name == ToolName.ERASER) {
         if (history.length > 0) {
           history.push({
             tool: currentTool,
@@ -436,9 +552,9 @@ const Canvas = ({ pageId, history, currentTool }) => {
 
   const onMouseMoveHandler = (e) => {
     // 각 도구별 마우스를 클릭한 채 움직일 때의 동작
-    if (currentTool == ToolName.PEN) {
+    if (currentTool.name == ToolName.PEN) {
       drawFn(e);
-    } else if (currentTool == ToolName.ERASER) {
+    } else if (currentTool.name == ToolName.ERASER) {
       eraseFn(e);
     }
   };
