@@ -329,7 +329,7 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
                       <input
                         type="range"
                         min="1"
-                        max="10"
+                        max="30"
                         step="0.1"
                         value={penDetail.lineWidth}
                         onChange={(e) => {
@@ -394,7 +394,7 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
                       <input
                         type="range"
                         min="1"
-                        max="10"
+                        max="30"
                         step="0.1"
                         value={eraserDetail.lineWidth}
                         onChange={(e) => {
@@ -473,6 +473,9 @@ const Canvas = ({ pageId, history, currentTool }) => {
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
   const [painting, setPainting] = useState(false);
+
+  // 마우스가 현재 캔버스 위에 있는지 판정. FollowMouse 컴포넌트에서 쓰려고 만든 state.
+  const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(false);
 
   const drawFn = (e) => {
     const mouseX = e.nativeEvent.offsetX;
@@ -559,6 +562,18 @@ const Canvas = ({ pageId, history, currentTool }) => {
     }
   };
 
+  const onMouseEnterHandler = () => {
+    // 마우스가 캔버스 위에 있음을 true로
+    setIsMouseOverCanvas(true);
+    // mouse를 뗐을 때와 같은 처리(history 갱신, 속성 리셋)를 해야 함
+    onMouseUpHandler();
+  };
+
+  const onMouseLeaveHandler = () => {
+    // 마우스가 캔버스 위에 있는지를 false로
+    setIsMouseOverCanvas(false);
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.width = 650;
@@ -620,11 +635,66 @@ const Canvas = ({ pageId, history, currentTool }) => {
             onMouseMoveHandler(e);
           }}
           onMouseLeave={() => {
-            onMouseUpHandler();
+            onMouseLeaveHandler();
+          }}
+          onMouseEnter={() => {
+            onMouseEnterHandler();
           }}
         ></canvas>
       </div>
+      {isMouseOverCanvas && <FollowMouse {...currentTool} />}
     </div>
+  );
+};
+
+const FollowMouse = ({ lineWidth, color }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleMouseMove = (event) => {
+    if (isVisible) {
+      setPosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+    }
+  };
+
+  const handleMouseDown = () => {
+    setIsVisible(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsVisible(true);
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isVisible]);
+
+  return (
+    isVisible && (
+      <div
+        style={{
+          pointerEvents: "none",
+          position: "absolute",
+          left: position.x - lineWidth / 2,
+          top: position.y - lineWidth / 2,
+          width: lineWidth + "px",
+          height: lineWidth + "px",
+          border: "solid 1px",
+          borderColor: color,
+          zIndex: 9999,
+        }}
+      ></div>
+    )
   );
 };
 
