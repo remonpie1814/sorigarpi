@@ -17,10 +17,14 @@ const CanvasPage = () => {
     name: ToolName.PEN,
     lineWidth: 10,
   });
-  // 현재 페이지 state
-  const [currentPage, setCurrentPage] = useState("page-1-id");
+  // 현재 페이지 id state
+  const [currentPageId, setCurrentPageId] = useState("page-1-id");
   // 현재 히스토리
   const [currentHistory, setCurrentHistory] = useState([]);
+  // 현재 캔버스 미리보기 url
+  // 이 미리보기가 반영되는 건 편집 페이지를 변경했을 때, saveCanvas 함수 안에서.
+  // pages 배열을 자주 수정하고 싶지 않기 때문에 페이지 변경 타이밍에만 바꿈.
+  const [dataurl, setDataurl] = useState();
   // 페이지들의 state
   const [pages, setPages] = useState([
     { pageId: "page-1-id" },
@@ -28,24 +32,25 @@ const CanvasPage = () => {
   ]);
 
   function changePage(toId) {
-    saveCanvas(currentPage, currentHistory);
+    saveCanvas(currentPageId, currentHistory, dataurl);
     const target = pages.find((page) => page.pageId === toId);
     setCurrentHistory(target.savedHistory == null ? [] : target.savedHistory);
-    setCurrentPage(target.pageId);
+    setCurrentPageId(target.pageId);
     console.log("change to pageid = " + toId);
   }
 
-  function saveCanvas(id, value) {
-    // 특정 id를 가진 원소를 제거하고 새 원소를 추가하여 업데이트된 배열을 생성
-    const updatedPages = pages.filter((page) => page.pageId !== id);
-    updatedPages.push({ pageId: id, savedHistory: [...value] });
+  function saveCanvas(id, value, dataurl) {
+    // 특정 id를 가진 원소를 찾아서 교체
+    const updatedPages = pages.map((page) => {
+      if (page.pageId === id) {
+        // 일치하는 id를 가진 요소를 찾으면 savedHistory 속성을 새로운 값으로 업데이트
+        return { ...page, savedHistory: [...value], dataurl: dataurl };
+      }
+      return page; // 일치하지 않으면 원래 요소 반환
+    });
+
     // 상태를 업데이트
     setPages(updatedPages);
-
-    pages.map((page) => {
-      console.log("canvas saved.");
-      console.log(page);
-    });
   }
 
   document.body.style = "overflow:hidden";
@@ -96,136 +101,46 @@ const CanvasPage = () => {
             <CanvasPageButtons className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]" />
             <div className="flex flex-col h-full items-start justify-center mx-auto my-[9px] px-5 py-2.5 w-full">
               <div className="flex flex-col gap-5 items-center justify-start w-[92%]">
-                <div className="flex flex-row items-center justify-between w-full">
-                  <div
-                    className="flex flex-col gap-2.5 items-center justify-start w-[130px]"
-                    onClick={() => {
-                      changePage("page-1-id");
-                    }}
-                  >
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyOne"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[50px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      1페이지
-                    </Text>
-                  </div>
-                  <div
-                    className="flex flex-col gap-2.5 items-center justify-start w-[130px]"
-                    onClick={() => {
-                      changePage("page-2-id");
-                    }}
-                  >
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyTwo"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      2페이지
-                    </Text>
-                  </div>
-                </div>
-                <div className="flex flex-row items-center justify-between w-full">
-                  <div className="flex flex-col gap-2.5 items-center justify-start w-[130px]">
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyThree"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      3페이지
-                    </Text>
-                  </div>
-                  <div className="flex flex-col gap-2.5 items-center justify-start w-[130px]">
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyFour"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[53px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      4페이지
-                    </Text>
-                  </div>
-                </div>
-                <div className="flex flex-row items-center justify-between w-full">
-                  <div className="flex flex-col gap-2.5 items-center justify-start w-[130px]">
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyFive"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      5페이지
-                    </Text>
-                  </div>
-                  <div className="flex flex-col gap-2.5 items-center justify-start w-[130px]">
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortySix"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      6페이지
-                    </Text>
-                  </div>
-                </div>
-                <div className="flex flex-row items-center justify-between w-full">
-                  <div className="flex flex-col gap-2.5 items-center justify-start w-[130px]">
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortySeven"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      7페이지
-                    </Text>
-                  </div>
-                  <div className="flex flex-col gap-2.5 items-center justify-start w-[130px]">
-                    <Img
-                      className="h-[175px] w-[130px]"
-                      src="images/img__deep_orange_100.svg"
-                      alt="FourHundredFortyEight"
-                    />
-                    <Text
-                      className="text-base text-center text-gray-900 tracking-[-0.18px] w-[52px]"
-                      size="txtInterMedium16Gray900"
-                    >
-                      8페이지
-                    </Text>
-                  </div>
+                <div
+                  className="grid grid-cols-2
+                  w-full"
+                >
+                  {pages.map((page, index) => {
+                    return (
+                      <div
+                        className={`flex flex-col gap-2.5 items-center justify-center p-2
+                        ${
+                          page.pageId === currentPageId
+                            ? "border-2 border-gray-700"
+                            : null
+                        }`}
+                        onClick={() => {
+                          changePage(page.pageId);
+                        }}
+                      >
+                        <Img
+                          className="h-[175px] w-[130px] bg-white-A700"
+                          src={page.dataurl}
+                          alt="FourHundredFortyOne"
+                        />
+                        <Text
+                          className="text-base text-center text-gray-900 tracking-[-0.18px] max-w-[80px]"
+                          size="txtInterMedium16Gray900"
+                        >
+                          {index + 1}페이지
+                        </Text>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
           </Sidebar>
           <Canvas
             currentTool={currentTool}
-            pageId={currentPage}
+            pageId={currentPageId}
             history={currentHistory}
-            setCurrentHistory={setCurrentHistory}
+            setCurrentDataurl={setDataurl}
           />
           <Toolbar
             className="flex items-start"
@@ -488,7 +403,7 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
   );
 };
 
-const Canvas = ({ pageId, history, currentTool }) => {
+const Canvas = ({ pageId, history, currentTool, setCurrentDataurl }) => {
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
   const [painting, setPainting] = useState(false);
@@ -569,6 +484,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
         }
       }
       setPainting(false);
+      setCurrentDataurl(canvasRef.current.toDataURL("image/png"));
     }
   };
 
@@ -606,6 +522,8 @@ const Canvas = ({ pageId, history, currentTool }) => {
     if (history.length > 0) {
       ctx.putImageData(history[history.length - 1].data, 0, 0);
     }
+    // 페이지 미리보기 초기화
+    setCurrentDataurl(canvasRef.current.toDataURL());
 
     const onKeyDown = (e) => {
       // Control+Z 조합이 눌렸을 때 함수 실행
@@ -621,6 +539,7 @@ const Canvas = ({ pageId, history, currentTool }) => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
           }
         }
+        setCurrentDataurl(canvasRef.current.toDataURL());
       }
     };
 
