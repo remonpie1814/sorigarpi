@@ -310,17 +310,40 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
     lineWidth: 10,
     color: "#000000",
   });
-  const [colorHistory, setColorHistory] = useState([]);
   const [eraserDetail, setEraserDetail] = useState({
     name: ToolName.ERASER,
     lineWidth: 10,
   });
 
+  // 펜과 지우개의 굵기 최소, 최대값
+  const minLineWidth = 1;
+  const maxLineWidth = 30;
+
+  // 펜 색 프리셋 배열
+  const presetColors = [
+    "#000000",
+    "#a8a8a8",
+    "#ff0000",
+    "#ff8080",
+    "#ff8c00",
+    "#ffc680",
+    "#ffff00",
+    "#ffff80",
+    "#008000",
+    "#6bd66b",
+    "#0000ff",
+    "#8080ff",
+    "#4b0082",
+    "#b26fe3",
+    "#800080",
+    "#f582f5",
+  ];
+
   return (
     <>
       <div className="flex items-start">
         {openToolDetail && (
-          <div className="bg-[rgba(0,0,0,0.5)] w-[100px] h-auto p-5">
+          <div className="bg-[rgba(0,0,0,0.3)] w-[100px] h-auto p-5">
             {currentTool.name == ToolName.PEN ? (
               <div className="flex flex-col items-center gap-2">
                 <div className="relative w-[100px] h-[200px]">
@@ -328,8 +351,8 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
                     <div className="flex flex-row gap-3">
                       <input
                         type="range"
-                        min="1"
-                        max="30"
+                        min={minLineWidth}
+                        max={maxLineWidth}
                         step="0.1"
                         value={penDetail.lineWidth}
                         onChange={(e) => {
@@ -341,32 +364,19 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
                           setCurrentTool(newPen);
                           console.log(newPen);
                         }}
-                        className="slider"
+                        className="slider bg-white-A700"
+                        style={{
+                          accentColor: penDetail.color,
+                        }}
                       />
-                      <div className="w-[20px]">{penDetail.lineWidth}</div>
+                      <div className="w-[20px] font-bold">
+                        {penDetail.lineWidth}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <input
-                  type="color"
-                  value={penDetail.color}
-                  onChange={(e) => {
-                    const newPen = { ...penDetail, color: e.target.value };
-                    setPenDetail(newPen);
-                    setCurrentTool(newPen);
-                  }}
-                  onBlur={(e) => {
-                    if (!colorHistory.includes(e.target.value)) {
-                      colorHistory.push(e.target.value);
-                      if (colorHistory.length > 12) {
-                        colorHistory.shift();
-                      }
-                    }
-                  }}
-                  className="color-picker"
-                />
                 <div className="grid grid-cols-2 gap-2">
-                  {colorHistory.map((color) => {
+                  {presetColors.map((color) => {
                     return (
                       <>
                         <div
@@ -385,6 +395,15 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
                     );
                   })}
                 </div>
+                <input
+                  type="color"
+                  onChange={(e) => {
+                    const newPen = { ...penDetail, color: e.target.value };
+                    setPenDetail(newPen);
+                    setCurrentTool(newPen);
+                  }}
+                  className="color-picker"
+                />
               </div>
             ) : currentTool.name == ToolName.ERASER ? (
               <div className="flex flex-col items-center gap-2">
