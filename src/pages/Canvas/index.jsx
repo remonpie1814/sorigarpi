@@ -11,6 +11,17 @@ const ToolName = {
   ERASER: "erase",
 };
 
+// uuid 생성 함수
+function generateUUID() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+console.log(generateUUID()); // 예: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+
 const CanvasPage = () => {
   // 도구 state
   const [currentTool, setCurrentTool] = useState({
@@ -26,10 +37,10 @@ const CanvasPage = () => {
   // pages 배열을 자주 수정하고 싶지 않기 때문에 페이지 변경 타이밍에만 바꿈.
   const [dataurl, setDataurl] = useState();
   // 페이지들의 state
-  const [pages, setPages] = useState([
-    { pageId: "page-1-id" },
-    { pageId: "page-2-id" },
-  ]);
+  const [pages, setPages] = useState([{ pageId: "page-1-id" }]);
+  // 페이지 삭제 모드 state
+  const [deletePageMode, setDeletePageMode] = useState(false);
+  const [selectedPages, setSelectedPages] = useState([]);
 
   function changePage(toId) {
     saveCanvas(currentPageId, currentHistory, dataurl);
@@ -51,6 +62,29 @@ const CanvasPage = () => {
 
     // 상태를 업데이트
     setPages(updatedPages);
+  }
+
+  function handlePageDelete() {
+    const newPages = pages.filter(
+      (page) => !selectedPages.includes(page.pageId)
+    );
+    // 전부 지워버렸을 경우 빈 페이지 추가
+    if (newPages.length < 1) {
+      while (pages.length > 0) {
+        pages.pop();
+      }
+      pages.push({ pageId: generateUUID() });
+      setCurrentHistory([]);
+      setDataurl();
+      changePage(pages[0].pageId);
+    } else {
+      // 현재 페이지를 지웠을 경우 첫번째 페이지를 불러온 다음 지움
+      if (!newPages.includes(currentPageId)) {
+        const pageId = newPages[0].pageId;
+        changePage(pageId);
+      }
+      setPages(newPages);
+    }
   }
 
   document.body.style = "overflow:hidden";
@@ -98,9 +132,152 @@ const CanvasPage = () => {
         </div>
         <div className="bg-blue_gray-100 flex flex-row items-start justify-start w-full">
           <Sidebar className="fixed left-0 !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
-            <CanvasPageButtons className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]" />
-            <div className="flex flex-col h-full items-start justify-center mx-auto my-[9px] px-5 py-2.5 w-full">
-              <div className="flex flex-col gap-5 items-center justify-start w-[92%]">
+            <div className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]">
+              <div className="flex flex-row gap-2.5 items-center justify-center w-full">
+                {deletePageMode ? (
+                  <>
+                    <Button
+                      className="flex flex-row gap-2 items-center p-2
+              hover:bg-white-A700"
+                      onClick={() => {
+                        handlePageDelete();
+                        setDeletePageMode(!deletePageMode);
+                      }}
+                    >
+                      <Img
+                        className="h-[29px] md:h-auto object-cover w-[27px]"
+                        src="images/img_image661.png"
+                        alt="image661"
+                      />
+                      <Text
+                        className="text-base text-gray-900 w-auto"
+                        size="txtInterMedium16Gray900"
+                      >
+                        삭제확인
+                      </Text>
+                    </Button>
+                    <Button
+                      className="flex flex-row gap-2 items-center p-2
+              hover:bg-white-A700"
+                      onClick={() => {
+                        setDeletePageMode(!deletePageMode);
+                        setSelectedPages([]);
+                      }}
+                    >
+                      <Img
+                        className="h-[29px] md:h-auto object-cover w-[27px]"
+                        src="images/img_image661.png"
+                        alt="image661"
+                      />
+                      <Text
+                        className="text-base text-gray-900 w-auto"
+                        size="txtInterMedium16Gray900"
+                      >
+                        취소
+                      </Text>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      className="flex flex-row gap-2 items-center p-2
+              hover:bg-white-A700"
+                      onClick={() => {
+                        setDeletePageMode(!deletePageMode);
+                        setSelectedPages([]);
+                      }}
+                    >
+                      <Img
+                        className="h-[29px] md:h-auto object-cover w-[27px]"
+                        src="images/img_image661.png"
+                        alt="image661"
+                      />
+                      <Text
+                        className="text-base text-gray-900 w-auto"
+                        size="txtInterMedium16Gray900"
+                      >
+                        페이지 삭제
+                      </Text>
+                    </Button>
+                    <Button
+                      className="flex flex-row gap-2 items-center p-2
+                hover:bg-white-A700"
+                      onClick={() => {
+                        setPages([
+                          ...pages,
+                          {
+                            pageId: generateUUID(),
+                          },
+                        ]);
+                      }}
+                    >
+                      <Img
+                        className="h-[33px] md:h-auto object-cover w-[30px]"
+                        src="images/img__33x30.png"
+                        alt="FourHundredThirtyEight"
+                      />
+                      <Text
+                        className="text-base text-gray-900 w-auto"
+                        size="txtInterMedium16Gray900"
+                      >
+                        페이지 추가
+                      </Text>
+                    </Button>
+                  </>
+                )}
+              </div>
+              <div className="flex flex-row gap-5 h-9 md:h-auto items-center justify-center px-5 w-full">
+                <Img
+                  className="h-[30px] md:h-auto object-cover w-[30px]"
+                  src="images/img_image689_30x30.png"
+                  alt="image689_One"
+                  onClick={() => {
+                    const targetIndex =
+                      pages.findIndex((page) => page.pageId == currentPageId) -
+                      1;
+                    if (targetIndex >= 0) {
+                      changePage(pages[targetIndex].pageId);
+                    }
+                  }}
+                />
+                <div className="flex flex-row items-center justify-center w-[34px]">
+                  <Text
+                    className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                    size="txtInterMedium22Gray900_1"
+                  >
+                    {pages.findIndex((page) => page.pageId == currentPageId) +
+                      1}
+                  </Text>
+                  <Text
+                    className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                    size="txtInterMedium22Gray900_1"
+                  >
+                    /
+                  </Text>
+                  <Text
+                    className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                    size="txtInterMedium22Gray900_1"
+                  >
+                    {pages.length}
+                  </Text>
+                </div>
+                <Img
+                  className="h-[30px] md:h-auto object-cover w-[30px]"
+                  src="images/img_image690_30x30.png"
+                  alt="image690_One"
+                  onClick={() => {
+                    const targetIndex =
+                      pages.findIndex((page) => page.pageId == currentPageId) +
+                      1;
+                    if (targetIndex < pages.length) {
+                      changePage(pages[targetIndex].pageId);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col h-full items-start mx-auto my-[9px] px-5 py-2.5 w-full">
+              <div className="flex flex-col gap-5 justify-start w-[92%]">
                 <div
                   className="grid grid-cols-2
                   w-full"
@@ -108,20 +285,37 @@ const CanvasPage = () => {
                   {pages.map((page, index) => {
                     return (
                       <div
-                        className={`flex flex-col gap-2.5 items-center justify-center p-2
+                        key={"page-" + page.pageId}
+                        className={`flex flex-col gap-2.5 items-center justify-center p-2 border-2
                         ${
-                          page.pageId === currentPageId
-                            ? "border-2 border-gray-700"
-                            : null
+                          deletePageMode
+                            ? selectedPages.includes(page.pageId)
+                              ? "border-black-900"
+                              : ""
+                            : page.pageId === currentPageId
+                            ? "border-gray-700"
+                            : "border-[rgba(0,0,0,0)]"
                         }`}
                         onClick={() => {
-                          changePage(page.pageId);
+                          if (deletePageMode) {
+                            if (selectedPages.includes(page.pageId)) {
+                              const newSelectedPages = selectedPages.filter(
+                                (p) => p != page.pageId
+                              );
+                              console.log(selectedPages);
+                              setSelectedPages(newSelectedPages);
+                            } else {
+                              setSelectedPages([...selectedPages, page.pageId]);
+                            }
+                          } else {
+                            changePage(page.pageId);
+                          }
                         }}
                       >
                         <Img
                           className="h-[175px] w-[130px] bg-white-A700"
-                          src={page.dataurl}
-                          alt="FourHundredFortyOne"
+                          src={page.dataurl ? page.dataurl : ""}
+                          alt="페이지 미리보기"
                         />
                         <Text
                           className="text-base text-center text-gray-900 tracking-[-0.18px] max-w-[80px]"
@@ -146,71 +340,6 @@ const CanvasPage = () => {
             className="flex items-start"
             currentTool={currentTool}
             setCurrentTool={setCurrentTool}
-          />
-        </div>
-      </div>
-    </>
-  );
-};
-
-const CanvasPageButtons = (props) => {
-  return (
-    <>
-      <div className={props.className}>
-        <div className="flex flex-row gap-2.5 items-center justify-center w-full">
-          <Img
-            className="h-[29px] md:h-auto object-cover w-[27px]"
-            src="images/img_image661.png"
-            alt="image661"
-          />
-          <Text
-            className="text-base text-gray-900 w-auto"
-            size="txtInterMedium16Gray900"
-          >
-            페이지 삭제
-          </Text>
-          <Img
-            className="h-[33px] md:h-auto object-cover w-[30px]"
-            src="images/img__33x30.png"
-            alt="FourHundredThirtyEight"
-          />
-          <Text
-            className="text-base text-gray-900 w-auto"
-            size="txtInterMedium16Gray900"
-          >
-            페이지 추가
-          </Text>
-        </div>
-        <div className="flex flex-row gap-5 h-9 md:h-auto items-center justify-center px-5 w-full">
-          <Img
-            className="h-[30px] md:h-auto object-cover w-[30px]"
-            src="images/img_image689_30x30.png"
-            alt="image689_One"
-          />
-          <div className="flex flex-row items-center justify-center w-[34px]">
-            <Text
-              className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-              size="txtInterMedium22Gray900_1"
-            >
-              1
-            </Text>
-            <Text
-              className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-              size="txtInterMedium22Gray900_1"
-            >
-              /
-            </Text>
-            <Text
-              className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-              size="txtInterMedium22Gray900_1"
-            >
-              8
-            </Text>
-          </div>
-          <Img
-            className="h-[30px] md:h-auto object-cover w-[30px]"
-            src="images/img_image690_30x30.png"
-            alt="image690_One"
           />
         </div>
       </div>
@@ -544,11 +673,9 @@ const Canvas = ({ pageId, history, currentTool, setCurrentDataurl }) => {
     };
 
     document.addEventListener("keydown", onKeyDown);
-    console.log(pageId + "mounted");
     // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      console.log(pageId + "unmounted");
     };
   }, [pageId]);
 
