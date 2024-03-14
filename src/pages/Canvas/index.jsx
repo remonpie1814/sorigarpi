@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { Sidebar } from "react-pro-sidebar";
 
 import { Button, Img, Text } from "components";
+import { ToolContext, CanvasContext } from "contexts";
+import ToolProvider from "./ToolProvider";
 
 // JAVA의 enum처럼 쓰기 위한 전역 객체.
 // 현재 툴을 if문에서 비교할 때 if(currentTool=="pen")과 같이 문자열로 비교하고 싶지 않기 때문에(오타 낼 거 같음) 추가.
@@ -19,8 +21,6 @@ function generateUUID() {
     return v.toString(16);
   });
 }
-
-console.log(generateUUID()); // 예: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
 
 const CanvasPage = () => {
   // 도구 state
@@ -87,206 +87,220 @@ const CanvasPage = () => {
     }
   }
 
-  document.body.style = "overflow:hidden";
+  document.body.style = "overflow:hidden;user-select:none";
   return (
     <>
-      <div className="bg-white-A700 flex flex-col font-inter items-center justify-start h-screen">
-        <div className="flex flex-col items-start justify-start md:px-10 sm:px-5 px-[50px] w-full">
-          <div className="flex flex-row items-center justify-between mx-auto py-[5px] w-full">
-            <Img
-              className="h-[30px] w-[260px]"
-              src="images/img__black_900_30x260.svg"
-              alt="FourHundredThirtySix"
-            />
-            <div className="flex flex-row gap-5 items-start justify-start w-auto sm:w-full">
+      <CanvasContext.Provider
+        value={{
+          currentTool,
+          setCurrentTool,
+          currentPageId,
+          setCurrentPageId,
+          currentHistory,
+          setCurrentHistory,
+          dataurl,
+          setDataurl,
+        }}
+      >
+        <div className="bg-white-A700 flex flex-col font-inter items-center justify-start h-screen">
+          <div className="flex flex-col items-start justify-start md:px-10 sm:px-5 px-[50px] w-full">
+            <div className="flex flex-row items-center justify-between mx-auto py-[5px] w-full">
               <Img
-                className="h-[30px] md:h-auto object-cover w-[30px]"
-                src="images/img_image689.png"
-                alt="image689"
+                className="h-[30px] w-[260px]"
+                src="images/img__black_900_30x260.svg"
+                alt="FourHundredThirtySix"
               />
-              <Img
-                className="h-[30px] md:h-auto object-cover w-[30px]"
-                src="images/img_image690.png"
-                alt="image690"
-              />
-              <Button
-                className="cursor-pointer font-medium text-base text-center tracking-[-0.30px] w-[140px]"
-                shape="square"
-                color="blue_gray_100"
-                size="md"
-                variant="fill"
-              >
-                임시저장
-              </Button>
-              <Button
-                className="cursor-pointer font-medium min-w-[140px] text-base text-center tracking-[-0.30px]"
-                shape="square"
-                color="blue_gray_100"
-                size="md"
-                variant="fill"
-              >
-                완성하기
-              </Button>
+              <div className="flex flex-row gap-5 items-start justify-start w-auto sm:w-full">
+                <Img
+                  className="h-[30px] md:h-auto object-cover w-[30px]"
+                  src="images/img_image689.png"
+                  alt="image689"
+                />
+                <Img
+                  className="h-[30px] md:h-auto object-cover w-[30px]"
+                  src="images/img_image690.png"
+                  alt="image690"
+                />
+                <Button
+                  className="cursor-pointer font-medium text-base text-center tracking-[-0.30px] w-[140px]"
+                  shape="square"
+                  color="blue_gray_100"
+                  size="md"
+                  variant="fill"
+                >
+                  임시저장
+                </Button>
+                <Button
+                  className="cursor-pointer font-medium min-w-[140px] text-base text-center tracking-[-0.30px]"
+                  shape="square"
+                  color="blue_gray_100"
+                  size="md"
+                  variant="fill"
+                >
+                  완성하기
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="bg-blue_gray-100 flex flex-row items-start justify-start w-full">
-          <Sidebar className="fixed left-0 !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
-            <div className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]">
-              <div className="flex flex-row gap-2.5 items-center justify-center w-full">
-                {deletePageMode ? (
-                  <>
-                    <Button
-                      className="flex flex-row gap-2 items-center p-2
+          <div className="bg-blue_gray-100 flex flex-row items-start justify-start w-full">
+            <Sidebar className="fixed left-0 !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
+              <div className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]">
+                <div className="flex flex-row gap-2.5 items-center justify-center w-full">
+                  {deletePageMode ? (
+                    <>
+                      <Button
+                        className="flex flex-row gap-2 items-center p-2
               hover:bg-white-A700"
-                      onClick={() => {
-                        handlePageDelete();
-                        setDeletePageMode(!deletePageMode);
-                      }}
-                    >
-                      <Img
-                        className="h-[29px] md:h-auto object-cover w-[27px]"
-                        src="images/img_image661.png"
-                        alt="image661"
-                      />
-                      <Text
-                        className="text-base text-gray-900 w-auto"
-                        size="txtInterMedium16Gray900"
+                        onClick={() => {
+                          handlePageDelete();
+                          setDeletePageMode(!deletePageMode);
+                        }}
                       >
-                        삭제확인
-                      </Text>
-                    </Button>
-                    <Button
-                      className="flex flex-row gap-2 items-center p-2
+                        <Img
+                          className="h-[29px] md:h-auto object-cover w-[27px]"
+                          src="images/img_image661.png"
+                          alt="image661"
+                        />
+                        <Text
+                          className="text-base text-gray-900 w-auto"
+                          size="txtInterMedium16Gray900"
+                        >
+                          삭제확인
+                        </Text>
+                      </Button>
+                      <Button
+                        className="flex flex-row gap-2 items-center p-2
               hover:bg-white-A700"
-                      onClick={() => {
-                        setDeletePageMode(!deletePageMode);
-                        setSelectedPages([]);
-                      }}
-                    >
-                      <Img
-                        className="h-[29px] md:h-auto object-cover w-[27px]"
-                        src="images/img_image661.png"
-                        alt="image661"
-                      />
-                      <Text
-                        className="text-base text-gray-900 w-auto"
-                        size="txtInterMedium16Gray900"
+                        onClick={() => {
+                          setDeletePageMode(!deletePageMode);
+                          setSelectedPages([]);
+                        }}
                       >
-                        취소
-                      </Text>
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button
-                      className="flex flex-row gap-2 items-center p-2
+                        <Img
+                          className="h-[29px] md:h-auto object-cover w-[27px]"
+                          src="images/img_image661.png"
+                          alt="image661"
+                        />
+                        <Text
+                          className="text-base text-gray-900 w-auto"
+                          size="txtInterMedium16Gray900"
+                        >
+                          취소
+                        </Text>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button
+                        className="flex flex-row gap-2 items-center p-2
               hover:bg-white-A700"
-                      onClick={() => {
-                        setDeletePageMode(!deletePageMode);
-                        setSelectedPages([]);
-                      }}
-                    >
-                      <Img
-                        className="h-[29px] md:h-auto object-cover w-[27px]"
-                        src="images/img_image661.png"
-                        alt="image661"
-                      />
-                      <Text
-                        className="text-base text-gray-900 w-auto"
-                        size="txtInterMedium16Gray900"
+                        onClick={() => {
+                          setDeletePageMode(!deletePageMode);
+                          setSelectedPages([]);
+                        }}
                       >
-                        페이지 삭제
-                      </Text>
-                    </Button>
-                    <Button
-                      className="flex flex-row gap-2 items-center p-2
+                        <Img
+                          className="h-[29px] md:h-auto object-cover w-[27px]"
+                          src="images/img_image661.png"
+                          alt="image661"
+                        />
+                        <Text
+                          className="text-base text-gray-900 w-auto"
+                          size="txtInterMedium16Gray900"
+                        >
+                          페이지 삭제
+                        </Text>
+                      </Button>
+                      <Button
+                        className="flex flex-row gap-2 items-center p-2
                 hover:bg-white-A700"
-                      onClick={() => {
-                        setPages([
-                          ...pages,
-                          {
-                            pageId: generateUUID(),
-                          },
-                        ]);
-                      }}
-                    >
-                      <Img
-                        className="h-[33px] md:h-auto object-cover w-[30px]"
-                        src="images/img__33x30.png"
-                        alt="FourHundredThirtyEight"
-                      />
-                      <Text
-                        className="text-base text-gray-900 w-auto"
-                        size="txtInterMedium16Gray900"
+                        onClick={() => {
+                          setPages([
+                            ...pages,
+                            {
+                              pageId: generateUUID(),
+                            },
+                          ]);
+                        }}
                       >
-                        페이지 추가
-                      </Text>
-                    </Button>
-                  </>
-                )}
-              </div>
-              <div className="flex flex-row gap-5 h-9 md:h-auto items-center justify-center px-5 w-full">
-                <Img
-                  className="h-[30px] md:h-auto object-cover w-[30px]"
-                  src="images/img_image689_30x30.png"
-                  alt="image689_One"
-                  onClick={() => {
-                    const targetIndex =
-                      pages.findIndex((page) => page.pageId == currentPageId) -
-                      1;
-                    if (targetIndex >= 0) {
-                      changePage(pages[targetIndex].pageId);
-                    }
-                  }}
-                />
-                <div className="flex flex-row items-center justify-center w-[34px]">
-                  <Text
-                    className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                    size="txtInterMedium22Gray900_1"
-                  >
-                    {pages.findIndex((page) => page.pageId == currentPageId) +
-                      1}
-                  </Text>
-                  <Text
-                    className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                    size="txtInterMedium22Gray900_1"
-                  >
-                    /
-                  </Text>
-                  <Text
-                    className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
-                    size="txtInterMedium22Gray900_1"
-                  >
-                    {pages.length}
-                  </Text>
+                        <Img
+                          className="h-[33px] md:h-auto object-cover w-[30px]"
+                          src="images/img__33x30.png"
+                          alt="FourHundredThirtyEight"
+                        />
+                        <Text
+                          className="text-base text-gray-900 w-auto"
+                          size="txtInterMedium16Gray900"
+                        >
+                          페이지 추가
+                        </Text>
+                      </Button>
+                    </>
+                  )}
                 </div>
-                <Img
-                  className="h-[30px] md:h-auto object-cover w-[30px]"
-                  src="images/img_image690_30x30.png"
-                  alt="image690_One"
-                  onClick={() => {
-                    const targetIndex =
-                      pages.findIndex((page) => page.pageId == currentPageId) +
-                      1;
-                    if (targetIndex < pages.length) {
-                      changePage(pages[targetIndex].pageId);
-                    }
-                  }}
-                />
+                <div className="flex flex-row gap-5 h-9 md:h-auto items-center justify-center px-5 w-full">
+                  <Img
+                    className="h-[30px] md:h-auto object-cover w-[30px]"
+                    src="images/img_image689_30x30.png"
+                    alt="image689_One"
+                    onClick={() => {
+                      const targetIndex =
+                        pages.findIndex(
+                          (page) => page.pageId == currentPageId
+                        ) - 1;
+                      if (targetIndex >= 0) {
+                        changePage(pages[targetIndex].pageId);
+                      }
+                    }}
+                  />
+                  <div className="flex flex-row items-center justify-center w-[34px]">
+                    <Text
+                      className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                      size="txtInterMedium22Gray900_1"
+                    >
+                      {pages.findIndex((page) => page.pageId == currentPageId) +
+                        1}
+                    </Text>
+                    <Text
+                      className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                      size="txtInterMedium22Gray900_1"
+                    >
+                      /
+                    </Text>
+                    <Text
+                      className="text-[22px] text-center text-gray-900 sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                      size="txtInterMedium22Gray900_1"
+                    >
+                      {pages.length}
+                    </Text>
+                  </div>
+                  <Img
+                    className="h-[30px] md:h-auto object-cover w-[30px]"
+                    src="images/img_image690_30x30.png"
+                    alt="image690_One"
+                    onClick={() => {
+                      const targetIndex =
+                        pages.findIndex(
+                          (page) => page.pageId == currentPageId
+                        ) + 1;
+                      if (targetIndex < pages.length) {
+                        changePage(pages[targetIndex].pageId);
+                      }
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col h-full items-start mx-auto my-[9px] px-5 py-2.5 w-full">
-              <div className="flex flex-col gap-5 justify-start w-[92%]">
-                <div
-                  className="grid grid-cols-2
+              <div className="flex flex-col h-full items-start mx-auto my-[9px] px-5 py-2.5 w-full">
+                <div className="flex flex-col gap-5 justify-start w-[92%]">
+                  <div
+                    className="grid grid-cols-2
                   w-full"
-                >
-                  {pages.map((page, index) => {
-                    return (
-                      <div
-                        key={"page-" + page.pageId}
-                        className={`flex flex-col gap-2.5 items-center justify-center p-2 border-2
+                  >
+                    {pages.map((page, index) => {
+                      return (
+                        <div
+                          key={"page-" + page.pageId}
+                          className={`flex flex-col gap-2.5 items-center justify-center p-2 border-[5px]
                         ${
                           deletePageMode
                             ? selectedPages.includes(page.pageId)
@@ -296,59 +310,58 @@ const CanvasPage = () => {
                             ? "border-gray-700"
                             : "border-[rgba(0,0,0,0)]"
                         }`}
-                        onClick={() => {
-                          if (deletePageMode) {
-                            if (selectedPages.includes(page.pageId)) {
-                              const newSelectedPages = selectedPages.filter(
-                                (p) => p != page.pageId
-                              );
-                              console.log(selectedPages);
-                              setSelectedPages(newSelectedPages);
+                          onClick={() => {
+                            if (deletePageMode) {
+                              if (selectedPages.includes(page.pageId)) {
+                                const newSelectedPages = selectedPages.filter(
+                                  (p) => p != page.pageId
+                                );
+                                console.log(selectedPages);
+                                setSelectedPages(newSelectedPages);
+                              } else {
+                                setSelectedPages([
+                                  ...selectedPages,
+                                  page.pageId,
+                                ]);
+                              }
                             } else {
-                              setSelectedPages([...selectedPages, page.pageId]);
+                              changePage(page.pageId);
                             }
-                          } else {
-                            changePage(page.pageId);
-                          }
-                        }}
-                      >
-                        <Img
-                          className="h-[175px] w-[130px] bg-white-A700"
-                          src={page.dataurl ? page.dataurl : ""}
-                          alt="페이지 미리보기"
-                        />
-                        <Text
-                          className="text-base text-center text-gray-900 tracking-[-0.18px] max-w-[80px]"
-                          size="txtInterMedium16Gray900"
+                          }}
                         >
-                          {index + 1}페이지
-                        </Text>
-                      </div>
-                    );
-                  })}
+                          <Img
+                            className="h-[175px] w-[130px] bg-white-A700"
+                            src={page.dataurl ? page.dataurl : ""}
+                            alt="페이지 미리보기"
+                          />
+                          <Text
+                            className="text-base text-center text-gray-900 tracking-[-0.18px] max-w-[80px]"
+                            size="txtInterMedium16Gray900"
+                          >
+                            {index + 1}페이지
+                          </Text>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Sidebar>
-          <Canvas
-            currentTool={currentTool}
-            pageId={currentPageId}
-            history={currentHistory}
-            setCurrentDataurl={setDataurl}
-          />
-          <Toolbar
-            className="flex items-start"
-            currentTool={currentTool}
-            setCurrentTool={setCurrentTool}
-          />
+            </Sidebar>
+            <ToolProvider>
+              <Canvas />
+            </ToolProvider>
+            <Toolbar className="flex items-start" />
+          </div>
         </div>
-      </div>
+      </CanvasContext.Provider>
     </>
   );
 };
 
-const Toolbar = ({ className, currentTool, setCurrentTool }) => {
+const Toolbar = ({ className }) => {
+  const { currentTool, setCurrentTool } = useContext(CanvasContext);
   const [openToolDetail, setOpenToolDetail] = useState(true);
+  // 도구마다 state가 따로 있어야 도구를 바꿔도 설정을 불러올 수 있음
   const [penDetail, setPenDetail] = useState({
     name: ToolName.PEN,
     lineWidth: 10,
@@ -406,7 +419,6 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
                           };
                           setPenDetail(newPen);
                           setCurrentTool(newPen);
-                          console.log(newPen);
                         }}
                         className="slider bg-white-A700"
                         style={{
@@ -532,111 +544,21 @@ const Toolbar = ({ className, currentTool, setCurrentTool }) => {
   );
 };
 
-const Canvas = ({ pageId, history, currentTool, setCurrentDataurl }) => {
+const Canvas = ({ children }) => {
+  const { currentPageId, currentHistory, currentTool, setDataurl } =
+    useContext(CanvasContext);
+  const {
+    onMouseDownHandler,
+    onMouseEnterHandler,
+    onMouseLeaveHandler,
+    onMouseMoveHandler,
+    onMouseUpHandler,
+  } = useContext(ToolContext);
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
-  const [painting, setPainting] = useState(false);
 
   // 마우스가 현재 캔버스 위에 있는지 판정. FollowMouse 컴포넌트에서 쓰려고 만든 state.
   const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(false);
-
-  const drawFn = (e) => {
-    const mouseX = e.nativeEvent.offsetX;
-    const mouseY = e.nativeEvent.offsetY;
-
-    if (!painting) {
-      getCtx.lineWidth = currentTool.lineWidth;
-      getCtx.strokeStyle = currentTool.color;
-      getCtx.beginPath();
-      getCtx.moveTo(mouseX, mouseY);
-    } else {
-      getCtx.lineTo(mouseX, mouseY);
-      getCtx.stroke();
-    }
-  };
-
-  const eraseFn = (e) => {
-    const mouseX = e.nativeEvent.offsetX;
-    const mouseY = e.nativeEvent.offsetY;
-    if (!painting) {
-      getCtx.lineWidth = currentTool.lineWidth;
-      // 속성을 색상 제거로 변경
-      getCtx.globalCompositeOperation = "destination-out";
-      getCtx.beginPath();
-      getCtx.moveTo(mouseX, mouseY);
-    } else {
-      getCtx.lineTo(mouseX, mouseY);
-      getCtx.stroke();
-    }
-
-    // clearRect로 지우개를 구현한 방법. 지워진 자국이 네모네모해서 쓰지 않기로 함.
-    // if (painting) {
-    //   getCtx.clearRect(
-    //     mouseX - getCtx.lineWidth / 2,
-    //     mouseY - getCtx.lineWidth / 2,
-    //     getCtx.lineWidth,
-    //     getCtx.lineWidth
-    //   );
-    // }
-  };
-
-  const onMouseDownHandler = () => {
-    setPainting(true);
-  };
-
-  const onMouseUpHandler = () => {
-    // 속성을 디폴트 값으로 돌림
-    getCtx.globalCompositeOperation = "source-over";
-    // 각 도구별 마우스를 뗐을 때의 동작
-    if (painting) {
-      if (currentTool.name == ToolName.PEN) {
-        history.push({
-          tool: currentTool,
-          data: getCtx.getImageData(
-            0,
-            0,
-            canvasRef.current.width,
-            canvasRef.current.height
-          ),
-        });
-      } else if (currentTool.name == ToolName.ERASER) {
-        if (history.length > 0) {
-          history.push({
-            tool: currentTool,
-            data: getCtx.getImageData(
-              0,
-              0,
-              canvasRef.current.width,
-              canvasRef.current.height
-            ),
-          });
-        }
-      }
-      setPainting(false);
-      setCurrentDataurl(canvasRef.current.toDataURL("image/png"));
-    }
-  };
-
-  const onMouseMoveHandler = (e) => {
-    // 각 도구별 마우스를 클릭한 채 움직일 때의 동작
-    if (currentTool.name == ToolName.PEN) {
-      drawFn(e);
-    } else if (currentTool.name == ToolName.ERASER) {
-      eraseFn(e);
-    }
-  };
-
-  const onMouseEnterHandler = () => {
-    // 마우스가 캔버스 위에 있음을 true로
-    setIsMouseOverCanvas(true);
-    // mouse를 뗐을 때와 같은 처리(history 갱신, 속성 리셋)를 해야 함
-    onMouseUpHandler();
-  };
-
-  const onMouseLeaveHandler = () => {
-    // 마우스가 캔버스 위에 있는지를 false로
-    setIsMouseOverCanvas(false);
-  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -648,27 +570,31 @@ const Canvas = ({ pageId, history, currentTool, setCurrentDataurl }) => {
     ctx.strokeStyle = "#000000";
     setGetCtx(ctx);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (history.length > 0) {
-      ctx.putImageData(history[history.length - 1].data, 0, 0);
+    if (currentHistory.length > 0) {
+      ctx.putImageData(currentHistory[currentHistory.length - 1].data, 0, 0);
     }
     // 페이지 미리보기 초기화
-    setCurrentDataurl(canvasRef.current.toDataURL());
+    setDataurl(canvasRef.current.toDataURL());
 
     const onKeyDown = (e) => {
       // Control+Z 조합이 눌렸을 때 함수 실행
       if (e.ctrlKey && e.key === "z") {
-        console.log(history.length);
-        if (history.length > 0) {
+        console.log(currentHistory.length);
+        if (currentHistory.length > 0) {
           // 가장 최근 상태를 제거하고, 이전 상태로 canvas를 복원
-          history.pop();
-          if (history.length > 0) {
-            ctx.putImageData(history[history.length - 1].data, 0, 0);
+          currentHistory.pop();
+          if (currentHistory.length > 0) {
+            ctx.putImageData(
+              currentHistory[currentHistory.length - 1].data,
+              0,
+              0
+            );
           } else {
             // 모든 그림이 제거되었을 경우, canvas를 비우기
             ctx.clearRect(0, 0, canvas.width, canvas.height);
           }
         }
-        setCurrentDataurl(canvasRef.current.toDataURL());
+        setDataurl(canvasRef.current.toDataURL());
       }
     };
 
@@ -677,7 +603,7 @@ const Canvas = ({ pageId, history, currentTool, setCurrentDataurl }) => {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [pageId]);
+  }, [currentPageId]);
 
   return (
     <div
@@ -686,27 +612,45 @@ const Canvas = ({ pageId, history, currentTool, setCurrentDataurl }) => {
       h-screen overflow-scroll"
     >
       <div id="canvas-wrap" className="">
-        {history.length}
+        {currentHistory.length}
         <canvas
           className="bg-white-A700"
           ref={canvasRef}
           onMouseDown={() => {
-            onMouseDownHandler();
+            onMouseDownHandler(getCtx);
           }}
           onMouseUp={() => {
-            onMouseUpHandler();
+            onMouseUpHandler(getCtx);
+            if (
+              currentTool.name !== ToolName.ERASER ||
+              currentHistory.length > 0
+            ) {
+              currentHistory.push({
+                tool: currentTool,
+                data: getCtx.getImageData(
+                  0,
+                  0,
+                  canvasRef.current.width,
+                  canvasRef.current.height
+                ),
+              });
+            }
+            setDataurl(canvasRef.current.toDataURL("image/png"));
           }}
           onMouseMove={(e) => {
-            onMouseMoveHandler(e);
+            onMouseMoveHandler(getCtx, e);
           }}
           onMouseLeave={() => {
-            onMouseLeaveHandler();
+            setIsMouseOverCanvas(false);
+            onMouseLeaveHandler(getCtx);
           }}
           onMouseEnter={() => {
-            onMouseEnterHandler();
+            setIsMouseOverCanvas(true);
+            onMouseEnterHandler(getCtx);
           }}
         ></canvas>
       </div>
+
       {isMouseOverCanvas && <FollowMouse {...currentTool} />}
     </div>
   );
