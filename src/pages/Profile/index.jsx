@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
   const [taleList, setTaleList] = useState([
-    { image: "images/img_image917.png", id: "" },
-    { image: "images/img_image917.png", id: "" },
-    { image: "images/img_image917.png", id: "" },
-    { image: "images/img_image917.png", id: "" },
-    { image: "images/img_image917.png", id: "" },
-    { image: "images/img_image917.png", id: "" },
+    { image: "images/test.png", id: "" },
+    { image: "images/test.png", id: "" },
+    { image: "images/test.png", id: "" },
+    { image: "images/test.png", id: "" },
+    { image: "images/test.png", id: "" },
+    { image: "images/test.png", id: "" },
   ]);
   const [userInfo, setUserInfo] = useState({
-    profileImage: "images/img__120x120.png",
+    profileImage: "images/img_ellipse4_1.png",
     name: "현진",
     following: 30,
     follower: 40,
@@ -141,7 +141,7 @@ const ProfilePage = () => {
           </div>
           <div className="flex flex-col items-center justify-start w-full">
             <div
-              className="gap-[60px] md:gap-5 grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 justify-center
+              className="gap-[60px] md:gap-5 grid sm:grid-cols-1 md:grid-cols-3 grid-cols-3 justify-center
                         min-h-[auto] w-full"
             >
               {taleList.map((tale, index) => {
