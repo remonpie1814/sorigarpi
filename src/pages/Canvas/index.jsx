@@ -5,12 +5,14 @@ import { Sidebar } from "react-pro-sidebar";
 import { Button, Img, Text } from "components";
 import { ToolContext, CanvasContext } from "contexts";
 import ToolProvider from "./ToolProvider";
+import { DraggableImage } from "./DraggableImage";
 
 // JAVA의 enum처럼 쓰기 위한 전역 객체.
 // 현재 툴을 if문에서 비교할 때 if(currentTool=="pen")과 같이 문자열로 비교하고 싶지 않기 때문에(오타 낼 거 같음) 추가.
 const ToolName = {
   PEN: "pen",
   ERASER: "erase",
+  IMAGE: "image",
 };
 
 // uuid 생성 함수
@@ -348,7 +350,18 @@ const CanvasPage = () => {
               </div>
             </Sidebar>
             <ToolProvider>
-              <Canvas />
+              <div className="relative flex flex-grow">
+                <Canvas
+                  id="layer1"
+                  className={"bg-black-900 absolute"}
+                  isActive={currentTool.name !== ToolName.IMAGE}
+                />
+                {/* <ImageCanvas
+                  id="layer2"
+                  className={"absolute"}
+                  isActive={currentTool.name === ToolName.IMAGE}
+                /> */}
+              </div>
             </ToolProvider>
             <Toolbar className="flex items-start" />
           </div>
@@ -361,6 +374,7 @@ const CanvasPage = () => {
 const Toolbar = ({ className }) => {
   const { currentTool, setCurrentTool } = useContext(CanvasContext);
   const [openToolDetail, setOpenToolDetail] = useState(true);
+
   // 도구마다 state가 따로 있어야 도구를 바꿔도 설정을 불러올 수 있음
   const [penDetail, setPenDetail] = useState({
     name: ToolName.PEN,
@@ -371,6 +385,24 @@ const Toolbar = ({ className }) => {
     name: ToolName.ERASER,
     lineWidth: 10,
   });
+  const [imageDetail, setImageDetail] = useState({
+    name: ToolName.IMAGE,
+  });
+
+  // 도구 변경 시 처리할 것들이 있으면 처리
+  function handleToolChange(tool) {
+    if (currentTool.name === tool.name) return;
+    if (currentTool.name === ToolName.IMAGE) {
+      // 이미지에서 바뀔 경우 이미지를 고정해야 함
+      setImageDetail({ name: ToolName.IMAGE });
+    } else if (tool.name === ToolName.IMAGE) {
+      // 다른 도구에서 이미지로 바뀔 경우
+      setCurrentTool({ name: ToolName.IMAGE, x: 0, y: 0 });
+      return;
+    }
+
+    setCurrentTool(tool);
+  }
 
   // 펜과 지우개의 굵기 최소, 최대값
   const minLineWidth = 1;
@@ -396,98 +428,108 @@ const Toolbar = ({ className }) => {
     "#f582f5",
   ];
 
+  // 각 툴의 상세 설정(굵기, 색 등) 부분을 떼어서 모아둔 것
+  const ReturnTool = {
+    pen: (
+      <div className="flex flex-col items-center gap-2">
+        <div className="relative w-[100px] h-[200px]">
+          <div className="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="flex flex-row gap-3">
+              <input
+                type="range"
+                min={minLineWidth}
+                max={maxLineWidth}
+                step="0.1"
+                value={penDetail.lineWidth}
+                onChange={(e) => {
+                  const newPen = {
+                    ...penDetail,
+                    lineWidth: e.target.value,
+                  };
+                  setPenDetail(newPen);
+                  setCurrentTool(newPen);
+                }}
+                className="slider bg-white-A700"
+                style={{
+                  accentColor: penDetail.color,
+                }}
+              />
+              <div className="w-[20px] font-bold">{penDetail.lineWidth}</div>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {presetColors.map((color) => {
+            return (
+              <>
+                <div
+                  className="rounded-full w-[24px] h-[24px] border-2"
+                  style={{ backgroundColor: color }}
+                  onClick={() => {
+                    const newPen = {
+                      ...penDetail,
+                      color: color,
+                    };
+                    setPenDetail(newPen);
+                    setCurrentTool(newPen);
+                  }}
+                ></div>
+              </>
+            );
+          })}
+        </div>
+        <input
+          type="color"
+          onChange={(e) => {
+            const newPen = { ...penDetail, color: e.target.value };
+            setPenDetail(newPen);
+            setCurrentTool(newPen);
+          }}
+          className="color-picker"
+        />
+      </div>
+    ),
+    erase: (
+      <div className="flex flex-col items-center gap-2">
+        <div className="relative w-[100px] h-[200px]">
+          <div className="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="flex flex-row gap-3">
+              <input
+                type="range"
+                min="1"
+                max="30"
+                step="0.1"
+                value={eraserDetail.lineWidth}
+                onChange={(e) => {
+                  const newEraser = {
+                    ...eraserDetail,
+                    lineWidth: e.target.value,
+                  };
+                  setEraserDetail(newEraser);
+                  setCurrentTool(newEraser);
+                }}
+                className="slider"
+              />
+              <div className="w-[20px]">{eraserDetail.lineWidth}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+    image: (
+      <div className="flex flex-col gap-2 items-center justify-center">
+        <div>선택된 이미지</div>
+        <img src={imageDetail?.file} alt="" />
+      </div>
+    ),
+  };
+
   return (
     <>
       <div className="flex items-start">
         {openToolDetail && (
           <div className="bg-[rgba(0,0,0,0.3)] w-[100px] h-auto p-5">
-            {currentTool.name == ToolName.PEN ? (
-              <div className="flex flex-col items-center gap-2">
-                <div className="relative w-[100px] h-[200px]">
-                  <div className="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="flex flex-row gap-3">
-                      <input
-                        type="range"
-                        min={minLineWidth}
-                        max={maxLineWidth}
-                        step="0.1"
-                        value={penDetail.lineWidth}
-                        onChange={(e) => {
-                          const newPen = {
-                            ...penDetail,
-                            lineWidth: e.target.value,
-                          };
-                          setPenDetail(newPen);
-                          setCurrentTool(newPen);
-                        }}
-                        className="slider bg-white-A700"
-                        style={{
-                          accentColor: penDetail.color,
-                        }}
-                      />
-                      <div className="w-[20px] font-bold">
-                        {penDetail.lineWidth}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {presetColors.map((color) => {
-                    return (
-                      <>
-                        <div
-                          className="rounded-full w-[24px] h-[24px] border-2"
-                          style={{ backgroundColor: color }}
-                          onClick={() => {
-                            const newPen = {
-                              ...penDetail,
-                              color: color,
-                            };
-                            setPenDetail(newPen);
-                            setCurrentTool(newPen);
-                          }}
-                        ></div>
-                      </>
-                    );
-                  })}
-                </div>
-                <input
-                  type="color"
-                  onChange={(e) => {
-                    const newPen = { ...penDetail, color: e.target.value };
-                    setPenDetail(newPen);
-                    setCurrentTool(newPen);
-                  }}
-                  className="color-picker"
-                />
-              </div>
-            ) : currentTool.name == ToolName.ERASER ? (
-              <div className="flex flex-col items-center gap-2">
-                <div className="relative w-[100px] h-[200px]">
-                  <div className="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="flex flex-row gap-3">
-                      <input
-                        type="range"
-                        min="1"
-                        max="30"
-                        step="0.1"
-                        value={eraserDetail.lineWidth}
-                        onChange={(e) => {
-                          const newEraser = {
-                            ...eraserDetail,
-                            lineWidth: e.target.value,
-                          };
-                          setEraserDetail(newEraser);
-                          setCurrentTool(newEraser);
-                        }}
-                        className="slider"
-                      />
-                      <div className="w-[20px]">{eraserDetail.lineWidth}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : null}
+            {ReturnTool[currentTool.name]}
           </div>
         )}
 
@@ -497,7 +539,7 @@ const Toolbar = ({ className }) => {
             src="images/img_thumbsup.svg"
             alt="thumbsup"
             onClick={() => {
-              setCurrentTool(penDetail);
+              handleToolChange(penDetail);
             }}
           />
           <Img
@@ -505,14 +547,50 @@ const Toolbar = ({ className }) => {
             src="images/img_offer.svg"
             alt="offer"
             onClick={() => {
-              setCurrentTool(eraserDetail);
+              handleToolChange(eraserDetail);
             }}
           />
-          <Img
-            className="h-[43px] w-[29px]"
-            src="images/img_television.svg"
-            alt="television"
-          />
+          <div className="relative inline-block">
+            <Img
+              className="absolute top-0 h-[43px] w-[29px]"
+              src="images/img_television.svg"
+              alt="television"
+            />
+            <input
+              className="absolute top-0 w-[29px] h-[43px] opacity-0"
+              type="file"
+              id="fileInput"
+              accept="image/*"
+              onChange={(event) => {
+                const file = event.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                      setImageDetail({
+                        ...imageDetail,
+                        src: img.src,
+                        width: img.width,
+                        height: img.height,
+                      });
+                      setCurrentTool({
+                        ...imageDetail,
+                        src: img.src,
+                        width: img.width,
+                        height: img.height,
+                      });
+                    };
+                    img.src = e.target.result;
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }}
+              onClick={() => {
+                handleToolChange({ name: ToolName.IMAGE });
+              }}
+            />
+          </div>
           <Img
             className="h-[33px] w-[45px]"
             src="images/img_user.svg"
@@ -544,7 +622,7 @@ const Toolbar = ({ className }) => {
   );
 };
 
-const Canvas = ({ children }) => {
+const Canvas = ({ children, className, isActive }) => {
   const { currentPageId, currentHistory, currentTool, setDataurl } =
     useContext(CanvasContext);
   const {
@@ -608,18 +686,23 @@ const Canvas = ({ children }) => {
   return (
     <div
       id="canvas-view"
-      className="flex flex-col flex-grow justify-center items-center
-      h-screen overflow-scroll"
+      className={`flex flex-col flex-grow justify-center items-center
+      h-screen overflow-scroll ${className}`}
     >
-      <div id="canvas-wrap" className="">
+      <div className="bg-white-A700 text-cyan-500">
         {currentHistory.length}
+        {isActive ? "true" : "false"}
+      </div>
+      <div id="canvas-wrap" className="relative min-w-[650px] min-h-[720px]">
         <canvas
-          className="bg-white-A700"
+          className={`bg-white-A700 absolute`}
           ref={canvasRef}
           onMouseDown={() => {
+            if (!isActive) return;
             onMouseDownHandler(getCtx);
           }}
           onMouseUp={() => {
+            if (!isActive) return;
             onMouseUpHandler(getCtx);
             if (
               currentTool.name !== ToolName.ERASER ||
@@ -638,17 +721,26 @@ const Canvas = ({ children }) => {
             setDataurl(canvasRef.current.toDataURL("image/png"));
           }}
           onMouseMove={(e) => {
+            if (!isActive) return;
             onMouseMoveHandler(getCtx, e);
           }}
           onMouseLeave={() => {
+            if (!isActive) return;
             setIsMouseOverCanvas(false);
             onMouseLeaveHandler(getCtx);
           }}
           onMouseEnter={() => {
+            if (!isActive) return;
             setIsMouseOverCanvas(true);
             onMouseEnterHandler(getCtx);
           }}
         ></canvas>
+        {currentTool.name === ToolName.IMAGE && (
+          <DraggableImage
+            {...currentTool}
+            className="absolute w-[650px] h-[720px]"
+          />
+        )}
       </div>
 
       {isMouseOverCanvas && <FollowMouse {...currentTool} />}
