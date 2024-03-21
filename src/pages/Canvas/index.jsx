@@ -634,6 +634,7 @@ const Canvas = ({ children, className, isActive }) => {
   } = useContext(ToolContext);
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
+  const [canvasPosition, setCanvasPosition] = useState({});
 
   // 마우스가 현재 캔버스 위에 있는지 판정. FollowMouse 컴포넌트에서 쓰려고 만든 state.
   const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(true);
@@ -650,6 +651,10 @@ const Canvas = ({ children, className, isActive }) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (currentHistory.length > 0) {
       ctx.putImageData(currentHistory[currentHistory.length - 1].data, 0, 0);
+    }
+    if (canvas) {
+      const rect = canvas.getBoundingClientRect();
+      setCanvasPosition(rect);
     }
     // 페이지 미리보기 초기화
     setDataurl(canvasRef.current.toDataURL());
@@ -689,10 +694,6 @@ const Canvas = ({ children, className, isActive }) => {
       className={`flex flex-col flex-grow justify-center items-center
       h-screen overflow-scroll ${className}`}
     >
-      <div className="bg-white-A700 text-cyan-500">
-        {currentHistory.length}
-        {isActive ? "true" : "false"}
-      </div>
       <div id="canvas-wrap" className="relative min-w-[650px] min-h-[720px]">
         <canvas
           className={`bg-white-A700 absolute`}
@@ -738,7 +739,36 @@ const Canvas = ({ children, className, isActive }) => {
         {currentTool.name === ToolName.IMAGE && (
           <DraggableImage
             {...currentTool}
+            ctx={getCtx}
             className="absolute w-[650px] h-[720px]"
+            canvasPosition={canvasPosition}
+            putImageData={(data) => {
+              getCtx.putImageData(data, 0, 0);
+            }}
+            drawImage={(img, x, y, w, h) => {
+              getCtx.drawImage(
+                img,
+                x + canvasRef.current.width / 2 - w / 2,
+                y + canvasRef.current.height / 2 - h / 2,
+                w,
+                h
+              );
+              currentHistory.push({
+                tool: currentTool,
+                data: getCtx.getImageData(
+                  0,
+                  0,
+                  canvasRef.current.width,
+                  canvasRef.current.height
+                ),
+              });
+              getCtx.clearRect(
+                0,
+                0,
+                canvasRef.current.width,
+                canvasRef.current.height
+              );
+            }}
           />
         )}
       </div>
