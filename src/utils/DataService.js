@@ -1,54 +1,17 @@
-class DataService {
-  async getAll() {
-    const response = await fetch("/tutorials");
-    return await response.json();
-  }
+// ApiService의 call을 활용한 함수들을 모아놓는 파일
 
-  async get(id) {
-    const response = await fetch(`/tutorials/${id}`);
-    return await response.json();
-  }
+import { call } from "./ApiService";
 
-  async createBook(data) {
-    const response = await fetch("/tutorials", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return await response.json();
-  }
-
-  async updateBook(id, data) {
-    const response = await fetch(`/tutorials/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    return await response.json();
-  }
-
-  async delete(id) {
-    const response = await fetch(`/tutorials/${id}`, {
-      method: "DELETE",
-    });
-    return await response.json();
-  }
-
-  async deleteAll() {
-    const response = await fetch("/tutorials", {
-      method: "DELETE",
-    });
-    return await response.json();
-  }
-
-  async findByTitle(title) {
-    const response = await fetch(`/tutorials?title=${title}`);
-    return await response.json();
-  }
+export function login(userDTO) {
+  return call("/login", "POST", userDTO).then((response) => {
+    // 응답에서 토큰을 가져와 로컬 스토리지에 저장.
+    // note: 백엔드에서 로그인의 응답을 어떻게 주는지 확인해야 함. 지금 swagger에 적혀 있지 않음.
+    if (response.token) {
+      localStorage.setItem("ACCESS_TOKEN", response.token);
+    }
+  });
 }
 
-export default new DataService();
+export function logout() {
+  localStorage.setItem("ACCESS_TOKEN", null);
+}
