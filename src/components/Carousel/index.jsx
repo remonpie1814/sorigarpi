@@ -1,18 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Img } from "components";
 
 const Carousel = ({ images }) => {
+  const imageBox = useRef(null);
   const [num, setNum] = useState(1);
   const cloneImages = [images[images.length - 1], ...images, images[0]];
   const lastImage = cloneImages.length - 1;
   const [transitionStatus, setTransitionStatus] = useState(true);
 
+  const moveStyle = {
+    0: "translate-x-[-400%]",
+    1: "translate-x-[-100%]",
+    2: "translate-x-[-200%]",
+    3: "translate-x-[-300%]",
+    4: "translate-x-[-400%]",
+    5: "translate-x-[-100%]",
+  };
+
   //to-do 드래그로 배너 넘기기 구현
 
   //effects
   useEffect(() => {
-    console.log("라스트이미지" + lastImage);
-    if (num == lastImage) handlerOriginSlide(1);
+    console.log(num);
+    console.log(images[1].src);
+    if (num === lastImage) handlerOriginSlide(1);
     else if (num === 0) handlerOriginSlide(lastImage - 1);
   }, [cloneImages.length, lastImage, num]);
 
@@ -27,32 +38,34 @@ const Carousel = ({ images }) => {
       setTransitionStatus(false);
     }, 400);
   }
-  //자동 슬라이드
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setNum((num) => num + 1);
-      setTransitionStatus(true);
-    }, 4000);
+  // 자동 슬라이드
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setNum((num) => num + 1);
+  //     setTransitionStatus(true);
+  //   }, 4000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
   return (
     <>
-      <div className="relative w-full">
-        <div className="flex flex-row overflow-hidden h-[400px] md:h-[200px]">
+      <div className="relative w-full overflow-hidden">
+        <div
+          className={`flex h-[400px] md:h-[200px] ${moveStyle[num]} ${
+            transitionStatus ? "transition delay-200 ease-in-out" : null
+          } `}
+          ref={imageBox}
+        >
           {cloneImages.map((image, i) => {
             return (
-              <>
-                <Img
-                  className={`-translate-x-[${num}00%] ${
-                    transitionStatus ? "transition delay-200 ease-in-out" : null
-                  } object-cover`}
-                  src={image.src}
-                  alt={image.alt}
-                />
-              </>
+              <img
+                key={i}
+                src={image.src}
+                alt={image.alt}
+                className="object-cover"
+              />
             );
           })}
         </div>
