@@ -9,12 +9,12 @@ const Carousel = ({ images }) => {
   const [transitionStatus, setTransitionStatus] = useState(true);
 
   const moveStyle = {
-    0: "translate-x-[-400%]",
+    0: "translate-x-[-000%]",
     1: "translate-x-[-100%]",
     2: "translate-x-[-200%]",
     3: "translate-x-[-300%]",
     4: "translate-x-[-400%]",
-    5: "translate-x-[-100%]",
+    5: "translate-x-[-500%]",
   };
 
   //to-do 드래그로 배너 넘기기 구현
@@ -22,7 +22,6 @@ const Carousel = ({ images }) => {
   //effects
   useEffect(() => {
     console.log(num);
-    console.log(images[1].src);
     if (num === lastImage) handlerOriginSlide(1);
     else if (num === 0) handlerOriginSlide(lastImage - 1);
   }, [cloneImages.length, lastImage, num]);
