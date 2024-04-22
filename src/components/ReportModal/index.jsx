@@ -1,5 +1,5 @@
-import { Button, CheckBox, PreventScroll, Text } from "components";
-import { useEffect, useState } from "react";
+import { Button, CheckBox, Text } from "components";
+import { useState } from "react";
 
 const ReportModal = ({ type, id, writer, content, closeModal }) => {
   const [selectedReason, setSelectedReason] = useState(0);
@@ -8,10 +8,8 @@ const ReportModal = ({ type, id, writer, content, closeModal }) => {
   function handleReport() {
     console.log(type + ":" + id + "를 신고");
   }
-
   return (
     <>
-      <PreventScroll />
       <div
         className="fixed top-0 left-0 w-screen h-screen
                     flex items-center justify-center z-10"

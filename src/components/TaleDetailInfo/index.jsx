@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 
-import {
-  Button,
-  Img,
-  Modal,
-  ReportModal,
-  Text,
-  PreventScroll,
-} from "components";
+import { Button, Img, Modal, ReportModal, Text } from "components";
 import { useNavigate } from "react-router-dom";
 
 const TaleDetailInfo = ({
@@ -160,7 +153,6 @@ const TaleDetailInfo = ({
 const TaleModal = ({ setTaleModal, setReportModal }) => {
   return (
     <>
-      <PreventScroll />
       <div className="fixed top-0 left-0 z-10 flex items-center justify-center w-screen h-screen">
         <div
           className="fixed top-0 left-0 z-0 w-screen h-screen opacity-50 bg-black-900"
