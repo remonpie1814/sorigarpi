@@ -86,9 +86,9 @@ const MyLibraryInforow = (props) => {
 
 MyLibraryInforow.defaultProps = {
   searchresulttext: "‘호랑이’에 대한 검색 결과",
+  privacytext: "공개범위 : 모두",
   categorytext: "분류 : 그림만",
   closebutton: "X",
-  privacytext: "공개범위 : 모두",
   closebutton1: "X",
 };
 
