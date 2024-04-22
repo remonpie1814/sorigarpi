@@ -3,52 +3,39 @@
 
 import React from "react";
 
-import { Img, Layout, Text } from "components";
+import { Img, Layout, Text, Carousel } from "components";
 import { MainTaleColumn } from "components";
 
 const MainPage = () => {
+  const images = [
+    {
+      src: "images/banner1.png",
+      alt: "banner1",
+      id: 1,
+    },
+    {
+      src: "images/banner2.png",
+      alt: "banner2",
+      id: 2,
+    },
+    {
+      src: "images/banner3.png",
+      alt: "banner3",
+      id: 3,
+    },
+    {
+      src: "images/banner4.png",
+      alt: "banner4",
+      id: 4,
+    },
+  ];
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center justify-start max-w-[1920px] w-full">
-          <div className="bg-blue_gray-100 flex flex-col items-center justify-center p-9 sm:px-5 w-full">
-            <div className="relative w-full h-full max-w-[1215px] mx-auto md:px-5 md:h-[165px]">
-              <div className="w-full h-full flex flex-row justify-center items-center">
-                <Img
-                  className="h-[108px] my-auto"
-                  src="images/img__black_900_108x90.svg"
-                  alt="TwoHundredThirtyNine"
-                />
-                <Text
-                  className="text-2xl text-black-900 text-center md:text-[22px] sm:text-xl tracking-[-0.46px]"
-                  size="txtInterMedium24"
-                >
-                  메인 배너
-                </Text>
-              </div>
-
-              <div className="absolute inset-[0] justify-center m-auto w-full">
-                <div className="absolute bottom-[31%] flex flex-row md:gap-10 inset-x-[0] items-start justify-between mx-auto pl-[5px] pt-[5px] w-full">
-                  <Text
-                    className="ml-[30px] rotate-[180deg] text-2xl md:text-[22px] text-white-A700 sm:text-xl tracking-[-0.46px]"
-                    size="txtInterMedium24WhiteA700"
-                  >
-                    <>&gt;</>
-                  </Text>
-                  <Text
-                    className="text-2xl md:text-[22px] text-white-A700 sm:text-xl tracking-[-0.46px]"
-                    size="txtInterMedium24WhiteA700"
-                  >
-                    <>&gt;</>
-                  </Text>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col md:gap-10 gap-[60px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-5 w-full">
+        <Carousel images={images}></Carousel>
+        <div className="flex flex-col md:gap-10 gap-[60px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-5 w-full mb-[100px]">
           <div className="flex flex-col items-center justify-start md:px-10 sm:px-5 px-[247px] w-full">
-            <div className="flex flex-col items-center justify-start p-5 w-full">
+            <div className="flex flex-col items-center justify-start w-full p-5">
               <div className="bg-white-A700 flex flex-col items-start justify-start outline outline-[3px] outline-amber-400 md:px-10 sm:px-5 px-[42px] py-6 rounded-[15px] w-[342px]">
                 <div className="flex flex-row gap-[15px] items-center justify-start w-auto">
                   <Img
@@ -66,7 +53,7 @@ const MainPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-row md:gap-10 items-start justify-between w-full">
+          <div className="flex flex-row items-start justify-between w-full md:gap-10">
             <div className="md:h-[30px] h-[33px] relative w-[13%]">
               <div className="bg-yellow-200 h-[30px] m-auto rounded-[15px] w-full"></div>
               <Text
@@ -101,7 +88,7 @@ const MainPage = () => {
               "images/img_image917.png",
             ]}
           />
-          <div className="flex flex-row md:gap-10 items-center justify-between w-full">
+          <div className="flex flex-row items-center justify-between w-full md:gap-10">
             <div className="md:h-[30px] h-[33px] relative w-[13%]">
               <div className="bg-yellow-200 h-[30px] m-auto rounded-[15px] w-full"></div>
               <Text

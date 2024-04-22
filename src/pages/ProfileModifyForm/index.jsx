@@ -20,16 +20,16 @@ const ProfileModifyFormPage = () => {
             </Text>
             <div className="flex flex-col gap-3 h-[668px] md:h-auto items-center justify-start w-full">
               <div className="flex flex-col h-[150px] md:h-auto items-center justify-center w-full">
-                <div
-                  className="common-pointer h-[150px] md:px-10 sm:px-5 px-[515px] relative w-full"
-                  onClick={() => navigate("/profilepicturemodifyform")}
-                >
+                <div className="h-[150px] md:px-10 sm:px-5 px-[515px] relative w-full">
                   <Img
                     className="h-[150px] m-auto object-cover w-[150px]"
                     src="images/img_profile1.png"
                     alt="OneHundredThirtyThree"
                   />
-                  <div className="absolute bg-black-900_4c flex flex-col h-full inset-[0] items-center justify-center m-auto p-10 sm:px-5 w-[150px]">
+                  <div
+                    className="absolute bg-black-900_4c flex flex-col h-full inset-[0] items-center justify-center m-auto p-10 sm:px-5 w-[150px] cursor-pointer"
+                    onClick={() => navigate("/profilepicturemodifyform")}
+                  >
                     <Button
                       className="flex h-[69px] items-center justify-center rounded-[34px] w-[69px]"
                       color="black_900_60"
@@ -54,11 +54,10 @@ const ProfileModifyFormPage = () => {
                     닉네임
                   </Text>
                   <input
-                    placeholder="닉네임"
                     className="text-base text-black-900 tracking-[-0.18px] w-full
                     p-0 border-none"
                     type="text"
-                    value="둥치탁치"
+                    defaultValue="둥치탁치"
                   />
                 </div>
                 <div className="flex flex-col h-[21px] md:h-auto items-center justify-start w-[480px] sm:w-full">

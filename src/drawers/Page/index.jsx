@@ -7,16 +7,11 @@ import Sidebar1 from "components/Sidebar1";
 
 const PageDrawer = (props) => {
   return (
-    <Drawer placement="left" className="!w-[480px] sm:w-full" {...props}>
+    <Drawer placement="right" className="!w-[480px] sm:w-full" {...props}>
       <div>
-        <div
-          className="flex flex-col font-inter items-start justify-start 
-                    mx-auto h-screen sm:w-full md:w-full"
-        >
+        <div className="flex flex-col items-start justify-start h-screen mx-auto font-inter sm:w-full md:w-full">
           <Sidebar1
-            className="bg-white-A700 flex flex-col 
-                      items-start justify-start px-5
-                      h-full w-full"
+            className="flex flex-col items-start justify-start w-full h-full px-5 bg-white-A700"
             onClose={props.onClose}
           />
         </div>

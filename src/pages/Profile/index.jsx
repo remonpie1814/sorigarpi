@@ -44,7 +44,7 @@ const ProfilePage = () => {
               {userInfo.name}
             </Text>
 
-            <div className="flex flex-col gap-2 items-center justify-center w-auto">
+            <div className="flex flex-col items-center justify-center w-auto gap-2">
               <Text
                 className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                 size="txtInterMedium16Gray900"
@@ -58,7 +58,7 @@ const ProfilePage = () => {
                 {userInfo.follower}
               </Text>
             </div>
-            <div className="flex flex-col gap-2 items-center justify-center w-auto">
+            <div className="flex flex-col items-center justify-center w-auto gap-2">
               <Text
                 className="text-base text-center text-gray-900 tracking-[-0.18px] w-auto"
                 size="txtInterMedium16Gray900"
@@ -82,6 +82,9 @@ const ProfilePage = () => {
                 color="amber_A100"
                 size="md"
                 variant="fill"
+                onClick={() => {
+                  navigate("/profileModifyForm");
+                }}
               >
                 프로필 수정
               </Button>
@@ -130,7 +133,7 @@ const ProfilePage = () => {
                 전체 보기
               </Text>
               <Img
-                className="h-8 md:h-auto object-cover w-8"
+                className="object-cover w-8 h-8 md:h-auto"
                 src="images/img_down11.png"
                 alt="downEleven"
               />

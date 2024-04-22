@@ -5,19 +5,19 @@
 // setValue : textarea에 입력된 내용을 가지고 뭔가 하는 함수.
 // 주로 부모 컴포넌트에서 state로 set하는 함수가 될 듯 함.
 
-import { useEffect, useRef } from "react";
+import { Button } from "components/Button";
+import { useEffect, useRef, useState } from "react";
 
 const AutoResizingTextarea = ({
   children,
   className,
+  value,
   setValue,
   rows,
   placeholder,
-  text,
   handleSubmit,
 }) => {
   const textareaRef = useRef();
-
   useEffect(() => {
     const parentElement = textareaRef.current.parentElement;
     parentElement.style.height = `${textareaRef.current.scrollHeight}px`;
@@ -46,12 +46,12 @@ const AutoResizingTextarea = ({
             if (event.key === "Enter" && event.ctrlKey) {
               if (handleSubmit) {
                 event.preventDefault();
-                handleSubmit();
+                handleSubmit(value);
               }
             }
           }}
         >
-          {text}
+          {value}
         </textarea>
         {children}
       </div>

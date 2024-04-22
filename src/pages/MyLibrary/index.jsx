@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -14,7 +15,10 @@ import {
 import MyLibraryInforow from "components/MyLibraryInforow";
 
 const MyLibraryPage = () => {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+  const [scope, setScope] = useState(0); //기본 범위 0, 전체공개 1, 비공개 2
+  const [type, setType] = useState(0); //기본 분류 0, 그림만 1, 비공개 2
   const [taleList, setTaleList] = useState([
     {
       title: "제목제목제목제목제목",
@@ -82,7 +86,7 @@ const MyLibraryPage = () => {
                             w-[27%] h-[46px] md:w-full"
               >
                 <input
-                  className="bg-blue_gray-50 h-full border-0"
+                  className="h-full border-0 bg-blue_gray-50"
                   type="text"
                   placeholder="작품명 검색"
                   name=""
@@ -115,20 +119,47 @@ const MyLibraryPage = () => {
                 공개 범위
               </Text>
               <Text
-                className="text-base text-black-900 tracking-[-0.30px] w-[80px]"
-                size="txtInterBold16Black900"
+                className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
+                  scope === 0 ? "text-black-900" : "text-blue_gray-100_01"
+                }`}
+                size={
+                  scope === 0
+                    ? "txtInterBold16Black900"
+                    : "txtInterMedium16Bluegray10001"
+                }
+                onClick={() => {
+                  setScope(0);
+                }}
               >
                 모두
               </Text>
               <Text
-                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[80px]"
-                size="txtInterMedium16Bluegray10001"
+                className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
+                  scope === 1 ? "text-black-900" : "text-blue_gray-100_01"
+                }`}
+                size={
+                  scope === 1
+                    ? "txtInterBold16Black900"
+                    : "txtInterMedium16Bluegray10001"
+                }
+                onClick={() => {
+                  setScope(1);
+                }}
               >
                 전체 공개
               </Text>
               <Text
-                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[80px]"
-                size="txtInterMedium16Bluegray10001"
+                className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
+                  scope === 2 ? "text-black-900" : "text-blue_gray-100_01"
+                }`}
+                size={
+                  scope === 2
+                    ? "txtInterBold16Black900"
+                    : "txtInterMedium16Bluegray10001"
+                }
+                onClick={() => {
+                  setScope(2);
+                }}
               >
                 비공개
               </Text>
@@ -144,44 +175,76 @@ const MyLibraryPage = () => {
                 분류
               </Text>
               <Text
-                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[80px]"
-                size="txtInterMedium16Bluegray10001"
+                className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
+                  type === 0 ? "text-black-900" : "text-blue_gray-100_01"
+                }`}
+                size={
+                  type === 0
+                    ? "txtInterBold16Black900"
+                    : "txtInterMedium16Bluegray10001"
+                }
+                onClick={() => {
+                  setType(0);
+                }}
               >
                 모두
               </Text>
               <Text
-                className="text-base text-black-900 tracking-[-0.30px] w-[80px]"
-                size="txtInterBold16Black900"
+                className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
+                  type === 1 ? "text-black-900" : "text-blue_gray-100_01"
+                }`}
+                size={
+                  type === 1
+                    ? "txtInterBold16Black900"
+                    : "txtInterMedium16Bluegray10001"
+                }
+                onClick={() => {
+                  setType(1);
+                }}
               >
                 그림만
               </Text>
               <Text
-                className="text-base text-blue_gray-100_01 tracking-[-0.30px] w-[80px]"
-                size="txtInterMedium16Bluegray10001"
+                className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
+                  type === 2 ? "text-black-900" : "text-blue_gray-100_01"
+                }`}
+                size={
+                  type === 2
+                    ? "txtInterBold16Black900"
+                    : "txtInterMedium16Bluegray10001"
+                }
+                onClick={() => {
+                  setType(2);
+                }}
               >
                 녹음만
               </Text>
             </div>
           </List>
-          <MyLibraryInforow className="flex flex-col gap-[15px] items-start justify-center w-full" />
+          <MyLibraryInforow
+            className="flex flex-col gap-[15px] items-start justify-center w-full"
+            categorytext={scope}
+            privacytext={type}
+            setScope={setScope}
+            setType={setType}
+          />
           <div className="flex flex-col items-end justify-end max-w-[1180px] w-full">
             <div className="flex flex-row items-center justify-center w-auto">
-              <Text
-                className="text-base text-gray-900 tracking-[-0.30px] w-auto"
-                size="txtInterMedium16Gray900"
+              <select
+                className="border-none font active:border-none focus:border-none"
+                name=""
+                id=""
               >
-                최신순
-              </Text>
-              <Img
-                className="h-8 md:h-auto object-cover w-8"
-                src="images/img_down11_32x32.png"
-                alt="downEleven"
-              />
+                <option value="" selected>
+                  최신순
+                </option>
+                <option value="">오래된순</option>
+              </select>
             </div>
           </div>
           <div className="flex flex-col gap-[15px] items-center justify-start w-full">
             <div className="flex flex-col items-start justify-between w-full">
-              <div className="grid grid-flow-row grid-cols-2 md:grid-cols-1 items-center justify-center w-full">
+              <div className="grid items-center justify-center w-full grid-flow-row grid-cols-2 md:grid-cols-1">
                 {taleList.map((tale, index) => {
                   return (
                     <div className="flex flex-row md:flex-col">
@@ -213,19 +276,25 @@ const MyLibraryPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col h-[69px] md:h-auto items-center justify-end w-full">
-            <div className="md:h-16 h-[69px] pb-[5px] relative w-[70px]">
-              <div className="bg-amber-A100 h-16 mx-auto rounded-[35px] w-full"></div>
-              <Text
-                className="absolute h-max inset-[0] justify-center m-auto text-2xl md:text-[22px] text-black-900 text-center sm:text-xl w-max"
-                size="txtInterMedium24"
+          <div className="relative w-full h-16">
+            <div className="absolute md:h-16 h-[64px] w-[64px] inset-y-0 right-0">
+              <div
+                className="w-16 h-16 mx-auto rounded-full cursor-pointer bg-amber-A100"
+                onClick={() => {
+                  navigate("/canvas");
+                }}
               >
-                +
-              </Text>
+                <Text
+                  className="absolute h-max inset-[0] justify-center m-auto text-2xl md:text-[22px] text-black-900 text-center sm:text-xl w-max"
+                  size="txtInterMedium24"
+                >
+                  +
+                </Text>
+              </div>
             </div>
           </div>
           <Paging
-            className="flex flex-col gap-8 items-center justify-center w-full"
+            className="flex flex-col items-center justify-center w-full gap-8"
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             maxPage={9}

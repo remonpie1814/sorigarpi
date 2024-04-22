@@ -26,6 +26,9 @@ const TaleDetailReplyerow = ({
   const [newComment, setNewComment] = useState(content);
   // 신고하기 모달창
   const [reportModal, setReportModal] = useState(false);
+  // 댓글의 답글 저장 state
+  const [rereply, setRereply] = useState("");
+
   // 댓글의 id와 수정 박스의 내용을 보내 백엔드에 댓글 수정을 요청하는 함수.
   // todo: 댓글 수정 함수 내용 채우기
   function handleEditComment(commentId, newComment) {
@@ -42,7 +45,7 @@ const TaleDetailReplyerow = ({
             src={profileImage}
             alt="Two"
           />
-          <div className="flex flex-row flex-grow items-center">
+          <div className="flex flex-row items-center flex-grow">
             <Text
               className="text-base text-gray-900 tracking-[-0.30px] w-auto"
               size="txtInterBold16"
@@ -56,7 +59,7 @@ const TaleDetailReplyerow = ({
               }}
             >
               <Img
-                className="h-5 md:h-auto object-cover w-5"
+                className="object-cover w-5 h-5 md:h-auto"
                 src="images/img_menu1.png"
                 alt="menuOne"
               />
@@ -66,13 +69,13 @@ const TaleDetailReplyerow = ({
         {isEdit ? (
           <>
             <AutoResizingTextarea
-              className="gap-2 w-full"
+              className="w-full gap-2"
               placeholder="수정 내용 입력..."
               setValue={setNewComment}
-              text={content}
+              value={content}
             >
               <Button
-                className="border-2 px-2 bg-gray-400 rounded-md"
+                className="px-2 bg-gray-400 border-2 rounded-md"
                 onClick={() => {
                   handleEditComment(commentId, newComment);
                   setEdit(false);
@@ -81,7 +84,7 @@ const TaleDetailReplyerow = ({
                 수정
               </Button>
               <Button
-                className="border-2 px-2 bg-white-A700 rounded-md"
+                className="px-2 border-2 rounded-md bg-white-A700"
                 onClick={() => {
                   setNewComment(content);
                   setEdit(false);
@@ -113,12 +116,24 @@ const TaleDetailReplyerow = ({
             setOpen(!isOpen);
           }}
         >
-          답글
+          {isOpen ? "취소" : "답글"}
         </Button>
         {isOpen && (
           <form className="w-full pb-2">
-            <AutoResizingTextarea className="gap-2" placeholder="답글 입력...">
-              <Button className="border-2 px-2 bg-gray-400 rounded-md">
+            <AutoResizingTextarea
+              className="gap-2"
+              placeholder="답글 입력..."
+              value={rereply}
+              setValue={setRereply}
+            >
+              <Button
+                className={`border-2 px-2 rounded-md 
+              ${
+                rereply.length > 0 && rereply.trim().length > 0
+                  ? "bg-amber-A100"
+                  : "bg-gray-200 cursor-default"
+              }`}
+              >
                 작성
               </Button>
             </AutoResizingTextarea>
@@ -157,12 +172,9 @@ const ReplyModal = ({ commentId, setReplyModal, setReportModal, setEdit }) => {
 
   return (
     <>
-      <div
-        className="fixed w-screen h-screen top-0 left-0 z-10
-           flex items-center justify-center"
-      >
+      <div className="fixed top-0 left-0 z-10 flex items-center justify-center w-screen h-screen">
         <div
-          className="fixed bg-black-900 opacity-50 w-screen h-screen top-0 left-0 z-0"
+          className="fixed top-0 left-0 z-0 w-screen h-screen opacity-50 bg-black-900"
           onClick={() => {
             setReplyModal(false);
           }}
