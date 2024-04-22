@@ -1,4 +1,5 @@
 import { Button, Img, Text } from "components";
+import { useNavigate } from "react-router-dom";
 
 const TaleInfo = ({
   image,
@@ -10,6 +11,7 @@ const TaleInfo = ({
   creDate,
   children,
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex flex-row gap-5 items-center justify-start px-5 py-[15px] min-w-1/2">
@@ -37,11 +39,14 @@ const TaleInfo = ({
               className="h-[18px] md:h-auto object-cover w-[18px]"
               src="images/img_seticon.png"
               alt="seticon"
+              onClick={() => {
+                navigate("/talesetting");
+              }}
             />
           </div>
           <div className="flex flex-col items-center justify-start w-auto">
             <Text
-              className="text-gray-900 text-sm w-auto"
+              className="w-auto text-sm text-gray-900"
               size="txtInterMedium14Gray900"
             >
               {page}p
@@ -60,7 +65,7 @@ const TaleInfo = ({
               {likeCount}
             </Text>
             <Img
-              className="h-6 md:h-auto object-cover w-6"
+              className="object-cover w-6 h-6 md:h-auto"
               src="images/img_image921.png"
               alt="image921"
             />
@@ -86,7 +91,7 @@ const TaleInfo = ({
                 {creDate}
               </Text>
               {
-                <div className="flex flex-col flex-grow w-full items-end justify-end">
+                <div className="flex flex-col items-end justify-end flex-grow w-full">
                   <div className="flex flex-row gap-1 mt-auto">{children}</div>
                 </div>
               }

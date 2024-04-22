@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 
-import { Img } from "components";
+import { Img, SearchMobile } from "components";
 import PageDrawer from "drawers/Page";
 import { useNavigate } from "react-router-dom";
 
 const MainHeader = (props) => {
   const [isOpenPageDrawer, setPageDrawer] = useState(false);
+  const [isOpenSearch, setSearch] = useState(false);
+  const [searchWord, setSearchWord] = useState("");
   const navigate = useNavigate();
   return (
     <>
@@ -31,11 +33,46 @@ const MainHeader = (props) => {
               src="/images/img_bell111.png"
               alt="bell button"
             />
-            <Img
-              className="object-cover w-12 h-12 md:h-auto"
-              src="/images/img_search111.png"
-              alt="search button"
-            />
+            {isOpenSearch ? (
+              <>
+                <div
+                  className="relative flex flex-row h-[48px] sm:hidden"
+                  onMouseLeave={() => {
+                    if (searchWord == "") {
+                      setSearch(false);
+                    }
+                  }}
+                >
+                  <input
+                    className="flex flex-row px-3 border rounded-full"
+                    onChange={(e) => {
+                      setSearchWord(e.target.value);
+                    }}
+                  />
+                  <Img
+                    className="absolute right-0 object-cover w-12 h-12 cursor-pointer md:h-auto"
+                    src="/images/img_search111.png"
+                    alt="search button"
+                    onClick={() => {
+                      if (searchWord.length == 0) {
+                        alert("검색어를 입력해 주세요");
+                      }
+                      //to-do 검색어 전송하는 함수
+                    }}
+                  />
+                </div>
+                <SearchMobile setSearch={setSearch}></SearchMobile>
+              </>
+            ) : (
+              <Img
+                className="flex flex-row object-cover w-12 h-12 cursor-pointer md:h-auto"
+                src="/images/img_search111.png"
+                alt="search button"
+                onClick={() => {
+                  setSearch(true);
+                }}
+              />
+            )}
             <Img
               className="object-cover w-12 h-12 md:h-auto"
               src="/images/img_menu11.png"
