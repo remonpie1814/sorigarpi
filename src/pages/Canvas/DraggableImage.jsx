@@ -8,11 +8,8 @@ export const DraggableImage = ({
   height,
   className,
   drawImage,
-  putImageData,
 }) => {
-  const { currentTool, setCurrentTool, currentHistory, setCurrentHistory } =
-    useContext(CanvasContext);
-  const [baseLayerImg, setBaseLayerImg] = useState();
+  const { currentTool, setCurrentTool } = useContext(CanvasContext);
 
   const [{ x, y, w, h }, setConfig] = useState({
     x: 0,
@@ -33,6 +30,35 @@ export const DraggableImage = ({
     return v;
   };
 
+  function registMouseDownDrag(onDragChange, stopPropagation) {
+    return {
+      onMouseDown: (clickEvent) => {
+        if (stopPropagation) clickEvent.stopPropagation();
+
+        const mouseMoveHandler = (moveEvent) => {
+          const deltaX = moveEvent.clientX - clickEvent.clientX;
+          const deltaY = moveEvent.clientY - clickEvent.clientY;
+          onDragChange(deltaX, deltaY);
+        };
+
+        const mouseUpHandler = () => {
+          document.removeEventListener("mousemove", mouseMoveHandler);
+          setCurrentTool({
+            ...currentTool,
+            config: { x: x, y: y, w: w, h: h },
+          });
+          const img = new Image();
+          img.src = src;
+          img.onload = () => {
+            drawImage(img, x, y, w, h);
+          };
+        };
+
+        document.addEventListener("mousemove", mouseMoveHandler);
+        document.addEventListener("mouseup", mouseUpHandler, { once: true });
+      },
+    };
+  }
   useEffect(() => {
     const boundary = boundaryRef.current?.getBoundingClientRect();
 
@@ -48,10 +74,6 @@ export const DraggableImage = ({
     }
   }, [width, height]);
 
-  useEffect(() => {
-    setBaseLayerImg(currentHistory[currentHistory.length - 1]?.data);
-  }, []);
-
   return (
     <div
       ref={boundaryRef}
@@ -60,39 +82,25 @@ export const DraggableImage = ({
       <div
         style={{ width: w, height: h, left: x, top: y }}
         className="relative cursor-move"
-        {...registMouseDownDrag(
-          (deltaX, deltaY) => {
-            if (!boundaryRef.current) return;
+        {...registMouseDownDrag((deltaX, deltaY) => {
+          if (!boundaryRef.current) return;
 
-            const boundary = boundaryRef.current.getBoundingClientRect();
-            setConfig({
-              x: inrange(
-                x + deltaX,
-                -(boundary.width - w - BOUNDARY_MARGIN),
-                boundary.width - w - BOUNDARY_MARGIN
-              ),
-              y: inrange(
-                y + deltaY,
-                -(boundary.height - h - BOUNDARY_MARGIN),
-                boundary.height - h - BOUNDARY_MARGIN
-              ),
-              w,
-              h,
-            });
-          },
-          true,
-          () => {
-            const img = new Image();
-            img.src = src;
-            img.onload = () => {
-              setCurrentTool({
-                ...currentTool,
-                config: { x: x, y: y, w: w, h: h },
-              });
-              drawImage(img, x, y, w, h);
-            };
-          }
-        )}
+          const boundary = boundaryRef.current.getBoundingClientRect();
+          setConfig({
+            x: inrange(
+              x + deltaX,
+              -(boundary.width - w - BOUNDARY_MARGIN),
+              boundary.width - w - BOUNDARY_MARGIN
+            ),
+            y: inrange(
+              y + deltaY,
+              -(boundary.height - h - BOUNDARY_MARGIN),
+              boundary.height - h - BOUNDARY_MARGIN
+            ),
+            w,
+            h,
+          });
+        }, true)}
       >
         <img
           ref={boxRef}
@@ -109,58 +117,27 @@ export const DraggableImage = ({
         />
         <div
           className="absolute -bottom-0.5 right-0 cursor-se-resize bg-black-900 opacity-50 w-3 h-3"
-          {...registMouseDownDrag(
-            (deltaX, deltaY) => {
-              if (!boundaryRef.current) return;
+          {...registMouseDownDrag((deltaX, deltaY) => {
+            if (!boundaryRef.current) return;
 
-              const boundary = boundaryRef.current.getBoundingClientRect();
-              setConfig({
-                x,
-                y,
-                w: inrange(
-                  w + deltaX,
-                  MIN_W,
-                  boundary.width - x - BOUNDARY_MARGIN
-                ),
-                h: inrange(
-                  h + deltaY,
-                  MIN_H,
-                  boundary.height - y - BOUNDARY_MARGIN
-                ),
-              });
-            },
-            true,
-            () => {
-              setCurrentTool({
-                ...currentTool,
-                config: { x: x, y: y, w: w, h: h },
-              });
-            }
-          )}
+            const boundary = boundaryRef.current.getBoundingClientRect();
+            setConfig({
+              x,
+              y,
+              w: inrange(
+                w + deltaX,
+                MIN_W,
+                boundary.width - x - BOUNDARY_MARGIN
+              ),
+              h: inrange(
+                h + deltaY,
+                MIN_H,
+                boundary.height - y - BOUNDARY_MARGIN
+              ),
+            });
+          }, true)}
         ></div>
       </div>
     </div>
   );
 };
-
-function registMouseDownDrag(onDragChange, stopPropagation, onMouseUp) {
-  return {
-    onMouseDown: (clickEvent) => {
-      if (stopPropagation) clickEvent.stopPropagation();
-
-      const mouseMoveHandler = (moveEvent) => {
-        const deltaX = moveEvent.clientX - clickEvent.clientX;
-        const deltaY = moveEvent.clientY - clickEvent.clientY;
-        onDragChange(deltaX, deltaY);
-      };
-
-      const mouseUpHandler = () => {
-        document.removeEventListener("mousemove", mouseMoveHandler);
-        onMouseUp();
-      };
-
-      document.addEventListener("mousemove", mouseMoveHandler);
-      document.addEventListener("mouseup", mouseUpHandler, { once: true });
-    },
-  };
-}
