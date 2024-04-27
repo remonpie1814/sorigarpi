@@ -90,10 +90,6 @@ export const DraggableImage = ({
                 config: { x: x, y: y, w: w, h: h },
               });
               drawImage(img, x, y, w, h);
-              console.log(currentHistory);
-              if (baseLayerImg) {
-                putImageData(baseLayerImg);
-              }
             };
           }
         )}

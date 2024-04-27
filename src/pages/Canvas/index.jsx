@@ -739,14 +739,27 @@ const Canvas = ({ children, className, isActive }) => {
         {currentTool.name === ToolName.IMAGE && (
           <DraggableImage
             {...currentTool}
-            ctx={getCtx}
             className="absolute w-[650px] h-[720px]"
             canvasPosition={canvasPosition}
-            putImageData={(data) => {
-              getCtx.putImageData(data, 0, 0);
-            }}
             drawImage={(img, x, y, w, h) => {
-              getCtx.drawImage(
+              const fakeCanvas = document.createElement("canvas");
+              fakeCanvas.width = 650;
+              fakeCanvas.height = 720;
+              const fakeCtx = fakeCanvas.getContext("2d");
+              fakeCtx.lineJoin = "round";
+              fakeCtx.lineWidth = 10;
+              fakeCtx.strokeStyle = "#000000";
+              fakeCtx.putImageData(
+                getCtx.getImageData(
+                  0,
+                  0,
+                  canvasRef.current.width,
+                  canvasRef.current.height
+                ),
+                0,
+                0
+              );
+              fakeCtx.drawImage(
                 img,
                 x + canvasRef.current.width / 2 - w / 2,
                 y + canvasRef.current.height / 2 - h / 2,
@@ -755,19 +768,13 @@ const Canvas = ({ children, className, isActive }) => {
               );
               currentHistory.push({
                 tool: currentTool,
-                data: getCtx.getImageData(
+                data: fakeCtx.getImageData(
                   0,
                   0,
                   canvasRef.current.width,
                   canvasRef.current.height
                 ),
               });
-              getCtx.clearRect(
-                0,
-                0,
-                canvasRef.current.width,
-                canvasRef.current.height
-              );
             }}
           />
         )}
