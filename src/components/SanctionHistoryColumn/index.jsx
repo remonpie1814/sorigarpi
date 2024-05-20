@@ -19,7 +19,7 @@ const SanctionHistoryColumn = (props) => {
           <div className="border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[67px] md:h-auto items-start justify-start w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
               <Text
-                className="text-base text-black-900 w-auto"
+                className="w-auto text-base text-black-900"
                 size="txtInterRegular16Black900"
               >
                 {props?.text1}
@@ -40,7 +40,7 @@ const SanctionHistoryColumn = (props) => {
           <div className="bg-white-A700_0f border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[67px] md:h-auto items-start justify-start w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
               <Text
-                className="text-base text-black-900 w-auto"
+                className="w-auto text-base text-black-900"
                 size="txtInterRegular16Black900"
               >
                 {props?.text2}
@@ -61,7 +61,7 @@ const SanctionHistoryColumn = (props) => {
           <div className="border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[66px] md:h-auto items-start justify-start w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
               <Text
-                className="text-base text-black-900 w-auto"
+                className="w-auto text-base text-black-900"
                 size="txtInterRegular16Black900"
               >
                 {props?.text3}
@@ -82,7 +82,7 @@ const SanctionHistoryColumn = (props) => {
           <div className="border-gray-400_03 border-l border-solid border-t flex flex-1 flex-col h-[67px] md:h-auto items-start justify-start w-full">
             <div className="flex flex-col h-full items-center justify-center px-3 py-2.5 w-full">
               <Text
-                className="text-base text-black-900 w-auto"
+                className="w-auto text-base text-black-900"
                 size="txtInterRegular16Black900"
               >
                 {props?.text4}

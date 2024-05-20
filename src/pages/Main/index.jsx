@@ -5,6 +5,7 @@ import React from "react";
 
 import { Img, Layout, Text, Carousel } from "components";
 import { MainTaleColumn } from "components";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   const images = [
@@ -29,6 +30,7 @@ const MainPage = () => {
       id: 4,
     },
   ];
+  const navigate = useNavigate();
   return (
     <>
       <Layout>
@@ -36,8 +38,13 @@ const MainPage = () => {
         <div className="flex flex-col md:gap-10 gap-[60px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-5 w-full mb-[100px]">
           <div className="flex flex-col items-center justify-start md:px-10 sm:px-5 px-[247px] w-full">
             <div className="flex flex-col items-center justify-start w-full p-5">
-              <div className="bg-white-A700 flex flex-col items-start justify-start outline outline-[3px] outline-amber-400 md:px-10 sm:px-5 px-[42px] py-6 rounded-[15px] w-[342px]">
-                <div className="flex flex-row gap-[15px] items-center justify-start w-auto">
+              <div
+                className="bg-white-A700 flex flex-col items-start justify-start outline outline-[3px] outline-amber-400 md:px-10 sm:px-5 px-[42px] py-6 rounded-[15px] w-[342px] cursor-pointer"
+                onClick={() => {
+                  navigate("/canvas");
+                }}
+              >
+                <div className="flex flex-row gap-[15px] items-center justify-start w-auto ">
                   <Img
                     className="h-12 md:h-auto object-cover w-[46px]"
                     src="images/img_image528.png"
