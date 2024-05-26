@@ -104,9 +104,21 @@ const CanvasPage = () => {
           setDataurl,
         }}
       >
-        <div className="bg-white-A700 flex flex-col font-inter items-center justify-start h-screen">
-          <div className="flex flex-col items-start justify-start md:px-10 sm:px-5 px-[50px] w-full">
-            <div className="flex flex-row items-center justify-between mx-auto py-[5px] w-full">
+        <ToolProvider>
+          <div className="canvas-wrapper fixed -z-10 flex items-center justify-center w-screen h-screen">
+            <Canvas
+              id="layer1"
+              className={"bg-black-900 absolute"}
+              isActive={true}
+            />
+          </div>
+        </ToolProvider>
+        <div className="flex flex-col font-inter items-center justify-start">
+          <div className="flex flex-col items-start justify-start w-screen">
+            <div
+              className="flex flex-row items-center justify-between 
+                        mx-auto py-[5px] w-full bg-white-A700"
+            >
               <Img
                 className="h-[30px] w-[260px]"
                 src="images/img__black_900_30x260.svg"
@@ -144,8 +156,8 @@ const CanvasPage = () => {
               </div>
             </div>
           </div>
-          <div className="bg-blue_gray-100 flex flex-row items-start justify-start w-full">
-            <Sidebar className="fixed left-0 !w-[400px] bg-gray-600_7f flex h-screen md:hidden justify-start overflow-auto md:px-5 top-[0]">
+          <div className="flex flex-row items-start justify-start w-screen h-0">
+            <div className="flex flex-col justify-start !w-[400px] h-screen md:hidden overflow-auto md:px-5 top-[0] bg-blue_gray-100">
               <div className="flex flex-col gap-2.5 items-center justify-start mt-2.5 mx-auto w-[380px]">
                 <div className="flex flex-row gap-2.5 items-center justify-center w-full">
                   {deletePageMode ? (
@@ -348,22 +360,9 @@ const CanvasPage = () => {
                   </div>
                 </div>
               </div>
-            </Sidebar>
-            <ToolProvider>
-              <div className="relative flex flex-grow">
-                <Canvas
-                  id="layer1"
-                  className={"bg-black-900 absolute"}
-                  isActive={currentTool.name !== ToolName.IMAGE}
-                />
-                {/* <ImageCanvas
-                  id="layer2"
-                  className={"absolute"}
-                  isActive={currentTool.name === ToolName.IMAGE}
-                /> */}
-              </div>
-            </ToolProvider>
-            <Toolbar className="flex items-start" />
+            </div>
+            <div className="flex flex-grow w-full"></div>
+            <Toolbar className="flex items-start bg-slate-400" />
           </div>
         </div>
       </CanvasContext.Provider>
@@ -526,7 +525,7 @@ const Toolbar = ({ className }) => {
 
   return (
     <>
-      <div className="flex items-start">
+      <div className={`${className}`}>
         {openToolDetail && (
           <div className="bg-[rgba(0,0,0,0.3)] w-[100px] h-auto p-5">
             {ReturnTool[currentTool.name]}
@@ -639,6 +638,23 @@ const Canvas = ({ children, className, isActive }) => {
   // 마우스가 현재 캔버스 위에 있는지 판정. FollowMouse 컴포넌트에서 쓰려고 만든 state.
   const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(true);
 
+  // 캔버스 확대율. 1이 원본 state
+  const [scale, setScale] = useState(1);
+  const handleWheel = (e) => {
+    // e.preventDefault();
+    // e.stopPropagation();
+
+    // 확대 및 축소 계수 조정
+    let delta = Math.sign(e.deltaY);
+    let nextScale = scale - delta * 0.05;
+
+    // 최소/최대 스케일 제한
+    if (nextScale < 0.5) nextScale = 0.5;
+    if (nextScale > 2) nextScale = 2;
+
+    setScale(nextScale); // 지정
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.width = 650;
@@ -692,12 +708,17 @@ const Canvas = ({ children, className, isActive }) => {
     <div
       id="canvas-view"
       className={`flex flex-col flex-grow justify-center items-center
-      h-screen overflow-scroll ${className}`}
+      w-full h-screen overflow-scroll ${className}`}
+      onWheel={handleWheel}
     >
       <div id="canvas-wrap" className="relative min-w-[650px] min-h-[720px]">
         <canvas
           className={`bg-white-A700 absolute`}
           ref={canvasRef}
+          style={{
+            transformOrigin: "center",
+            transform: `scale(${scale})`,
+          }}
           onMouseDown={() => {
             if (!isActive) return;
             onMouseDownHandler(getCtx);
@@ -773,7 +794,7 @@ const Canvas = ({ children, className, isActive }) => {
         )}
       </div>
 
-      {isMouseOverCanvas && <FollowMouse {...currentTool} />}
+      {/* {isMouseOverCanvas && <FollowMouse {...currentTool} />} */}
     </div>
   );
 };
