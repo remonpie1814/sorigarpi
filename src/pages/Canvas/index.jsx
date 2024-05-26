@@ -622,8 +622,13 @@ const Toolbar = ({ className }) => {
 };
 
 const Canvas = ({ children, className, isActive }) => {
-  const { currentPageId, currentHistory, currentTool, setDataurl } =
-    useContext(CanvasContext);
+  const {
+    currentPageId,
+    currentHistory,
+    currentTool,
+    setCurrentTool,
+    setDataurl,
+  } = useContext(CanvasContext);
   const {
     onMouseDownHandler,
     onMouseEnterHandler,
@@ -634,6 +639,12 @@ const Canvas = ({ children, className, isActive }) => {
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
   const [canvasPosition, setCanvasPosition] = useState({});
+  const [imagePosition, setImagePosition] = useState({
+    x: 0,
+    y: 0,
+    w: 0,
+    h: 0,
+  });
 
   // 마우스가 현재 캔버스 위에 있는지 판정. FollowMouse 컴포넌트에서 쓰려고 만든 state.
   const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(true);
@@ -678,16 +689,21 @@ const Canvas = ({ children, className, isActive }) => {
     const onKeyDown = (e) => {
       // Control+Z 조합이 눌렸을 때 함수 실행
       if (e.ctrlKey && e.key === "z") {
-        console.log(currentHistory.length);
         if (currentHistory.length > 0) {
-          // 가장 최근 상태를 제거하고, 이전 상태로 canvas를 복원
+          const current = currentHistory[currentHistory.length - 1];
+
+          // 만약 현재 툴이 이미지라면 위치와 크기를 변경
+          // 왠진 모르겠지만 pop을 하기 전의 것을 넣어야 잘 나옴. 왠진 모르겠음.
+          // 배열에서 pop을 하지 말고 index로 관리하는 게 이해하기 편할 거 같음...
+          if (current.tool.name === ToolName.IMAGE) {
+            setImagePosition({ ...current.tool.config });
+          }
           currentHistory.pop();
+
           if (currentHistory.length > 0) {
-            ctx.putImageData(
-              currentHistory[currentHistory.length - 1].data,
-              0,
-              0
-            );
+            // 이전 상태로 canvas를 복원
+            const prev = currentHistory[currentHistory.length - 1];
+            ctx.putImageData(prev.data, 0, 0);
           } else {
             // 모든 그림이 제거되었을 경우, canvas를 비우기
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -760,36 +776,10 @@ const Canvas = ({ children, className, isActive }) => {
         {currentTool.name === ToolName.IMAGE && (
           <DraggableImage
             {...currentTool}
-            ctx={getCtx}
             className="absolute w-[650px] h-[720px]"
-            canvasPosition={canvasPosition}
-            putImageData={(data) => {
-              getCtx.putImageData(data, 0, 0);
-            }}
-            drawImage={(img, x, y, w, h) => {
-              getCtx.drawImage(
-                img,
-                x + canvasRef.current.width / 2 - w / 2,
-                y + canvasRef.current.height / 2 - h / 2,
-                w,
-                h
-              );
-              currentHistory.push({
-                tool: currentTool,
-                data: getCtx.getImageData(
-                  0,
-                  0,
-                  canvasRef.current.width,
-                  canvasRef.current.height
-                ),
-              });
-              getCtx.clearRect(
-                0,
-                0,
-                canvasRef.current.width,
-                canvasRef.current.height
-              );
-            }}
+            initialPosition={imagePosition}
+            canvas={canvasRef}
+            ctx={getCtx}
           />
         )}
       </div>
