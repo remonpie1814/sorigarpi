@@ -30,6 +30,7 @@ const CanvasPage = () => {
     name: ToolName.PEN,
     lineWidth: 10,
   });
+  const canvasRef = useRef(null);
   // 현재 페이지 id state
   const [currentPageId, setCurrentPageId] = useState("page-1-id");
   // 현재 히스토리
@@ -43,6 +44,18 @@ const CanvasPage = () => {
   // 페이지 삭제 모드 state
   const [deletePageMode, setDeletePageMode] = useState(false);
   const [selectedPages, setSelectedPages] = useState([]);
+
+  function drawImageToCanvas(canvasRef, imageSrc, x, y, width, height) {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = imageSrc;
+    const canvasx = x + canvas.clientWidth / 2 + width / 2;
+    const canvasy = y + canvas.clientHeight / 2 + height / 2;
+    img.onload = () => {
+      ctx.drawImage(img, canvasx, canvasy, width, height);
+    };
+  }
 
   function changePage(toId) {
     saveCanvas(currentPageId, currentHistory, dataurl);
@@ -102,6 +115,8 @@ const CanvasPage = () => {
           setCurrentHistory,
           dataurl,
           setDataurl,
+          canvasRef,
+          drawImageToCanvas,
         }}
       >
         <ToolProvider>
@@ -371,7 +386,13 @@ const CanvasPage = () => {
 };
 
 const Toolbar = ({ className }) => {
-  const { currentTool, setCurrentTool } = useContext(CanvasContext);
+  const {
+    currentTool,
+    setCurrentTool,
+    currentHistory,
+    canvasRef,
+    drawImageToCanvas,
+  } = useContext(CanvasContext);
   const [openToolDetail, setOpenToolDetail] = useState(true);
 
   // 도구마다 state가 따로 있어야 도구를 바꿔도 설정을 불러올 수 있음
@@ -394,6 +415,16 @@ const Toolbar = ({ className }) => {
     if (currentTool.name === ToolName.IMAGE) {
       // 이미지에서 바뀔 경우 이미지를 고정해야 함
       setImageDetail({ name: ToolName.IMAGE });
+      // 캔버스에 이미지 그리기
+      const currentImage = currentHistory[currentHistory.length - 1];
+      drawImageToCanvas(
+        canvasRef,
+        currentImage.imgsrc.src,
+        currentImage.config.x,
+        currentImage.config.y,
+        currentImage.config.w,
+        currentImage.config.h
+      );
     } else if (tool.name === ToolName.IMAGE) {
       // 다른 도구에서 이미지로 바뀔 경우
       setCurrentTool({ name: ToolName.IMAGE, x: 0, y: 0 });
@@ -628,6 +659,7 @@ const Canvas = ({ children, className, isActive }) => {
     currentTool,
     setCurrentTool,
     setDataurl,
+    canvasRef,
   } = useContext(CanvasContext);
   const {
     onMouseDownHandler,
@@ -636,7 +668,6 @@ const Canvas = ({ children, className, isActive }) => {
     onMouseMoveHandler,
     onMouseUpHandler,
   } = useContext(ToolContext);
-  const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
   const [canvasPosition, setCanvasPosition] = useState({});
   const [imagePosition, setImagePosition] = useState({
@@ -654,6 +685,7 @@ const Canvas = ({ children, className, isActive }) => {
   const handleWheel = (e) => {
     // e.preventDefault();
     // e.stopPropagation();
+    if (!isMouseOverCanvas) return;
 
     // 확대 및 축소 계수 조정
     let delta = Math.sign(e.deltaY);
@@ -727,14 +759,17 @@ const Canvas = ({ children, className, isActive }) => {
       w-full h-screen overflow-scroll ${className}`}
       onWheel={handleWheel}
     >
-      <div id="canvas-wrap" className="relative min-w-[650px] min-h-[720px]">
+      <div
+        id="canvas-wrap"
+        className="relative min-w-[650px] min-h-[720px]"
+        style={{
+          transformOrigin: "center",
+          transform: `scale(${scale})`,
+        }}
+      >
         <canvas
           className={`bg-white-A700 absolute`}
           ref={canvasRef}
-          style={{
-            transformOrigin: "center",
-            transform: `scale(${scale})`,
-          }}
           onMouseDown={() => {
             if (!isActive) return;
             onMouseDownHandler(getCtx);

@@ -10,6 +10,8 @@ const CanvasContext = React.createContext({
   setCurrentHistory: () => {},
   dataurl: "",
   setDataurl: () => {},
+  canvasRef: null,
+  drawImageToCanvas: () => {},
 });
 
 export { CanvasContext };
