@@ -23,21 +23,21 @@ export function call(api, method, request, credential) {
 
   return fetch(options.url, options)
     .then((response) => {
-      if (response.status === 200) {
-        return response.json();
+      if (!response.ok) {
+        // HTTP 상태 코드가 200이 아닌 경우
+        if (response.status === 403) {
+          window.location.href = "/login";
+        } else {
+          throw new Error(`HTTP error status: ${response.status}`);
+        }
       }
-      // 인증오류의 경우 로그인 페이지로 리다이렉트
-      else if (response.status === 403) {
-        window.location.href = "/login";
-      }
-      // 다른 오류의 경우 모두 예외 처리
-      else {
-        Promise.reject(response);
-        throw Error(response);
-      }
+      return response.text();
+    })
+    .then((data) => {
+      console.log(data);
+      return data;
     })
     .catch((error) => {
-      console.log("http error");
-      console.log(error);
+      console.error("Fetch error:", error);
     });
 }

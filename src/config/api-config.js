@@ -5,7 +5,7 @@ const hostName = window && window.location && window.location.hostname;
 
 // 테스트 환경에서 요청할 때는 로컬호스트로
 if (hostName === "localhost") {
-  backendHost = "http://localhost:8080";
+  backendHost = "";
 }
 // 테스트 환경이 아닌 곳에서 쓸 경우 주소를 바꾸기
 else if (hostName === "배포환경의 도메인 주소") {
