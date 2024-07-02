@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import { signUp } from "utils/DataService";
 import { Button, CheckBox, Img, Input, Layout, Text, Toast } from "components";
 
 const RegisterFormPage = () => {
@@ -35,10 +35,17 @@ const RegisterFormPage = () => {
   }
 
   // todo: 회원가입 버튼 동작 함수
-  function handleRegisterSubmit() {
+  async function handleRegisterSubmit() {
     const isValidate = checkValidation();
     if (isValidate) {
       console.log("회원가입 진행");
+      let userDto = {
+        email: email,
+        pwd: password,
+        nickName: nickName,
+      };
+      const data = await signUp(userDto);
+      console.log(data);
     }
   }
 

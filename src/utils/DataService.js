@@ -15,3 +15,7 @@ export function login(userDTO) {
 export function logout() {
   localStorage.setItem("ACCESS_TOKEN", null);
 }
+
+export function signUp(userDTO) {
+  return call("/member/signUp", "POST", userDTO);
+}
