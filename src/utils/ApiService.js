@@ -21,23 +21,27 @@ export function call(api, method, request, credential) {
     options.body = JSON.stringify(request);
   }
 
-  return fetch(options.url, options)
-    .then((response) => {
-      if (!response.ok) {
-        // HTTP 상태 코드가 200이 아닌 경우
-        if (response.status === 403) {
-          window.location.href = "/login";
-        } else {
-          throw new Error(`HTTP error status: ${response.status}`);
+  return new Promise((resolve, reject) => {
+    fetch(options.url, options)
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          // HTTP 상태 코드가 200이 아닌 경우
+          if (response.status === 403) {
+            window.location.href = "/login";
+          } else {
+            throw new Error(`HTTP error status: ${response.status}`);
+          }
         }
-      }
-      return response.text();
-    })
-    .then((data) => {
-      console.log(data);
-      return data;
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
+        return response.text();
+      })
+      .then((data) => {
+        console.log(data);
+        resolve(data);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+        reject(error);
+      });
+  });
 }

@@ -46,6 +46,7 @@ const RegisterFormPage = () => {
       };
       const data = await signUp(userDto);
       console.log(data);
+      alert(data);
     }
   }
 
