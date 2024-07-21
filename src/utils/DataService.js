@@ -33,7 +33,7 @@ export function signUp(userDTO) {
 
 // jwtTokenInfo로 연결해보는 함수. 디버그용.
 export function confirmJwt() {
-  call("/member/jwtTokenInfo").then((res) => {
+  call("/member/jwtTokenInfo", "GET", null, true).then((res) => {
     alert(res);
   });
 }
