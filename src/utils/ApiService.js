@@ -1,14 +1,16 @@
 import { API_BASE_API } from "config/api-config";
 
-export function call(api, method, request, credential) {
+export function call(api, method, request, credential = false) {
   let headers = new Headers({
     "Content-Type": "application/json",
   });
 
-  // 로컬 스토리지에서 jwt 토큰을 가져오기 시도
-  const accessToken = localStorage.getItem("ACCESS_TOKEN");
-  if (accessToken && accessToken !== null) {
-    headers.append("Authorization", "Bearer " + accessToken);
+  if (credential) {
+    // 로컬 스토리지에서 jwt 토큰을 가져오기 시도
+    const accessToken = localStorage.getItem("ACCESS_TOKEN");
+    if (accessToken && accessToken !== null) {
+      headers.append("Authorization", "Bearer " + accessToken);
+    }
   }
 
   let options = {
