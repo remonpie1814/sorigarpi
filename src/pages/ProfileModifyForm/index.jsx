@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
 import { Button, Img, Layout, Text } from "components";
 
+import { getMemberInfo, updateMember } from "utils/DataService";
+
 const ProfileModifyFormPage = () => {
   const navigate = useNavigate();
+  const [nickName, setNickName] = useState("");
+  const [intro, setIntro] = useState("");
+  const [profileImg, setProfileImg] = useState("");
+
+  useEffect(() => {
+    // Todo: 아직 구현이 안 되어 있으므로 주석처리. 백엔드에 회원 정보를 가져오는 api가 생기면 해제.
+    // getMemberInfo().then((res) => {
+    //   setNickName(res.nickName);
+    //   setIntro(res.intro);
+    //   setProfileImg(res.profileImg);
+    // });
+  }, []);
+
+  const handleProfileModify = () => {
+    const member = {
+      nickName: nickName,
+      intro: intro,
+      profileImg: profileImg,
+    };
+    updateMember(member);
+  };
 
   return (
     <>
@@ -57,7 +80,8 @@ const ProfileModifyFormPage = () => {
                     className="text-base text-black-900 tracking-[-0.18px] w-full
                     p-0 border-none"
                     type="text"
-                    defaultValue="둥치탁치"
+                    defaultValue={nickName}
+                    onChange={(e) => setNickName(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col h-[21px] md:h-auto items-center justify-start w-[480px] sm:w-full">
@@ -80,8 +104,9 @@ const ProfileModifyFormPage = () => {
                   <textarea
                     className="text-base text-black-900 tracking-[-0.18px] w-full
                     flex-grow resize-none overflow-y-auto p-0 border-none"
+                    onChange={(e) => setIntro(e.target.value)}
                   >
-                    둥치탁치 구독과 좋아요 알림설정까지~
+                    {intro}
                   </textarea>
                 </div>
               </div>
@@ -102,7 +127,7 @@ const ProfileModifyFormPage = () => {
                   color="amber_A100"
                   size="lg"
                   variant="fill"
-                  onClick={() => navigate("/profile")}
+                  onClick={handleProfileModify}
                 >
                   적용
                 </Button>

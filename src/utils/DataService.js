@@ -48,3 +48,20 @@ export function createBook(bookDTO) {
       alert("책 생성 실패: " + error);
     });
 }
+
+// 사용자의 정보를 업데이트 하는 함수
+export function updateMember(memberDTO) {
+  return call("/member/info", "PUT", memberDTO, true)
+    .then((response) => {
+      alert("정보 수정 성공: " + response);
+      window.location.href = "/profile";
+    })
+    .catch((error) => {
+      alert("정보 수정 실패: " + error);
+    });
+}
+
+// 사용자의 프로필을 가져오는 함수
+export function getMemberInfo() {
+  return call("/member/info", "GET", null, true);
+}
