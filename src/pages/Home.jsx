@@ -103,6 +103,15 @@ const Home = () => {
         <li>
           <Link to="/editsoundeffect">EditSoundEffect</Link>
         </li>
+        <li>
+          <Link to="/wholetalelist">WholeTaleList</Link>
+        </li>
+        <li>
+          <Link to="/populartalelist">PopularTaleList</Link>
+          <li>
+            <Link to="/newtalelist">NewTaleList</Link>
+          </li>
+        </li>
       </ul>
     </div>
   );

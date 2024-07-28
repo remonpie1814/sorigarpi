@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, Img, MainAlertInfo, useWindowDimensions } from "components";
+import { Text, Img, MainAlertInfo } from "components";
 
 const MainAlert = ({ isOpneAlert, setOpenAlert }) => {
   const [alertList, setAlertList] = useState([

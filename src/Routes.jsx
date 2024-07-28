@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import ScrollToTop from "components/ScrollToTop";
+
+const WholeTaleList = React.lazy(() => import("pages/WholeTaleList"));
+const PopularTaleList = React.lazy(() => import("pages/PopularTaleList"));
+const NewTaleList = React.lazy(() => import("pages/NewTaleList"));
 const EditSoundEffect = React.lazy(() => import("pages/EditSoundEffect"));
 const EditRecord = React.lazy(() => import("pages/EditRecord"));
 const Canvas = React.lazy(() => import("pages/Canvas"));
@@ -87,6 +91,9 @@ const ProjectRoutes = () => {
             <Route path="/canvas" element={<Canvas />} />
             <Route path="/editrecord" element={<EditRecord />} />
             <Route path="/editsoundeffect" element={<EditSoundEffect />} />
+            <Route path="/wholetalelist" element={<WholeTaleList />} />
+            <Route path="/populartalelist" element={<PopularTaleList />} />
+            <Route path="/newtalelist" element={<NewTaleList />} />
           </Routes>
         </ScrollToTop>
       </Router>
