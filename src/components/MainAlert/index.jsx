@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Text, Img, MainAlertInfo } from "components";
+import React, { useState, useEffect } from "react";
+import { Text, Img, MainAlertInfo, useWindowDimensions } from "components";
 
-const MainAlert = ({ onClose }) => {
+const MainAlert = ({ isOpneAlert, setOpenAlert }) => {
   const [alertList, setAlertList] = useState([
     {
       content: "토끼와 호랑이 동화가 [욕설]로 신고되어 비공개처리 되었습니다.",
@@ -113,7 +113,7 @@ const MainAlert = ({ onClose }) => {
               className="w-[16px] h-[16px] text-right cursor-pointer"
               src="/images/close.png"
               onClick={() => {
-                onClose();
+                setOpenAlert(false);
               }}
             />
           </div>

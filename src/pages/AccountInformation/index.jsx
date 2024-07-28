@@ -8,8 +8,8 @@ const AccountInformationPage = () => {
     <>
       <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
-          <div className="flex flex-col gap-10 items-center justify-start max-w-[1182px] pt-[30px] w-full">
-            <div className="grid grid-cols-3 grid-flow-row">
+          <div className="flex flex-col gap-10 items-center justify-start max-w-[1182px] pt-[30px] pb-[50px] w-full">
+            <div className="grid grid-flow-row grid-cols-3">
               <div></div>
               <div
                 className="bg-white-A700 flex flex-col gap-2 

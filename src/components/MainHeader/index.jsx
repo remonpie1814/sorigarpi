@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { Img, MainAlert, SearchMobile } from "components";
+import { Img, MainAlert, SearchMobile, useWindowDimensions } from "components";
 import PageDrawer from "drawers/Page";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +12,13 @@ const MainHeader = (props) => {
   const [isOpenSearch, setSearch] = useState(false);
   const [searchWord, setSearchWord] = useState("");
   const navigate = useNavigate();
+
+  let nowWidth = useWindowDimensions().width;
+  if ((isOpneAlert === true || isOpenSearch === true) && nowWidth < 1024) {
+    document.body.style = `overflow: hidden`;
+  } else {
+    document.body.style = `overflow: auto`;
+  }
 
   return (
     <>
@@ -31,7 +38,10 @@ const MainHeader = (props) => {
           </div>
           <div className="relative flex flex-row gap-2.5 items-center justify-center py-2.5 w-auto">
             {isOpneAlert ? (
-              <MainAlert onClose={() => setOpenAlert(false)}></MainAlert>
+              <MainAlert
+                isOpneAlert={isOpneAlert}
+                setOpenAlert={setOpenAlert}
+              ></MainAlert>
             ) : (
               <Img
                 className="object-cover w-12 h-12 cursor-pointer md:h-auto"
