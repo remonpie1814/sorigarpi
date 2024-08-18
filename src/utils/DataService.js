@@ -3,24 +3,16 @@
 import { call } from "./ApiService";
 
 export function login(userDTO) {
-  localStorage.setItem("ACCESS_TOKEN", null);
-  console.log(localStorage.getItem("ACCESS_TOKEN"));
-  call("/member/login", "POST", userDTO)
-    .then((response) => {
-      // 응답에서 토큰을 가져와 로컬 스토리지에 저장.
-      // note: 백엔드에서 로그인의 응답을 어떻게 주는지 확인해야 함. 지금 swagger에 적혀 있지 않음.
-      if (response) {
-        const token = response.replace("로그인하였습니다. ", "");
-        localStorage.setItem("ACCESS_TOKEN", token);
-        console.log(localStorage.getItem("ACCESS_TOKEN"));
-        alert("로그인 됨!");
-        window.history.back(); // 이전 페이지로 이동
-      }
-    })
-    .catch((error) => {
-      alert("로그인 실패! \n" + error);
-      logout();
-    });
+  call("/member/login", "POST", userDTO).then((response) => {
+    // 응답에서 토큰을 가져와 로컬 스토리지에 저장.
+    if (response) {
+      const accessToken = response.data.accessToken;
+      localStorage.setItem("ACCESS_TOKEN", accessToken);
+      const refreshToken = response.data.refreshToken;
+      localStorage.setItem("REFRESH_TOKEN", refreshToken);
+      alert("로그인 됨!");
+    }
+  });
 }
 
 export function logout() {
@@ -64,4 +56,10 @@ export function updateMember(memberDTO) {
 // 사용자의 프로필을 가져오는 함수
 export function getMemberInfo() {
   return call("/member/info", "GET", null, true);
+}
+
+// 내가 쓴 동화리스트 가져오기
+// 아직 백 쪽에 api가 없음
+export function listMyTale() {
+  return call("/book/getAllBook", "GET", null, true);
 }
