@@ -42,6 +42,7 @@ const Profile = React.lazy(() => import("pages/Profile"));
 const FollowList = React.lazy(() => import("pages/FollowList"));
 const SearchResult = React.lazy(() => import("pages/SearchResult"));
 const TaleDetail = React.lazy(() => import("pages/TaleDetail"));
+const DeleteId = React.lazy(() => import("pages/DeleteId"));
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<>Loading...</>}>
@@ -94,6 +95,7 @@ const ProjectRoutes = () => {
             <Route path="/wholetalelist" element={<WholeTaleList />} />
             <Route path="/populartalelist" element={<PopularTaleList />} />
             <Route path="/newtalelist" element={<NewTaleList />} />
+            <Route path="/deleteid" element={<DeleteId />} />
           </Routes>
         </ScrollToTop>
       </Router>

@@ -108,9 +108,12 @@ const Home = () => {
         </li>
         <li>
           <Link to="/populartalelist">PopularTaleList</Link>
-          <li>
-            <Link to="/newtalelist">NewTaleList</Link>
-          </li>
+        </li>
+        <li>
+          <Link to="/newtalelist">NewTaleList</Link>
+        </li>
+        <li>
+          <Link to="/deleteid">DeleteId</Link>
         </li>
       </ul>
     </div>

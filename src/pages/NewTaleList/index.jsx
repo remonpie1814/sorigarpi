@@ -51,7 +51,7 @@ const NewTaleList = () => {
               className="bg-white-A700 justify-center pb-[15px] sm:pr-5 pr-[35px] pt-[3px] sm:text-2xl md:text-[26px] text-[28px] text-black-900 tracking-[-0.53px] w-full"
               size="txtInterMedium28"
             >
-              신작 동화
+              신작동화 동화
             </Text>
             <div className="flex flex-col items-start justify-center w-full">
               <div className="flex flex-col gap-2.5 items-center justify-start w-full">
