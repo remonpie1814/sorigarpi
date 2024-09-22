@@ -2,14 +2,16 @@ import React from "react";
 
 import { Img, List, Text } from "components";
 import { Layout } from "components";
+import { useNavigate } from "react-router-dom";
 
 const AccountInformationPage = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Layout>
         <div className="flex flex-col items-center justify-start max-w-[1182px] mx-auto md:px-5 w-full">
-          <div className="flex flex-col gap-10 items-center justify-start max-w-[1182px] pt-[30px] w-full">
-            <div className="grid grid-cols-3 grid-flow-row">
+          <div className="flex flex-col gap-10 items-center justify-start max-w-[1182px] pt-[30px] pb-[50px] w-full">
+            <div className="grid grid-flow-row grid-cols-3">
               <div></div>
               <div
                 className="bg-white-A700 flex flex-col gap-2 
@@ -74,18 +76,26 @@ const AccountInformationPage = () => {
               <AccountInformationButton
                 image={"images/img_comment11.png"}
                 text={"내가 쓴 댓글"}
+                navigate={navigate}
+                navi={"/myreplylist"}
               />
               <AccountInformationButton
                 image={"images/img_reload1.png"}
                 text={"비밀번호 변경하기"}
+                navigate={navigate}
+                navi={"/pwdmodifyform"}
               />
               <AccountInformationButton
                 image={"images/img_confused1.png"}
                 text={"제재 내역 보기"}
+                navigate={navigate}
+                navi={"/sanctionhistory"}
               />
               <AccountInformationButton
                 image={"images/img_image839.png"}
                 text={"계정 탈퇴하기"}
+                navigate={navigate}
+                navi={"/deleteid"}
               />
             </List>
           </div>
@@ -95,11 +105,14 @@ const AccountInformationPage = () => {
   );
 };
 
-const AccountInformationButton = ({ image, text }) => {
+const AccountInformationButton = ({ image, text, navi, navigate }) => {
   return (
     <div
       className="border-2 border-blue_gray-900 border-solid 
-              flex flex-col items-center justify-center my-0 p-2 rounded-[16px] max-w-[350px] w-full"
+              flex flex-col items-center justify-center my-0 p-2 rounded-[16px] max-w-[350px] w-full cursor-pointer"
+      onClick={() => {
+        navigate(navi);
+      }}
     >
       <div className="flex flex-row h-[38px] md:h-auto items-center justify-start w-[250px]">
         <Img className="h-[35px] md:h-auto object-cover w-[35px]" src={image} />

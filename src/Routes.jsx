@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home";
 import NotFound from "pages/NotFound";
 import ScrollToTop from "components/ScrollToTop";
+
+const WholeTaleList = React.lazy(() => import("pages/WholeTaleList"));
+const PopularTaleList = React.lazy(() => import("pages/PopularTaleList"));
+const NewTaleList = React.lazy(() => import("pages/NewTaleList"));
 const EditSoundEffect = React.lazy(() => import("pages/EditSoundEffect"));
 const EditRecord = React.lazy(() => import("pages/EditRecord"));
 const Canvas = React.lazy(() => import("pages/Canvas"));
@@ -38,6 +42,7 @@ const Profile = React.lazy(() => import("pages/Profile"));
 const FollowList = React.lazy(() => import("pages/FollowList"));
 const SearchResult = React.lazy(() => import("pages/SearchResult"));
 const TaleDetail = React.lazy(() => import("pages/TaleDetail"));
+const DeleteId = React.lazy(() => import("pages/DeleteId"));
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<>Loading...</>}>
@@ -87,6 +92,10 @@ const ProjectRoutes = () => {
             <Route path="/canvas" element={<Canvas />} />
             <Route path="/editrecord" element={<EditRecord />} />
             <Route path="/editsoundeffect" element={<EditSoundEffect />} />
+            <Route path="/wholetalelist" element={<WholeTaleList />} />
+            <Route path="/populartalelist" element={<PopularTaleList />} />
+            <Route path="/newtalelist" element={<NewTaleList />} />
+            <Route path="/deleteid" element={<DeleteId />} />
           </Routes>
         </ScrollToTop>
       </Router>

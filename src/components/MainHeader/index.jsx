@@ -2,15 +2,24 @@
 
 import React, { useState } from "react";
 
-import { Img, SearchMobile } from "components";
+import { Img, MainAlert, SearchMobile, useWindowDimensions } from "components";
 import PageDrawer from "drawers/Page";
 import { useNavigate } from "react-router-dom";
 
 const MainHeader = (props) => {
+  const [isOpneAlert, setOpenAlert] = useState(false);
   const [isOpenPageDrawer, setPageDrawer] = useState(false);
   const [isOpenSearch, setSearch] = useState(false);
   const [searchWord, setSearchWord] = useState("");
   const navigate = useNavigate();
+
+  let nowWidth = useWindowDimensions().width;
+  if ((isOpneAlert === true || isOpenSearch === true) && nowWidth < 1024) {
+    document.body.style = `overflow: hidden`;
+  } else {
+    document.body.style = `overflow: auto`;
+  }
+
   return (
     <>
       <div className={props.className}>
@@ -27,12 +36,23 @@ const MainHeader = (props) => {
               alt="sorigalpi logo"
             />
           </div>
-          <div className="flex flex-row gap-2.5 items-center justify-center py-2.5 w-auto">
-            <Img
-              className="object-cover w-12 h-12 md:h-auto"
-              src="/images/img_bell111.png"
-              alt="bell button"
-            />
+          <div className="relative flex flex-row gap-2.5 items-center justify-center py-2.5 w-auto">
+            {isOpneAlert ? (
+              <MainAlert
+                isOpneAlert={isOpneAlert}
+                setOpenAlert={setOpenAlert}
+              ></MainAlert>
+            ) : (
+              <Img
+                className="object-cover w-12 h-12 cursor-pointer md:h-auto"
+                src="/images/img_bell111.png"
+                alt="bell button"
+                onClick={() => {
+                  setOpenAlert(true);
+                }}
+              />
+            )}
+
             {isOpenSearch ? (
               <>
                 <div
@@ -61,7 +81,7 @@ const MainHeader = (props) => {
                     }}
                   />
                 </div>
-                <SearchMobile setSearch={setSearch}></SearchMobile>
+                <SearchMobile onClose={() => setSearch(false)} />
               </>
             ) : (
               <Img
@@ -74,7 +94,7 @@ const MainHeader = (props) => {
               />
             )}
             <Img
-              className="object-cover w-12 h-12 md:h-auto"
+              className="object-cover w-12 h-12 cursor-pointer md:h-auto"
               src="/images/img_menu11.png"
               alt="menu button"
               onClick={() => {

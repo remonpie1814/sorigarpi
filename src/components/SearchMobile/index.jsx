@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Img } from "components";
 
-const SearchMobile = ({ setSearch }) => {
+const SearchMobile = ({ onClose }) => {
   return (
     <>
-      <div className="fixed top-0 left-0 z-40 hidden sm:block bg-white-A700 sm:h-full sm:w-full">
+      <div className="fixed top-0 left-0 z-40 hidden md:block bg-white-A700 md:h-full md:w-full">
         <div className="flex flex-row items-start justify-start gap-4 p-5">
           <Img
-            className="flex flex-row w-[21px] my-auto"
+            className="flex flex-row w-[21px] my-auto cursor-pointer"
             src="images/img_image938.png"
             alt="image938"
             onClick={() => {
-              setSearch(false);
+              onClose();
             }}
           />
           <form className="flex flex-row items-center justify-start h-[46px] w-full">

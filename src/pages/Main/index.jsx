@@ -5,6 +5,7 @@ import React from "react";
 
 import { Img, Layout, Text, Carousel } from "components";
 import { MainTaleColumn } from "components";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   const images = [
@@ -29,22 +30,28 @@ const MainPage = () => {
       id: 4,
     },
   ];
+  const navigate = useNavigate();
   return (
     <>
       <Layout>
         <Carousel images={images}></Carousel>
         <div className="flex flex-col md:gap-10 gap-[60px] items-center justify-start max-w-[1180px] mx-auto md:px-5 py-5 w-full mb-[100px]">
-          <div className="flex flex-col items-center justify-start md:px-10 sm:px-5 px-[247px] w-full">
-            <div className="flex flex-col items-center justify-start w-full p-5">
-              <div className="bg-white-A700 flex flex-col items-start justify-start outline outline-[3px] outline-amber-400 md:px-10 sm:px-5 px-[42px] py-6 rounded-[15px] w-[342px]">
-                <div className="flex flex-row gap-[15px] items-center justify-start w-auto">
+          <div className="flex flex-col items-center justify-start md:px-10 sm:px-0 px-[247px] w-full">
+            <div className="flex flex-col items-center justify-start w-full p-5 sm:p-0">
+              <div
+                className="bg-white-A700 flex flex-col items-start justify-start outline outline-[3px] outline-amber-400  px-[42px] py-6 rounded-[15px] w-[342px] sm:w-full cursor-pointer "
+                onClick={() => {
+                  navigate("/canvas");
+                }}
+              >
+                <div className="flex flex-row items-center justify-start w-full ">
                   <Img
-                    className="h-12 md:h-auto object-cover w-[46px]"
+                    className="h-12 md:h-auto object-cover w-[46px] mr-6"
                     src="images/img_image528.png"
                     alt="image528"
                   />
                   <Text
-                    className="text-[22px] text-amber-500 text-center sm:text-lg md:text-xl tracking-[-0.42px] w-auto"
+                    className="text-[22px] text-amber-500 text-center sm:text-lg md:text-xl tracking-[-0.42px] w-full"
                     size="txtInterExtraBold22"
                   >
                     나만의 동화 만들기

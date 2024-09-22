@@ -3,6 +3,9 @@ import React from "react";
 import { Button, CheckBox, Img, Input, Text, Layout } from "components";
 
 const LoginFormPage = () => {
+  function loginSubmit() {
+    console.log("로그인 진행");
+  }
   return (
     <>
       <Layout>
@@ -42,13 +45,14 @@ const LoginFormPage = () => {
                   wrapClassName="border border-gray-300 border-solid w-full"
                   color="white_A700"
                   variant="fill"
+                  autoComplete="off"
                 ></Input>
                 <div className="flex relative w-[230px]">
                   <div className="w-1/2 h-5 my-auto sm:w-full">
                     <CheckBox
                       className="flex justify-start items-center font-medium my-auto 
                                 text-[15px] text-left tracking-[-0.17px]"
-                      inputClassName="h-5 mr-2 outline outline-[2px] outline-gray-300 rounded-sm w-5"
+                      inputClassName="h-5 mr-2 rounded-sm w-5"
                       name="ThreeHundredSixtyNine"
                       id="ThreeHundredSixtyNine"
                       label="아이디 저장"
@@ -61,7 +65,7 @@ const LoginFormPage = () => {
                     <CheckBox
                       className="flex justify-start items-center font-medium my-auto
                                 text-[15px] text-left tracking-[-0.17px]"
-                      inputClassName="h-5 mr-2 outline outline-[2px] outline-gray-300 rounded-sm w-5"
+                      inputClassName="h-5 mr-2 rounded-sm w-5"
                       name="ThreeHundredSeventy"
                       id="ThreeHundredSeventy"
                       label="자동로그인"
@@ -79,6 +83,9 @@ const LoginFormPage = () => {
               color="yellow_200"
               size="xl"
               variant="fill"
+              onClick={() => {
+                loginSubmit();
+              }}
             >
               로그인
             </Button>

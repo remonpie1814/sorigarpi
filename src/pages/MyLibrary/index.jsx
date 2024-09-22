@@ -17,8 +17,18 @@ import MyLibraryInforow from "components/MyLibraryInforow";
 const MyLibraryPage = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [scope, setScope] = useState(0); //기본 범위 0, 전체공개 1, 비공개 2
-  const [type, setType] = useState(0); //기본 분류 0, 그림만 1, 비공개 2
+  const SCOPE = {
+    DEFAULT: "모두",
+    ALL: "전체공개",
+    PRIVATE: "비공개",
+  };
+  const TYPE = {
+    DEFAULT: "모두",
+    PICTURE: "그림만",
+    RECORD: "녹음만",
+  };
+  const [scope, setScope] = useState(SCOPE.DEFAULT);
+  const [type, setType] = useState(TYPE.DEFAULT);
   const [taleList, setTaleList] = useState([
     {
       title: "제목제목제목제목제목",
@@ -120,45 +130,51 @@ const MyLibraryPage = () => {
               </Text>
               <Text
                 className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
-                  scope === 0 ? "text-black-900" : "text-blue_gray-100_01"
+                  scope === SCOPE.DEFAULT
+                    ? "text-black-900"
+                    : "text-blue_gray-100_01"
                 }`}
                 size={
-                  scope === 0
+                  scope === SCOPE.DEFAULT
                     ? "txtInterBold16Black900"
                     : "txtInterMedium16Bluegray10001"
                 }
                 onClick={() => {
-                  setScope(0);
+                  setScope(SCOPE.DEFAULT);
                 }}
               >
                 모두
               </Text>
               <Text
                 className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
-                  scope === 1 ? "text-black-900" : "text-blue_gray-100_01"
+                  scope === SCOPE.ALL
+                    ? "text-black-900"
+                    : "text-blue_gray-100_01"
                 }`}
                 size={
-                  scope === 1
+                  scope === SCOPE.ALL
                     ? "txtInterBold16Black900"
                     : "txtInterMedium16Bluegray10001"
                 }
                 onClick={() => {
-                  setScope(1);
+                  setScope(SCOPE.ALL);
                 }}
               >
                 전체 공개
               </Text>
               <Text
                 className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
-                  scope === 2 ? "text-black-900" : "text-blue_gray-100_01"
+                  scope === SCOPE.PRIVATE
+                    ? "text-black-900"
+                    : "text-blue_gray-100_01"
                 }`}
                 size={
-                  scope === 2
+                  scope === SCOPE.PRIVATE
                     ? "txtInterBold16Black900"
                     : "txtInterMedium16Bluegray10001"
                 }
                 onClick={() => {
-                  setScope(2);
+                  setScope(SCOPE.PRIVATE);
                 }}
               >
                 비공개
@@ -176,45 +192,51 @@ const MyLibraryPage = () => {
               </Text>
               <Text
                 className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
-                  type === 0 ? "text-black-900" : "text-blue_gray-100_01"
+                  type === TYPE.DEFAULT
+                    ? "text-black-900"
+                    : "text-blue_gray-100_01"
                 }`}
                 size={
-                  type === 0
+                  type === TYPE.DEFAULT
                     ? "txtInterBold16Black900"
                     : "txtInterMedium16Bluegray10001"
                 }
                 onClick={() => {
-                  setType(0);
+                  setType(TYPE.DEFAULT);
                 }}
               >
                 모두
               </Text>
               <Text
                 className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
-                  type === 1 ? "text-black-900" : "text-blue_gray-100_01"
+                  type === TYPE.PICTURE
+                    ? "text-black-900"
+                    : "text-blue_gray-100_01"
                 }`}
                 size={
-                  type === 1
+                  type === TYPE.PICTURE
                     ? "txtInterBold16Black900"
                     : "txtInterMedium16Bluegray10001"
                 }
                 onClick={() => {
-                  setType(1);
+                  setType(TYPE.PICTURE);
                 }}
               >
                 그림만
               </Text>
               <Text
                 className={`text-base tracking-[-0.30px] w-[80px] cursor-pointer ${
-                  type === 2 ? "text-black-900" : "text-blue_gray-100_01"
+                  type === TYPE.RECORD
+                    ? "text-black-900"
+                    : "text-blue_gray-100_01"
                 }`}
                 size={
-                  type === 2
+                  type === TYPE.RECORD
                     ? "txtInterBold16Black900"
                     : "txtInterMedium16Bluegray10001"
                 }
                 onClick={() => {
-                  setType(2);
+                  setType(TYPE.RECORD);
                 }}
               >
                 녹음만
@@ -227,6 +249,8 @@ const MyLibraryPage = () => {
             privacytext={type}
             setScope={setScope}
             setType={setType}
+            SCOPE={SCOPE}
+            TYPE={TYPE}
           />
           <div className="flex flex-col items-end justify-end max-w-[1180px] w-full">
             <div className="flex flex-row items-center justify-center w-auto">

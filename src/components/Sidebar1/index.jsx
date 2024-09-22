@@ -50,16 +50,16 @@ const Sidebar1 = ({ className, onClose }) => {
   return (
     <>
       <div className={className}>
-        <div className="flex flex-row sm:gap-10 items-center justify-between w-full">
+        <div className="flex flex-row items-center justify-between w-full ">
           <Text
             className="text-2xl text-gray-900 tracking-[-0.46px]"
             size="txtInterMedium24Gray900_1"
           >
             사용자님 환영합니다
           </Text>
-          <div className="flex flex-col h-20 items-center justify-end p-6 w-20">
+          <div className="flex flex-col py-6 pr-2 text-right">
             <Text
-              className="text-2xl text-black-900 text-center tracking-[-0.46px]"
+              className="text-2xl cursor-pointer text-black-900 sm:pr-0"
               size="txtInterMedium24Black900"
               onClick={() => {
                 onClose();
@@ -79,11 +79,11 @@ const Sidebar1 = ({ className, onClose }) => {
           );
         })}
 
-        <div className="flex flex-col flex-grow items-center justify-end w-full">
+        <div className="flex flex-col items-center justify-end flex-grow w-full">
           <Button
             className="cursor-pointer 
             font-inter font-medium
-            w-full py-2
+            w-full py-2 my-4
             text-[22px] text-center tracking-[-0.42px]"
             shape="square"
             color="blue_gray_100"
@@ -101,7 +101,7 @@ const SidebarRow = ({ text, image, navigateTo }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex flex-row gap-[30px] h-auto items-center justify-start py-2.5 w-full"
+      className="flex flex-row gap-[30px] h-auto items-center justify-start py-2.5 w-full cursor-pointer"
       onClick={() => {
         navigate(navigateTo);
       }}

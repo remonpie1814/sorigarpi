@@ -1,9 +1,11 @@
 //** 필요 없는 props 제거, 보더 제거, 이름을 Navbar로 변경 */
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Text } from "components";
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
   return (
     <>
       <div className={props.className}>
@@ -13,26 +15,38 @@ const Navbar = (props) => {
                       sm:px-5 sm:gap-10 sm:w-full"
           >
             <Text
-              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
+              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto cursor-pointer"
               size="txtInterMedium16"
+              onClick={() => {
+                navigate("/wholetalelist");
+              }}
             >
               전체
             </Text>
             <Text
-              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
+              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto cursor-pointer"
               size="txtInterMedium16"
+              onClick={() => {
+                navigate("/populartalelist");
+              }}
             >
               인기
             </Text>
             <Text
-              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
+              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto cursor-pointer"
               size="txtInterMedium16"
+              onClick={() => {
+                navigate("/newtalelist");
+              }}
             >
               신작
             </Text>
             <Text
-              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto"
+              className="text-base text-center text-gray-900 tracking-[-0.30px] w-auto cursor-pointer"
               size="txtInterMedium16"
+              onClick={() => {
+                navigate("/followingtale");
+              }}
             >
               팔로우
             </Text>

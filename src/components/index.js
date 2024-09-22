@@ -23,3 +23,6 @@ export { RadioGroup } from "./RadioGroup";
 export { PreventScroll } from "./PreventScroll";
 export { SearchMobile } from "./SearchMobile";
 export { Carousel } from "./Carousel";
+export { MainAlert } from "./MainAlert";
+export { MainAlertInfo } from "./MainAlertInfo";
+export { useWindowDimensions } from "./useWindowDimensions";

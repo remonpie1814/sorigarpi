@@ -3,31 +3,6 @@ import React from "react";
 import { Text } from "components";
 
 const MyLibraryInforow = (props) => {
-  let scope = "";
-  let type = "";
-  switch (props?.categorytext) {
-    case 0:
-      scope = "모두";
-      break;
-    case 1:
-      scope = "전체 공개";
-      break;
-    case 2:
-      scope = "비공개";
-      break;
-  }
-  switch (props?.privacytext) {
-    case 0:
-      type = "모두";
-      break;
-    case 1:
-      type = "그림만";
-      break;
-    case 2:
-      type = "녹음만";
-      break;
-  }
-
   return (
     <>
       <div className={props.className}>
@@ -45,14 +20,15 @@ const MyLibraryInforow = (props) => {
               className="text-base text-black-900 tracking-[-0.18px]"
               size="txtInterMedium16Black900_1"
             >
-              공개 범위 : {scope}
+              공개 범위 : {props.categorytext}
             </Text>
-            {props?.categorytext === 0 ? null : (
+            {props.categorytext ===
+            JSON.stringify(props.SCOPE.DEFAULT).replaceAll('"', "") ? null : (
               <Text
                 className="text-base text-red-A700 tracking-[-0.18px] cursor-pointer"
                 size="txtInterMedium16RedA700_1"
                 onClick={() => {
-                  props?.setScope(0);
+                  props?.setScope("모두");
                 }}
               >
                 {props?.closebutton}
@@ -64,14 +40,15 @@ const MyLibraryInforow = (props) => {
               className="text-base text-black-900 tracking-[-0.18px]"
               size="txtInterMedium16Black900_1"
             >
-              분류 : {type}
+              분류 : {props.privacytext}
             </Text>
-            {props?.privacytext === 0 ? null : (
+            {props?.privacytext ===
+            JSON.stringify(props.TYPE.DEFAULT).replaceAll('"', "") ? null : (
               <Text
                 className="text-base text-red-A700 tracking-[-0.18px] cursor-pointer"
                 size="txtInterMedium16RedA700_1"
                 onClick={() => {
-                  props?.setType(0);
+                  props?.setType("모두");
                 }}
               >
                 {props?.closebutton1}
